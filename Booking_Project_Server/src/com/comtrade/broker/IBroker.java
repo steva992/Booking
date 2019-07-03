@@ -8,6 +8,7 @@ import com.comtrade.domain.User;
 public interface IBroker {
 
 	public void enter(GeneralDomain generalDomain) throws SQLException;
+
 	public GeneralDomain setID(GeneralDomain user) throws SQLException;
 
 }

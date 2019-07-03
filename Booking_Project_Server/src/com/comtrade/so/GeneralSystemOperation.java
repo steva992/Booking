@@ -8,13 +8,17 @@ import com.comtrade.genericClasses.Generic;
 public abstract class GeneralSystemOperation<E extends Generic>{
 	
 	
-	public void runSO(E object ) {
+	public void runSO(E object ) throws Exception{
 		try {
-		runTransaction();
-		runConcreteSO(object);
-		confirmedTransaction();
+			runTransaction();
+			runConcreteSO(object);
+			confirmedTransaction();
+		}catch(SQLException sql) {
+			rollBackTransaction();
+			throw sql;
 		}catch(Exception e) {
 			rollBackTransaction();
+			e.printStackTrace();
 		}finally {
 			closeConnection();
 		}

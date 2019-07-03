@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class User_Additional_Features extends User implements Serializable{
+public class User_Info extends User implements Serializable{
 	private int id_User_Additional_Features;
 	private int id_User;
 	private String name;
@@ -15,7 +15,7 @@ public class User_Additional_Features extends User implements Serializable{
 	private String pictureURL;
 	private String mobileNumber;
 	
-	public User_Additional_Features() {
+	public User_Info() {
 		
 	}
 	
@@ -68,7 +68,7 @@ public class User_Additional_Features extends User implements Serializable{
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	public User_Additional_Features(int id_User_Additional_Features, int id_User, String name, String surname,
+	public User_Info(int id_User_Additional_Features, int id_User, String name, String surname,
 			String gender, String email, String pictureURL, String mobileNumber) {
 		super();
 		this.id_User_Additional_Features = id_User_Additional_Features;
@@ -106,6 +106,26 @@ public class User_Additional_Features extends User implements Serializable{
 		preparedStatement.setString(7,mobileNumber);
 		return preparedStatement;
 	}
+
+
+	@Override
+	public String printIDOfTable() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public GeneralDomain setResultSetForOne(ResultSet resultSet) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
+
+
+	
 
 
 	

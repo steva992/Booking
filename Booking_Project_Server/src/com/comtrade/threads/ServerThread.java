@@ -10,6 +10,7 @@ import com.comtrade.constants.Server_Information;
 
 public class ServerThread extends Thread {
 	
+	
 
 	public void run() {
 		strartServer();
@@ -18,6 +19,7 @@ public class ServerThread extends Thread {
 	private void strartServer() {
 		try {
 			ServerSocket serverSocket=new ServerSocket(Server_Information.PORT.getValue());
+			
 			while(true) {
 				Socket socket=serverSocket.accept();
 				ClientThread clientThread=new ClientThread();

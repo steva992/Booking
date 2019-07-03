@@ -106,4 +106,6 @@ public class User implements GeneralDomain,Serializable {
 		return user;
 	}
 
+	
+
 }

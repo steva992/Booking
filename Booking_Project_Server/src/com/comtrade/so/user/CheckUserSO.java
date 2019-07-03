@@ -8,15 +8,14 @@ import com.comtrade.domain.User;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.so.GeneralSystemOperation;
 
-public class UserLogInSO extends GeneralSystemOperation<GenericList<User>> {
+public class CheckUserSO extends GeneralSystemOperation<GenericList<User>> {
 
 	@Override
 	protected void runConcreteSO(GenericList<User> object) throws SQLException {
-		GenericList<User>lista=object;
-		User user=lista.get(0);
+		GenericList<User>userList=object;
+		User user=userList.get(0);
 		Broker broker=new Broker();
-		user=broker.login(user);
-		lista.add(user);
+		userList.add(broker.checkUser(user));
 	}
 
 }

@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.sql.SQLException;
 
 import com.comtrade.constants.Server_Information;
 import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
+import com.comtrade.controlerPL.ControlerPLProperty;
 import com.comtrade.controlerPL.ControlerPLUser;
-import com.comtrade.domain.User_Additional_Features;
+import com.comtrade.domain.User_Info;
 import com.comtrade.transfer.TransferClass;
 
 public class ClientThread extends Thread {
@@ -28,7 +30,15 @@ public class ClientThread extends Thread {
 			try {
 				ObjectInputStream objectIS=new ObjectInputStream(socket.getInputStream());
 				TransferClass transferClass=(TransferClass) objectIS.readObject();
-				processClientsRequest(transferClass);
+				try {
+					processClientsRequest(transferClass);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} catch (IOException | ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -37,13 +47,16 @@ public class ClientThread extends Thread {
 		}
 	}
 
-	private void processClientsRequest(TransferClass transferClass){
+	private void processClientsRequest(TransferClass transferClass) throws Exception{
 		TransferClass transferClass2=new TransferClass();
 		switch(transferClass.getType_Of_Data()) {
-		case Type_Of_Data.USER:
+		case USER:
 			transferClass2=ControlerPLUser.getInstance().CheckTheOperation(transferClass);
 			send(transferClass2);
 			break;
+		case PROPERTY:
+			transferClass2=ControlerPLProperty.getInstance().CheckTheOperation(transferClass);
+			send(transferClass2);
 		default:
 			break;
 		}

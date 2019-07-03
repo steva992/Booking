@@ -7,17 +7,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.comtrade.constants.Regular_Expression;
 import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.User;
-import com.comtrade.domain.User_Additional_Features;
+import com.comtrade.domain.User_Info;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.proxy.IProxy;
 import com.comtrade.proxy.ProxyLogin;
+import com.comtrade.transfer.TransferClass;
+import com.comtrade.view.propertyCreated.PropertyForm;
+import com.comtrade.view.user.forgotPassword.ForgotPassword;
 
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
@@ -33,9 +38,14 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JComboBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
 
 public class LoginForm extends JFrame {
 
@@ -49,14 +59,10 @@ public class LoginForm extends JFrame {
 	private JTextField tfPhoneNumber;
 	private JPasswordField pfConfirmPasswordSignUp;
 	private JPasswordField pfPasswordSignUp;
-	private JPanel panelForAll,panelAdmin;
+	private JPanel panelForAll;
 	private JLayeredPane layeredPane;
 	private JCheckBox cbProperty;
 	private JButton btnStepTwo,btnSignUpPanel;
-	private JTextField tfNameOfProperty;
-	private JTextField tfState;
-	private JTextField tfCity;
-	private JTextField tfAdress;
 	private JRadioButton rbMan,rbWoman;
 	private ButtonGroup buttonGroup=new ButtonGroup();
 	private JCheckBox chckbxNewCheckBox;
@@ -82,22 +88,26 @@ public class LoginForm extends JFrame {
 	 */
 	public LoginForm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 892, 665);
+		setBounds(100, 100,881, 659);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Username");
-		lblNewLabel.setBounds(70, 119, 238, 33);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(27, 119, 328, 33);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(70, 203, 238, 33);
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPassword.setBounds(27, 203, 328, 33);
 		contentPane.add(lblPassword);
 		
 		tfUsernameLogin = new JTextField();
-		tfUsernameLogin.setBounds(70, 156, 238, 36);
+		tfUsernameLogin.setBounds(27, 156, 328, 36);
 		contentPane.add(tfUsernameLogin);
 		tfUsernameLogin.setColumns(10);
 		
@@ -122,7 +132,7 @@ public class LoginForm extends JFrame {
 			}
 		});
 		btnLogIn.setForeground(Color.RED);
-		btnLogIn.setBounds(108, 338, 157, 41);
+		btnLogIn.setBounds(108, 411, 157, 41);
 		contentPane.add(btnLogIn);
 		
 		JButton btnSignUp = new JButton("Sing Up");
@@ -133,7 +143,7 @@ public class LoginForm extends JFrame {
 				layeredPane.revalidate();
 			}
 		});
-		btnSignUp.setBounds(108, 403, 157, 41);
+		btnSignUp.setBounds(108, 476, 157, 41);
 		contentPane.add(btnSignUp);
 		
 		layeredPane = new JLayeredPane();
@@ -258,46 +268,17 @@ public class LoginForm extends JFrame {
 		btnSignUpPanel = new JButton("Sign Up");
 		btnSignUpPanel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String username=tfUsernameSignup.getText();
-				String password=String.copyValueOf(pfPasswordSignUp.getPassword());
-				String confirmPassword=String.copyValueOf(pfConfirmPasswordSignUp.getPassword());
-				String name=tfName.getText();
-				String surname=tfSurname.getText();
-				String email=tfEmail.getText();
-				String mobileNumber=tfPhoneNumber.getText();
-				String gender = null;
-				if(rbMan.isSelected()) {
-					gender="Man";
-				}else if(rbWoman.isSelected()) {
-					gender="Woman";
+				GenericList<GeneralDomain>list=grabForPanelForALL();
+				try {
+					String poruka=ControlerKI.getInstance().enterTheUserAndAdditionalUser(list).getMessage();
+					JOptionPane.showMessageDialog(null,poruka);
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-				//Treba naci kako da dovlacis sve slike sa servera
-				String picture="Stevan";
-				boolean AllFieldCompleted=FieldComplete(username,password,confirmPassword,name,surname,email,mobileNumber,gender);
-				if(AllFieldCompleted) {
-					if(password.equals(confirmPassword)) {
-						User user=new User();
-						user.setUsername(username);
-						user.setPassword(password);
-						user.setStatus("user");
-						User_Additional_Features userAdditional=new User_Additional_Features();
-						userAdditional.setName(name);
-						userAdditional.setEmail(email);
-						userAdditional.setGender(gender);
-						userAdditional.setMobileNumber(mobileNumber);
-						userAdditional.setPictureURL(picture);
-						userAdditional.setSurname(surname);
-						GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
-						list.add(user);
-						list.add(userAdditional);
-						ControlerKI.getInstance().enterTheUserAndAdditionalUser(list);
-					}else {
-						JOptionPane.showMessageDialog(null,"Incorrect password entry");
-					}
-				}else {
-					JOptionPane.showMessageDialog(null,"!!! All fields must be filled !!!");
-				}
-				
 			}
 		});
 		btnSignUpPanel.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -307,9 +288,24 @@ public class LoginForm extends JFrame {
 		btnStepTwo = new JButton("Go to Step 2 >>");
 		btnStepTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				layeredPane.removeAll();
-				layeredPane.add(panelAdmin);
-				layeredPane.revalidate();
+				GenericList<GeneralDomain>list=grabForPanelForALL();
+				try {
+					TransferClass transferClass=ControlerKI.getInstance().checkIfUserExcist(list.get(0));
+					User user=(User) transferClass.getServer_Object_Response();
+					if(user.getId() > 0) {
+						JOptionPane.showMessageDialog(null,"!!! That Username Allready Excist !!!");
+					}else {
+						PropertyForm propertyForm=new PropertyForm(list.get(0),list.get(1));
+						propertyForm.setVisible(true);
+						dispose();
+					}
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnStepTwo.setForeground(Color.BLACK);
@@ -317,73 +313,9 @@ public class LoginForm extends JFrame {
 		btnStepTwo.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnStepTwo.setBounds(255, 455, 164, 45);
 		panelForAll.add(btnStepTwo);
-		panelAdmin = new JPanel();
-		panelAdmin.setBackground(Color.YELLOW);
-		layeredPane.add(panelAdmin, "name_11973447082047");
-		panelAdmin.setLayout(null);
-		
-		JLabel lblNewLabel_3 = new JLabel("Name");
-		lblNewLabel_3.setBounds(10, 11, 147, 28);
-		panelAdmin.add(lblNewLabel_3);
-		
-		JLabel lblTypeOfProperty = new JLabel("Type Of Property");
-		lblTypeOfProperty.setBounds(10, 81, 147, 28);
-		panelAdmin.add(lblTypeOfProperty);
-		
-		JLabel lblState = new JLabel("State");
-		lblState.setBounds(10, 142, 147, 28);
-		panelAdmin.add(lblState);
-		
-		JLabel lblCity = new JLabel("City");
-		lblCity.setBounds(10, 210, 147, 28);
-		panelAdmin.add(lblCity);
-		
-		JLabel lblAdre = new JLabel("Adress");
-		lblAdre.setBounds(10, 275, 147, 28);
-		panelAdmin.add(lblAdre);
-		
-		tfNameOfProperty = new JTextField();
-		tfNameOfProperty.setBounds(10, 50, 212, 20);
-		panelAdmin.add(tfNameOfProperty);
-		tfNameOfProperty.setColumns(10);
-		
-		tfState = new JTextField();
-		tfState.setColumns(10);
-		tfState.setBounds(10, 181, 212, 20);
-		panelAdmin.add(tfState);
-		
-		tfCity = new JTextField();
-		tfCity.setColumns(10);
-		tfCity.setBounds(10, 249, 212, 20);
-		panelAdmin.add(tfCity);
-		
-		tfAdress = new JTextField();
-		tfAdress.setColumns(10);
-		tfAdress.setBounds(10, 317, 212, 20);
-		panelAdmin.add(tfAdress);
-		
-		JComboBox cbTypeOfProperty = new JComboBox();
-		cbTypeOfProperty.setBounds(10, 111, 212, 20);
-		panelAdmin.add(cbTypeOfProperty);
-		
-		JLabel lblNewLabel_4 = new JLabel("Picture");
-		lblNewLabel_4.setBounds(10, 365, 212, 178);
-		panelAdmin.add(lblNewLabel_4);
-		
-		JButton btnNewButton = new JButton("<<");
-		btnNewButton.setBounds(10, 570, 89, 23);
-		panelAdmin.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton(">>");
-		btnNewButton_1.setBounds(133, 570, 89, 23);
-		panelAdmin.add(btnNewButton_1);
-		
-		JButton btnNewButton_3 = new JButton("Sign Up You and Your Property");
-		btnNewButton_3.setBounds(274, 453, 181, 76);
-		panelAdmin.add(btnNewButton_3);
 		
 		pfPasswordLogin = new JPasswordField();
-		pfPasswordLogin.setBounds(70, 239, 238, 36);
+		pfPasswordLogin.setBounds(27, 239, 328, 36);
 		contentPane.add(pfPasswordLogin);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Hide / Unhide");
@@ -396,8 +328,120 @@ public class LoginForm extends JFrame {
 				}
 			}
 		});
-		chckbxNewCheckBox.setBounds(136, 295, 102, 23);
+		chckbxNewCheckBox.setBounds(253, 304, 102, 23);
 		contentPane.add(chckbxNewCheckBox);
+		
+		JButton btnNewButton = new JButton("Forgot Password ?");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ForgotPassword forgotPassword=new ForgotPassword();
+				forgotPassword.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton.setBackground(Color.RED);
+		btnNewButton.setBounds(27, 304, 143, 23);
+		contentPane.add(btnNewButton);
+	}
+
+	protected GenericList<GeneralDomain> grabForPanelForALL() {
+		GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+		String username=tfUsernameSignup.getText();
+		String password=String.copyValueOf(pfPasswordSignUp.getPassword());
+		String confirmPassword=String.copyValueOf(pfConfirmPasswordSignUp.getPassword());
+		String name=tfName.getText();
+		String surname=tfSurname.getText();
+		String email=tfEmail.getText();
+		String mobileNumber=tfPhoneNumber.getText();
+		String gender = null;
+		if(rbMan.isSelected()) {
+			gender="Man";
+		}else if(rbWoman.isSelected()) {
+			gender="Woman";
+		}
+		//Treba naci kako da dovlacis sve slike sa servera
+		String picture="Stevan";
+		boolean testField=fieldValidityUser(username,name,surname,email,mobileNumber);
+		boolean AllFieldCompleted=FieldComplete(username,password,confirmPassword,name,surname,email,mobileNumber,gender);
+		if(testField) {
+			if(AllFieldCompleted) {
+				if(password.equals(confirmPassword)) {
+					User user=new User();
+					user.setUsername(username);
+					user.setPassword(password);
+					if(cbProperty.isSelected()) {
+						user.setStatus("admin");
+					}else {
+						user.setStatus("user");
+					}
+					User_Info userAdditional=new User_Info();
+					userAdditional.setName(name);
+					userAdditional.setEmail(email);
+					userAdditional.setGender(gender);
+					userAdditional.setMobileNumber(mobileNumber);
+					userAdditional.setPictureURL(picture);
+					userAdditional.setSurname(surname);
+					list.add(user);
+					list.add(userAdditional);
+				}else {
+					JOptionPane.showMessageDialog(null,"!!! Incorrect password entry !!!");
+				}
+			}else {
+				JOptionPane.showMessageDialog(null,"!!! All fields must be filled !!!");
+			}
+		}else { 
+			JOptionPane.showMessageDialog(null,"!!! Incorrectly entered data !!!");
+		}
+		return list;
+	}
+
+	private boolean fieldValidityUser(String username, String name, String surname, String email, String mobileNumber) {
+		backBorderToGray();
+		boolean username1=Pattern.matches(Regular_Expression.USRERNAME.getValue(),username);
+		boolean name1=Pattern.matches(Regular_Expression.ONLY_TEXT_VALUES.getValue(),name);
+		boolean surname1=Pattern.matches(Regular_Expression.ONLY_TEXT_VALUES.getValue(),surname);
+		boolean email1=Pattern.matches(Regular_Expression.EMAIL.getValue(),email);
+		boolean mobileNumber1=Pattern.matches(Regular_Expression.PHONE_NUMBER.getValue(),mobileNumber);
+		if(username1 &&  name1 && surname1 && email1 && mobileNumber1) {
+			return true;
+		}
+		
+		if(username1==false) {
+			tfUsernameSignup.setBorder(BorderFactory.createLineBorder(Color.RED,4));
+		}
+		
+		if(name1==false) {
+			tfName.setBorder(BorderFactory.createLineBorder(Color.RED,4));
+		}
+		
+		if(surname1==false) {
+			tfSurname.setBorder(BorderFactory.createLineBorder(Color.RED,4));
+		}
+		
+		if(email1==false) {
+			tfEmail.setBorder(BorderFactory.createLineBorder(Color.RED,4));
+		}
+		
+		if(email1==false) {
+			tfEmail.setBorder(BorderFactory.createLineBorder(Color.RED,4));
+		}
+		
+		if(mobileNumber1==false) {
+			tfPhoneNumber.setBorder(BorderFactory.createLineBorder(Color.RED,4));
+		}
+		return false;
+	}
+
+	
+	private void backBorderToGray() {
+		tfUsernameSignup.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+		tfEmail.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+		tfName.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+		tfSurname.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+		tfPhoneNumber.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+		
 	}
 
 	protected boolean FieldComplete(String username, String password, String confirmPassword, String name,
