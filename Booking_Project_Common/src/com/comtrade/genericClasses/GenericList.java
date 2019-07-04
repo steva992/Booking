@@ -16,4 +16,8 @@ public class GenericList<E extends GeneralDomain> implements Generic,Serializabl
 		public E get(int index) {
 			return list.get(index);
 		}
+		
+		public int size() {
+			return list.size();
+		}
 }

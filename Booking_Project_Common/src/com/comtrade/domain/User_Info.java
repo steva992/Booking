@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User_Info extends User implements Serializable{
-	private int id_User_Additional_Features;
+	private int id_User_Info;
 	private int id_User;
 	private String name;
 	private String surname;
@@ -20,11 +20,11 @@ public class User_Info extends User implements Serializable{
 	}
 	
 	
-	public int getId_User_Additional_Features() {
-		return id_User_Additional_Features;
+	public int getId_User_Info() {
+		return id_User_Info;
 	}
-	public void setId_User_Additional_Features(int id_User_Additional_Features) {
-		this.id_User_Additional_Features = id_User_Additional_Features;
+	public void setId_User_Info(int id_User_Additional_Features) {
+		this.id_User_Info = id_User_Additional_Features;
 	}
 	public int getId_User() {
 		return id_User;
@@ -68,10 +68,10 @@ public class User_Info extends User implements Serializable{
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	public User_Info(int id_User_Additional_Features, int id_User, String name, String surname,
+	public User_Info(int id_User_Info, int id_User, String name, String surname,
 			String gender, String email, String pictureURL, String mobileNumber) {
 		super();
-		this.id_User_Additional_Features = id_User_Additional_Features;
+		this.id_User_Info = id_User_Info;
 		this.id_User = id_User;
 		this.name = name;
 		this.surname = surname;
@@ -108,17 +108,27 @@ public class User_Info extends User implements Serializable{
 	}
 
 
-	@Override
-	public String printIDOfTable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 	@Override
 	public GeneralDomain setResultSetForOne(ResultSet resultSet) {
-		// TODO Auto-generated method stub
-		return null;
+		User_Info user=new User_Info();
+		try {
+			if(resultSet.next()) {
+				user.setId_User_Info(resultSet.getInt("id_User_Info"));
+				user.setId_User(resultSet.getInt("id_User"));
+				user.setName(resultSet.getString("Name"));
+				user.setSurname(resultSet.getString("Surname"));
+				user.setGender(resultSet.getString("Gender"));
+				user.setEmail(resultSet.getString("Email"));
+				user.setPictureURL(resultSet.getString("Picture_URL"));
+				user.setMobileNumber(resultSet.getString("Mobile_Number"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 

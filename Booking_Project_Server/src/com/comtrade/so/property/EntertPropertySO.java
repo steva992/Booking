@@ -15,7 +15,7 @@ import com.comtrade.so.GeneralSystemOperation;
 public class EntertPropertySO extends GeneralSystemOperation<GenericList<GeneralDomain>> {
 
 	@Override
-	protected void runConcreteSO(GenericList<GeneralDomain> object) throws SQLException {
+	protected void runConcreteSO(GenericList<GeneralDomain> object) throws Exception {
 		User user=(User) object.get(0);
 		IBroker iBroker=new Broker();
 		iBroker.enter(user);

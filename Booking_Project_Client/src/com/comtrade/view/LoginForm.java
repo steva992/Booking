@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.comtrade.constants.PicturesURL;
 import com.comtrade.constants.Regular_Expression;
+import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.User;
@@ -88,7 +90,7 @@ public class LoginForm extends JFrame {
 	 */
 	public LoginForm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100,881, 659);
+		setBounds(100, 100,881, 652);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -147,7 +149,7 @@ public class LoginForm extends JFrame {
 		contentPane.add(btnSignUp);
 		
 		layeredPane = new JLayeredPane();
-		layeredPane.setBounds(390, 11, 476, 604);
+		layeredPane.setBounds(390, 0, 476, 615);
 		contentPane.add(layeredPane);
 		layeredPane.setLayout(new CardLayout(0, 0));
 		
@@ -191,20 +193,6 @@ public class LoginForm extends JFrame {
 		lblPhoneNumber.setBounds(10, 534, 164, 28);
 		panelForAll.add(lblPhoneNumber);
 		
-		JLabel lblNewLabel_2 = new JLabel("Picture");
-		lblNewLabel_2.setBounds(255, 122, 164, 135);
-		panelForAll.add(lblNewLabel_2);
-		
-		JButton btnNewButton_2 = new JButton("<");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnNewButton_2.setBounds(268, 302, 67, 23);
-		panelForAll.add(btnNewButton_2);
-		
-		JButton button = new JButton(">");
-		button.setFont(new Font("Tahoma", Font.BOLD, 13));
-		button.setBounds(352, 302, 67, 23);
-		panelForAll.add(button);
-		
 		tfUsernameSignup = new JTextField();
 		tfUsernameSignup.setBounds(10, 42, 164, 28);
 		panelForAll.add(tfUsernameSignup);
@@ -222,7 +210,7 @@ public class LoginForm extends JFrame {
 		
 		tfEmail = new JTextField();
 		tfEmail.setColumns(10);
-		tfEmail.setBounds(14, 495, 164, 28);
+		tfEmail.setBounds(10, 495, 164, 28);
 		panelForAll.add(tfEmail);
 		
 		tfPhoneNumber = new JTextField();
@@ -231,7 +219,7 @@ public class LoginForm extends JFrame {
 		panelForAll.add(tfPhoneNumber);
 		
 		pfConfirmPasswordSignUp = new JPasswordField();
-		pfConfirmPasswordSignUp.setBounds(10, 197, 164, 23);
+		pfConfirmPasswordSignUp.setBounds(10, 197, 164, 31);
 		panelForAll.add(pfConfirmPasswordSignUp);
 		
 		pfPasswordSignUp = new JPasswordField();
@@ -262,7 +250,7 @@ public class LoginForm extends JFrame {
 				
 			}
 		});
-		cbProperty.setBounds(281, 11, 152, 41);
+		cbProperty.setBounds(318, 429, 152, 41);
 		panelForAll.add(cbProperty);
 		
 		btnSignUpPanel = new JButton("Sign Up");
@@ -270,8 +258,10 @@ public class LoginForm extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				GenericList<GeneralDomain>list=grabForPanelForALL();
 				try {
-					String poruka=ControlerKI.getInstance().enterTheUserAndAdditionalUser(list).getMessage();
-					JOptionPane.showMessageDialog(null,poruka);
+					if(list.size()>0) {
+						String poruka=ControlerKI.getInstance().enterTheUserAndAdditionalUser(list).getMessage();
+						JOptionPane.showMessageDialog(null,poruka);
+					}
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -282,22 +272,24 @@ public class LoginForm extends JFrame {
 			}
 		});
 		btnSignUpPanel.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnSignUpPanel.setBounds(255, 505, 164, 45);
+		btnSignUpPanel.setBounds(318, 545, 148, 45);
 		panelForAll.add(btnSignUpPanel);
 		
-		btnStepTwo = new JButton("Go to Step 2 >>");
+		btnStepTwo = new JButton(" Step 2  >>>");
 		btnStepTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GenericList<GeneralDomain>list=grabForPanelForALL();
 				try {
-					TransferClass transferClass=ControlerKI.getInstance().checkIfUserExcist(list.get(0));
-					User user=(User) transferClass.getServer_Object_Response();
-					if(user.getId() > 0) {
-						JOptionPane.showMessageDialog(null,"!!! That Username Allready Excist !!!");
-					}else {
-						PropertyForm propertyForm=new PropertyForm(list.get(0),list.get(1));
-						propertyForm.setVisible(true);
-						dispose();
+					if(list !=null) {
+						TransferClass transferClass=ControlerKI.getInstance().checkIfUserExcist(list.get(0));
+						User user=(User) transferClass.getServer_Object_Response();
+						if(user.getId() > 0) {
+							JOptionPane.showMessageDialog(null,TransferClass_Message.EXCIST_USERNAME.getValue());
+						}else {
+							PropertyForm propertyForm=new PropertyForm(list.get(0),list.get(1));
+							propertyForm.setVisible(true);
+							dispose();
+						}
 					}
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -311,8 +303,50 @@ public class LoginForm extends JFrame {
 		btnStepTwo.setForeground(Color.BLACK);
 		btnStepTwo.setVisible(false);
 		btnStepTwo.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnStepTwo.setBounds(255, 455, 164, 45);
+		btnStepTwo.setBounds(318, 495, 148, 45);
 		panelForAll.add(btnStepTwo);
+		
+		JLabel lblNewLabel_2 = new JLabel("Example");
+		lblNewLabel_2.setForeground(Color.RED);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_2.setBounds(184, 42, 124, 28);
+		panelForAll.add(lblNewLabel_2);
+		
+		JLabel label = new JLabel("065333444");
+		label.setForeground(Color.RED);
+		label.setFont(new Font("Tahoma", Font.BOLD, 11));
+		label.setBounds(184, 565, 124, 28);
+		panelForAll.add(label);
+		
+		JLabel lblExanplegmailcom = new JLabel("exanple@gmail.com");
+		lblExanplegmailcom.setForeground(Color.RED);
+		lblExanplegmailcom.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblExanplegmailcom.setBounds(184, 495, 124, 28);
+		panelForAll.add(lblExanplegmailcom);
+		
+		JLabel lblExample_2 = new JLabel("Example");
+		lblExample_2.setForeground(Color.RED);
+		lblExample_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblExample_2.setBounds(184, 364, 124, 28);
+		panelForAll.add(lblExample_2);
+		
+		JLabel lblExample_1 = new JLabel("Example");
+		lblExample_1.setForeground(Color.RED);
+		lblExample_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblExample_1.setBounds(184, 270, 124, 28);
+		panelForAll.add(lblExample_1);
+		
+		JLabel lblExample = new JLabel("example12");
+		lblExample.setForeground(Color.RED);
+		lblExample.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblExample.setBounds(184, 192, 124, 28);
+		panelForAll.add(lblExample);
+		
+		JLabel lblDjksdjksd = new JLabel("example12");
+		lblDjksdjksd.setForeground(Color.RED);
+		lblDjksdjksd.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblDjksdjksd.setBounds(184, 116, 124, 28);
+		panelForAll.add(lblDjksdjksd);
 		
 		pfPasswordLogin = new JPasswordField();
 		pfPasswordLogin.setBounds(27, 239, 328, 36);
@@ -357,12 +391,12 @@ public class LoginForm extends JFrame {
 		String mobileNumber=tfPhoneNumber.getText();
 		String gender = null;
 		if(rbMan.isSelected()) {
-			gender="Man";
+			gender=rbMan.getText();
 		}else if(rbWoman.isSelected()) {
-			gender="Woman";
+			gender=rbWoman.getText();
 		}
 		//Treba naci kako da dovlacis sve slike sa servera
-		String picture="Stevan";
+		String picture=PicturesURL.PROFILE_PICTURE.getValue()+gender+".jpg";
 		boolean testField=fieldValidityUser(username,name,surname,email,mobileNumber);
 		boolean AllFieldCompleted=FieldComplete(username,password,confirmPassword,name,surname,email,mobileNumber,gender);
 		if(testField) {
@@ -386,13 +420,13 @@ public class LoginForm extends JFrame {
 					list.add(user);
 					list.add(userAdditional);
 				}else {
-					JOptionPane.showMessageDialog(null,"!!! Incorrect password entry !!!");
+					JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_PASSWORD.getValue());
 				}
 			}else {
-				JOptionPane.showMessageDialog(null,"!!! All fields must be filled !!!");
+				JOptionPane.showMessageDialog(null,TransferClass_Message.ALL_FIELDS_FILL.getValue());
 			}
 		}else { 
-			JOptionPane.showMessageDialog(null,"!!! Incorrectly entered data !!!");
+			JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
 		}
 		return list;
 	}

@@ -2,6 +2,7 @@ package com.comtrade.controlerPL;
 
 import java.sql.SQLException;
 
+import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.User;
 import com.comtrade.genericClasses.GenericList;
@@ -46,8 +47,9 @@ private static ControlerPLProperty instance;
 		GenericList<GeneralDomain>list1=list;
 		GeneralSystemOperation<GenericList<GeneralDomain>>generalSO=new EntertPropertySO();
 		generalSO.runSO(list);
+		transferClass.setMessage(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
 		} catch (Exception e) {
-			transferClass.setMessage("!!! That Name of Property Allready Excist !!!");
+			transferClass.setMessage(TransferClass_Message.EXCIST_PROPERTY.getValue());
 			e.printStackTrace();
 		}
 		return transferClass;

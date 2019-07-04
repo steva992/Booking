@@ -106,6 +106,17 @@ public class User implements GeneralDomain,Serializable {
 		return user;
 	}
 
+	@Override
+	public PreparedStatement setPSforID(PreparedStatement preparedStatement) {
+		try {
+			preparedStatement.setInt(1,id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return preparedStatement;
+	}
+
 	
 
 }

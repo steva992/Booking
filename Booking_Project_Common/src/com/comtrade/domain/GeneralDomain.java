@@ -14,6 +14,7 @@ public interface GeneralDomain extends Generic{
 	public PreparedStatement setPS(PreparedStatement preparedStatement) throws SQLException;
 	public String printIDOfTable();
 	public GeneralDomain setResultSetForOne(ResultSet resultSet);
+	public PreparedStatement setPSforID(PreparedStatement preparedStatement);
 	
 
 }

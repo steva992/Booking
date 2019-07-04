@@ -9,9 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.comtrade.constants.Regular_Expression;
+import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.domain.User;
 import com.comtrade.genericClasses.GenericList;
+import com.comtrade.importantCommonMethod.ImportantCommonMethod;
+import com.comtrade.transfer.TransferClass;
+import com.comtrade.view.LoginForm;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -27,6 +31,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class ForgotPassword extends JFrame {
@@ -86,15 +91,33 @@ public class ForgotPassword extends JFrame {
 							user.setUsername(username);
 							user.setPassword(oldPassword);
 							User user1=new User();
+							user1.setUsername(username);
+							user1.setPassword(newPassword);
 							GenericList<User>listUser=new GenericList<User>();
 							listUser.add(user);
-							listUser.add(user);
-							
+							listUser.add(user1);
+							try {
+								TransferClass transferClass=ControlerKI.getInstance().changePassword(listUser);
+								user=(User) transferClass.getServer_Object_Response();
+								if(user.getId()==0) {
+									JOptionPane.showMessageDialog(null,TransferClass_Message.WRONG_USERNAME_OR_PASSWORD.getValue());
+								}else {
+									JOptionPane.showMessageDialog(null,TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
+									dispose();
+									ImportantCommonMethod.startLoginForm();
+								}
+							} catch (ClassNotFoundException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 						}else {
-							JOptionPane.showMessageDialog(null,"!!! Incorect username Input !!!");
+							JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
 						}
 					}else {
-						JOptionPane.showMessageDialog(null,"!!! All fields must be fill !!!");
+						JOptionPane.showMessageDialog(null,TransferClass_Message.ALL_FIELDS_FILL.getValue());
 					}
 					
 					
@@ -129,6 +152,18 @@ public class ForgotPassword extends JFrame {
 		cbHideUnhide.setHorizontalAlignment(SwingConstants.CENTER);
 		cbHideUnhide.setBounds(444, 109, 152, 59);
 		contentPane.add(cbHideUnhide);
+		
+		JButton btnNewButton_1 = new JButton("Back To Login");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				LoginForm loginForm=new LoginForm();
+				loginForm.setVisible(true);
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnNewButton_1.setBounds(444, 12, 152, 46);
+		contentPane.add(btnNewButton_1);
 	}
 
 

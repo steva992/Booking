@@ -15,7 +15,7 @@ public class CheckUserSO extends GeneralSystemOperation<GenericList<User>> {
 		GenericList<User>userList=object;
 		User user=userList.get(0);
 		Broker broker=new Broker();
-		userList.add(broker.checkUser(user));
+		userList.add(broker.checkUser(user.getUsername()));
 	}
 
 }

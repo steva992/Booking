@@ -40,7 +40,7 @@ public abstract class GeneralSystemOperation<E extends Generic>{
 	}
 
 	
-	protected abstract void runConcreteSO(E object) throws SQLException;
+	protected abstract void runConcreteSO(E object) throws SQLException, Exception;
 
 	
 	private void runTransaction() {

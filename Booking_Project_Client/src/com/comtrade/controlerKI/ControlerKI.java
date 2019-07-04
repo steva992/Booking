@@ -29,6 +29,12 @@ public class ControlerKI {
 		return instance;
 		
 	}
+	
+	private TransferClass backDataToJFrame(TransferClass transferClass) throws ClassNotFoundException, IOException {
+		Communication.getInstance().send(transferClass);
+		TransferClass transferClass2=Communication.getInstance().read();
+		return transferClass2;
+	}
 
 	public TransferClass enterTheUserAndAdditionalUser(GenericList<GeneralDomain> list) throws ClassNotFoundException, IOException {
 		transferClass.setType_Of_operation(Type_Of_Operation.REGISTRATION_USER);
@@ -52,11 +58,6 @@ public class ControlerKI {
 		return backDataToJFrame(transferClass);
 	}
 
-	private TransferClass backDataToJFrame(TransferClass transferClass) throws ClassNotFoundException, IOException {
-		Communication.getInstance().send(transferClass);
-		TransferClass transferClass2=Communication.getInstance().read();
-		return transferClass2;
-	}
 
 	public TransferClass checkIfUserExcist(GeneralDomain generalDomain) throws ClassNotFoundException, IOException {
 		transferClass.setType_Of_operation(Type_Of_Operation.CHECK_USER);
@@ -64,6 +65,21 @@ public class ControlerKI {
 		transferClass.setClient_Object_Request(generalDomain);
 		return backDataToJFrame(transferClass);
 	}
+
+	public TransferClass changePassword(GenericList<User> listUser) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.CHANGE_PASSWORD_USER);
+		transferClass.setType_Of_Data(Type_Of_Data.USER);
+		transferClass.setClient_Object_Request(listUser);
+		return backDataToJFrame(transferClass);
+	}
+
+	public TransferClass BackUserInfo_ForUser(User user) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.RETURN_USER_INFO);
+		transferClass.setType_Of_Data(Type_Of_Data.USER);
+		transferClass.setClient_Object_Request(user);
+		return backDataToJFrame(transferClass);
+	}
 	
 
+	
 }

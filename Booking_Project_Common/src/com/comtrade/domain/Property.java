@@ -95,6 +95,16 @@ public class Property implements GeneralDomain,Serializable{
 		}
 		return property;
 	}
+	@Override
+	public PreparedStatement setPSforID(PreparedStatement preparedStatement) {
+		try {
+			preparedStatement.setInt(1,id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return preparedStatement;
+	}
 	
 	
 }
