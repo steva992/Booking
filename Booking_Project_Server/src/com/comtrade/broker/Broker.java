@@ -8,7 +8,11 @@ import javax.swing.JOptionPane;
 
 import com.comtrade.connection.ConnectionDataBase;
 import com.comtrade.domain.GeneralDomain;
-import com.comtrade.domain.User;
+import com.comtrade.domain.property.Property;
+import com.comtrade.domain.property.Property_Picutre_Album;
+import com.comtrade.domain.user.User;
+import com.comtrade.domain.user.User_Info;
+import com.comtrade.genericClasses.GenericList;
 
 public class Broker implements IBroker {
 
@@ -82,14 +86,52 @@ public class Broker implements IBroker {
 
 
 	@Override
-	public GeneralDomain returnInfo(GeneralDomain generalDomain, GeneralDomain generalDoman_Info) throws SQLException {
-		String sql="select * from "+generalDoman_Info.returnNameOfTable()+" where "+generalDomain.printIDOfTable()+"=?";
+	public GeneralDomain returnInfo(GeneralDomain generalDomain, GeneralDomain generalDomain_Info) throws SQLException {
+		String sql="select * from "+generalDomain_Info.returnNameOfTable()+" where "+generalDomain.printIDOfTable()+"=?";
 		PreparedStatement preparedStatement=ConnectionDataBase.getInstance().getConnection().prepareStatement(sql);
 		preparedStatement=generalDomain.setPSforID(preparedStatement);
 		ResultSet resultSet=preparedStatement.executeQuery();
-		generalDoman_Info=generalDoman_Info.setResultSetForOne(resultSet);
-		return generalDoman_Info;
+		generalDomain_Info=generalDomain_Info.setResultSetForOne(resultSet);
+		return generalDomain_Info;
 	}
+
+
+
+
+
+	public void changePictureURLUser(User_Info user_Info) throws SQLException {
+		String sql="UPDATE user_info SET Picture_URL='"+user_Info.getPictureURL()+"' WHERE id_User="+user_Info.getId_User();
+		PreparedStatement preparedStatement=ConnectionDataBase.getInstance().getConnection().prepareStatement(sql);
+		preparedStatement.execute();
+	}
+
+
+	public void changePictureURL(Property_Picutre_Album property_Picture_Album) throws SQLException {
+		String sql="UPDATE property_picture_album SET PictureURL='"+property_Picture_Album.getPicutre_URL()+"' WHERE id_property="+property_Picture_Album.getId_property()+" and Picture_Number="+property_Picture_Album.getNumber();
+		PreparedStatement preparedStatement=ConnectionDataBase.getInstance().getConnection().prepareStatement(sql);
+		preparedStatement.execute();
+		
+	}
+
+
+	public GenericList<GeneralDomain> returnAlbumOfPicture(Property property) throws SQLException {
+		GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+		String sql="select * from property_picture_album where id_property="+property.getId();
+		PreparedStatement preparedStatement=ConnectionDataBase.getInstance().getConnection().prepareStatement(sql);
+		ResultSet resultSet=preparedStatement.executeQuery();
+		while(resultSet.next()) {
+			Property_Picutre_Album property_Picutre_Album=new Property_Picutre_Album();
+			property_Picutre_Album.setId(resultSet.getInt("id_Album_Of_Picture"));
+			property_Picutre_Album.setPicutre_URL(resultSet.getString("PictureURL"));
+			property_Picutre_Album.setId_property(resultSet.getInt("id_property"));
+			property_Picutre_Album.setNumber(resultSet.getInt("Picture_Number"));
+			list.add(property_Picutre_Album);
+		}
+		return list;
+	}
+
+
+
 
 
 

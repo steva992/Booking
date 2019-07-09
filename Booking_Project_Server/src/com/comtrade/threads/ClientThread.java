@@ -11,7 +11,7 @@ import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
 import com.comtrade.controlerPL.ControlerPLProperty;
 import com.comtrade.controlerPL.ControlerPLUser;
-import com.comtrade.domain.User_Info;
+import com.comtrade.domain.user.User_Info;
 import com.comtrade.transfer.TransferClass;
 
 public class ClientThread extends Thread {

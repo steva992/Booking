@@ -20,4 +20,10 @@ public class GenericList<E extends GeneralDomain> implements Generic,Serializabl
 		public int size() {
 			return list.size();
 		}
+		
+		public void addAll(GenericList<E> genericList) {
+			for(int i=0;i<genericList.size();i++) {
+				list.add(genericList.get(i));
+			}
+		}
 }

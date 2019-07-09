@@ -2,7 +2,7 @@ package com.comtrade.proxy;
 
 import java.io.IOException;
 
-import com.comtrade.domain.User;
+import com.comtrade.domain.user.User;
 
 public interface IProxy {
 

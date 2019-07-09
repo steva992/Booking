@@ -9,8 +9,9 @@ import com.comtrade.communication.Communication;
 import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
 import com.comtrade.domain.GeneralDomain;
-import com.comtrade.domain.User;
-import com.comtrade.domain.User_Info;
+import com.comtrade.domain.property.Property_Picutre_Album;
+import com.comtrade.domain.user.User;
+import com.comtrade.domain.user.User_Info;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.transfer.TransferClass;
 
@@ -78,6 +79,29 @@ public class ControlerKI {
 		transferClass.setType_Of_Data(Type_Of_Data.USER);
 		transferClass.setClient_Object_Request(user);
 		return backDataToJFrame(transferClass);
+	}
+
+	public TransferClass changePictureURLUser(User_Info user_info) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_Data(Type_Of_Data.USER);
+		transferClass.setType_Of_operation(Type_Of_Operation.CHANGE_PICTURE_URL_USER);
+		transferClass.setClient_Object_Request(user_info);
+		return backDataToJFrame(transferClass);
+		
+	}
+
+	public TransferClass AllAboutProperty(User user) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
+		transferClass.setType_Of_operation(Type_Of_Operation.BACK_ALL_ABOUT_PROPERTY);
+		transferClass.setClient_Object_Request(user);
+		return backDataToJFrame(transferClass);
+	}
+
+	public TransferClass changPictureURLHotel(Property_Picutre_Album current) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
+		transferClass.setType_Of_operation(Type_Of_Operation.CHANGE_PICTURE_URL_HOTEL);
+		transferClass.setClient_Object_Request(current);
+		return backDataToJFrame(transferClass);
+		
 	}
 	
 

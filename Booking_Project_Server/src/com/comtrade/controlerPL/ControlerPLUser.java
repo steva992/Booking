@@ -7,11 +7,12 @@ import java.util.List;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.constants.Type_Of_Operation;
 import com.comtrade.domain.GeneralDomain;
-import com.comtrade.domain.User;
-import com.comtrade.domain.User_Info;
+import com.comtrade.domain.user.User;
+import com.comtrade.domain.user.User_Info;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.so.GeneralSystemOperation;
 import com.comtrade.so.user.ChangePasswordUserSO;
+import com.comtrade.so.user.ChangePictureURLUserSO;
 import com.comtrade.so.user.CheckUserSO;
 import com.comtrade.so.user.EnterUserSO;
 import com.comtrade.so.user.ReturnUserInfoSO;
@@ -40,6 +41,7 @@ public class ControlerPLUser {
 	public TransferClass CheckTheOperation(TransferClass transferClass) throws Exception{
 		TransferClass transferClass2=new TransferClass();
 		User user=new User();
+		User_Info user_info=new User_Info();
 		switch(transferClass.getType_Of_operation()) {
 			case REGISTRATION_USER:
 				GenericList<GeneralDomain>list=(GenericList<GeneralDomain>) transferClass.getClient_Object_Request();
@@ -61,11 +63,29 @@ public class ControlerPLUser {
 				user=(User) transferClass.getClient_Object_Request();
 				transferClass2.setServer_Object_Response(return_User_Info(user));
 				break;	
+			case CHANGE_PICTURE_URL_USER:
+				user_info=(User_Info) transferClass.getClient_Object_Request();
+				transferClass2.setServer_Object_Response(changePictureURL(user_info));
 			default:
 				break;	
 				
 		}
 		return transferClass2;
+		
+	}
+
+	private User_Info changePictureURL(User_Info user_info) {
+		TransferClass transferClass=new TransferClass();
+		GeneralSystemOperation<User_Info>genericSO=new ChangePictureURLUserSO();
+		try {
+			genericSO.runSO(user_info);
+			transferClass.setServer_Object_Response(TransferClass_Message.SUCCESSFUL_CHANGE);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user_info;
+		
 		
 	}
 

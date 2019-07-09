@@ -4,12 +4,15 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import com.comtrade.controlerKI.ControlerKI;
-import com.comtrade.domain.User;
-import com.comtrade.view.admin.AdminForm;
-import com.comtrade.view.superAdmin.SuperAdminForm;
-import com.comtrade.view.user.UserForm;
+import com.comtrade.domain.user.User;
+import com.comtrade.view.frame.Begin;
+import com.comtrade.view.panel.Admin_Panel;
+import com.comtrade.view.panel.Super_Admin_Panel;
+import com.comtrade.view.panel.User_Panel;
+
 
 public class ProxyLogin implements IProxy {
 
@@ -17,14 +20,14 @@ public class ProxyLogin implements IProxy {
 	public void login(User user) throws ClassNotFoundException, IOException {
 		User user2=(User) ControlerKI.getInstance().login(user).getServer_Object_Response();
 		if(user2.getUsername() != null && user2.getPassword() != null && user2.getStatus().equals("admin")) {
-			AdminForm adminForm=new AdminForm(user2);
-			openForm(adminForm);
+			JPanel adminPanel=new Admin_Panel(user2);
+			Begin.setPanelOnLayeredPane(adminPanel);
 		}else if(user2.getUsername() != null && user2.getPassword() != null && user2.getStatus().equals("super_admin")) {
-			SuperAdminForm superAdminForm=new SuperAdminForm(user2);
-			openForm(superAdminForm);
+			JPanel superAdminPanel=new Super_Admin_Panel(user2);
+			Begin.setPanelOnLayeredPane(superAdminPanel);
 		}else if(user2.getUsername() != null && user2.getPassword() != null && user2.getStatus().equals("user")) {
-			UserForm userForm=new UserForm(user2);
-			openForm(userForm);
+			JPanel userPanel=new User_Panel(user2);
+			Begin.setPanelOnLayeredPane(userPanel);
 		}else if(user2.getUsername() != null && user2.getPassword() != null && user2.getStatus().equals(null)){
 			JOptionPane.showMessageDialog(null,"!!! That user does not exist !!!");
 		}else {
@@ -32,9 +35,6 @@ public class ProxyLogin implements IProxy {
 		}
 	}
 
-	private void openForm(JFrame form) {
-		form.setVisible(true);
-		
-	}
+	
 
 }

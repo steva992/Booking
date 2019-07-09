@@ -3,8 +3,8 @@ package com.comtrade.broker;
 import java.sql.SQLException;
 
 import com.comtrade.domain.GeneralDomain;
-import com.comtrade.domain.User;
-import com.comtrade.domain.User_Info;
+import com.comtrade.domain.user.User;
+import com.comtrade.domain.user.User_Info;
 
 public interface IBroker {
 

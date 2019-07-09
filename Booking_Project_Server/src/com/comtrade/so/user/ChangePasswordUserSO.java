@@ -3,7 +3,7 @@ package com.comtrade.so.user;
 import java.sql.SQLException;
 
 import com.comtrade.broker.Broker;
-import com.comtrade.domain.User;
+import com.comtrade.domain.user.User;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.so.GeneralSystemOperation;
 
