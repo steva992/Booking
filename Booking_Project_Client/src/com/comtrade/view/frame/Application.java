@@ -8,13 +8,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.comtrade.view.panel.Login;
-import com.comtrade.view.panel.SignUp;
+import com.comtrade.constants.Panel_Dimension;
+import com.comtrade.panel.common.Login;
+import com.comtrade.panel.common.SignUp;
 
 import java.awt.CardLayout;
 import javax.swing.JLayeredPane;
 
-public class Begin extends JFrame {
+public class Application extends JFrame {
 
 	private static JLayeredPane layeredPane=new JLayeredPane();
 	private  JPanel login=new Login();
@@ -27,7 +28,7 @@ public class Begin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Begin frame = new Begin();
+					Application frame = new Application();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,9 +40,9 @@ public class Begin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Begin() {
+	public Application() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100,900,700);
+		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		setContentPane(layeredPane);
 		layeredPane.setBounds(100, 100,800,600);
 		layeredPane.setLayout(new CardLayout(0, 0));

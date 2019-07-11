@@ -17,7 +17,7 @@ import com.comtrade.so.user.ChangePictureURLUserSO;
 import com.comtrade.transfer.TransferClass;
 
 public class ControlerPLProperty {
-private static ControlerPLProperty instance;
+	private static volatile ControlerPLProperty instance;
 	
 	private ControlerPLProperty() {
 		

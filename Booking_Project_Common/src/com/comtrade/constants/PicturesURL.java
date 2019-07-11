@@ -1,9 +1,17 @@
 package com.comtrade.constants;
 
 public enum PicturesURL {
-	PROFILE_PICTURE_DEFAULT("C:/Users/stevd/OneDrive/Desktop/Final_Project/Booking/Booking_Project_Server/picture/default1"),
-	PROFILE_PICTURE_HOTELS("C:/Users/stevd/OneDrive/Desktop/Final_Project/Booking/Booking_Project_Server/picture/hotels"),
-	PROFILE_PICTURE_USERS("C:/Users/stevd/OneDrive/Desktop/Final_Project/Booking/Booking_Project_Server/picture/users");
+	
+	PROJECT_PATH("C:/Users/stevd/OneDrive/Desktop/Final_Project/Booking/Booking_Project_Server"),
+	
+	
+	
+	PROFILE_PICTURE_DEFAULT("/picture/Default"),
+	PROFILE_PICTURE_DEFAULT_CRYING("/picture/Default/Crying.jpg"),
+	
+	PROFILE_PICTURE_HOTELS("/picture/Property"),
+	PROFILE_PICTURE_USERS("/picture/Users"),
+	PICTURE_FOR_SERVER("/picture/Server");
 	
 	
 	

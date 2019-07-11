@@ -1,4 +1,4 @@
-package com.comtrade.view.panel;
+package com.comtrade.panel.common;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -8,13 +8,14 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.domain.user.User;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.transfer.TransferClass;
-import com.comtrade.view.frame.Begin;
+import com.comtrade.view.frame.Application;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -41,7 +42,7 @@ public class Forgot_Password extends JPanel {
 		setLayout(null);
 		
 		JLabel label = new JLabel("Username");
-		setBounds(100,100,800,600);
+		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label.setBounds(42, 44, 374, 25);
@@ -101,7 +102,7 @@ public class Forgot_Password extends JPanel {
 									JOptionPane.showMessageDialog(null,TransferClass_Message.WRONG_USERNAME_OR_PASSWORD.getValue());
 								}else {
 									JOptionPane.showMessageDialog(null,TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
-									Begin.setPanelOnLayeredPane(login);
+									Application.setPanelOnLayeredPane(login);
 								}
 							} catch (ClassNotFoundException e1) {
 								// TODO Auto-generated catch block
@@ -145,7 +146,7 @@ public class Forgot_Password extends JPanel {
 		JButton button_1 = new JButton("Back To Login");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Begin.setPanelOnLayeredPane(login);
+				Application.setPanelOnLayeredPane(login);
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 10));

@@ -1,14 +1,15 @@
-package com.comtrade.view.panel;
+package com.comtrade.panel.common;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.domain.user.User;
 import com.comtrade.proxy.IProxy;
 import com.comtrade.proxy.ProxyLogin;
-import com.comtrade.view.frame.Begin;
+import com.comtrade.view.frame.Application;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -31,7 +32,7 @@ public class Login extends JPanel {
 	
 	public Login() {
 		setLayout(null);
-		setBounds(100,100,800,600);
+		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		JLabel label = new JLabel("Username");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -57,7 +58,7 @@ public class Login extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel forgotPassword=new Forgot_Password();
-				Begin.setPanelOnLayeredPane(forgotPassword);
+				Application.setPanelOnLayeredPane(forgotPassword);
 			}
 		});
 		button.setForeground(Color.WHITE);
@@ -95,7 +96,7 @@ public class Login extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel signUp=new SignUp();
-				Begin.setPanelOnLayeredPane(signUp);
+				Application.setPanelOnLayeredPane(signUp);
 			}
 		});
 		btnNewButton.setBounds(304, 477, 157, 46);

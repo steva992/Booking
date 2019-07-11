@@ -1,4 +1,4 @@
-package com.comtrade.view.panel;
+package com.comtrade.panel.common;
 
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.PicturesURL;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
@@ -21,7 +22,7 @@ import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.transfer.TransferClass;
-import com.comtrade.view.frame.Begin;
+import com.comtrade.view.frame.Application;
 
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -46,7 +47,7 @@ public class Property_Created extends JPanel {
 	 * Create the panel.
 	 */
 	public Property_Created(User user,User_Info user_info) {
-		setBounds(100,100,800,600);
+		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		this.user=user;
 		this.user_info=user_info;
 		setLayout(null);
@@ -133,7 +134,7 @@ public class Property_Created extends JPanel {
 						property_info.setCountry(Country);
 						property_info.setCoordinates("20X30");
 						property_info.setAdress_number(Integer.parseInt(Adress_Number));
-						property_picture_album.setPicutre_URL(PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+"Hotel.jpg");
+						property_picture_album.setPicutre_URL(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg");
 						GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 						list.add(user);
 						list.add(user_info);
@@ -145,16 +146,17 @@ public class Property_Created extends JPanel {
 							String poruka=transferClass.getMessage();
 							if(poruka.equals(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue())) {
 								JOptionPane.showMessageDialog(null,TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
-								File userFile=new File(PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
+								
+								File userFile=new File(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
 								if(!userFile.exists()) {
 									userFile.mkdir();
 								}
-								File propertyFile=new File(PicturesURL.PROFILE_PICTURE_HOTELS.getValue()+"/"+name);
+								File propertyFile=new File(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getType_Of_Property()+"/"+name);
 								if(!propertyFile.exists()) {
 									propertyFile.mkdir();
 								}
 								JPanel login=new Login();
-								Begin.setPanelOnLayeredPane(login);
+								Application.setPanelOnLayeredPane(login);
 							}else if(poruka.equals(TransferClass_Message.EXCIST_PROPERTY.getValue())){
 								JOptionPane.showMessageDialog(null,TransferClass_Message.EXCIST_PROPERTY.getValue());
 							}

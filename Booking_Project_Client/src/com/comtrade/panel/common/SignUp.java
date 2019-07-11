@@ -1,4 +1,4 @@
-package com.comtrade.view.panel;
+package com.comtrade.panel.common;
 
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.PicturesURL;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
@@ -15,7 +16,7 @@ import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.transfer.TransferClass;
-import com.comtrade.view.frame.Begin;
+import com.comtrade.view.frame.Application;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -53,7 +54,7 @@ public class SignUp extends JPanel {
 	 */
 	public SignUp() {
 		setLayout(null);
-		setBounds(100,100,800,600);
+		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		
 		JLabel label = new JLabel("Username *");
 		label.setBounds(45, 23, 164, 28);
@@ -189,7 +190,7 @@ public class SignUp extends JPanel {
 							user=(User) list.get(0);
 							User_Info user_Info=(User_Info) list.get(1);
 							JPanel propertyCreate=new Property_Created(user,user_Info);
-							Begin.setPanelOnLayeredPane(propertyCreate);
+							Application.setPanelOnLayeredPane(propertyCreate);
 						}
 					}
 				} catch (ClassNotFoundException e1) {
@@ -213,9 +214,9 @@ public class SignUp extends JPanel {
 						String poruka=ControlerKI.getInstance().enterTheUserAndAdditionalUser(list).getMessage();
 						JOptionPane.showMessageDialog(null,poruka);
 						JPanel login=new Login();
-						Begin.setPanelOnLayeredPane(login);
+						Application.setPanelOnLayeredPane(login);
 						User user=(User) list.get(0);
-						File userFile=new File(PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
+						File userFile=new File(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
 						if(!userFile.exists()) {
 							userFile.mkdir();
 						}
@@ -247,6 +248,16 @@ public class SignUp extends JPanel {
 		});
 		cbProperty.setBounds(365, 446, 140, 23);
 		add(cbProperty);
+		
+		JButton btnNewButton = new JButton("Back to LOGIN");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JPanel login=new Login();
+				Application.setPanelOnLayeredPane(login);
+			}
+		});
+		btnNewButton.setBounds(374, 26, 131, 41);
+		add(btnNewButton);
 
 	}
 	
@@ -266,7 +277,7 @@ public class SignUp extends JPanel {
 			gender=rbWoman.getText();
 		}
 		//Treba naci kako da dovlacis sve slike sa servera
-		String picture=PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+gender+".jpg";
+		String picture=PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+gender+".jpg";
 		boolean testField=fieldValidityUser(username,name,surname,email,mobileNumber);
 		boolean AllFieldCompleted=FieldComplete(username,password,confirmPassword,name,surname,email,mobileNumber,gender);
 		if(testField) {

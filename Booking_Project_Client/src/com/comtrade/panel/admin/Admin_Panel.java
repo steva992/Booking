@@ -1,8 +1,9 @@
-package com.comtrade.view.panel;
+package com.comtrade.panel.admin;
 
 import javax.swing.JPanel;
 
-
+import com.comtrade.commonmethod.CommonMethod;
+import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.PicturesURL;
 import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.cyrcleList.CyrclularList;
@@ -13,7 +14,10 @@ import com.comtrade.domain.property.Property_Picutre_Album;
 import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
 import com.comtrade.genericClasses.GenericList;
+import com.comtrade.panel.common.Login;
+import com.comtrade.panel.user.User_Panel;
 import com.comtrade.transfer.TransferClass;
+import com.comtrade.view.frame.Application;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -33,6 +37,9 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class Admin_Panel extends JPanel {
 
@@ -68,12 +75,12 @@ public class Admin_Panel extends JPanel {
 		for(int i=0;i<5;i++) {
 			cyrcleList.append(listAlbum.get(i));
 		}
-		setBounds(100,100,800,600);
+		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		this.user=user;
 		setLayout(null);
 		
 		lblPicture = new JLabel("New label");
-		lblPicture.setBounds(10, 22, 195, 136);
+		lblPicture.setBounds(10, 85, 195, 136);
 		add(lblPicture);
 		
 
@@ -89,10 +96,10 @@ public class Admin_Panel extends JPanel {
 		lblmainHotelPicture.setBounds(438, 30, 213, 197);
 		add(lblmainHotelPicture);
 		
-		User_Panel.setNewPicutreOnLabel(user_info.getPictureURL(),lblPicture);
-		User_Panel.setNewPicutreOnLabel(cyrcleList.current().getPicutre_URL(), lblmainHotelPicture);
-		User_Panel.setNewPicutreOnLabel(cyrcleList.next().getPicutre_URL(), lblAftermain);
-		User_Panel.setNewPicutreOnLabel(cyrcleList.previousX2().getPicutre_URL(), lblBeforeMain);
+		CommonMethod.setNewPicutreOnLabel(user_info.getPictureURL(),lblPicture);
+		CommonMethod.setNewPicutreOnLabel(cyrcleList.current().getPicutre_URL(), lblmainHotelPicture);
+		CommonMethod.setNewPicutreOnLabel(cyrcleList.next().getPicutre_URL(), lblAftermain);
+		CommonMethod.setNewPicutreOnLabel(cyrcleList.previousX2().getPicutre_URL(), lblBeforeMain);
 		cyrcleList.next();
 		
 		
@@ -111,7 +118,7 @@ public class Admin_Panel extends JPanel {
 				}
 			}
 		});
-		btnNewButton.setBounds(10, 169, 195, 23);
+		btnNewButton.setBounds(10, 232, 195, 23);
 		add(btnNewButton);
 		
 		
@@ -119,9 +126,9 @@ public class Admin_Panel extends JPanel {
 		JButton btnNewButton_1 = new JButton("<<<");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setNewPicutreOnLabel(cyrcleList.previous().getPicutre_URL(), lblmainHotelPicture);
-				setNewPicutreOnLabel(cyrcleList.next().getPicutre_URL(), lblAftermain);
-				setNewPicutreOnLabel(cyrcleList.previousX2().getPicutre_URL(), lblBeforeMain);
+				CommonMethod.setNewPicutreOnLabel(cyrcleList.previous().getPicutre_URL(), lblmainHotelPicture);
+				CommonMethod.setNewPicutreOnLabel(cyrcleList.next().getPicutre_URL(), lblAftermain);
+				CommonMethod.setNewPicutreOnLabel(cyrcleList.previousX2().getPicutre_URL(), lblBeforeMain);
 				cyrcleList.next();
 			}
 		});
@@ -131,9 +138,9 @@ public class Admin_Panel extends JPanel {
 		JButton button = new JButton(">>>");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setNewPicutreOnLabel(cyrcleList.next().getPicutre_URL(), lblmainHotelPicture);
-				setNewPicutreOnLabel(cyrcleList.previous().getPicutre_URL(), lblBeforeMain);
-				setNewPicutreOnLabel(cyrcleList.nextX2().getPicutre_URL(), lblAftermain);
+				CommonMethod.setNewPicutreOnLabel(cyrcleList.next().getPicutre_URL(), lblmainHotelPicture);
+				CommonMethod.setNewPicutreOnLabel(cyrcleList.previous().getPicutre_URL(), lblBeforeMain);
+				CommonMethod.setNewPicutreOnLabel(cyrcleList.nextX2().getPicutre_URL(), lblAftermain);
 				cyrcleList.previous();
 			}
 		});
@@ -141,7 +148,7 @@ public class Admin_Panel extends JPanel {
 		add(button);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 461, 780, 128);
+		scrollPane.setBounds(10, 446, 780, 243);
 		add(scrollPane);
 		
 		table = new JTable();
@@ -165,6 +172,21 @@ public class Admin_Panel extends JPanel {
 		btnNewButton_2.setBounds(438, 228, 213, 30);
 		add(btnNewButton_2);
 		
+		JButton btnNewButton_3 = new JButton("Log Out");
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnNewButton_3.setForeground(Color.BLACK);
+		btnNewButton_3.setBackground(Color.WHITE);
+		btnNewButton_3.setBounds(563, 700, 208, 56);
+		CommonMethod.setNewPicutreOnButton(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_DEFAULT_CRYING.getValue(),btnNewButton_3);
+		btnNewButton_3.setText("LOG OUT");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JPanel login=new Login();
+				Application.setPanelOnLayeredPane(login);
+			}
+		});
+		add(btnNewButton_3);
 	}
 	
 	public static void addNewPicture(Property_Picutre_Album property_picutre_album,Property property,JLabel label) {
@@ -173,8 +195,8 @@ public class Admin_Panel extends JPanel {
 		if(newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equals("jpg") ||
 		 newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equals("png")	) {
 			createPictureForServer(newPictureURL,property);
-			setNewPicutreOnLabel(newPictureURL, label);
-			property_picutre_album.setPicutre_URL(PicturesURL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"/"+"HotelPicture"+counter+".jpg");
+			CommonMethod.setNewPicutreOnLabel(newPictureURL, label);
+			property_picutre_album.setPicutre_URL(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getType_Of_Property()+"/"+property.getName()+"/"+counter+".jpg");
 		}
 	}
 	
@@ -183,7 +205,7 @@ public class Admin_Panel extends JPanel {
 		int counter=0;
 		try {
 			FileInputStream in=new FileInputStream(newPictureURL);
-			FileOutputStream out=new FileOutputStream(PicturesURL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"/"+"HotelPicture"+counter+".jpg");
+			FileOutputStream out=new FileOutputStream(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getType_Of_Property()+"/"+property.getName()+"/"+counter+".jpg");
 			BufferedInputStream bin=new BufferedInputStream(in);
 			BufferedOutputStream bou=new BufferedOutputStream(out);
 			counter++;
@@ -202,15 +224,6 @@ public class Admin_Panel extends JPanel {
 			e.printStackTrace();
 		}
 		
-		
-	}
-	
-	public static void setNewPicutreOnLabel(String PictureURL, JLabel lblPicture) {
-		ImageIcon image= new ImageIcon(PictureURL);
-		image.getImage().flush();
-		Image image1 = image.getImage();
-		Image newImg=image1.getScaledInstance(lblPicture.getWidth(),lblPicture.getHeight(),Image.SCALE_SMOOTH);
-		lblPicture.setIcon(new ImageIcon(newImg));
 		
 	}
 }
