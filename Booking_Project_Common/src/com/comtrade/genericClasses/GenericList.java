@@ -6,7 +6,8 @@ import java.util.List;
 
 import com.comtrade.domain.GeneralDomain;
 
-public class GenericList<E extends GeneralDomain> implements Generic,Serializable {
+public class GenericList<E extends GeneralDomain> implements Generic<GenericList<GeneralDomain>>,Serializable {
+	
 		private List<E>list=new ArrayList();
 		
 		public void add(E value) {
@@ -17,9 +18,19 @@ public class GenericList<E extends GeneralDomain> implements Generic,Serializabl
 			return list.get(index);
 		}
 		
+		public void set(int index,E value) {
+			list.set(index,value);
+		}
+		
 		public int size() {
 			return list.size();
 		}
+		
+		public void delete(int index) {
+			list.remove(index);
+		}
+		
+		
 		
 		public void addAll(GenericList<E> genericList) {
 			for(int i=0;i<genericList.size();i++) {

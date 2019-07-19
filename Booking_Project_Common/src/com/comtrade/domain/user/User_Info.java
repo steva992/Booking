@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.comtrade.domain.GeneralDomain;
+import com.comtrade.genericClasses.GenericList;
 
 public class User_Info implements Serializable,GeneralDomain{
 	private int id_User_Info;
@@ -17,11 +18,18 @@ public class User_Info implements Serializable,GeneralDomain{
 	private String pictureURL;
 	private String mobileNumber;
 	
+	
 	public User_Info() {
 		
 	}
 	
 	
+	
+
+
+
+
+
 	public int getId_User_Info() {
 		return id_User_Info;
 	}
@@ -90,7 +98,7 @@ public class User_Info implements Serializable,GeneralDomain{
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(id_User,Name,Surname,Gender,Email,Picture_URL,Mobile_Number)";
+		return "(Name,Surname,Gender,Email,Picture_URL,Mobile_Number,id_User)";
 	}
 	@Override
 	public String returnQuestionnaires() {
@@ -99,13 +107,13 @@ public class User_Info implements Serializable,GeneralDomain{
 	}
 	@Override
 	public PreparedStatement setPS(PreparedStatement preparedStatement) throws SQLException {
-		preparedStatement.setInt(1,id_User);
-		preparedStatement.setString(2,name);
-		preparedStatement.setString(3,surname);
-		preparedStatement.setString(4,gender);
-		preparedStatement.setString(5,email);
-		preparedStatement.setString(6,pictureURL);
-		preparedStatement.setString(7,mobileNumber);
+		preparedStatement.setString(1,name);
+		preparedStatement.setString(2,surname);
+		preparedStatement.setString(3,gender);
+		preparedStatement.setString(4,email);
+		preparedStatement.setString(5,pictureURL);
+		preparedStatement.setString(6,mobileNumber);
+		preparedStatement.setInt(7,id_User);
 		return preparedStatement;
 	}
 
@@ -147,10 +155,52 @@ public class User_Info implements Serializable,GeneralDomain{
 
 
 	@Override
+	public String printIDOfParrentTable() {
+		// TODO Auto-generated method stub
+		return "id_User";
+	}
+
+
+	@Override
+	public GenericList<GeneralDomain> setResultSetForMore(ResultSet resultSet) {
+		return null;
+	}
+
+
+
+	@Override
+	public String setColumnForUpdate() {
+		StringBuffer stringBuffer=new StringBuffer();
+		stringBuffer.append("Name=? ,");
+		stringBuffer.append("Surname=? ,");
+		stringBuffer.append("Gender=? ,");
+		stringBuffer.append("Email=? ,");
+		stringBuffer.append("Picture_URL=? ,");
+		stringBuffer.append("Mobile_Number=? ");
+		return stringBuffer.toString();
+	}
+
+
+
+
+
+
+
+
+	@Override
 	public String printIDOfTable() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+
+
+
+
+
+	
 
 
 	

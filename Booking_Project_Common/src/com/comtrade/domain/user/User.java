@@ -6,12 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.comtrade.domain.GeneralDomain;
+import com.comtrade.genericClasses.GenericList;
 
 public class User implements GeneralDomain,Serializable {
 	private int id;
 	private String username;
 	private String password;
 	private String status;
+	
 	
 	public User() {
 		
@@ -24,6 +26,9 @@ public class User implements GeneralDomain,Serializable {
 		this.password = password;
 		this.status = status;
 	}
+
+	
+	
 
 	public int getId() {
 		return id;
@@ -80,11 +85,11 @@ public class User implements GeneralDomain,Serializable {
 		preparedStatement.setString(1,password);
 		preparedStatement.setString(2,username);
 		preparedStatement.setString(3,status);
-		return preparedStatement;
+			return preparedStatement;
 	}
 
 	@Override
-	public String printIDOfTable() {
+	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
 		return "id_User";
 	}
@@ -118,6 +123,40 @@ public class User implements GeneralDomain,Serializable {
 		}
 		return preparedStatement;
 	}
+
+	@Override
+	public GenericList<GeneralDomain> setResultSetForMore(ResultSet resultSet) {
+		GenericList<GeneralDomain>listUsers=new GenericList<GeneralDomain>();
+		try {
+			
+			while(resultSet.next()) {
+				User user=new User();
+				user.setId(resultSet.getInt("id_User"));
+				user.setUsername(resultSet.getString("Username"));
+				user.setPassword((resultSet.getString("Password")));
+				user.setStatus((resultSet.getString("Status")));
+				listUsers.add(user);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listUsers;
+	}
+
+	@Override
+	public String setColumnForUpdate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String printIDOfTable() {
+		// TODO Auto-generated method stub
+		return "Id_User";
+	}
+
+	
 
 	
 

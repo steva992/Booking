@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import com.comtrade.constants.Server_Information;
 import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
+import com.comtrade.controlerPL.ControlerPLDiscount;
 import com.comtrade.controlerPL.ControlerPLProperty;
+import com.comtrade.controlerPL.ControlerPLRoom;
 import com.comtrade.controlerPL.ControlerPLUser;
 import com.comtrade.domain.user.User_Info;
 import com.comtrade.transfer.TransferClass;
@@ -57,6 +59,15 @@ public class ClientThread extends Thread {
 		case PROPERTY:
 			transferClass2=ControlerPLProperty.getInstance().CheckTheOperation(transferClass);
 			send(transferClass2);
+			break;
+		case ROOM:
+			transferClass2=ControlerPLRoom.getInstance().CheckTheOperation(transferClass);
+			send(transferClass2);
+			break;
+		case DISCOUNT:
+			transferClass2=ControlerPLDiscount.getInstance().CheckTheOperation(transferClass);
+			send(transferClass2);
+			break;	
 		default:
 			break;
 		}

@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.comtrade.commonmethod.CommonMethod;
+import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.PicturesURL;
 import com.comtrade.controlerKI.ControlerKI;
@@ -26,6 +27,7 @@ import com.comtrade.transfer.TransferClass;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -57,7 +59,7 @@ public class User_Panel extends JPanel {
 		JButton btnNewButton = new JButton("UPLOAD PICTURE");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				addNewPicture(user_info, user, lblPicture);
+				addNewPicture(user_info, user, lblPicture,btnNewButton);
 				try {
 					ControlerKI.getInstance().changePictureURLUser(user_info);
 				} catch (ClassNotFoundException e) {
@@ -74,14 +76,15 @@ public class User_Panel extends JPanel {
 	}
 
 	
-	public static void addNewPicture(User_Info user_info,User user,JLabel label) {
-		String newPictureURL=JOptionPane.showInputDialog("Enter your location of Picture: ");
-		newPictureURL.replace('\\','/');
+	public static void addNewPicture(User_Info user_info,User user,JLabel label, JButton btnNewButton) {
+		JFileChooser fileChooser=new JFileChooser();
+		fileChooser.showOpenDialog(btnNewButton);
+		String newPictureURL=fileChooser.getSelectedFile().getAbsolutePath();
 		if(newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equals("jpg") ||
 		 newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equals("png")	) {
 			createPictureForServer(newPictureURL,user);
 			CommonMethod.setNewPicutreOnLabel(newPictureURL, label);
-			user_info.setPictureURL(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+			user_info.setPictureURL(PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 		}
 	}
 	
@@ -89,7 +92,7 @@ public class User_Panel extends JPanel {
 	public static void createPictureForServer(String newPictureURL,User user){
 		try {
 			FileInputStream in=new FileInputStream(newPictureURL);
-			FileOutputStream out=new FileOutputStream(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+			FileOutputStream out=new FileOutputStream(AbsolutePath.absolutePath()+PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 			BufferedInputStream bin=new BufferedInputStream(in);
 			BufferedOutputStream bou=new BufferedOutputStream(out);
 			int b=0;

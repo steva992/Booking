@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -78,7 +79,12 @@ public class Login extends JPanel {
 				user.setPassword(password);
 				IProxy iProxy=new ProxyLogin();
 				try {
-					iProxy.login(user);
+					try {
+						iProxy.login(user);
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

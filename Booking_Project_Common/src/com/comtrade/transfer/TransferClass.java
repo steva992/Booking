@@ -5,6 +5,8 @@ import java.io.Serializable;
 
 import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
+import com.comtrade.domain.GeneralDomain;
+import com.comtrade.genericClasses.GenericList;
 
 public class TransferClass implements Serializable {
 	

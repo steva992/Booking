@@ -82,7 +82,7 @@ public class Forgot_Password extends JPanel {
 				boolean testfield=fieldValidity(username,oldPassword,newPassword);
 				boolean fieldsComplete=FieldComplete(username,oldPassword,newPassword);
 				if(oldPassword.equals(newPassword)) {
-					JOptionPane.showMessageDialog(null,"!!! Incorect password Input !!!");
+					JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_PASSWORD.getValue());
 				}else {
 					if(fieldsComplete) {
 						if(testfield) {

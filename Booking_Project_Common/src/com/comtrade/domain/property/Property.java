@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.comtrade.domain.GeneralDomain;
+import com.comtrade.genericClasses.GenericList;
 
 public class Property implements GeneralDomain,Serializable{
 	private int id;
@@ -13,6 +14,8 @@ public class Property implements GeneralDomain,Serializable{
 	private double rating;
 	private String type_Of_Property;
 	private int id_User;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -68,9 +71,9 @@ public class Property implements GeneralDomain,Serializable{
 		return preparedStatement;
 	}
 	@Override
-	public String printIDOfTable() {
+	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "Id_Property";
+		return "id_User";
 	}
 	@Override
 	public GeneralDomain setResultSetForOne(ResultSet resultSet) {
@@ -99,6 +102,36 @@ public class Property implements GeneralDomain,Serializable{
 		}
 		return preparedStatement;
 	}
+	@Override
+	public GenericList<GeneralDomain> setResultSetForMore(ResultSet resultSet) {
+		GenericList<GeneralDomain>listProperty=new GenericList<GeneralDomain>();
+		try {
+			while(resultSet.next()) {
+				Property property=new Property();
+				property.setId(resultSet.getInt("Id_Property"));
+				property.setName(resultSet.getString("Name"));
+				property.setRating(resultSet.getDouble("Rating"));
+				property.setType_Of_Property(resultSet.getString("Type_Of_Property"));
+				property.setId_User(resultSet.getInt("id_User"));
+				listProperty.add(property);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listProperty;
+	}
+	@Override
+	public String setColumnForUpdate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String printIDOfTable() {
+		// TODO Auto-generated method stub
+		return "Id_Property";
+	}
+	
 	
 	
 }

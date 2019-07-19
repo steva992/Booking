@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.comtrade.domain.GeneralDomain;
+import com.comtrade.genericClasses.GenericList;
 
 public class Property_Picutre_Album implements Serializable,GeneralDomain{
 	private int id;
@@ -86,7 +87,7 @@ public class Property_Picutre_Album implements Serializable,GeneralDomain{
 	}
 
 	@Override
-	public String printIDOfTable() {
+	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -102,6 +103,26 @@ public class Property_Picutre_Album implements Serializable,GeneralDomain{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public GenericList<GeneralDomain> setResultSetForMore(ResultSet resultSet) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String setColumnForUpdate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String printIDOfTable() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 	
 	
 }

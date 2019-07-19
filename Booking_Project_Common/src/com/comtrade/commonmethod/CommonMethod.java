@@ -1,15 +1,18 @@
 package com.comtrade.commonmethod;
 
 import java.awt.Image;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.tools.JavaFileObject;
 
 import com.comtrade.constants.PicturesURL;
 
 public class CommonMethod {
+	
 	
 	private static Image refactoringSetPictureMethod(String URL) {
 		ImageIcon image= new ImageIcon(URL);
@@ -29,6 +32,7 @@ public class CommonMethod {
 		Image image1=refactoringSetPictureMethod(pictureURL);
 		Image newImg=image1.getScaledInstance(btnNewButton_3.getWidth()/2,btnNewButton_3.getHeight()/2,Image.SCALE_SMOOTH);
 		btnNewButton_3.setIcon(new ImageIcon(newImg));
-		
 	}
+	
+	
 }

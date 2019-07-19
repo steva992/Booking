@@ -9,9 +9,13 @@ import com.comtrade.communication.Communication;
 import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
 import com.comtrade.domain.GeneralDomain;
+import com.comtrade.domain.discount.Discount;
+import com.comtrade.domain.property.Adress;
 import com.comtrade.domain.property.Property_Picutre_Album;
 import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
+import com.comtrade.doman.room.Room;
+import com.comtrade.doman.room.Room_Info;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.transfer.TransferClass;
 
@@ -100,6 +104,52 @@ public class ControlerKI {
 		transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
 		transferClass.setType_Of_operation(Type_Of_Operation.CHANGE_PICTURE_URL_HOTEL);
 		transferClass.setClient_Object_Request(current);
+		return backDataToJFrame(transferClass);
+		
+	}
+
+	public TransferClass enterRoomAndRoomInfo(GenericList<GeneralDomain> list) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.REGISTRATION_ROOM);
+		transferClass.setType_Of_Data(Type_Of_Data.ROOM);
+		transferClass.setClient_Object_Request(list);
+		return backDataToJFrame(transferClass);
+		
+	}
+
+	public TransferClass updateUser(User_Info user_info) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.UPDATE_USER);
+		transferClass.setType_Of_Data(Type_Of_Data.USER);
+		transferClass.setClient_Object_Request(user_info);
+		return backDataToJFrame(transferClass);
+	}
+
+	public TransferClass updateProperty(GenericList<GeneralDomain> list) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.UPDATE_PROPERTY);
+		transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
+		transferClass.setClient_Object_Request(list);
+		return backDataToJFrame(transferClass);
+		
+	}
+
+	public TransferClass updateRoom(GenericList<GeneralDomain> listRoom) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.UPDATE_ROOM);
+		transferClass.setType_Of_Data(Type_Of_Data.ROOM);
+		transferClass.setClient_Object_Request(listRoom);
+		return backDataToJFrame(transferClass);
+		
+	}
+
+	public TransferClass enterDiscount(Discount discount) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.REGISTRATION_DISCOUNT);
+		transferClass.setType_Of_Data(Type_Of_Data.DISCOUNT);
+		transferClass.setClient_Object_Request(discount);
+		return backDataToJFrame(transferClass);
+	}
+
+	public TransferClass deleteDiscount(Discount discount) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.DELETE_DISCOUNT);
+		transferClass.setType_Of_Data(Type_Of_Data.DISCOUNT);
+		transferClass.setClient_Object_Request(discount);
 		return backDataToJFrame(transferClass);
 		
 	}

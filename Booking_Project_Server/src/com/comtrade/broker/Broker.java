@@ -1,3 +1,4 @@
+
 package com.comtrade.broker;
 
 import java.sql.PreparedStatement;
@@ -8,11 +9,13 @@ import javax.swing.JOptionPane;
 
 import com.comtrade.connection.ConnectionDataBase;
 import com.comtrade.domain.GeneralDomain;
+import com.comtrade.domain.property.Adress;
 import com.comtrade.domain.property.Property;
 import com.comtrade.domain.property.Property_Picutre_Album;
 import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
 import com.comtrade.genericClasses.GenericList;
+import com.mysql.cj.jdbc.PreparedStatementWrapper;
 
 public class Broker implements IBroker {
 
@@ -87,13 +90,45 @@ public class Broker implements IBroker {
 
 	@Override
 	public GeneralDomain returnInfo(GeneralDomain generalDomain, GeneralDomain generalDomain_Info) throws SQLException {
-		String sql="select * from "+generalDomain_Info.returnNameOfTable()+" where "+generalDomain.printIDOfTable()+"=?";
+		ResultSet resultSet=refactorinReturnInfo(generalDomain_Info,generalDomain);
+		generalDomain_Info=(GeneralDomain) generalDomain_Info.setResultSetForOne(resultSet);
+		return generalDomain_Info;
+	}
+	
+	@Override
+	public GenericList<GeneralDomain> returnInfoForMore(GeneralDomain generalDomain, GeneralDomain generalDomain_Info) throws SQLException {
+		ResultSet resultSet=refactorinReturnInfo(generalDomain_Info,generalDomain);
+		GenericList<GeneralDomain>listGeneralDomain=(GenericList<GeneralDomain>) generalDomain_Info.setResultSetForMore(resultSet);
+		return listGeneralDomain;
+	}
+	
+	
+	
+	private ResultSet refactorinReturnInfo(GeneralDomain generalDomain_Info,GeneralDomain generalDomain) throws SQLException {
+		String sql="select * from "+generalDomain_Info.returnNameOfTable()+" where "+generalDomain_Info.printIDOfParrentTable()+"=?";
 		PreparedStatement preparedStatement=ConnectionDataBase.getInstance().getConnection().prepareStatement(sql);
 		preparedStatement=generalDomain.setPSforID(preparedStatement);
+		return preparedStatement.executeQuery();
+	}
+
+
+
+
+
+	@Override
+	public GeneralDomain returnParrentInfo(int id, GeneralDomain generalDomain_Info) throws SQLException {
+		String sql="select * from "+generalDomain_Info.returnNameOfTable()+" where "+generalDomain_Info.printIDOfParrentTable()+"="+id;
+		PreparedStatement preparedStatement=ConnectionDataBase.getInstance().getConnection().prepareStatement(sql);
 		ResultSet resultSet=preparedStatement.executeQuery();
 		generalDomain_Info=generalDomain_Info.setResultSetForOne(resultSet);
 		return generalDomain_Info;
+		
 	}
+	
+	
+	
+	
+	
 
 
 
@@ -130,6 +165,69 @@ public class Broker implements IBroker {
 		return list;
 	}
 
+
+
+
+
+	@Override
+	public void update(GeneralDomain generalDomain) throws SQLException {
+		String sql="update "+generalDomain.returnNameOfTable()+" set "+generalDomain.setColumnForUpdate()+" where "+generalDomain.printIDOfParrentTable()+"=?";
+		refactoringUpdate(generalDomain,sql);
+		
+	}
+
+
+	@Override
+	public void updateWithMore(GeneralDomain generalDomain,int id) throws SQLException {
+		String sql="update "+generalDomain.returnNameOfTable()+" set "+generalDomain.setColumnForUpdate()+" where "+generalDomain.printIDOfTable()+"="+id;
+		refactoringUpdate(generalDomain, sql);
+		
+	}
+
+
+	private void refactoringUpdate(GeneralDomain generalDomain, String sql) throws SQLException {
+		PreparedStatement preparedStatement=ConnectionDataBase.getInstance().getConnection().prepareStatement(sql);
+		preparedStatement=generalDomain.setPS(preparedStatement);
+		preparedStatement.execute();
+		
+	}
+
+
+
+
+
+	@Override
+	public void delete(GeneralDomain generalDomain) throws SQLException{
+		String sql="delete from "+generalDomain.returnNameOfTable()+" where "+generalDomain.printIDOfTable()+"=?";
+		PreparedStatement preparedStatement=ConnectionDataBase.getInstance().getConnection().prepareStatement(sql);
+		preparedStatement=generalDomain.setPSforID(preparedStatement);
+		preparedStatement.execute();
+	}
+
+
+
+
+
+	
+
+
+
+
+
+	
+
+
+
+
+
+	
+
+
+
+
+
+
+	
 
 
 

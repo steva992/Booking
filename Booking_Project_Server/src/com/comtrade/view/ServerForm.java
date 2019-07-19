@@ -8,9 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.comtrade.commonmethod.CommonMethod;
+import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.PicturesURL;
 import com.comtrade.controlerPL.ControlerPLServer;
+import com.comtrade.domain.GeneralDomain;
+import com.comtrade.domain.property.Adress;
+import com.comtrade.domain.user.User;
+import com.comtrade.genericClasses.Generic;
 import com.comtrade.threads.ServerThread;
 import com.comtrade.threads.WatchThread;
 
@@ -22,6 +27,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.lang.annotation.Inherited;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
@@ -107,9 +113,12 @@ public class ServerForm extends JFrame {
 		lblBackGround = new JLabel("New label");
 		//lblBackGround.setIcon(new ImageIcon(ServerForm.class.getResource("/default1/Woman.jpg")));
 		lblBackGround.setBounds(0,0,784,759);
-		CommonMethod.setNewPicutreOnLabel(PicturesURL.PROJECT_PATH.getValue()+PicturesURL.PICTURE_FOR_SERVER.getValue()+"/Server.jpg",lblBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_FOR_SERVER.getValue()+"/Server.jpg",lblBackGround);
 		contentPane.add(lblBackGround);
 		ControlerPLServer.getInstance().setServerForm(this);
+		
+		
+		
 	}
 
 	public void setTextOnTextArea(String string) {

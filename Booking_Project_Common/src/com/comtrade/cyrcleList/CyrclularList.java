@@ -55,6 +55,12 @@ public class CyrclularList {
 		
 	}
 	
+	public void remove() {
+		head=null;
+		tail=null;
+		current=null;
+	}
+	
 	public class Node {
 		
 		private Property_Picutre_Album data;

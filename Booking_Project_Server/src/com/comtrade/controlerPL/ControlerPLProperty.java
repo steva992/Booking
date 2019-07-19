@@ -1,6 +1,8 @@
 package com.comtrade.controlerPL;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.comtrade.constants.PicturesURL;
 import com.comtrade.constants.TransferClass_Message;
@@ -9,14 +11,16 @@ import com.comtrade.domain.property.Property_Picutre_Album;
 import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
 import com.comtrade.genericClasses.GenericList;
+import com.comtrade.genericClasses.GenericMap;
 import com.comtrade.so.GeneralSystemOperation;
 import com.comtrade.so.property.BackAllForProperty;
 import com.comtrade.so.property.ChangePictureURLPropertySO;
 import com.comtrade.so.property.EntertPropertySO;
+import com.comtrade.so.property.UpdatePropertySO;
 import com.comtrade.so.user.ChangePictureURLUserSO;
 import com.comtrade.transfer.TransferClass;
 
-public class ControlerPLProperty {
+public class ControlerPLProperty{
 	private static volatile ControlerPLProperty instance;
 	
 	private ControlerPLProperty() {
@@ -37,9 +41,10 @@ public class ControlerPLProperty {
 
 	public TransferClass CheckTheOperation(TransferClass transferClass) throws Exception{
 		TransferClass transferClass2=new TransferClass();
+		GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 		switch(transferClass.getType_Of_operation()) {
 			case REGISTRATION_PROPERTY:
-				GenericList<GeneralDomain>list=(GenericList<GeneralDomain>) transferClass.getClient_Object_Request();
+				list=(GenericList<GeneralDomain>) transferClass.getClient_Object_Request();
 				transferClass2=enterTheProperty(list);
 				break;
 			case BACK_ALL_ABOUT_PROPERTY:
@@ -50,6 +55,10 @@ public class ControlerPLProperty {
 				Property_Picutre_Album property_Picutre_Album=(Property_Picutre_Album) transferClass.getClient_Object_Request();
 				transferClass2.setServer_Object_Response(ChangePictureURL(property_Picutre_Album));
 				break;	
+			case UPDATE_PROPERTY:
+				list=(GenericList<GeneralDomain>) transferClass.getClient_Object_Request();
+				transferClass2=updateProperty(list);
+				break;	
 				default:
 					break;
 		}
@@ -57,12 +66,25 @@ public class ControlerPLProperty {
 		
 	}
 
+	private TransferClass updateProperty(GenericList<GeneralDomain> list) {
+		TransferClass transferClass=new TransferClass();
+		GeneralSystemOperation<GenericList<GeneralDomain>>generalSO=new UpdatePropertySO();
+		try {
+			generalSO.runSO(list);
+			transferClass.setMessage(TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return transferClass;
+	}
+
 	private Property_Picutre_Album ChangePictureURL(Property_Picutre_Album property_Picutre_Album) {
 		TransferClass transferClass=new TransferClass();
 		GeneralSystemOperation<Property_Picutre_Album>genericSO=new ChangePictureURLPropertySO();
 		try {
 			genericSO.runSO(property_Picutre_Album);
-			transferClass.setServer_Object_Response(TransferClass_Message.SUCCESSFUL_CHANGE);
+			transferClass.setMessage(TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,18 +92,20 @@ public class ControlerPLProperty {
 		return property_Picutre_Album;
 	}
 
-	private GenericList<GeneralDomain> BackAllAboutProperty(User user) {
+	private GenericMap<String,GenericList<GeneralDomain>> BackAllAboutProperty(User user) {
 		TransferClass transferClass=new TransferClass();
+		GenericMap<String,GenericList<GeneralDomain>>map=new GenericMap<String, GenericList<GeneralDomain>>();
 		GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 		list.add(user);
+		map.put("user",list);
 		try {
-			GeneralSystemOperation<GenericList<GeneralDomain>>generalSO=new BackAllForProperty();
-			generalSO.runSO(list);
+			GeneralSystemOperation<GenericMap<String,GenericList<GeneralDomain>>>generalSO=new BackAllForProperty();
+			generalSO.runSO(map);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return list;
+		return map;
 	}
 
 	private TransferClass enterTheProperty(GenericList<GeneralDomain> list) throws Exception {

@@ -15,7 +15,7 @@ public class ReturnUserInfoSO extends GeneralSystemOperation<GenericList<General
 	@Override
 	protected void runConcreteSO(GenericList<GeneralDomain> object) throws SQLException, Exception {
 		GenericList<GeneralDomain>userList=object;
-		User user=(User) userList.get(0);
+		GeneralDomain user=userList.get(0);
 		IBroker Ibroker=new Broker();
 		User_Info user_info=new User_Info();
 		userList.add(Ibroker.returnInfo(user,user_info));

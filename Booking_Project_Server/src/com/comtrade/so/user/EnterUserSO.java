@@ -13,7 +13,7 @@ import com.comtrade.so.GeneralSystemOperation;
 public class EnterUserSO extends GeneralSystemOperation<GenericList<GeneralDomain>> {
 
 	@Override
-	protected void runConcreteSO(GenericList<GeneralDomain> object) throws Exception {
+	protected void runConcreteSO(GenericList<GeneralDomain> object) throws SQLException, Exception {
 		User user=(User) object.get(0);
 		IBroker iBroker=new Broker();
 		iBroker.enter(user);
@@ -21,5 +21,7 @@ public class EnterUserSO extends GeneralSystemOperation<GenericList<GeneralDomai
 		user=(User) iBroker.setID(new User());
 		user_Additional_Features.setId_User(user.getId());
 		iBroker.enter(user_Additional_Features);
+
 	}
+
 }
