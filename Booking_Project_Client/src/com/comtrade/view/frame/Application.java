@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.comtrade.constants.Panel_Dimension;
+import com.comtrade.controlerKI.ControlerClient;
 import com.comtrade.panel.common.Login;
 import com.comtrade.panel.common.SignUp;
 
@@ -42,13 +43,12 @@ public class Application extends JFrame {
 	 * Create the frame.
 	 */
 	public Application() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		setContentPane(layeredPane);
 		layeredPane.setBounds(100, 100,800,600);
 		layeredPane.setLayout(new CardLayout(0, 0));
 		layeredPane.add(login);
-		
+		ControlerClient.getInstance().setServerForm(this);
 	}
 
 	public static void setPanelOnLayeredPane(JPanel panel) {
@@ -57,4 +57,6 @@ public class Application extends JFrame {
 		layeredPane.repaint();
 		layeredPane.revalidate();
 	}
+
+	
 }

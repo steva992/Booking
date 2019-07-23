@@ -99,6 +99,7 @@ public class Discount implements Serializable,GeneralDomain{
 			discount.setId(resultSet.getInt("Id_Discount"));
 			discount.setFrom_Date(resultSet.getDate("From_Date"));
 			discount.setTo_Date(resultSet.getDate("To_Date"));
+			discount.setAmount_of_dosicount(resultSet.getDouble("Amount_Of_Discount"));
 			discount.setId_property(id_property);
 		}
 		return discount;

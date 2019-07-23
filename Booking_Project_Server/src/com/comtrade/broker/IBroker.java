@@ -27,4 +27,6 @@ public interface IBroker {
 
 	public void delete(GeneralDomain generalDomain) throws SQLException;
 
+	public GenericList<GeneralDomain> returnTable(GeneralDomain generalDomain) throws SQLException;
+
 }

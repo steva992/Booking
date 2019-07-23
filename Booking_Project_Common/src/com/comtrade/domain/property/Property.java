@@ -9,12 +9,27 @@ import com.comtrade.domain.GeneralDomain;
 import com.comtrade.genericClasses.GenericList;
 
 public class Property implements GeneralDomain,Serializable{
+	
 	private int id;
 	private String name;
-	private double rating;
+	private int rating;
 	private String type_Of_Property;
 	private int id_User;
 	
+	
+	
+	public Property(int id, String name, int rating, String type_Of_Property, int id_User) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.rating = rating;
+		this.type_Of_Property = type_Of_Property;
+		this.id_User = id_User;
+	}
+
+	public Property() {
+		
+	}
 	
 	public int getId() {
 		return id;
@@ -28,10 +43,10 @@ public class Property implements GeneralDomain,Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getRating() {
+	public int getRating() {
 		return rating;
 	}
-	public void setRating(double rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 	
@@ -82,7 +97,7 @@ public class Property implements GeneralDomain,Serializable{
 			if(resultSet.next()) {
 				property.setId(resultSet.getInt("Id_Property"));
 				property.setName(resultSet.getString("Name"));
-				property.setRating(resultSet.getDouble("Rating"));
+				property.setRating(resultSet.getInt("Rating"));
 				property.setType_Of_Property(resultSet.getString("Type_Of_Property"));
 				property.setId_User(resultSet.getInt("id_User"));
 			}
@@ -110,7 +125,7 @@ public class Property implements GeneralDomain,Serializable{
 				Property property=new Property();
 				property.setId(resultSet.getInt("Id_Property"));
 				property.setName(resultSet.getString("Name"));
-				property.setRating(resultSet.getDouble("Rating"));
+				property.setRating(resultSet.getInt("Rating"));
 				property.setType_Of_Property(resultSet.getString("Type_Of_Property"));
 				property.setId_User(resultSet.getInt("id_User"));
 				listProperty.add(property);

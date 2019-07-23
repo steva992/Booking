@@ -12,6 +12,7 @@ import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.discount.Discount;
 import com.comtrade.domain.property.Adress;
 import com.comtrade.domain.property.Property_Picutre_Album;
+import com.comtrade.domain.user.PaymentUserCard;
 import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
 import com.comtrade.doman.room.Room;
@@ -152,6 +153,26 @@ public class ControlerKI {
 		transferClass.setClient_Object_Request(discount);
 		return backDataToJFrame(transferClass);
 		
+	}
+
+	public TransferClass backALLUserAndProperties() throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_Data(Type_Of_Data.USER);
+		transferClass.setType_Of_operation(Type_Of_Operation.BACK_ALL_ADMINS);
+		return backDataToJFrame(transferClass);
+	}
+
+	public TransferClass backAllForUserPanel(User user) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
+		transferClass.setType_Of_operation(Type_Of_Operation.BACK_ALL_FOR_USER_PANEL);
+		transferClass.setClient_Object_Request(user);
+		return backDataToJFrame(transferClass);
+	}
+
+	public TransferClass enterPaymentCard(PaymentUserCard payment) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.ADD_PAYMENT_CARD);
+		transferClass.setType_Of_Data(Type_Of_Data.USER);
+		transferClass.setClient_Object_Request(payment);
+		return backDataToJFrame(transferClass);
 	}
 	
 

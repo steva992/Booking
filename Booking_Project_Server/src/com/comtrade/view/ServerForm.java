@@ -123,6 +123,7 @@ public class ServerForm extends JFrame {
 
 	public void setTextOnTextArea(String string) {
 		textArea.append(string);
-		
 	}
+	
+	
 }

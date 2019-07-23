@@ -13,6 +13,8 @@ public class LuxuryRoomDecorator extends Room_Info_Decorator{
 		Room_Info room_info= specialRoom.addnewPropertiesForRoom();
 		room_info.setTv(true);
 		room_info.setWi_fi(true);
+		room_info.setBalkon(true);
+		room_info.setAir_condition(true);
 		room_info.setMini_bar(true);
 		room_info.setJacuzzi(true);
 		room_info.setSmoking(true);

@@ -208,58 +208,16 @@ public class Broker implements IBroker {
 
 
 
-	
+	@Override
+	public GenericList<GeneralDomain> returnTable(GeneralDomain generalDomain) throws SQLException {
+		GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+		String sql="select * from "+generalDomain.returnNameOfTable();
+		PreparedStatement preparedStatement=ConnectionDataBase.getInstance().getConnection().prepareStatement(sql);
+		ResultSet resultSet=preparedStatement.executeQuery();
+		list=generalDomain.setResultSetForMore(resultSet);
+		return list;
+	}
 
 
-
-
-
-	
-
-
-
-
-
-	
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-	
 
 }

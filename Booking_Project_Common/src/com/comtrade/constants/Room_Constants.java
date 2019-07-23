@@ -2,7 +2,7 @@ package com.comtrade.constants;
 
 public enum Room_Constants {
 	
-	ID_ROOM("ID ROOM"),ROOM_TYPE("ROOM TYPE"),PRICE_PER_NIGHT("PRICE PER NIGHT"),NUMBER_OF_BEED("NUMBER OF BEED"),
+	ID_ROOM("ID ROOM"),ROOM_TYPE("ROOM TYPE"),PRICE_PER_NIGHT("PRICE NIGHT"),NUMBER_OF_BEED("NUMBER BEDS"),
 	
 	ORDINARY_ROOM("Ordinary"),LUXURY_ROOM("Luxury"),APARTMENT("Apartment");
 	

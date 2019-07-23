@@ -7,14 +7,17 @@ import java.util.List;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.constants.Type_Of_Operation;
 import com.comtrade.domain.GeneralDomain;
+import com.comtrade.domain.user.PaymentUserCard;
 import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.so.GeneralSystemOperation;
+import com.comtrade.so.user.AddNewCardSO;
 import com.comtrade.so.user.ChangePasswordUserSO;
 import com.comtrade.so.user.ChangePictureURLUserSO;
 import com.comtrade.so.user.CheckUserSO;
 import com.comtrade.so.user.EnterUserSO;
+import com.comtrade.so.user.ReturnAdminsSO;
 import com.comtrade.so.user.ReturnUserInfoSO;
 import com.comtrade.so.user.UpdateUserSO;
 import com.comtrade.so.user.UserLogInSO;
@@ -39,8 +42,7 @@ public class ControlerPLUser {
 		
 	}
 
-	public TransferClass CheckTheOperation(TransferClass transferClass) throws Exception{
-		TransferClass transferClass2=new TransferClass();
+	public TransferClass CheckTheOperation(TransferClass transferClass) throws Exception{		TransferClass transferClass2=new TransferClass();
 		User user=new User();
 		User_Info user_info=new User_Info();
 		GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
@@ -70,13 +72,49 @@ public class ControlerPLUser {
 				transferClass2=changePictureURL(user_info);
 			case UPDATE_USER:
 				user_info=(User_Info) transferClass.getClient_Object_Request();
-				transferClass2=updateUser(user_info);	
+				transferClass2=updateUser(user_info);
+				break;
+			case BACK_ALL_ADMINS:
+				transferClass2=backAllAdmins();
+				break;
+			case ADD_PAYMENT_CARD:
+				PaymentUserCard payment=(PaymentUserCard) transferClass.getClient_Object_Request();
+				transferClass2=AddPaymentCard(payment);
+				break;
 			default:
 				break;	
 				
 		}
 		return transferClass2;
 		
+	}
+
+	private TransferClass AddPaymentCard(PaymentUserCard payment) {
+		TransferClass transferClass=new TransferClass();
+		GeneralSystemOperation<PaymentUserCard>generalSO=new AddNewCardSO();
+		try {
+			generalSO.runSO(payment);
+			transferClass.setMessage(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
+			transferClass.setServer_Object_Response(payment);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return transferClass;
+	}
+
+	private TransferClass backAllAdmins() {
+		TransferClass transferClass=new TransferClass();
+		GenericList<GeneralDomain>listAdminsAndProperties=new GenericList<GeneralDomain>();
+		GeneralSystemOperation<GenericList<GeneralDomain>>generalSO=new ReturnAdminsSO();
+		try {
+			generalSO.runSO(listAdminsAndProperties);
+			transferClass.setServer_Object_Response(listAdminsAndProperties);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return transferClass;
 	}
 
 	private TransferClass updateUser(User_Info user_info) {
@@ -97,8 +135,8 @@ public class ControlerPLUser {
 		GeneralSystemOperation<User_Info>genericSO=new ChangePictureURLUserSO();
 		try {
 			genericSO.runSO(user_info);
-			transferClass.setMessage(TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
 			transferClass.setServer_Object_Response(user_info);
+			transferClass.setMessage(TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

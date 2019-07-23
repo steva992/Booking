@@ -8,7 +8,10 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import com.comtrade.commonmethod.CommonMethod;
+import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
+import com.comtrade.constants.PicturesURL;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.controlerKI.ControlerKI;
@@ -28,6 +31,8 @@ import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.SystemColor;
+import javax.swing.border.EtchedBorder;
 
 public class Forgot_Password extends JPanel {
 	private JTextField tfUsername;
@@ -42,38 +47,47 @@ public class Forgot_Password extends JPanel {
 		setLayout(null);
 		
 		JLabel label = new JLabel("Username");
+		label.setForeground(SystemColor.window);
 		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label.setBounds(42, 44, 374, 25);
+		label.setFont(new Font("Castellar", Font.BOLD, 23));
+		label.setBounds(841, 11, 346, 59);
 		add(label);
 		
 		tfUsername = new JTextField();
+		tfUsername.setFont(new Font("Castellar", Font.BOLD, 16));
 		tfUsername.setColumns(10);
-		tfUsername.setBounds(42, 75, 374, 33);
+		tfUsername.setBounds(841, 71, 346, 46);
 		add(tfUsername);
 		
 		JLabel label_1 = new JLabel("Old Password");
+		label_1.setForeground(SystemColor.window);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_1.setBounds(42, 119, 374, 25);
+		label_1.setFont(new Font("Castellar", Font.BOLD, 23));
+		label_1.setBounds(841, 141, 346, 59);
 		add(label_1);
 		
 		pfOldPassword = new JPasswordField();
-		pfOldPassword.setBounds(42, 155, 374, 33);
+		pfOldPassword.setFont(new Font("Castellar", Font.BOLD, 16));
+		pfOldPassword.setBounds(841, 213, 346, 46);
 		add(pfOldPassword);
 		
 		JLabel label_2 = new JLabel("New Password");
+		label_2.setForeground(SystemColor.window);
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_2.setBounds(42, 194, 374, 25);
+		label_2.setFont(new Font("Castellar", Font.BOLD, 23));
+		label_2.setBounds(841, 265, 346, 59);
 		add(label_2);
 		
 		pfNewPassword = new JPasswordField();
-		pfNewPassword.setBounds(42, 230, 374, 33);
+		pfNewPassword.setFont(new Font("Castellar", Font.BOLD, 16));
+		pfNewPassword.setBounds(841, 335, 346, 46);
 		add(pfNewPassword);
 		
 		JButton button = new JButton("Change Your Password");
+		button.setHorizontalAlignment(SwingConstants.LEFT);
+		button.setBackground(SystemColor.window);
+		button.setForeground(Color.RED);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String username=tfUsername.getText();
@@ -122,36 +136,30 @@ public class Forgot_Password extends JPanel {
 				}
 			}
 		});
-		button.setFont(new Font("Tahoma", Font.BOLD, 11));
-		button.setBounds(99, 285, 270, 23);
+		button.setFont(new Font("Castellar", Font.BOLD, 10));
+		button.setBounds(893, 412, 260, 46);
+		button.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_FORGOT_PASSWORD_BUTTON.getValue(), button);
 		add(button);
 		
-		JCheckBox cbHideUnhide = new JCheckBox("Hide / Unhide Password");
-		cbHideUnhide.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(cbHideUnhide.isSelected()) {
-					pfNewPassword.setEchoChar((char) 0);
-					pfOldPassword.setEchoChar((char) 0);
-				}else {
-					pfNewPassword.setEchoChar('*');
-					pfOldPassword.setEchoChar('*');
-				}
-			}
-		});
-		cbHideUnhide.setHorizontalAlignment(SwingConstants.CENTER);
-		cbHideUnhide.setBounds(444, 142, 152, 59);
-		add(cbHideUnhide);
-		
-		JButton button_1 = new JButton("Back To Login");
+		JButton button_1 = new JButton("<<< Back To Login");
+		button_1.setBackground(SystemColor.window);
+		button_1.setForeground(Color.RED);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Application.setPanelOnLayeredPane(login);
 			}
 		});
-		button_1.setFont(new Font("Tahoma", Font.BOLD, 10));
-		button_1.setBounds(444, 45, 152, 46);
+		button_1.setFont(new Font("Castellar", Font.BOLD, 12));
+		button_1.setBounds(10, 21, 244, 46);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_BACK_TO.getValue(), button_1);
 		add(button_1);
+		button_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lblBackGround = new JLabel("New label");
+		lblBackGround.setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
+		add(lblBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_FORGOT_PASSWORD_BACKGROUND.getValue(), lblBackGround);
 
 	}
 	

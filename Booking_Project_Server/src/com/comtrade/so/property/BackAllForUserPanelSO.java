@@ -1,14 +1,15 @@
 package com.comtrade.so.property;
 
 import java.sql.SQLException;
+import java.util.Map;
 
 import com.comtrade.broker.Broker;
-import com.comtrade.broker.IBroker;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.discount.Discount;
 import com.comtrade.domain.property.Adress;
 import com.comtrade.domain.property.GeoLocation;
 import com.comtrade.domain.property.Property;
+import com.comtrade.domain.user.PaymentUserCard;
 import com.comtrade.domain.user.User;
 import com.comtrade.doman.room.Room;
 import com.comtrade.doman.room.Room_Info;
@@ -16,34 +17,33 @@ import com.comtrade.genericClasses.GenericList;
 import com.comtrade.genericClasses.GenericMap;
 import com.comtrade.so.GeneralSystemOperation;
 
-public class BackAllForProperty extends GeneralSystemOperation<GenericMap<String, GenericList<GeneralDomain>>> {
+public class BackAllForUserPanelSO extends GeneralSystemOperation<GenericMap<String, GenericList<GeneralDomain>>> {
 
 	@Override
 	protected void runConcreteSO(GenericMap<String, GenericList<GeneralDomain>> object) throws SQLException, Exception {
 		Broker broker=new Broker();
-		GenericMap<String,GenericList<GeneralDomain>>map=new GenericMap<String, GenericList<GeneralDomain>>();
-		map=object;
-		GenericList<GeneralDomain> userList=new GenericList<GeneralDomain>();
-		userList=map.get("user");
-		User user=(User) userList.get(0);
-		Property property=new Property();
-		Room room=new Room();
-		Discount discount=new Discount();
+		GenericMap<String,GenericList<GeneralDomain>>map=object;
+		GenericList<GeneralDomain>propertyList=new GenericList<GeneralDomain>();
+		propertyList=broker.returnTable(new Property());
 		
-		GenericList<GeneralDomain>listProperty=broker.returnInfoForMore(user,property);
 		GenericList<GeneralDomain>listAllAboutProperty=new GenericList<GeneralDomain>();
 		GenericList<GeneralDomain>listRooms=new GenericList<GeneralDomain>();
 		GenericList<GeneralDomain>listDiscount=new GenericList<GeneralDomain>();
+		GenericList<GeneralDomain>listAlbum=new GenericList<GeneralDomain>();
+		GenericList<GeneralDomain>listUser=object.get("user");
 		
 		Adress adress=new Adress();
 		GeoLocation geoLocation=new GeoLocation();
-		GenericList<GeneralDomain>listAlbum=new GenericList<GeneralDomain>();
 		Room_Info room_Info=new Room_Info();
-		map.remove("user");
+		Room room=new Room();
+		Property property=new Property();
+		Discount discount=new Discount();
+		PaymentUserCard card=new PaymentUserCard();
+		User user=(User) listUser.get(0);
 		
-		for(int i=0;i<listProperty.size();i++) {
+		for(int i=0;i<propertyList.size();i++) {
 			listAllAboutProperty=new GenericList<GeneralDomain>();
-			property=(Property) listProperty.get(i);
+			property=(Property) propertyList.get(i);
 			
 			listAlbum=broker.returnAlbumOfPicture(property);
 			listRooms=broker.returnInfoForMore(property, room);
@@ -72,9 +72,13 @@ public class BackAllForProperty extends GeneralSystemOperation<GenericMap<String
 				listAllAboutProperty.add(discount);
 			}
 			
+			card=(PaymentUserCard) broker.returnParrentInfo(user.getId(),card);
+			listAllAboutProperty.add(card);
+			
 			map.put(property.getName(),listAllAboutProperty);
 		}
 		
+		map.remove("user");
 	}
 
 }

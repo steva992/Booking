@@ -10,13 +10,14 @@ import javax.swing.JTextField;
 
 import org.w3c.dom.UserDataHandler;
 
+import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.PicturesURL;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.constants.Type_Of_Property;
-import com.comtrade.controlerComboBox.ControlerComboBox;
+import com.comtrade.controlerKI.ControlerComboBox;
 import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.property.Adress;
@@ -44,6 +45,11 @@ import java.util.TreeMap;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+import com.toedter.calendar.JDayChooser;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 public class Property_Created extends JPanel {
 	private JTextField tfNameOfProperty;
@@ -56,6 +62,8 @@ public class Property_Created extends JPanel {
 	private JTextField tfLongitude;
 	private JComboBox cbCity,cbCountry;
 	private List<List<String>> list = new ArrayList<>();
+	private JLabel label_2,label_11,label_3,label_4,label_5;
+	private int rating=0;
 
 	/**
 	 * Create the panel.
@@ -68,55 +76,77 @@ public class Property_Created extends JPanel {
 		setLayout(null);
 		
 		JButton btfBackToLog = new JButton("<< <  Step 1");
-		btfBackToLog.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btfBackToLog.setBounds(21, 21, 131, 42);
+		btfBackToLog.setBackground(Color.WHITE);
+		btfBackToLog.setForeground(Color.RED);
+		btfBackToLog.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JPanel signUp=new SignUp();
+				Application.setPanelOnLayeredPane(signUp);
+			}
+		});
+		btfBackToLog.setFont(new Font("Castellar", Font.BOLD, 14));
+		btfBackToLog.setBounds(21, 21, 287, 42);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_BACK_TO.getValue(),btfBackToLog);
 		add(btfBackToLog);
 		
 		JLabel lblNameOfProperty = new JLabel("Name Of Property *");
-		lblNameOfProperty.setBounds(21, 83, 147, 28);
+		lblNameOfProperty.setFont(new Font("Castellar", Font.BOLD, 12));
+		lblNameOfProperty.setBounds(21, 83, 212, 28);
 		add(lblNameOfProperty);
 		
 		tfNameOfProperty = new JTextField();
+		tfNameOfProperty.setFont(new Font("Castellar", Font.BOLD, 12));
 		tfNameOfProperty.setColumns(10);
-		tfNameOfProperty.setBounds(21, 122, 212, 34);
+		tfNameOfProperty.setBounds(21, 122, 287, 28);
 		add(tfNameOfProperty);
 		
 		JLabel lblTypeOfProperty = new JLabel("Type Of Property *");
-		lblTypeOfProperty.setBounds(21, 153, 147, 28);
+		lblTypeOfProperty.setFont(new Font("Castellar", Font.BOLD, 12));
+		lblTypeOfProperty.setBounds(21, 153, 212, 28);
 		add(lblTypeOfProperty);
 		
 		cbTypeOfProperty = new JComboBox();
-		cbTypeOfProperty.setBounds(21, 183, 212, 34);
+		cbTypeOfProperty.setFont(new Font("Castellar", Font.BOLD, 12));
+		cbTypeOfProperty.setBounds(21, 183, 287, 34);
 		add(cbTypeOfProperty);
 		
 		JLabel lblCountry = new JLabel("Country *");
-		lblCountry.setBounds(21, 228, 147, 28);
+		lblCountry.setFont(new Font("Castellar", Font.BOLD, 12));
+		lblCountry.setBounds(21, 228, 212, 28);
 		add(lblCountry);
 		
 		JLabel lblCity = new JLabel(" City *");
-		lblCity.setBounds(21, 282, 147, 28);
+		lblCity.setFont(new Font("Castellar", Font.BOLD, 12));
+		lblCity.setBounds(21, 294, 212, 28);
 		add(lblCity);
 		
 		JLabel lblAdressstreet = new JLabel("Adress_Street *");
-		lblAdressstreet.setBounds(21, 347, 147, 28);
+		lblAdressstreet.setFont(new Font("Castellar", Font.BOLD, 12));
+		lblAdressstreet.setBounds(21, 362, 212, 13);
 		add(lblAdressstreet);
 		
 		tfAdress_Street = new JTextField();
+		tfAdress_Street.setFont(new Font("Castellar", Font.BOLD, 12));
 		tfAdress_Street.setColumns(10);
-		tfAdress_Street.setBounds(21, 375, 212, 34);
+		tfAdress_Street.setBounds(21, 381, 287, 28);
 		add(tfAdress_Street);
 		
 		JLabel lblAdressnumber = new JLabel("Adress_Number *");
-		lblAdressnumber.setBounds(21, 420, 147, 28);
+		lblAdressnumber.setFont(new Font("Castellar", Font.BOLD, 12));
+		lblAdressnumber.setBounds(21, 420, 212, 20);
 		add(lblAdressnumber);
 		
 		tfAdress_Number = new JTextField();
+		tfAdress_Number.setFont(new Font("Castellar", Font.BOLD, 12));
 		tfAdress_Number.setColumns(10);
-		tfAdress_Number.setBounds(21, 462, 212, 34);
+		tfAdress_Number.setBounds(21, 450, 287, 28);
 		add(tfAdress_Number);
 		
-		JButton button_1 = new JButton("Sign Up You \nand Your Property");
-		button_1.addActionListener(new ActionListener() {
+		JButton btnSignUpYou = new JButton("Sign Up You \r\n+ Property");
+		btnSignUpYou.setBackground(Color.WHITE);
+		btnSignUpYou.setFont(new Font("Castellar", Font.BOLD, 10));
+		btnSignUpYou.setForeground(Color.RED);
+		btnSignUpYou.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String name=tfNameOfProperty.getText();
 				String type_Of_Property=cbTypeOfProperty.getSelectedItem().toString();
@@ -133,7 +163,7 @@ public class Property_Created extends JPanel {
 						Property property=new Property();
 						Property_Picutre_Album property_picture_album=new Property_Picutre_Album();
 						property.setName(name);
-						property.setRating(0.0);
+						property.setRating(rating);
 						property.setType_Of_Property(type_Of_Property);
 						Adress adress=new Adress();
 						adress.setStreet(Adress_Street);
@@ -199,87 +229,225 @@ public class Property_Created extends JPanel {
 				}
 			}
 		});
-		button_1.setBounds(21, 668, 212, 42);
-		add(button_1);
+		btnSignUpYou.setBounds(21, 647, 287, 42);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_CREATED.getValue(),btnSignUpYou);
+		add(btnSignUpYou);
 		
 		JLabel label_6 = new JLabel("Example");
-		label_6.setForeground(Color.RED);
-		label_6.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_6.setBounds(254, 125, 141, 28);
+		label_6.setForeground(Color.BLACK);
+		label_6.setFont(new Font("Castellar", Font.BOLD, 14));
+		label_6.setBounds(346, 125, 167, 28);
 		add(label_6);
 		
-		JLabel label_7 = new JLabel("Example");
-		label_7.setForeground(Color.RED);
-		label_7.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_7.setBounds(254, 239, 141, 28);
-		add(label_7);
-		
-		JLabel label_8 = new JLabel("Example");
-		label_8.setForeground(Color.RED);
-		label_8.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_8.setBounds(254, 307, 141, 28);
-		add(label_8);
-		
 		JLabel label_9 = new JLabel("Example Example");
-		label_9.setForeground(Color.RED);
-		label_9.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_9.setBounds(254, 375, 141, 28);
+		label_9.setForeground(Color.BLACK);
+		label_9.setFont(new Font("Castellar", Font.BOLD, 14));
+		label_9.setBounds(346, 375, 177, 28);
 		add(label_9);
 		
 		JLabel label_10 = new JLabel("15");
-		label_10.setForeground(Color.RED);
-		label_10.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_10.setBounds(254, 462, 141, 28);
+		label_10.setForeground(Color.BLACK);
+		label_10.setFont(new Font("Castellar", Font.BOLD, 14));
+		label_10.setBounds(346, 447, 167, 28);
 		add(label_10);
 		
 		 cbCountry = new JComboBox();
+		 cbCountry.setFont(new Font("Castellar", Font.BOLD, 12));
 		 cbCountry.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent arg0) {
 		 		cbCity.removeAllItems();
 		 		addItemToCity();
 		 	}
 		 });
-		cbCountry.setBounds(21, 253, 212, 30);
+		cbCountry.setBounds(21, 253, 287, 30);
 		add(cbCountry);
 		
 		 cbCity = new JComboBox();
-		cbCity.setBounds(21, 321, 212, 30);
+		 cbCity.setFont(new Font("Castellar", Font.BOLD, 12));
+		cbCity.setBounds(21, 321, 287, 30);
 		add(cbCity);
 		
 		JLabel lblLatitude = new JLabel("Latitude");
-		lblLatitude.setBounds(25, 518, 164, 28);
+		lblLatitude.setFont(new Font("Castellar", Font.BOLD, 12));
+		lblLatitude.setBounds(21, 489, 208, 28);
 		add(lblLatitude);
 		
 		tfLatitude = new JTextField();
+		tfLatitude.setFont(new Font("Castellar", Font.BOLD, 12));
 		tfLatitude.setColumns(10);
-		tfLatitude.setBounds(21, 545, 212, 28);
+		tfLatitude.setBounds(21, 521, 287, 34);
 		add(tfLatitude);
 		
 		JLabel lblLongitude = new JLabel("Longitude");
-		lblLongitude.setBounds(21, 584, 164, 28);
+		lblLongitude.setFont(new Font("Castellar", Font.BOLD, 12));
+		lblLongitude.setBounds(21, 566, 212, 28);
 		add(lblLongitude);
 		
+		label_11 = new JLabel("1");
+		label_11.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent arg0) {
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+			}
+		});
+		label_11.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				setAllToEmpty();
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rating=1;
+				JOptionPane.showMessageDialog(null,TransferClass_Message.RATING.getValue()+" "+rating);
+			}
+		});
+		label_11.setBounds(443, 637, 56, 52);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_11);
+		add(label_11);
+		
+		label_4 = new JLabel("New label");
+		label_4.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_3);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_4);
+			}
+		});
+		label_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				setAllToEmpty();
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rating=4;
+				JOptionPane.showMessageDialog(null,TransferClass_Message.RATING.getValue()+" "+rating);
+			}
+		});
+		label_4.setBounds(656, 637, 56, 52);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_4);
+		add(label_4);
+		
+		label_3 = new JLabel("New label");
+		label_3.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_3);
+				
+			}
+		});
+		label_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				setAllToEmpty();
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rating=3;
+				JOptionPane.showMessageDialog(null,TransferClass_Message.RATING.getValue()+" "+rating);
+			}
+		});
+		label_3.setBounds(582, 637, 56, 52);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_3);
+		add(label_3);
+		
+		label_5 = new JLabel("New label");
+		label_5.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_3);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_4);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_5);
+			}
+		});
+		label_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				setAllToEmpty();
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rating=5;
+				JOptionPane.showMessageDialog(null,TransferClass_Message.RATING.getValue()+" "+rating);
+			}
+		});
+		label_5.setBounds(733, 637, 56, 52);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_5);
+		add(label_5);
+		
+		JLabel lblNewLabel = new JLabel("RATING");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Castellar", Font.BOLD, 23));
+		lblNewLabel.setBounds(443, 582, 346, 44);
+		add(lblNewLabel);
+		
+		label_2 = new JLabel("New label");
+		label_2.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
+				
+			}
+		});
+		label_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				setAllToEmpty();
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rating=2;
+				JOptionPane.showMessageDialog(null,TransferClass_Message.RATING.getValue()+" "+rating);
+			}
+		});
+		label_2.setBounds(509, 637, 56, 52);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_2);
+		add(label_2);
+		
 		tfLongitude = new JTextField();
+		tfLongitude.setFont(new Font("Castellar", Font.BOLD, 12));
 		tfLongitude.setColumns(10);
-		tfLongitude.setBounds(21, 615, 212, 28);
+		tfLongitude.setBounds(21, 597, 287, 28);
 		add(tfLongitude);
 		
 		JLabel label = new JLabel("20.4464");
-		label.setForeground(Color.RED);
-		label.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label.setBounds(254, 545, 141, 28);
+		label.setForeground(Color.BLACK);
+		label.setFont(new Font("Castellar", Font.BOLD, 14));
+		label.setBounds(346, 527, 167, 28);
 		add(label);
 		
 		JLabel label_1 = new JLabel("40.5567");
-		label_1.setForeground(Color.RED);
-		label_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_1.setBounds(254, 615, 141, 28);
+		label_1.setForeground(Color.BLACK);
+		label_1.setFont(new Font("Castellar", Font.BOLD, 14));
+		label_1.setBounds(346, 597, 167, 28);
 		add(label_1);
+		
+		JLabel lblBackground = new JLabel("");
+		lblBackground.setForeground(Color.BLACK);
+		lblBackground.setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_BACKGROUND.getValue(), lblBackground);
+		add(lblBackground);
 		addItemAtPropertyComboBox();
 		addItemToCountry();
 		addItemToCity();
 	}
 	
+	protected void setAllToEmpty() {
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_11);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_2);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_3);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_4);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_5);
+		
+	}
+
 	private void addItemToCity() {
 		String country=cbCountry.getSelectedItem().toString();
 		for(int i=0;i<list.size();i++) {

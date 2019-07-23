@@ -7,9 +7,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import com.comtrade.constants.Server_Information;
+import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.controlerPL.ControlerPLServer;
 
 public class ServerThread extends Thread {
@@ -35,7 +37,7 @@ public class ServerThread extends Thread {
 				clientThread.start();
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null,TransferClass_Message.SERVER_ALLREADY_STARTED.getValue());
 			e.printStackTrace();
 		}
 		

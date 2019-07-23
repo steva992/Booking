@@ -1,7 +1,7 @@
 package com.comtrade.constants;
 
 public enum Panel_Dimension {
-	X(100),Y(100),WIDTH(1000),HEIGHT(800);
+	X(0),Y(0),WIDTH(1250),HEIGHT(750);
 	
 	private int value;
 

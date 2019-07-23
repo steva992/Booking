@@ -1,4 +1,4 @@
-package com.comtrade.controlerComboBox;
+package com.comtrade.controlerKI;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,7 +11,6 @@ import java.util.TreeMap;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.CountryesTxt;
 import com.comtrade.constants.PicturesURL;
-import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.transfer.TransferClass;
 
 public class ControlerComboBox {
