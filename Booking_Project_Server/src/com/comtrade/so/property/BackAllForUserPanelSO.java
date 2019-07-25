@@ -15,6 +15,7 @@ import com.comtrade.doman.room.Room;
 import com.comtrade.doman.room.Room_Info;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.genericClasses.GenericMap;
+import com.comtrade.reservation.Reservation;
 import com.comtrade.so.GeneralSystemOperation;
 
 public class BackAllForUserPanelSO extends GeneralSystemOperation<GenericMap<String, GenericList<GeneralDomain>>> {
@@ -30,6 +31,7 @@ public class BackAllForUserPanelSO extends GeneralSystemOperation<GenericMap<Str
 		GenericList<GeneralDomain>listRooms=new GenericList<GeneralDomain>();
 		GenericList<GeneralDomain>listDiscount=new GenericList<GeneralDomain>();
 		GenericList<GeneralDomain>listAlbum=new GenericList<GeneralDomain>();
+		GenericList<GeneralDomain>listReservation=new GenericList<GeneralDomain>();
 		GenericList<GeneralDomain>listUser=object.get("user");
 		
 		Adress adress=new Adress();
@@ -39,6 +41,7 @@ public class BackAllForUserPanelSO extends GeneralSystemOperation<GenericMap<Str
 		Property property=new Property();
 		Discount discount=new Discount();
 		PaymentUserCard card=new PaymentUserCard();
+		Reservation reservation=new Reservation();
 		User user=(User) listUser.get(0);
 		
 		for(int i=0;i<propertyList.size();i++) {
@@ -66,11 +69,14 @@ public class BackAllForUserPanelSO extends GeneralSystemOperation<GenericMap<Str
 				room_Info=(Room_Info) broker.returnParrentInfo(room.getId(),room_Info);
 				listAllAboutProperty.add(listRooms.get(k));
 				listAllAboutProperty.add(room_Info);
+				
 			}
 			for(int l=0;l<listDiscount.size();l++) {
 				discount=(Discount) listDiscount.get(l);
 				listAllAboutProperty.add(discount);
 			}
+			
+			
 			
 			card=(PaymentUserCard) broker.returnParrentInfo(user.getId(),card);
 			listAllAboutProperty.add(card);

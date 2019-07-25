@@ -18,7 +18,7 @@ import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.comtrade.constants.AbsolutePath;
-import com.comtrade.constants.PicturesURL;
+import com.comtrade.constants.URL;
 import com.comtrade.constants.Server_Information;
 import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.domain.GeneralDomain;
@@ -111,7 +111,7 @@ public class ChatPanel extends JPanel {
 		dtm.addColumn(columns[1]);
 		dtm.addColumn(columns[2]);
 		startChat();
-		Object[]row= {1,2,new ImageIcon(AbsolutePath.absolutePath()+PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/Property"+".jpg")};
+		Object[]row= {1,2,new ImageIcon(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/Property"+".jpg")};
 		dtm.addRow(row);
 	}
 

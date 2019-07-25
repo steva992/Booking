@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
-import com.comtrade.constants.PicturesURL;
+import com.comtrade.constants.URL;
 import com.comtrade.domain.room.decorator.ApartmentDecorator;
 import com.comtrade.domain.room.decorator.LuxuryRoomDecorator;
 import com.comtrade.domain.room.decorator.OrdinaryRoomDecorator;
@@ -167,16 +167,16 @@ public class RoomType extends JFrame {
 		JLabel lblUnder = new JLabel("New label");
 		lblUnder.setBounds(275, 536, 108, 45);
 		contentPane.add(lblUnder);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_TV.getValue(), lblTv);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_WIFI.getValue(), lblWIFI);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_MINI_BAR.getValue(), lblMinBar);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_BALCON.getValue(), lblBalkon);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_LIVING_ROOM.getValue(), lblLivingRoom);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_KITCHEN.getValue(),lblKitchen);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_SMOKING.getValue(), lblSmoking);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_JACUZZI.getValue(), lblJacuzzi);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_UNDER_FLOOR_HEATING.getValue(), lblUnder);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_AIR_CONDITION.getValue(), lblAir);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_TV.getValue(), lblTv);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_WIFI.getValue(), lblWIFI);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_MINI_BAR.getValue(), lblMinBar);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_BALCON.getValue(), lblBalkon);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_LIVING_ROOM.getValue(), lblLivingRoom);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_KITCHEN.getValue(),lblKitchen);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_SMOKING.getValue(), lblSmoking);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_JACUZZI.getValue(), lblJacuzzi);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UNDER_FLOOR_HEATING.getValue(), lblUnder);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_AIR_CONDITION.getValue(), lblAir);
 		
 		JButton btnNewButton = new JButton("<< My Panel");
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
@@ -190,7 +190,7 @@ public class RoomType extends JFrame {
 		btnNewButton.setFont(new Font("Castellar", Font.BOLD | Font.ITALIC, 15));
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.setBounds(6, 591, 214, 43);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_BACK_TO.getValue(),btnNewButton);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_BACK_TO.getValue(),btnNewButton);
 		contentPane.add(btnNewButton);
 		selectCB();
 	}

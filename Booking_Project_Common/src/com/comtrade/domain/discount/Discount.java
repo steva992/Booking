@@ -114,7 +114,7 @@ public class Discount implements Serializable,GeneralDomain{
 			discount.setFrom_Date(resultSet.getDate("From_Date"));
 			discount.setTo_Date(resultSet.getDate("To_Date"));
 			discount.setAmount_of_dosicount(resultSet.getDouble("Amount_Of_Discount"));
-			discount.setId_property(id_property);
+			discount.setId_property(resultSet.getInt("id_property"));
 			listDiscount.add(discount);
 		}
 		return listDiscount;

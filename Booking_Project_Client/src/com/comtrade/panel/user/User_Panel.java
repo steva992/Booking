@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,19 +36,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.compare.CompareRating;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.constants.PicturesURL;
+import com.comtrade.constants.URL;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.Room_Constants;
 import com.comtrade.constants.Server_Information;
 import com.comtrade.constants.TransferClass_Message;
+import com.comtrade.constants.Type_OF_Operation_TXT;
 import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.cyrcleList.CyrclularList;
 import com.comtrade.domain.GeneralDomain;
+import com.comtrade.domain.discount.Discount;
 import com.comtrade.domain.message.Message;
 import com.comtrade.domain.property.Adress;
 import com.comtrade.domain.property.GeoLocation;
@@ -62,11 +66,13 @@ import com.comtrade.genericClasses.GenericList;
 import com.comtrade.genericClasses.GenericMap;
 import com.comtrade.panel.admin.Admin_Panel;
 import com.comtrade.panel.common.ChatPanel;
+import com.comtrade.panel.common.Login;
 import com.comtrade.render.ComboBoxClass;
 import com.comtrade.render.RenderCB;
+import com.comtrade.reservation.Reservation;
 import com.comtrade.threads.ReceivingMessageThread;
 import com.comtrade.threads.SendingMessageThread;
-import com.comtrade.threadsClient.TimeThread;
+import com.comtrade.threads.TimeThread;
 import com.comtrade.transfer.TransferClass;
 import com.comtrade.view.frame.Application;
 
@@ -90,6 +96,7 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
@@ -101,6 +108,9 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 import javax.swing.JSpinner;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import javax.swing.SpinnerNumberModel;
 
 public class User_Panel extends JPanel {
 
@@ -114,7 +124,7 @@ public class User_Panel extends JPanel {
 	private GenericList<GeneralDomain>listRoom=new GenericList<GeneralDomain>();
 	private GenericList<GeneralDomain>listDiscount=new GenericList<GeneralDomain>();
 	private CyrclularList cyrcleList=new CyrclularList();
-	
+	private JButton btnDiscount;
 	private TransferClass transferClass=new TransferClass();
 	private Message message;
 	private GenericMap<String, GenericList<GeneralDomain>>map;
@@ -132,13 +142,14 @@ public class User_Panel extends JPanel {
 	private JTextField tfStreet;
 	private JTextField tfNumber;
 	private JTable tableRoom;
+	private JLayeredPane layeredPane_1;
 	private JComboBox cbTypeOfRoom;
 	private static String url;
 	private DefaultTableModel dtmRoom=new DefaultTableModel();
 	private ButtonGroup bg=new ButtonGroup();
-	private JRadioButton rbUserInfo,rbCardInfo;
+	private JRadioButton rbUserInfo,rbCardInfo,rbMyReservation,rbOffer;
 	private JLayeredPane layeredPane;
-	private JPanel PanelMyinfo,PanelCardInfo;
+	private JPanel PanelMyinfo,PanelCardInfo,Offer,MyReservation;
 	private JTextField tfCardNumber;
 	private JTextField tfExpirationDate;
 	private JPanel CreateCard;
@@ -146,7 +157,15 @@ public class User_Panel extends JPanel {
 	private JTextField tfCardNumberRegistration;
 	private JButton btnNewButton_1;
 	private JButton btnAddNewCard ;
-	
+	private JLabel label_8;
+	private long startTime,EndTime,room_code;
+	private int id_room;
+	private JSpinner childrenSpinner,aduJSpinner,numberSpinner;
+	private JDateChooser checkIn,chckOut;
+	private GenericList<GeneralDomain> listReservation;
+	private double amount_per_night;
+	private JLabel lblNewLabel_3;
+	private ButtonGroup bg1=new ButtonGroup();
 	
 	
 	public static String getUrl() {
@@ -161,6 +180,8 @@ public class User_Panel extends JPanel {
 
 	public User_Panel(User user) throws ClassNotFoundException, IOException {
 		this.user=user;
+		startTime=System.currentTimeMillis();
+		user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.LOGIN_USER.getValue(),user.getUsername());
 		transferClass=ControlerKI.getInstance().BackUserInfo_ForUser(user);
 		this.user_info=(User_Info) transferClass.getServer_Object_Response();
 		transferClass=ControlerKI.getInstance().backAllForUserPanel(user);
@@ -172,8 +193,10 @@ public class User_Panel extends JPanel {
 		btnUpload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				User_Panel.addNewPicture(user_info, user, lblPicture, btnUpload);
+
 				try {
 					ControlerKI.getInstance().changePictureURLUser(user_info);
+					user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.CHANGE_PICTURE_URL_USER.getValue(),user_info.getPictureURL());
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -187,18 +210,24 @@ public class User_Panel extends JPanel {
 		btnUpload.setForeground(Color.RED);
 		btnUpload.setFont(new Font("Castellar", Font.BOLD, 11));
 		btnUpload.setBounds(20, 140, 143, 33);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_UPLOAD.getValue(), btnUpload);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPLOAD.getValue(), btnUpload);
 		add(btnUpload);
 		
 		JButton btnDelete = new JButton("DELETE");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(!url.equals(AbsolutePath.absolutePath()+PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg")) {
-					deletePictureForServer(AbsolutePath.absolutePath()+url);
-					user_info.setPictureURL(PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
-					CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg",lblPicture);
+				if(!url.equals(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg")) {
+					try {
+						deletePictureForServer(AbsolutePath.absolutePath()+url);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					user_info.setPictureURL(URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
+					CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg",lblPicture);
 					try {
 						ControlerKI.getInstance().changePictureURLUser(user_info);
+						user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.DELETE_PICTURE.getValue(),url);
 					} catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -207,14 +236,14 @@ public class User_Panel extends JPanel {
 						e.printStackTrace();
 					}
 				}
-				User_Panel.setUrl(AbsolutePath.absolutePath()+PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
+				User_Panel.setUrl(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
 			}
 		});
 		btnDelete.setBackground(Color.WHITE);
 		btnDelete.setForeground(Color.RED);
 		btnDelete.setFont(new Font("Castellar", Font.BOLD, 11));
 		btnDelete.setBounds(20, 184, 143, 32);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_DELETE.getValue(), btnDelete);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_DELETE.getValue(), btnDelete);
 		add(btnDelete);
 		
 		JLabel lblDate = new JLabel("New label");
@@ -224,10 +253,12 @@ public class User_Panel extends JPanel {
 		time.start();
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(406, 354, 186, 340);
+		scrollPane.setBounds(374, 430, 261, 264);
 		add(scrollPane);
 		
 		listProperty = new JList<Object>();
+		listProperty.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		listProperty.setSelectedIndex(0);
 		listProperty.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -246,7 +277,7 @@ public class User_Panel extends JPanel {
 		
 		JLabel lblTime = new JLabel("New label");
 		lblTime.setBounds(172, 11, 71, 63);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_WATCH.getValue(),lblTime);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_WATCH.getValue(),lblTime);
 		add(lblTime);
 		
 		lblBeforeMain = new JLabel("");
@@ -281,26 +312,6 @@ public class User_Panel extends JPanel {
 		lbl3.setBounds(753, 11, 54, 48);
 		add(lbl3);
 		
-		cbTypeOfRoom = new JComboBox();
-		cbTypeOfRoom.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EnterRoomInTable(listRoom);
-			}
-		});
-		
-		cbTypeOfRoom.setBounds(623, 350, 150, 30);
-		add(cbTypeOfRoom);
-		
-		JScrollPane scrollPane_1 = new JScrollPane(tableRoom);
-		scrollPane_1.setBounds(623, 391, 333, 303);
-		add(scrollPane_1);
-		
-		tableRoom = new JTable(dtmRoom);
-		tableRoom.setBackground(Color.BLUE);
-		tableRoom.setFont(new Font("Castellar", Font.BOLD, 11));
-		tableRoom.setForeground(Color.WHITE);
-		scrollPane_1.setViewportView(tableRoom);
-		
 		JButton button_1 = new JButton("<<<");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -334,77 +345,298 @@ public class User_Panel extends JPanel {
 		JLabel label_4 = new JLabel("Country");
 		label_4.setForeground(Color.BLACK);
 		label_4.setFont(new Font("Castellar", Font.BOLD, 14));
-		label_4.setBounds(406, 250, 151, 23);
+		label_4.setBounds(413, 241, 151, 23);
 		add(label_4);
-		
-		JLabel lblCheckIn = new JLabel("CHECK IN");
-		lblCheckIn.setFont(new Font("Castellar", Font.BOLD, 14));
-		lblCheckIn.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCheckIn.setBounds(986, 486, 235, 23);
-		add(lblCheckIn);
 		
 		JLabel label_5 = new JLabel("City");
 		label_5.setForeground(Color.BLACK);
 		label_5.setFont(new Font("Castellar", Font.BOLD, 14));
-		label_5.setBounds(877, 250, 151, 23);
+		label_5.setBounds(860, 241, 151, 23);
 		add(label_5);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(973, 427, 112, 33);
-		add(spinner);
+		label_8 = new JLabel(" ");
+		label_8.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel login=new Login();
+				Application.setPanelOnLayeredPane(login);
+				EndTime=System.currentTimeMillis();
+				long duration=EndTime-startTime;
+				try {
+					user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.USER_LOGOUT.getValue(),String.valueOf(duration));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		label_8.setForeground(Color.WHITE);
+		label_8.setBounds(250, 63, 131, 39);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_LOG_OUT.getValue(), label_8);
+		add(label_8);
 		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setBounds(1122, 427, 99, 33);
-		add(spinner_1);
+		rbMyReservation = new JRadioButton("MY RESERVATION");
+		rbMyReservation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				layeredPane_1.removeAll();
+				layeredPane_1.add(MyReservation);
+				layeredPane_1.repaint();
+				layeredPane_1.revalidate();
+				
+			}
+		});
+		rbMyReservation.setBounds(374, 355, 122, 23);
+		add(rbMyReservation);
+		bg1.add(rbMyReservation);
 		
-		JLabel lblAdults = new JLabel("ADULTS");
-		lblAdults.setFont(new Font("Castellar", Font.BOLD, 12));
-		lblAdults.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAdults.setBounds(1122, 392, 99, 32);
-		add(lblAdults);
-		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(986, 520, 235, 33);
-		add(dateChooser);
-		
-		JDateChooser dateChooser_1 = new JDateChooser();
-		dateChooser_1.setBounds(986, 598, 235, 33);
-		add(dateChooser_1);
+		rbOffer = new JRadioButton("ROOM OFFER");
+		rbOffer.setSelected(true);
+		rbOffer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				layeredPane_1.removeAll();
+				layeredPane_1.add(Offer);
+				layeredPane_1.repaint();
+				layeredPane_1.revalidate();
+			}
+		});
+		rbOffer.setBounds(526, 355, 109, 23);
+		add(rbOffer);
+		bg1.add(rbOffer);
 		
 		tfCountry = new JTextField();
 		tfCountry.setEditable(false);
 		tfCountry.setText((String) null);
 		tfCountry.setColumns(10);
-		tfCountry.setBounds(564, 250, 186, 20);
+		tfCountry.setBounds(553, 241, 186, 20);
 		add(tfCountry);
 		
-		JLabel lblCheckOut = new JLabel("CHECK OUT");
-		lblCheckOut.setFont(new Font("Castellar", Font.BOLD, 14));
-		lblCheckOut.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCheckOut.setBounds(996, 564, 221, 23);
-		add(lblCheckOut);
+		btnDiscount = new JButton("!!! SEE ALL ABOUT ACTION PRICES !!!");
+		btnDiscount.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				StringBuffer sb=new StringBuffer();
+				sb.append("!!! ACTION ACTION ACTION ACTION ACTION !!!\n");
+				sb.append(" \n");
+				for(int i=0;i<listDiscount.size();i++) {
+					Discount discount=(Discount) listDiscount.get(i);
+					sb.append(i+1+")"+" From "+discount.getFrom_Date()+" to "+discount.getTo_Date()+" amount per night of all room in this property is on discount "+discount.getAmount_of_dosicount()+" %\n");
+					sb.append(" \n");
+					if(i != listDiscount.size()-1) {
+						sb.append("+\n");
+						sb.append(" \n");
+					}
+				}
+				JOptionPane.showMessageDialog(null,sb);
+			}
+		});
 		
-		JButton btnNewButton_2 = new JButton("BOOK >>");
+		layeredPane_1 = new JLayeredPane();
+		layeredPane_1.setBounds(645, 344, 564, 363);
+		layeredPane_1.setLayout(new CardLayout(0, 0));
+		layeredPane_1.setBorder(BorderFactory.createEtchedBorder());
+		add(layeredPane_1);
+		
+		Offer = new JPanel();
+		layeredPane_1.add(Offer, "name_65696703528696");
+		Offer.setBackground(new Color(0,0,0,0));
+		Offer.setLayout(null);
+		
+		JButton btnNewButton_2 = new JButton("BOOK");
+		btnNewButton_2.setBounds(394, 309, 157, 39);
+		Offer.add(btnNewButton_2);
+		btnNewButton_2.setBackground(Color.WHITE);
+		btnNewButton_2.setForeground(Color.RED);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				SimpleDateFormat sdf=new  SimpleDateFormat("yyyy-MM-dd");
+				int idUser=user.getId();
+				int id_room1=id_room;
+				int numberAdults=Integer.parseInt(aduJSpinner.getValue().toString());
+				int numberChildren=Integer.parseInt(childrenSpinner.getValue().toString());
+				int number_nights=Integer.parseInt(numberSpinner.getValue().toString());
+				Date dateFrom=Date.valueOf(sdf.format(checkIn.getDate()));
+				Date dateTo=Date.valueOf(sdf.format(chckOut.getDate()));
+				if(numberAdults > 0 && number_nights > 0 && amount_per_night != 0 && id_room != 0) {
+					if(dateFrom.compareTo(dateTo)<0) {
+						boolean checkReservation=checkReservation(id_room1,dateFrom,dateTo);
+						if(checkReservation) {
+							double discount=checkDiscountIfExcist(dateFrom,dateTo,amount_per_night,number_nights);
+							Reservation reservation=new Reservation();
+							reservation.setIdUser(idUser);
+							reservation.setIdRoom(id_room1);
+							reservation.setCheckIn(dateFrom);
+							reservation.setCheckOut(dateTo);
+							reservation.setAmount(discount);
+							reservation.setNumberAdults(numberAdults);
+							reservation.setNumberChildren(numberChildren);
+							reservation.setNumberNights(number_nights);
+							try {
+								TransferClass transferClass=ControlerKI.getInstance().enterReservation(reservation);
+								reservation=(Reservation) transferClass.getServer_Object_Response();
+								listReservation.add(reservation);
+								String message=transferClass.getMessage();
+								JOptionPane.showMessageDialog(null, message);
+								user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_RESERVATION.getValue(),String.valueOf(reservation.getCheckIn()+" "+reservation.getCheckOut()));
+								setAllClear();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (ClassNotFoundException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}else {
+							JOptionPane.showMessageDialog(null,TransferClass_Message.RESERVED_ROOM.getValue());
+						}
+						
+					}else {
+						JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_DATE.getValue());
+					}
+				}else {
+					JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
+				}
+				
+					
 			}
 		});
 		btnNewButton_2.setFont(new Font("Castellar", Font.BOLD, 9));
-		btnNewButton_2.setBounds(1011, 648, 112, 33);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_USER_RESERVATION.getValue(), btnNewButton_2);
-		add(btnNewButton_2);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_USER_RESERVATION.getValue(), btnNewButton_2);
+		
+		chckOut = new JDateChooser();
+		chckOut.setBounds(394, 260, 157, 24);
+		Offer.add(chckOut);
+		chckOut.setDateFormatString("yyyy,MM dd");
+		chckOut.setMinSelectableDate(Date.valueOf(LocalDate.now()));
+		
+		checkIn = new JDateChooser();
+		checkIn.setBounds(394, 192, 157, 23);
+		Offer.add(checkIn);
+		checkIn.setDateFormatString("yyyy,MM dd");
+		checkIn.setMinSelectableDate(Date.valueOf(LocalDate.now()));
+		
+		JLabel lblCheckIn = new JLabel("CHECK IN");
+		lblCheckIn.setBounds(394, 162, 148, 23);
+		Offer.add(lblCheckIn);
+		lblCheckIn.setFont(new Font("Castellar", Font.BOLD, 10));
+		lblCheckIn.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblNewLabel_2 = new JLabel("CHILDREN");
-		lblNewLabel_2.setFont(new Font("Castellar", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(461, 7, 86, 33);
+		Offer.add(lblNewLabel_2);
+		lblNewLabel_2.setFont(new Font("Castellar", Font.BOLD, 10));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(976, 391, 109, 33);
-		add(lblNewLabel_2);
+		
+		JLabel lblAdults = new JLabel("ADULTS");
+		lblAdults.setBounds(394, 7, 71, 32);
+		Offer.add(lblAdults);
+		lblAdults.setFont(new Font("Castellar", Font.BOLD, 10));
+		lblAdults.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		childrenSpinner = new JSpinner();
+		childrenSpinner.setBounds(475, 41, 62, 33);
+		Offer.add(childrenSpinner);
+		childrenSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		
+		aduJSpinner = new JSpinner();
+		aduJSpinner.setBounds(403, 41, 62, 33);
+		Offer.add(aduJSpinner);
+		aduJSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		
+		JLabel lblCheckOut_1 = new JLabel("CHECK OUT");
+		lblCheckOut_1.setBounds(415, 226, 109, 23);
+		Offer.add(lblCheckOut_1);
+		lblCheckOut_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCheckOut_1.setFont(new Font("Castellar", Font.BOLD, 9));
+		
+		JScrollPane scrollPane_1 = new JScrollPane(tableRoom);
+		scrollPane_1.setBounds(10, 52, 369, 296);
+		Offer.add(scrollPane_1);
+		
+		tableRoom = new JTable(dtmRoom);
+		tableRoom.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row=tableRoom.getSelectedRow();
+				room_code=Long.parseLong(tableRoom.getModel().getValueAt(row,0).toString());
+				for(int i=0;i<listRoom.size();i=i+2) {
+					Room room=(Room) listRoom.get(i);
+					if(room_code==room.getRoom_code()) {
+						id_room=room.getId();
+						amount_per_night=room.getPrice_per_night();
+					}
+				}
+				
+				
+				
+			}
+		});
+		tableRoom.setBackground(Color.BLUE);
+		tableRoom.setFont(new Font("Castellar", Font.BOLD, 12));
+		tableRoom.setForeground(Color.WHITE);
+		JTableHeader head=tableRoom.getTableHeader();
+		head.setBackground(Color.RED);
+		head.setForeground(Color.WHITE);
+		head.setFocusable(isLightweight());
+		scrollPane_1.setViewportView(tableRoom);
+		
+		cbTypeOfRoom = new JComboBox();
+		cbTypeOfRoom.setBounds(11, 11, 173, 30);
+		Offer.add(cbTypeOfRoom);
+		
+		numberSpinner = new JSpinner();
+		numberSpinner.setBounds(434, 118, 81, 33);
+		Offer.add(numberSpinner);
+		numberSpinner.setModel(new SpinnerNumberModel(0, 0, 20, 1));
+		
+		lblNewLabel_3 = new JLabel("NUMBER NIGHTS");
+		lblNewLabel_3.setFont(new Font("Castellar", Font.BOLD, 11));
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBounds(394, 85, 157, 22);
+		Offer.add(lblNewLabel_3);
+		cbTypeOfRoom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EnterRoomInTable(listRoom);
+			}
+		});
+		
+		 MyReservation = new JPanel();
+		layeredPane_1.add(MyReservation, "name_65696724573042");
+		MyReservation.setLayout(null);
+		btnDiscount.setFont(new Font("Elephant", Font.PLAIN, 10));
+		btnDiscount.setBackground(Color.RED);
+		btnDiscount.setForeground(Color.WHITE);
+		btnDiscount.setBounds(374, 394, 261, 39);
+		add(btnDiscount);
 		
 		tfCity = new JTextField();
 		tfCity.setEditable(false);
 		tfCity.setText((String) null);
 		tfCity.setColumns(10);
-		tfCity.setBounds(1035, 251, 186, 20);
+		tfCity.setBounds(1021, 241, 186, 20);
 		add(tfCity);
 		
 		rbUserInfo = new JRadioButton("USER_INFO");
@@ -441,27 +673,27 @@ public class User_Panel extends JPanel {
 		JLabel label_6 = new JLabel("Street");
 		label_6.setForeground(Color.BLACK);
 		label_6.setFont(new Font("Castellar", Font.BOLD, 14));
-		label_6.setBounds(406, 284, 151, 23);
+		label_6.setBounds(413, 275, 151, 23);
 		add(label_6);
 		
 		tfStreet = new JTextField();
 		tfStreet.setEditable(false);
 		tfStreet.setText((String) null);
 		tfStreet.setColumns(10);
-		tfStreet.setBounds(564, 284, 186, 20);
+		tfStreet.setBounds(553, 275, 186, 20);
 		add(tfStreet);
 		
 		JLabel label_7 = new JLabel("Number");
 		label_7.setForeground(Color.BLACK);
 		label_7.setFont(new Font("Castellar", Font.BOLD, 14));
-		label_7.setBounds(877, 284, 151, 23);
+		label_7.setBounds(863, 274, 151, 23);
 		add(label_7);
 		
 		tfNumber = new JTextField();
 		tfNumber.setEditable(false);
 		tfNumber.setText((String) null);
 		tfNumber.setColumns(10);
-		tfNumber.setBounds(1035, 285, 186, 20);
+		tfNumber.setBounds(1021, 275, 186, 20);
 		add(tfNumber);
 		
 		layeredPane = new JLayeredPane();
@@ -531,6 +763,7 @@ public class User_Panel extends JPanel {
 							TransferClass transferClass=ControlerKI.getInstance().updateUser(user_info);
 							String message=transferClass.getMessage();
 							JOptionPane.showMessageDialog(null,message);
+							user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.UPDATE_USER.getValue(),user.getUsername());
 						} catch (ClassNotFoundException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -548,7 +781,7 @@ public class User_Panel extends JPanel {
 		});
 		button.setForeground(Color.RED);
 		button.setFont(new Font("Castellar", Font.BOLD, 10));
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_UPDATE.getValue(), button);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPDATE.getValue(), button);
 		button.setBackground(Color.WHITE);
 		
 		JLabel label = new JLabel("Name");
@@ -665,7 +898,7 @@ public class User_Panel extends JPanel {
 		btnAddNewCard.setFont(new Font("Castellar", Font.BOLD, 11));
 		btnAddNewCard.setBackground(Color.WHITE);
 		btnAddNewCard.setBounds(40, 361, 200, 36);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_CARD.getValue(), btnAddNewCard);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_CARD.getValue(), btnAddNewCard);
 		PanelCardInfo.add(btnAddNewCard);
 		
 		CreateCard = new JPanel();
@@ -748,6 +981,7 @@ public class User_Panel extends JPanel {
 							layeredPane.repaint();
 							layeredPane.revalidate();
 							setDataOnTF(payment);
+							user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.ADD_PAYMENT_CARD.getValue(),String.valueOf(payment.getNumber()));
 						} catch (ClassNotFoundException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -764,27 +998,71 @@ public class User_Panel extends JPanel {
 			}
 		});
 		btnNewButton_1.setBounds(92, 356, 113, 41);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_CARD.getValue(), btnNewButton_1);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_CARD.getValue(), btnNewButton_1);
 		CreateCard.add(btnNewButton_1);
 		
 		JLabel lblBackGround = new JLabel("");
 		lblBackGround.setFont(new Font("Castellar", Font.BOLD, 9));
 		lblBackGround.setBounds(0, 0, 1270, 771);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_USER_BACKGROUND.getValue(), lblBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_USER_BACKGROUND.getValue(), lblBackGround);
 		add(lblBackGround);
-		fillRoomComboBox();
-		fillJList();
+		//fillRoomComboBox();
+		//fillJList();
 		//fillCBType();
 		putPictureOnLabel();
 		backAllForThisProperty();
 	}
 	
 
+	protected void setAllClear() {
+		aduJSpinner.setValue(0);
+		childrenSpinner.setValue(0);
+		numberSpinner.setValue(0);
+		checkIn.setDate(null);
+		chckOut.setDate(null);
+		
+	}
+
+
+	protected double checkDiscountIfExcist(Date dateFrom, Date dateTo, double amount_per_night2, int number_nights) {
+		double amount_of_discount=0;
+		double total;
+		double amount=amount_per_night2*number_nights;
+		for(int i=0;i<listDiscount.size();i++) {
+			Discount discount=(Discount) listDiscount.get(i);
+			int dateFromCompareCI=dateFrom.compareTo(discount.getFrom_Date());
+			int dateToCompareCI=dateFrom.compareTo(discount.getTo_Date());
+			int dateFromCompareCO=dateTo.compareTo(discount.getFrom_Date());
+			int dateToCompareCO=dateTo.compareTo(discount.getTo_Date());
+			if((dateFromCompareCI>=0 && dateToCompareCI<=0) || (dateFromCompareCO>=0 && dateToCompareCO<=0)){
+				amount_of_discount+=discount.getAmount_of_dosicount();
+			}
+		}
+		total=((100-amount_of_discount)/100)*amount;
+		return total;
+	}
+
+
+	protected boolean checkReservation(int id_room, Date dateFrom, Date dateTo) {
+		for(int i=0;i<listReservation.size();i++) {
+			Reservation reservation=(Reservation) listReservation.get(i);
+			int dateFromCompareCI=dateFrom.compareTo(reservation.getCheckIn());
+			int dateToCompareCI=dateFrom.compareTo(reservation.getCheckOut());
+			int dateFromCompareCO=dateTo.compareTo(reservation.getCheckIn());
+			int dateToCompareCO=dateTo.compareTo(reservation.getCheckOut());
+			if(id_room==reservation.getIdRoom() && ((dateFromCompareCI>=0 && dateToCompareCI<=0) || (dateFromCompareCO>=0 && dateToCompareCO<=0))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+
 	protected void setDataOnTF(PaymentUserCard payment) {
 		btnAddNewCard.setVisible(false);
 		tfExpirationDate.setText(String.valueOf(payment.getExpiration_date()));
 		tfCardNumber.setText(String.valueOf(payment.getNumber()));
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_USER_CARD.getValue()+"/"+payment.getType()+".png", lblCardPicture);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_USER_CARD.getValue()+"/"+payment.getType()+".png", lblCardPicture);
 	}
 
 
@@ -816,9 +1094,9 @@ public class User_Panel extends JPanel {
 
 
 	private void fillCBType() {
-		cbType.addItem(new ComboBoxClass("DINA",new ImageIcon(AbsolutePath.absolutePath()+PicturesURL.PICTURE_USER_CARD_DINA.getValue())));
-		cbType.addItem(new ComboBoxClass("VISA",new ImageIcon(AbsolutePath.absolutePath()+PicturesURL.PICTURE_USER_CARD_VISA.getValue())));
-		cbType.addItem(new ComboBoxClass("MASTER",new ImageIcon(AbsolutePath.absolutePath()+PicturesURL.PICTURE_USER_CARD_MASTER.getValue())));
+		cbType.addItem(new ComboBoxClass("DINA",new ImageIcon(AbsolutePath.absolutePath()+URL.PICTURE_USER_CARD_DINA.getValue())));
+		cbType.addItem(new ComboBoxClass("VISA",new ImageIcon(AbsolutePath.absolutePath()+URL.PICTURE_USER_CARD_VISA.getValue())));
+		cbType.addItem(new ComboBoxClass("MASTER",new ImageIcon(AbsolutePath.absolutePath()+URL.PICTURE_USER_CARD_MASTER.getValue())));
 		cbType.setRenderer(new RenderCB());
 		
 	}
@@ -872,26 +1150,30 @@ public class User_Panel extends JPanel {
 	}
 
 
-	protected void deletePictureForServer(String string) {
+	protected void deletePictureForServer(String string) throws IOException {
 		File file=new File(string);
 		if(file.exists()) {
 			file.delete();
 			JOptionPane.showMessageDialog(null,TransferClass_Message.SUCCESSFUL_DELETE.getValue());
 		}
+		user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.DELETE_PICTURE.getValue(),user.getUsername());
 		
 	}
 
 
 	private void fillRoomComboBox() {
 		Object[]columnsRooms= {
+				Room_Constants.ROOM_CODE.getValue(),
 				Room_Constants.ROOM_TYPE.getValue(),
+				Room_Constants.NUMBER_OF_BEED.getValue(),
 				Room_Constants.PRICE_PER_NIGHT.getValue(),
-				Room_Constants.NUMBER_OF_BEED.getValue()
+				
 		  };
 		
 		dtmRoom.addColumn(columnsRooms[0]);
 		dtmRoom.addColumn(columnsRooms[1]);
 		dtmRoom.addColumn(columnsRooms[2]);
+		dtmRoom.addColumn(columnsRooms[3]);
 		
 		
 		cbTypeOfRoom.addItem(Room_Constants.ORDINARY_ROOM.getValue());
@@ -901,50 +1183,49 @@ public class User_Panel extends JPanel {
 	}
 
 	private void backAllForThisProperty() {
-		// TODO Auto-generated method stub
+		 btnDiscount.setVisible(false);
 		 refreshGlobalVariables();
 		 refreshHotelPicture();
 		 refreshUserInfoField();
 		 refreshHotelInfoField();
 		 refreshRoomAndDiscount();
 		 EnterRoomInTable(listRoom);
-		 EnterDiscountOnTable(listDiscount);
 		 setRatingToNull();
 		 setRating();
 	}
 
 	
 	private void setRatingToNull() {
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl1);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl2);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl3);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl4);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl5);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl1);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl2);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl3);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl4);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl5);
 		
 	}
 
 
 	private void setRating() {
 		if(property.getRating()==1) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
 		}else if(property.getRating()==2) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
 		}else if(property.getRating()==3) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
 		}else if( property.getRating()==4) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl4);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl4);
 		}else if(property.getRating()==5) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl4);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl5);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl4);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl5);
 		}
 		
 	}
@@ -958,32 +1239,51 @@ public class User_Panel extends JPanel {
 		for(int i=0;i<listProperties.size()-1;i=i+2) {
 			property1=(Property) listProperties.get(i);
 			adress1=(Adress) listProperties.get(i+1);
-			String url=AbsolutePath.absolutePath()+PicturesURL.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+adress1.getCountry()+".jpg";
-			dm.addElement(new ComboBoxClass(property1.getName()+" ("+property1.getType_Of_Property()+")",new ImageIcon(url)));
+			String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+adress1.getCountry()+".jpg";
+			int number=0;
+			listDiscount=null;
+			listDiscount=new GenericList<GeneralDomain>();
+			GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+			list=map.get(property1.getName());
+			for(int k=0;k<list.size();k++) {
+				if(list.get(k) instanceof Discount) {
+					listDiscount.add(list.get(k));
+				}
+			}
+			for(int j=0;j<listDiscount.size();j++) {
+				Discount discount=(Discount) listDiscount.get(j);
+				if(property1.getId()==discount.getId_property()) {
+					number++;
+				}
+			}
+			if(number>0) {
+				dm.addElement(new ComboBoxClass(property1.getName()+" ("+property1.getType_Of_Property()+")  !!!(ACTION PRICES)!!!",new ImageIcon(url)));
+			}else if(number==0){
+				dm.addElement(new ComboBoxClass(property1.getName()+" ("+property1.getType_Of_Property()+")",new ImageIcon(url)));
+			}
+			number=0;
+			
 		}
 		//dm.addElement(new ComboBoxClass(null,null));
 		listProperty.setCellRenderer(new RenderCB());
 		listProperty.setModel(dm);
-		listProperty.setSelectedIndex(1);
+		listProperty.setSelectedIndex(0);
 	}
 
 	
 	
-
-	private void EnterDiscountOnTable(GenericList<GeneralDomain> listDiscount2) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	private void EnterRoomInTable(GenericList<GeneralDomain> listRoom2) {
 		Room room=new Room();
 		dtmRoom.setRowCount(0);
+		double discount1=0;
 		for(int i=0;i<listRoom2.size();i=i+2) {
 			room=(Room) listRoom2.get(i);
 			String select=cbTypeOfRoom.getSelectedItem().toString();
 			if(room.getType().equals(cbTypeOfRoom.getSelectedItem().toString())) {
-				Object[]row= {room.getType(),room.getPrice_per_night(),room.getNumber_of_bed()};
-				dtmRoom.addRow(row);
+					Object[]row= {room.getRoom_code(),room.getType(),room.getNumber_of_bed(),room.getPrice_per_night()};
+					dtmRoom.addRow(row);
+				
 			}
 		}
 		
@@ -994,13 +1294,22 @@ public class User_Panel extends JPanel {
 		listRoom=new GenericList<GeneralDomain>();
 		listDiscount=null;
 		listDiscount=new GenericList<GeneralDomain>();
+		listReservation=null;
+		listReservation=new GenericList<GeneralDomain>();
 		int number=map.get(whichProperty).size();
+		boolean excistDiscount=false;
 		for(int i=8;i<number;i++) {
 			if(map.get(whichProperty).get(i) instanceof Room || map.get(whichProperty).get(i) instanceof Room_Info) {
 				listRoom.add(map.get(whichProperty).get(i));
-			}else {
+			}else if(map.get(whichProperty).get(i) instanceof Discount){
 				listDiscount.add(map.get(whichProperty).get(i));
+				excistDiscount=true;
+			}else if(map.get(whichProperty).get(i) instanceof Reservation) {
+				listReservation.add(map.get(whichProperty).get(i));
 			}
+		}
+		if(excistDiscount) {
+			btnDiscount.setVisible(true);
 		}
 		
 	}
@@ -1045,7 +1354,7 @@ public class User_Panel extends JPanel {
 		 this.listAlbum.add((Property_Picutre_Album) list.get(6));
 		 this.listAlbum.add((Property_Picutre_Album) list.get(7));
 		 for(int i=0;i<5;i++) {
-			 String url=PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg";
+			 String url=URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg";
 			 if(!listAlbum.get(i).getPicutre_URL().equals(url)) {
 				 cyrcleList.append(listAlbum.get(i));
 			 }
@@ -1053,7 +1362,7 @@ public class User_Panel extends JPanel {
 		 listAlbum=null;
 		 listAlbum=new GenericList<Property_Picutre_Album>();
 		 this.payment=(PaymentUserCard) list.get(list.size()-1);
-		 setUrl(PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+		 setUrl(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 		 if(payment.getNumber() != 0) {
 			 setDataOnTF(payment);
 		 }
@@ -1061,11 +1370,11 @@ public class User_Panel extends JPanel {
 	}
 
 	private void putPictureOnLabel() {
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl1);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl2);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl3);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl4);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl5);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl1);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl2);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl3);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl4);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl5);
 		
 	}
 
@@ -1119,11 +1428,11 @@ public class User_Panel extends JPanel {
 		 newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equals("png")	) {
 			createPictureForServer(newPictureURL,user);
 			CommonMethod.setNewPicutreOnLabel(newPictureURL, label);
-			user_info.setPictureURL(PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+			user_info.setPictureURL(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 			if(user.getStatus().equals("admin")) {
-				Admin_Panel.setUrl(PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+				Admin_Panel.setUrl(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 			}else {
-				setUrl(PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+				setUrl(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 			}
 			
 		}
@@ -1133,7 +1442,7 @@ public class User_Panel extends JPanel {
 	public static void createPictureForServer(String newPictureURL,User user){
 		try {
 			FileInputStream in=new FileInputStream(newPictureURL);
-			FileOutputStream out=new FileOutputStream(AbsolutePath.absolutePath()+PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+			FileOutputStream out=new FileOutputStream(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 			BufferedInputStream bin=new BufferedInputStream(in);
 			BufferedOutputStream bou=new BufferedOutputStream(out);
 			int b=0;

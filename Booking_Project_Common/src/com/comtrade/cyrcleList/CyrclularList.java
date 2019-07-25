@@ -4,7 +4,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import com.comtrade.constants.PicturesURL;
+import com.comtrade.constants.URL;
 import com.comtrade.domain.property.Property_Picutre_Album;
 
 public class CyrclularList {

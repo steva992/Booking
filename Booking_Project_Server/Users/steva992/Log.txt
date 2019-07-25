@@ -1,0 +1,560 @@
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : Vavilon
+Date : 2019-07-25
+Time : 15:30:20.955
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:31:47.949
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:35:29.410
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:38:40.597
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:39:19.994
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:39:43.851
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:40:21.031
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : Malina
+Date : 2019-07-25
+Time : 15:40:21.431
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:46:53.165
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Default/Man.jpg
+Date : 2019-07-25
+Time : 15:47:13.751
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/steva992/ProfilePicture.jpg
+Date : 2019-07-25
+Time : 15:47:24.576
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Userssteva992/Property/Vavilon/1.jpg
+Date : 2019-07-25
+Time : 15:47:47.104
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:49:09.007
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Userssteva992/Property/Vavilon/1.jpg
+Date : 2019-07-25
+Time : 15:49:19.953
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:49:45.558
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Userssteva992/Property/Vavilon/1.jpg
+Date : 2019-07-25
+Time : 15:49:54.568
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 15:51:27.197
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/steva992/Property/Vavilon/5.jpg
+Date : 2019-07-25
+Time : 15:51:42.110
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : DELETE PROPERTY PICTURE
+Object : /Default/Property.jpg
+Date : 2019-07-25
+Time : 15:51:59.535
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-1 Seconds-21 MiliSecond-47 )
+Date : 2019-07-25
+Time : 15:52:48.230
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 16:07:13.224
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/steva992/Property/Vavilon(Hotel)/1.jpg
+Date : 2019-07-25
+Time : 16:09:09.379
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/steva992/Property/Vavilon(Hotel)/5.jpg
+Date : 2019-07-25
+Time : 16:09:57.717
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/steva992/Property/Vavilon(Hotel)/4.jpg
+Date : 2019-07-25
+Time : 16:10:05.171
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/steva992/Property/Malina(Villa)/1.jpg
+Date : 2019-07-25
+Time : 16:10:16.553
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/steva992/Property/Malina(Villa)/2.jpg
+Date : 2019-07-25
+Time : 16:10:24.480
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/steva992/Property/Malina(Villa)/3.jpg
+Date : 2019-07-25
+Time : 16:10:33.756
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-3 Seconds-26 MiliSecond-955 )
+Date : 2019-07-25
+Time : 16:10:40.165
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 16:10:43.920
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-4 MiliSecond-8 )
+Date : 2019-07-25
+Time : 16:10:47.928
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 16:13:44.968
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-500 )
+Date : 2019-07-25
+Time : 16:13:48.453
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 16:41:14.034
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-07-262019-07-27
+Date : 2019-07-25
+Time : 16:41:49.251
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-37 MiliSecond-109 )
+Date : 2019-07-25
+Time : 16:41:51.128
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 17:02:14.192
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-4 MiliSecond-43 )
+Date : 2019-07-25
+Time : 17:02:18.218
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 17:16:02.634
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-4 MiliSecond-276 )
+Date : 2019-07-25
+Time : 17:16:06.893
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 18:04:07.682
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-07-25
+Time : 18:04:16.874
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-07-25
+Time : 18:04:24.945
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-07-25
+Time : 18:04:32.486
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-26 MiliSecond-195 )
+Date : 2019-07-25
+Time : 18:04:33.876
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 18:04:38.224
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-464 )
+Date : 2019-07-25
+Time : 18:04:41.689
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 18:51:04.759
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-5 MiliSecond-664 )
+Date : 2019-07-25
+Time : 18:51:10.424
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 19:10:13.995
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-91 )
+Date : 2019-07-25
+Time : 19:10:17.071
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 21:22:25.323
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-07-25
+Time : 21:22:35.449
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : LOGIN USER
+Object : steva992
+Date : 2019-07-25
+Time : 21:24:47.854
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-07-25
+Time : 21:25:01.665
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-07-25
+Time : 21:25:21.237
+--------------------------------------------
+
+
+-------------------------------------------
+Username : steva992
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-07-25
+Time : 21:25:33.192
+--------------------------------------------
+
+

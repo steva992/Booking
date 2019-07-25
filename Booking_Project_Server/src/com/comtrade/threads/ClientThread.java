@@ -11,6 +11,7 @@ import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
 import com.comtrade.controlerPL.ControlerPLDiscount;
 import com.comtrade.controlerPL.ControlerPLProperty;
+import com.comtrade.controlerPL.ControlerPLReservation;
 import com.comtrade.controlerPL.ControlerPLRoom;
 import com.comtrade.controlerPL.ControlerPLUser;
 import com.comtrade.domain.user.User_Info;
@@ -66,6 +67,10 @@ public class ClientThread extends Thread {
 			break;
 		case DISCOUNT:
 			transferClass2=ControlerPLDiscount.getInstance().CheckTheOperation(transferClass);
+			send(transferClass2);
+			break;
+		case RESERVATON:
+			transferClass2=ControlerPLReservation.getInstance().CheckTheOperation(transferClass);
 			send(transferClass2);
 			break;	
 		default:

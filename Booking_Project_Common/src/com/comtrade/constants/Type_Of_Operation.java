@@ -27,5 +27,8 @@ public enum Type_Of_Operation {
 	DELETE_DISCOUNT, 
 	
 	
-	ADD_PAYMENT_CARD;
+	ADD_PAYMENT_CARD, 
+	
+	
+	ADD_NEW_REGISTRATION;
 }

@@ -1,10 +1,22 @@
 package com.comtrade.domain.user;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+import com.comtrade.constants.AbsolutePath;
+import com.comtrade.constants.URL;
+import com.comtrade.constants.Type_OF_Operation_TXT;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.genericClasses.GenericList;
 
@@ -157,7 +169,64 @@ public class User implements GeneralDomain,Serializable {
 	}
 
 	
+	public void enterDataOnTXTFle(User user,String Type_Of_Operation,String object) throws IOException {
+		String object1=null;
+		if(Type_Of_Operation.equals(Type_OF_Operation_TXT.USER_LOGOUT.getValue())) {
+			object1="Duration on site";
+			object=calculateTimeOnSite(Long.parseLong(object));
+		}else {
+			object1="Object";
+		}
+		String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.username+"/Log.txt";
+		Path path;
+		File file;
+		FileWriter fileW=null;
+		PrintWriter printW = null;
+		if(Paths.get(url) == null){
+			file = new File(url);
+			fileW=new FileWriter(file);
+			printW=new PrintWriter(fileW,true);
+		}else {
+			file=Paths.get(url).toFile();
+			fileW=new FileWriter(file,true);
+			printW=new PrintWriter(fileW,true);
+		}
+		
+		try {
+			printW.println("-------------------------------------------");
+			printW.println("Username : "+user.username);
+			printW.println("Status : "+user.status);
+			printW.println("Operation : "+Type_Of_Operation);
+			printW.println(object1+" : "+object);
+			printW.println("Date : "+LocalDate.now());
+			printW.println("Time : "+LocalTime.now());
+			printW.println("--------------------------------------------");
+			printW.println("\n");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	private String calculateTimeOnSite(long time) {
+		StringBuilder sb=new StringBuilder();
+		long rest=0;
+		long days=time/86400000;
+		rest=time%86400000;
+		long hours=rest/3600000;
+		rest=time%3600000;
+		long minutes=rest/60000;
+		rest=time%60000;
+		long second=rest/1000;
+		rest=time%1000;
+		long milisecond=rest;
+		sb.append("(Days-"+days+" ");
+		sb.append("Hours-"+hours+" ");
+		sb.append("Minutes-"+minutes+" ");
+		sb.append("Seconds-"+second+" ");
+		sb.append("MiliSecond-"+rest+" )");
+		return sb.toString(); 
+		
+	}
 	
 
 }

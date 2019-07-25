@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.comtrade.constants.PicturesURL;
+import com.comtrade.constants.URL;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.property.Property_Picutre_Album;

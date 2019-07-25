@@ -18,6 +18,7 @@ import com.comtrade.domain.user.User_Info;
 import com.comtrade.doman.room.Room;
 import com.comtrade.doman.room.Room_Info;
 import com.comtrade.genericClasses.GenericList;
+import com.comtrade.reservation.Reservation;
 import com.comtrade.transfer.TransferClass;
 
 public class ControlerKI {
@@ -173,6 +174,14 @@ public class ControlerKI {
 		transferClass.setType_Of_Data(Type_Of_Data.USER);
 		transferClass.setClient_Object_Request(payment);
 		return backDataToJFrame(transferClass);
+	}
+
+	public TransferClass enterReservation(Reservation reservation) throws ClassNotFoundException, IOException {
+		transferClass.setType_Of_operation(Type_Of_Operation.ADD_NEW_REGISTRATION);
+		transferClass.setType_Of_Data(Type_Of_Data.RESERVATON);
+		transferClass.setClient_Object_Request(reservation);
+		return backDataToJFrame(transferClass);
+		
 	}
 	
 

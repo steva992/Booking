@@ -70,6 +70,7 @@ public class ControlerPLUser {
 			case CHANGE_PICTURE_URL_USER:
 				user_info=(User_Info) transferClass.getClient_Object_Request();
 				transferClass2=changePictureURL(user_info);
+				break;
 			case UPDATE_USER:
 				user_info=(User_Info) transferClass.getClient_Object_Request();
 				transferClass2=updateUser(user_info);

@@ -9,7 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.tools.JavaFileObject;
 
-import com.comtrade.constants.PicturesURL;
+import com.comtrade.constants.URL;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.discount.Discount;
 import com.comtrade.domain.property.Adress;

@@ -1,0 +1,160 @@
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : Haway
+Date : 2019-07-25
+Time : 15:55:11.008
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-07-25
+Time : 15:55:31.282
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/tviti94/Property/Haway/1.jpg
+Date : 2019-07-25
+Time : 15:55:50.944
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-07-25
+Time : 15:56:57.349
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/tviti94/Property/Haway(Hotel)/1.jpg
+Date : 2019-07-25
+Time : 15:57:05.714
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-07-25
+Time : 15:58:18.010
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/tviti94/Property/Haway(Hotel)/1.jpg
+Date : 2019-07-25
+Time : 15:58:28.380
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/tviti94/Property/Haway(Hotel)/2.jpg
+Date : 2019-07-25
+Time : 15:58:36.449
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/tviti94/Property/Haway(Hotel)/3.jpg
+Date : 2019-07-25
+Time : 15:58:45.760
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/tviti94/Property/Haway(Hotel)/4.jpg
+Date : 2019-07-25
+Time : 15:58:59.077
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : DELETE PROPERTY PICTURE
+Object : /Default/Property.jpg
+Date : 2019-07-25
+Time : 15:59:15.629
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-1 Seconds-7 MiliSecond-93 )
+Date : 2019-07-25
+Time : 15:59:25.089
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-07-25
+Time : 16:13:53.207
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-6 MiliSecond-271 )
+Date : 2019-07-25
+Time : 16:13:59.479
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-07-25
+Time : 18:20:45.673
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-07-25
+Time : 18:20:51.823
+--------------------------------------------
+
+

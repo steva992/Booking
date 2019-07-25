@@ -11,9 +11,10 @@ import javax.swing.SwingConstants;
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.constants.PicturesURL;
+import com.comtrade.constants.URL;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
+import com.comtrade.constants.Type_OF_Operation_TXT;
 import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.domain.user.User;
 import com.comtrade.genericClasses.GenericList;
@@ -117,6 +118,7 @@ public class Forgot_Password extends JPanel {
 								}else {
 									JOptionPane.showMessageDialog(null,TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
 									Application.setPanelOnLayeredPane(login);
+									user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.CHANGE_PASSWORD.getValue(),user.getUsername());
 								}
 							} catch (ClassNotFoundException e1) {
 								// TODO Auto-generated catch block
@@ -139,7 +141,7 @@ public class Forgot_Password extends JPanel {
 		button.setFont(new Font("Castellar", Font.BOLD, 10));
 		button.setBounds(893, 412, 260, 46);
 		button.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_FORGOT_PASSWORD_BUTTON.getValue(), button);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_FORGOT_PASSWORD_BUTTON.getValue(), button);
 		add(button);
 		
 		JButton button_1 = new JButton("<<< Back To Login");
@@ -152,14 +154,14 @@ public class Forgot_Password extends JPanel {
 		});
 		button_1.setFont(new Font("Castellar", Font.BOLD, 12));
 		button_1.setBounds(10, 21, 244, 46);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_BACK_TO.getValue(), button_1);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_BACK_TO.getValue(), button_1);
 		add(button_1);
 		button_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
 		JLabel lblBackGround = new JLabel("New label");
 		lblBackGround.setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		add(lblBackGround);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_FORGOT_PASSWORD_BACKGROUND.getValue(), lblBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_FORGOT_PASSWORD_BACKGROUND.getValue(), lblBackGround);
 
 	}
 	

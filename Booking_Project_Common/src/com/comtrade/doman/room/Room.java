@@ -14,6 +14,7 @@ public class Room implements Serializable,GeneralDomain{
 	private String type;
 	private double price_per_night;
 	private int number_of_bed;
+	private long room_code;
 	
 	public Room() {
 		
@@ -23,6 +24,22 @@ public class Room implements Serializable,GeneralDomain{
 
 	
 	
+	public long getRoom_code() {
+		return room_code;
+	}
+
+
+
+
+
+	public void setRoom_code(long room_code) {
+		this.room_code = room_code;
+	}
+
+
+
+
+
 	public String getType() {
 		return type;
 	}
@@ -73,13 +90,13 @@ public class Room implements Serializable,GeneralDomain{
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(Price_per_night,Number_Of_Bed,Type,Id_Property)";
+		return "(Price_per_night,Number_Of_Bed,Type,room_code,Id_Property)";
 	}
 
 	@Override
 	public String returnQuestionnaires() {
 		// TODO Auto-generated method stub
-		return " values(?,?,?,?)";
+		return " values(?,?,?,?,?)";
 	}
 
 	@Override
@@ -87,7 +104,8 @@ public class Room implements Serializable,GeneralDomain{
 		preparedStatement.setDouble(1,price_per_night);
 		preparedStatement.setInt(2,number_of_bed);
 		preparedStatement.setString(3,type);
-		preparedStatement.setInt(4,id_property);
+		preparedStatement.setLong(4,room_code);
+		preparedStatement.setInt(5,id_property);
 		return preparedStatement;
 	}
 
@@ -107,6 +125,7 @@ public class Room implements Serializable,GeneralDomain{
 				room.setPrice_per_night(resultSet.getDouble("Price_per_night"));
 				room.setNumber_of_bed(resultSet.getInt("Number_Of_Bed"));
 				room.setType(resultSet.getString("Type"));
+				room.setRoom_code(resultSet.getLong("room_code"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -137,6 +156,7 @@ public class Room implements Serializable,GeneralDomain{
 				room.setPrice_per_night(resultSet.getDouble("Price_per_night"));
 				room.setNumber_of_bed(resultSet.getInt("Number_Of_Bed"));
 				room.setType(resultSet.getString("Type"));
+				room.setRoom_code(resultSet.getLong("room_code"));
 				listRoom.add(room);
 			}
 		} catch (SQLException e) {
@@ -152,6 +172,7 @@ public class Room implements Serializable,GeneralDomain{
 		stringBuffer.append("Price_per_night=? ,");
 		stringBuffer.append("Number_Of_Bed=? ,");
 		stringBuffer.append("Type=? ,");
+		stringBuffer.append("room_code=? ,");
 		stringBuffer.append("Id_Property=? ");
 		return stringBuffer.toString();
 		

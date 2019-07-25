@@ -13,9 +13,10 @@ import org.w3c.dom.UserDataHandler;
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.constants.PicturesURL;
+import com.comtrade.constants.URL;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
+import com.comtrade.constants.Type_OF_Operation_TXT;
 import com.comtrade.constants.Type_Of_Property;
 import com.comtrade.controlerKI.ControlerComboBox;
 import com.comtrade.controlerKI.ControlerKI;
@@ -86,7 +87,7 @@ public class Property_Created extends JPanel {
 		});
 		btfBackToLog.setFont(new Font("Castellar", Font.BOLD, 14));
 		btfBackToLog.setBounds(21, 21, 287, 42);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_BACK_TO.getValue(),btfBackToLog);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_BACK_TO.getValue(),btfBackToLog);
 		add(btfBackToLog);
 		
 		JLabel lblNameOfProperty = new JLabel("Name Of Property *");
@@ -173,7 +174,7 @@ public class Property_Created extends JPanel {
 						GeoLocation geoLocation=new GeoLocation();
 						geoLocation.setLatitude(Double.parseDouble(Latitude));
 						geoLocation.setLongitude(Double.parseDouble(Longitude));
-						property_picture_album.setPicutre_URL(PicturesURL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg");
+						property_picture_album.setPicutre_URL(URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg");
 						GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 						list.add(user);
 						list.add(user_info);
@@ -186,12 +187,14 @@ public class Property_Created extends JPanel {
 							String poruka=transferClass.getMessage();
 							if(poruka.equals(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue())) {
 								JOptionPane.showMessageDialog(null,TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
-								
-								File userFile=new File(AbsolutePath.absolutePath()+PicturesURL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
-								if(!userFile.exists()) {
+								String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+URL.PROFILE_PICTURE_HOTELS.getValue();
+								File userFile=new File(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
+								File userPropertyFile=new File(url);
+								if(!userFile.exists() && !userPropertyFile.exists()) {
 									userFile.mkdir();
+									userPropertyFile.mkdir();
 								}
-								File propertyFile=new File(AbsolutePath.absolutePath()+PicturesURL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getType_Of_Property()+"/"+name);
+								File propertyFile=new File(url+"/"+name+"("+property.getType_Of_Property()+")");
 								if(!propertyFile.exists()) {
 									propertyFile.mkdir();
 									
@@ -199,15 +202,17 @@ public class Property_Created extends JPanel {
 								if(user.getId() !=0) {
 									JPanel admin=null;
 									try {
-										admin = new Admin_Panel(user);
+										admin = new Admin_Panel(user);user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_NEW.getValue(), property.getName());
 									} catch (URISyntaxException e1) {
 										// TODO Auto-generated catch block
 										e1.printStackTrace();
 									}
 									Application.setPanelOnLayeredPane(admin);
+									
 								}else {
 									JPanel login=new Login();
 									Application.setPanelOnLayeredPane(login);
+									user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER_AND_PROPERTY.getValue(), property.getName());
 								}
 								
 							}else if(poruka.equals(TransferClass_Message.EXCIST_PROPERTY.getValue())){
@@ -230,7 +235,7 @@ public class Property_Created extends JPanel {
 			}
 		});
 		btnSignUpYou.setBounds(21, 647, 287, 42);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_CREATED.getValue(),btnSignUpYou);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_CREATED.getValue(),btnSignUpYou);
 		add(btnSignUpYou);
 		
 		JLabel label_6 = new JLabel("Example");
@@ -287,7 +292,7 @@ public class Property_Created extends JPanel {
 		label_11.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent arg0) {
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
 			}
 		});
 		label_11.addMouseListener(new MouseAdapter() {
@@ -302,17 +307,17 @@ public class Property_Created extends JPanel {
 			}
 		});
 		label_11.setBounds(443, 637, 56, 52);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_11);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_11);
 		add(label_11);
 		
 		label_4 = new JLabel("New label");
 		label_4.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_3);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_4);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_3);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_4);
 			}
 		});
 		label_4.addMouseListener(new MouseAdapter() {
@@ -327,16 +332,16 @@ public class Property_Created extends JPanel {
 			}
 		});
 		label_4.setBounds(656, 637, 56, 52);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_4);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_4);
 		add(label_4);
 		
 		label_3 = new JLabel("New label");
 		label_3.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_3);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_3);
 				
 			}
 		});
@@ -352,18 +357,18 @@ public class Property_Created extends JPanel {
 			}
 		});
 		label_3.setBounds(582, 637, 56, 52);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_3);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_3);
 		add(label_3);
 		
 		label_5 = new JLabel("New label");
 		label_5.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_3);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_4);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_5);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_3);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_4);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_5);
 			}
 		});
 		label_5.addMouseListener(new MouseAdapter() {
@@ -378,7 +383,7 @@ public class Property_Created extends JPanel {
 			}
 		});
 		label_5.setBounds(733, 637, 56, 52);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_5);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_5);
 		add(label_5);
 		
 		JLabel lblNewLabel = new JLabel("RATING");
@@ -391,8 +396,8 @@ public class Property_Created extends JPanel {
 		label_2.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_11);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), label_2);
 				
 			}
 		});
@@ -408,7 +413,7 @@ public class Property_Created extends JPanel {
 			}
 		});
 		label_2.setBounds(509, 637, 56, 52);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_2);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_2);
 		add(label_2);
 		
 		tfLongitude = new JTextField();
@@ -432,7 +437,7 @@ public class Property_Created extends JPanel {
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setForeground(Color.BLACK);
 		lblBackground.setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_BACKGROUND.getValue(), lblBackground);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_BACKGROUND.getValue(), lblBackground);
 		add(lblBackground);
 		addItemAtPropertyComboBox();
 		addItemToCountry();
@@ -440,11 +445,11 @@ public class Property_Created extends JPanel {
 	}
 	
 	protected void setAllToEmpty() {
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_11);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_2);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_3);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_4);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_5);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_11);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_2);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_3);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_4);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_5);
 		
 	}
 

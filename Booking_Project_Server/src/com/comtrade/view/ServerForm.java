@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.constants.PicturesURL;
+import com.comtrade.constants.URL;
 import com.comtrade.controlerPL.ControlerPLServer;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.property.Adress;
@@ -113,7 +113,7 @@ public class ServerForm extends JFrame {
 		lblBackGround = new JLabel("New label");
 		//lblBackGround.setIcon(new ImageIcon(ServerForm.class.getResource("/default1/Woman.jpg")));
 		lblBackGround.setBounds(0,0,784,759);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+PicturesURL.PICTURE_FOR_SERVER.getValue()+"/Server.jpg",lblBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_FOR_SERVER.getValue()+"/Server.jpg",lblBackGround);
 		contentPane.add(lblBackGround);
 		ControlerPLServer.getInstance().setServerForm(this);
 		

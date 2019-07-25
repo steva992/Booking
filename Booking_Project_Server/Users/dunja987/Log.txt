@@ -1,0 +1,1670 @@
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : REGISTRATION USER
+Object : dunja987
+Date : 2019-07-25
+Time : 15:54:06.199
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:01:17.476
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:01:53.983
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:02:33.564
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:02:53.044
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:03:37.612
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:03:58.867
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:05:04.385
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:10:52.111
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:11:54.854
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:12:24.646
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:12:39.665
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:13:08.022
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:14:03.625
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:15:27.319
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:17:17.107
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:17:47.037
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : USER REGISTRATED PAYMENT CARD
+Object : 5656
+Date : 2019-07-25
+Time : 16:18:35.364
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:20:46.274
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:22:51.981
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:23:20.849
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-5 MiliSecond-998 )
+Date : 2019-07-25
+Time : 16:23:26.834
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:24:36.655
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:24:53.929
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:31:10.760
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-10 MiliSecond-93 )
+Date : 2019-07-25
+Time : 16:31:20.839
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:31:56.310
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:32:06.794
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:32:26.353
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:41:59.606
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:47:11.829
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:47:43.350
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:49:05.782
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:49:38.955
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:49:52.760
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:51:24.719
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:52:26.912
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:54:55.729
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 16:56:06.953
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:02:21.915
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-438 )
+Date : 2019-07-25
+Time : 17:02:25.354
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:05:16.487
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:07:48.559
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:08:47.153
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:12:49.381
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:16:10.722
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:20:12.478
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:22:35.896
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:23:17.830
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:24:55.211
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:25:43.163
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:28:59.906
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:29:52.951
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-11 MiliSecond-786 )
+Date : 2019-07-25
+Time : 17:30:04.723
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:30:13.124
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:31:06.159
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:31:42.812
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:40:36.470
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:40:52.779
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:45:41.348
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:48:40.179
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:51:01.747
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:51:29.684
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:51:45.090
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:52:08.665
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:53:01.434
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 17:53:29.129
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:01:20.637
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:01:55.423
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:03:31.864
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-17 MiliSecond-732 )
+Date : 2019-07-25
+Time : 18:03:49.594
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:04:48.922
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:13:42.293
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:14:08.501
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:14:40.109
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:15:19.102
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:17:20.863
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:18:28.543
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:19:34.110
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-1 Seconds-25 MiliSecond-319 )
+Date : 2019-07-25
+Time : 18:20:59.427
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:21:04.315
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:21:55.913
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:22:42.574
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:24:08.534
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:30:01.753
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:30:29.038
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:44:56.395
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:46:52.142
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-1 Seconds-16 MiliSecond-566 )
+Date : 2019-07-25
+Time : 18:48:08.706
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:48:19.789
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:50:46.924
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-14 MiliSecond-274 )
+Date : 2019-07-25
+Time : 18:51:01.196
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:53:12.797
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:55:04.159
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:55:52.925
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:56:39.208
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 18:58:49.358
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:01:03.230
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:01:28.291
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:02:31.375
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:07:05.895
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:09:01.042
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:10:20.752
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:11:56.533
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:12:30.127
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:12:51.706
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 19:13:58.094
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 21:27:29.036
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 21:28:34.193
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 21:32:52.053
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 21:33:16.317
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 21:39:00.405
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 21:42:00.165
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 21:42:18.108
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 21:50:05.877
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 21:54:03.044
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:36:06.910
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:36:32.699
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:39:38.306
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:41:16.659
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:45:30.327
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:46:51.432
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-07-27 2019-07-31
+Date : 2019-07-25
+Time : 23:47:19.612
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:53:40.963
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:56:48.797
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:57:57.635
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:58:21.292
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:58:31.165
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-25
+Time : 23:59:07.991
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:01:40.545
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:03:05.204
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:04:07.914
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:05:04.478
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-07-28 2019-07-30
+Date : 2019-07-26
+Time : 00:05:50.263
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:06:36.966
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:07:45.212
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:08:49.141
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:12:34.167
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:14:15.249
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:15:47.063
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:16:18.418
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:18:16.231
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:19:32.750
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:23:01.419
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-07-29 2019-07-31
+Date : 2019-07-26
+Time : 00:23:31.411
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:24:31.237
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:26:13.084
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-07-31 2019-09-18
+Date : 2019-07-26
+Time : 00:26:30.254
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:27:46.159
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:29:13.527
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-11-12 2019-12-27
+Date : 2019-07-26
+Time : 00:29:39.117
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:31:49.423
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-07-29 2019-07-31
+Date : 2019-07-26
+Time : 00:32:03.847
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:39:55.157
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:42:11.926
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:46:25.428
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:47:16.890
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 00:48:34.853
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-07-27 2019-07-28
+Date : 2019-07-26
+Time : 00:48:58.275
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 01:15:44.863
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 01:16:04.045
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 01:16:46.071
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 01:19:36.347
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 01:20:00.428
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 01:22:02.174
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 01:22:24.414
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : user
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-07-26
+Time : 01:25:15.497
+--------------------------------------------
+
+
