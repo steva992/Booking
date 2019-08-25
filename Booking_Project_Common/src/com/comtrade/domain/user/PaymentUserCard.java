@@ -14,18 +14,11 @@ public class PaymentUserCard implements Serializable,GeneralDomain{
 	private String type;
 	private long number;
 	private Date expiration_date;
-	private int id_user;
+	private String User_Username;
 	
 	
 
-	public Date getExpiration_date() {
-		return expiration_date;
-	}
-
-	public void setExpiration_date(Date expiration_date) {
-		this.expiration_date = expiration_date;
-	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -50,12 +43,20 @@ public class PaymentUserCard implements Serializable,GeneralDomain{
 		this.number = number;
 	}
 
-	public int getId_user() {
-		return id_user;
+	public Date getExpiration_date() {
+		return expiration_date;
 	}
 
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+	public void setExpiration_date(Date expiration_date) {
+		this.expiration_date = expiration_date;
+	}
+
+	public String getUser_Username() {
+		return User_Username;
+	}
+
+	public void setUser_Username(String user_Username) {
+		User_Username = user_Username;
 	}
 
 	@Override
@@ -67,7 +68,7 @@ public class PaymentUserCard implements Serializable,GeneralDomain{
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(Type,Number,expiration_date,id_user)";
+		return "(Type,Number,expiration_date,User_Username)";
 	}
 
 	@Override
@@ -81,14 +82,14 @@ public class PaymentUserCard implements Serializable,GeneralDomain{
 		preparedStatement.setString(1,type);
 		preparedStatement.setLong(2,number);
 		preparedStatement.setDate(3,expiration_date);
-		preparedStatement.setInt(4,id_user);
+		preparedStatement.setString(4,User_Username);
 		return preparedStatement;
 	}
 
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "id_user";
+		return "User_Username";
 	}
 
 	@Override
@@ -98,7 +99,7 @@ public class PaymentUserCard implements Serializable,GeneralDomain{
 			payment.setId(resultSet.getInt("id_Card"));
 			payment.setType(resultSet.getString("Type"));
 			payment.setNumber(resultSet.getInt("Number"));
-			payment.setId_user(resultSet.getInt("id_user"));
+			payment.setUser_Username(resultSet.getString("User_Username"));
 			payment.setExpiration_date(resultSet.getDate("expiration_date"));
 		}
 		return payment;
@@ -112,7 +113,7 @@ public class PaymentUserCard implements Serializable,GeneralDomain{
 			payment.setId(resultSet.getInt("id_Card"));
 			payment.setType(resultSet.getString("Type"));
 			payment.setNumber(resultSet.getInt("Number"));
-			payment.setId_user(resultSet.getInt("id_user"));
+			payment.setUser_Username(resultSet.getString("User_Username"));
 			payment.setExpiration_date(resultSet.getDate("expiration_date"));
 			list.add(payment);
 		}
@@ -131,15 +132,42 @@ public class PaymentUserCard implements Serializable,GeneralDomain{
 		stringBuffer.append("id_Card=? ,");
 		stringBuffer.append("Type=? ,");
 		stringBuffer.append("Number=? ,");
-		stringBuffer.append("id_user=? ,");
+		stringBuffer.append("User_Username=? ,");
 		stringBuffer.append("expiration_dateL=? ");
 		return stringBuffer.toString();
 	}
 
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
 		return "id_Card";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((User_Username == null) ? 0 : User_Username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PaymentUserCard other = (PaymentUserCard) obj;
+		if (User_Username == null) {
+			if (other.User_Username != null)
+				return false;
+		} else if (!User_Username.equals(other.User_Username))
+			return false;
+		return true;
+	}
+	
+	
 
 }

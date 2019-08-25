@@ -30,6 +30,10 @@ public class GenericList<E extends GeneralDomain> implements Generic<GenericList
 			list.remove(index);
 		}
 		
+		public void delete(GeneralDomain generalDomain) {
+			list.remove(generalDomain);
+		}
+		
 		
 		
 		public void addAll(GenericList<E> genericList) {

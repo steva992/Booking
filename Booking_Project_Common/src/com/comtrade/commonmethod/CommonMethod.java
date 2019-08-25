@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.tools.JavaFileObject;
 
 import com.comtrade.constants.URL;
@@ -40,6 +41,12 @@ public class CommonMethod {
 		Image image1=refactoringSetPictureMethod(pictureURL);
 		Image newImg=image1.getScaledInstance(btnNewButton_3.getWidth()/4,(int) (btnNewButton_3.getHeight()/1.25f),Image.SCALE_SMOOTH);
 		btnNewButton_3.setIcon(new ImageIcon(newImg));
+	}
+
+	public static void setNewPicutreOnRadioButton(String string, JRadioButton rdbtnChat) {
+		Image image1=refactoringSetPictureMethod(string);
+		Image newImg=image1.getScaledInstance(rdbtnChat.getWidth(),(int) (rdbtnChat.getHeight()/1.25f),Image.SCALE_SMOOTH);
+		rdbtnChat.setIcon(new ImageIcon(newImg));
 	}
 	
 	

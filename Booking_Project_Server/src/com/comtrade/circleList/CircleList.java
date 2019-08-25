@@ -5,21 +5,21 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class CircleList {
-	private Node head;
-	private Node tail;
-	private Node current;
+	private volatile Node head;
+	private volatile Node tail;
+	private volatile Node current;
 	
-	public ImageIcon next() {
+	public synchronized ImageIcon next() {
 		current=current.getNext();
 		return new ImageIcon(current.data);
 	}
 	
-	public ImageIcon previous() {
+	public synchronized ImageIcon previous() {
 		current=current.getPrevious();
 		return new ImageIcon(current.data);
 	}
 	
-	public void append(String img) {
+	public synchronized void append(String img) {
 		Node newNode=new Node(new ImageIcon(this.getClass().getResource(img)).getImage());
 		if(head==null) {
 			head=newNode;

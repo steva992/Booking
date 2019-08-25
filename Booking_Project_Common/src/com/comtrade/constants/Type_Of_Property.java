@@ -1,6 +1,7 @@
 package com.comtrade.constants;
 
 public enum Type_Of_Property {
+	
 	HOTEL("Hotel"),
 	MOTEL("Motel"),
 	HOSTEL("Hostel"),

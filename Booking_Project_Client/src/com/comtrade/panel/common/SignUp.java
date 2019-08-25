@@ -6,15 +6,21 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import org.omg.PortableInterceptor.SUCCESSFUL;
+
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
+import com.comtrade.constants.Discount_Contstants;
 import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.URL;
+import com.comtrade.controlerClient.ControlerComboBox;
+import com.comtrade.controlerClient.ControlerUI;
+import com.comtrade.controlerClient.ControlerUser;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.constants.Type_OF_Operation_TXT;
-import com.comtrade.controlerKI.ControlerComboBox;
-import com.comtrade.controlerKI.ControlerKI;
+import com.comtrade.constants.Type_Of_Data;
+import com.comtrade.constants.Type_Of_Operation;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
@@ -29,6 +35,17 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSessionBindingEvent;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -40,6 +57,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -224,18 +243,23 @@ public class SignUp extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				GenericList<GeneralDomain>list=grabForPanelForALL();
 				try {
-					if(list !=null) {
-						TransferClass transferClass=ControlerKI.getInstance().checkIfUserExcist(list.get(0));
-						User user=(User) transferClass.getServer_Object_Response();
-						if(user.getId() > 0) {
-							JOptionPane.showMessageDialog(null,TransferClass_Message.EXCIST_USERNAME.getValue());
-						}else {
-							user=(User) list.get(0);
-							User_Info user_Info=(User_Info) list.get(1);
-							JPanel propertyCreate=new Property_Created(user,user_Info);
-							Application.setPanelOnLayeredPane(propertyCreate);
+					
+					if(list.size() > 0) {
+						ControlerUI.getInstance().sendToServer(Type_Of_Operation.CHECK_USER, Type_Of_Data.USER, list);
+						User user=ControlerUser.getInstance().getUser();
+						String message=ControlerUser.getInstance().getMessage();
+						ControlerUser.getInstance().setNumber(0);
+						if(message != null) {
+							if(message.equals(TransferClass_Message.EXCIST_USERNAME.getValue())) {
+								JOptionPane.showMessageDialog(null,message);
+							}else {
+								user=(User) list.get(0);
+								User_Info user_Info=(User_Info) list.get(1);
+								JPanel propertyCreate=new Property_Created(user,user_Info,"login");
+								Application.setPanelOnLayeredPane(propertyCreate);
+							}
 						}
-					}
+					}	
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -256,26 +280,41 @@ public class SignUp extends JPanel {
 		btnSignUpPanel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GenericList<GeneralDomain>list=grabForPanelForALL();
-				try {
 					if(list.size()>0) {
-						String poruka=ControlerKI.getInstance().enterTheUserAndAdditionalUser(list).getMessage();
-						JOptionPane.showMessageDialog(null,poruka);
-						JPanel login=new Login();
-						Application.setPanelOnLayeredPane(login);
-						User user=(User) list.get(0);
-						File userFile=new File(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
-						if(!userFile.exists()) {
-							userFile.mkdir();
+						try {
+							User user=(User) list.get(0);
+							User_Info user_inf=(User_Info) list.get(1);
+							int number=sendVerificationEmail(user_inf.getEmail());
+							ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_USER,Type_Of_Data.USER,list);
+							String message=ControlerUser.getInstance().getMessage();
+							ControlerUser.getInstance().setNumber(0);
+							File userFile=new File(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
+							if(!userFile.exists()) {
+								userFile.mkdir();
+							}
+							String messageEmail="We are sent verification code on your email adress!\nPlease Enter your verification code :";
+							if(!(JOptionPane.showInputDialog(null, messageEmail) == null)) {
+								
+								int answer=Integer.parseInt(JOptionPane.showInputDialog(null, messageEmail));
+								while(answer !=number) {
+									JOptionPane.showMessageDialog(null,"INCORECT NUMBER,PLEASE CHECK YOUR EMAIL AGAIN");
+									answer=Integer.parseInt(JOptionPane.showInputDialog(null, messageEmail));
+								}
+									JOptionPane.showMessageDialog(null,message);
+									JPanel login=new Login();
+									Application.setPanelOnLayeredPane(login);
+									user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER.getValue(),user.getUsername());
+								
 						}
-						user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER.getValue(),user.getUsername());
+							
+						} catch (ClassNotFoundException | IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}	
+						
 					}
-				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+					
+				
 			}
 		});
 		btnSignUpPanel.setBounds(41, 649, 211, 41);
@@ -328,6 +367,40 @@ public class SignUp extends JPanel {
 		fillContryComboBox();
 	}
 	
+	protected Integer sendVerificationEmail(String string) {
+		double number=Math.random()*10000000;
+		String number1=String.valueOf(Math.round(number));
+		Properties prop = new Properties();
+        
+        prop.put("mail.smtp.auth","true");
+        prop.put("mail.smtp.starttls.enable","true");
+        prop.put("mail.smtp.host", AbsolutePath.SERVER);
+        prop.put("mail.smtp.port","587");
+        
+        
+        Session session = Session.getInstance(prop,new Authenticator() {
+        	
+        	@Override
+        	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+        		return new javax.mail.PasswordAuthentication(AbsolutePath.username, AbsolutePath.password);
+        	}
+		});
+
+        Message message = new MimeMessage(session);
+        try {
+            message.setFrom(new InternetAddress(AbsolutePath.username));
+            message.setRecipient( Message.RecipientType.TO,new InternetAddress(string));
+            message.setSubject("BOOKING VERIFICATION");
+            message.setText("Your verification code is "+ number1 +"\nTHANKS FOR RESERVATION!");
+			Transport.send(message);
+			System.out.println("Poruka je polsata");
+		} catch (MessagingException e) {
+			System.out.println("Poruka nije polsata");
+			e.printStackTrace();
+		}
+		return Integer.valueOf(number1);
+	}
+
 	private void fillContryComboBox() {
 			List<List<String>>list=ControlerComboBox.getInstance().fillContryComboBox();
 			  for(int i=0;i<list.size();i++) {
@@ -367,6 +440,7 @@ public class SignUp extends JPanel {
 						user.setStatus("user");
 					}
 					User_Info user_info=new User_Info();
+					user_info.setUser_Username(user.getUsername());
 					user_info.setName(name);
 					user_info.setEmail(email);
 					user_info.setGender(gender);

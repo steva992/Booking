@@ -14,17 +14,9 @@ public class Adress implements GeneralDomain,Serializable{
 	private String Street;
 	private String City;
 	private int houseNumber;
-	private int id_property;
-	
-	public Adress(int id_adress, String country, String street, String city, int houseNumber, int id_geoLocation) {
-		super();
-		this.id_adress = id_adress;
-		Country = country;
-		Street = street;
-		City = city;
-		this.houseNumber = houseNumber;
-		this.id_property = id_geoLocation;
-	}
+	private int property_code;
+	private int adress_code;
+
 	
 	
 	public Adress() {
@@ -34,9 +26,17 @@ public class Adress implements GeneralDomain,Serializable{
 
 	
 
+	
+
+
 	public int getId_adress() {
 		return id_adress;
 	}
+
+
+
+
+
 
 
 	public void setId_adress(int id_adress) {
@@ -44,9 +44,19 @@ public class Adress implements GeneralDomain,Serializable{
 	}
 
 
+
+
+
+
+
 	public String getCountry() {
 		return Country;
 	}
+
+
+
+
+
 
 
 	public void setCountry(String country) {
@@ -54,9 +64,19 @@ public class Adress implements GeneralDomain,Serializable{
 	}
 
 
+
+
+
+
+
 	public String getStreet() {
 		return Street;
 	}
+
+
+
+
+
 
 
 	public void setStreet(String street) {
@@ -64,9 +84,19 @@ public class Adress implements GeneralDomain,Serializable{
 	}
 
 
+
+
+
+
+
 	public String getCity() {
 		return City;
 	}
+
+
+
+
+
 
 
 	public void setCity(String city) {
@@ -74,9 +104,19 @@ public class Adress implements GeneralDomain,Serializable{
 	}
 
 
+
+
+
+
+
 	public int getHouseNumber() {
 		return houseNumber;
 	}
+
+
+
+
+
 
 
 	public void setHouseNumber(int houseNumber) {
@@ -84,14 +124,49 @@ public class Adress implements GeneralDomain,Serializable{
 	}
 
 
-	public int getId_property() {
-		return id_property;
+
+
+
+
+
+	public int getProperty_code() {
+		return property_code;
 	}
 
 
-	public void setId_property(int id_property) {
-		this.id_property = id_property;
+
+
+
+
+
+	public void setProperty_code(int property_code) {
+		this.property_code = property_code;
 	}
+
+
+
+
+
+
+
+	public int getAdress_code() {
+		return adress_code;
+	}
+
+
+
+
+
+
+
+	public void setAdress_code(int adress_code) {
+		this.adress_code = adress_code;
+	}
+
+
+
+
+
 
 
 	@Override
@@ -104,14 +179,14 @@ public class Adress implements GeneralDomain,Serializable{
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(City,Street,Number,Country,id_property)";
+		return "(City,Street,Number,Country,property_code,adress_code)";
 	}
 
 
 	@Override
 	public String returnQuestionnaires() {
 		// TODO Auto-generated method stub
-		return " values (?,?,?,?,?)";
+		return " values (?,?,?,?,?,?)";
 	}
 
 
@@ -121,7 +196,8 @@ public class Adress implements GeneralDomain,Serializable{
 		preparedStatement.setString(2,Street);
 		preparedStatement.setInt(3,houseNumber);
 		preparedStatement.setString(4,Country);
-		preparedStatement.setInt(5,id_property);
+		preparedStatement.setInt(5,property_code);
+		preparedStatement.setInt(6,adress_code);
 		return preparedStatement;
 	}
 
@@ -129,7 +205,7 @@ public class Adress implements GeneralDomain,Serializable{
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "id_property";
+		return "property_code";
 	}
 
 
@@ -143,7 +219,8 @@ public class Adress implements GeneralDomain,Serializable{
 				adress.setStreet(resultSet.getString("Street"));
 				adress.setHouseNumber(resultSet.getInt("Number"));
 				adress.setCountry(resultSet.getString("Country"));
-				adress.setId_property(resultSet.getInt("id_property"));
+				adress.setProperty_code(resultSet.getInt("property_code"));
+				adress.setAdress_code(resultSet.getInt("adress_code"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -156,7 +233,7 @@ public class Adress implements GeneralDomain,Serializable{
 	@Override
 	public PreparedStatement setPSforID(PreparedStatement preparedStatement){
 		try {
-			preparedStatement.setInt(1,id_adress);
+			preparedStatement.setInt(1,adress_code);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,20 +255,55 @@ public class Adress implements GeneralDomain,Serializable{
 		stringBuffer.append("City=? ,");
 		stringBuffer.append("Street=? ,");
 		stringBuffer.append("Number=? ,");
-		stringBuffer.append("Country=? ");
+		stringBuffer.append("Country=? ,");
+		stringBuffer.append("adress_code=? ");
 		return stringBuffer.toString();
 	}
 
 
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
-		return "id_Adress";
+		return "adress_code";
+	}
+
+
+
+
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + adress_code;
+		return result;
+	}
+
+
+
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Adress other = (Adress) obj;
+		if (adress_code != other.adress_code)
+			return false;
+		return true;
 	}
 
 
 	
-
+	
 
 	
 	

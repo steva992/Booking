@@ -12,6 +12,7 @@ import com.comtrade.constants.URL;
 import com.comtrade.domain.user.User;
 import com.comtrade.proxy.IProxy;
 import com.comtrade.proxy.ProxyLogin;
+import com.comtrade.threads.ClientThreadResponse;
 import com.comtrade.view.frame.Application;
 
 import javax.swing.JTextField;

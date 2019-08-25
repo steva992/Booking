@@ -12,17 +12,15 @@ import com.comtrade.genericClasses.GenericList;
 public class Reservation implements Serializable,GeneralDomain{
 	
 	private int idReservation;
-	private int idUser;
-	private int IdRoom;
+	private String User_Username;
+	private int room_code;
 	private int numberAdults;
 	private int numberChildren;
 	private Date checkIn;
 	private Date checkOut;
 	private int numberNights;
 	private double amount;
-	
-	
-
+	private int reservation_code;
 	
 
 	public int getIdReservation() {
@@ -33,12 +31,20 @@ public class Reservation implements Serializable,GeneralDomain{
 		this.idReservation = idReservation;
 	}
 
-	public int getIdUser() {
-		return idUser;
+	public String getUser_Username() {
+		return User_Username;
 	}
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setUser_Username(String user_Username) {
+		User_Username = user_Username;
+	}
+
+	public int getRoom_code() {
+		return room_code;
+	}
+
+	public void setRoom_code(int room_code) {
+		this.room_code = room_code;
 	}
 
 	public int getNumberAdults() {
@@ -89,12 +95,12 @@ public class Reservation implements Serializable,GeneralDomain{
 		this.amount = amount;
 	}
 
-	public int getIdRoom() {
-		return IdRoom;
+	public int getReservation_code() {
+		return reservation_code;
 	}
 
-	public void setIdRoom(int idRoom) {
-		IdRoom = idRoom;
+	public void setReservation_code(int reservation_code) {
+		this.reservation_code = reservation_code;
 	}
 
 	@Override
@@ -106,25 +112,26 @@ public class Reservation implements Serializable,GeneralDomain{
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(Id_User,Number_Of_Adults,Number_Of_Children,Id_Room,Check_In,Check_Out,number_nights,amount_reservation)";
+		return "(User_Username,Number_Of_Adults,Number_Of_Children,room_code,Check_In,Check_Out,number_nights,amount_reservation,reservation_code)";
 	}
 
 	@Override
 	public String returnQuestionnaires() {
 		// TODO Auto-generated method stub
-		return " values(?,?,?,?,?,?,?,?)";
+		return " values(?,?,?,?,?,?,?,?,?)";
 	}
 
 	@Override
 	public PreparedStatement setPS(PreparedStatement preparedStatement) throws SQLException {
-		preparedStatement.setInt(1,idUser);
+		preparedStatement.setString(1,User_Username);
 		preparedStatement.setInt(2,numberAdults);
 		preparedStatement.setInt(3,numberChildren);
-		preparedStatement.setInt(4,IdRoom);
+		preparedStatement.setInt(4,room_code);
 		preparedStatement.setDate(5,checkIn);
 		preparedStatement.setDate(6,checkOut);
 		preparedStatement.setInt(7,numberNights);
 		preparedStatement.setDouble(8,amount);
+		preparedStatement.setLong(9,reservation_code);
 		
 		return preparedStatement;
 	}
@@ -132,7 +139,7 @@ public class Reservation implements Serializable,GeneralDomain{
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "idRoom";
+		return "room_code";
 	}
 
 	@Override
@@ -140,14 +147,15 @@ public class Reservation implements Serializable,GeneralDomain{
 		Reservation reservation=new Reservation();
 		if(resultSet.next()) {
 			reservation.setIdReservation(resultSet.getInt("Id_Reservation"));
-			reservation.setIdUser(resultSet.getInt("Id_User"));
+			reservation.setUser_Username(resultSet.getString("User_Username"));
 			reservation.setNumberAdults(resultSet.getInt("Number_Of_Adults"));
 			reservation.setNumberChildren(resultSet.getInt("Number_Of_Children"));
-			reservation.setIdRoom(resultSet.getInt("Id_Room"));
+			reservation.setRoom_code(resultSet.getInt("room_code"));
 			reservation.setCheckIn(resultSet.getDate("Check_In"));
 			reservation.setCheckOut(resultSet.getDate("Check_Out"));
 			reservation.setNumberNights(resultSet.getInt("number_nights"));
 			reservation.setAmount(resultSet.getDouble("amount_reservation"));
+			reservation.setReservation_code(resultSet.getInt("reservation_code"));
 		}
 		return reservation;
 	}
@@ -158,43 +166,83 @@ public class Reservation implements Serializable,GeneralDomain{
 		while(resultSet.next()) {
 			Reservation reservation=new Reservation();
 			reservation.setIdReservation(resultSet.getInt("Id_Reservation"));
-			reservation.setIdUser(resultSet.getInt("Id_User"));
+			reservation.setUser_Username(resultSet.getString("User_Username"));
 			reservation.setNumberAdults(resultSet.getInt("Number_Of_Adults"));
 			reservation.setNumberChildren(resultSet.getInt("Number_Of_Children"));
-			reservation.setIdRoom(resultSet.getInt("Id_Room"));
+			reservation.setRoom_code(resultSet.getInt("room_code"));
 			reservation.setCheckIn(resultSet.getDate("Check_In"));
 			reservation.setCheckOut(resultSet.getDate("Check_Out"));
 			reservation.setNumberNights(resultSet.getInt("number_nights"));
 			reservation.setAmount(resultSet.getDouble("amount_reservation"));
+			reservation.setReservation_code(resultSet.getInt("reservation_code"));
 			list.add(reservation);
 		}
-		return null;
+		return list;
 	}
 
 	@Override
 	public PreparedStatement setPSforID(PreparedStatement preparedStatement) throws SQLException {
-		preparedStatement.setInt(1,idReservation);
-		return null;
+		preparedStatement.setInt(1,room_code);
+		return preparedStatement;
 	}
 
 	@Override
 	public String setColumnForUpdate() {
 		StringBuffer stringBuffer=new StringBuffer();
-		stringBuffer.append("Id_User=? ,");
+		stringBuffer.append("User_Username=? ,");
 		stringBuffer.append("Number_Of_Adults=? ,");
 		stringBuffer.append("Number_Of_Children=? ,");
-		stringBuffer.append("Id_Room=? ,");
+		stringBuffer.append("room_code=? ,");
 		stringBuffer.append("Check_In=? ,");
 		stringBuffer.append("Check_Out=? ,");
 		stringBuffer.append("number_nights=? ,");
-		stringBuffer.append("amount_reservation=? ");
+		stringBuffer.append("amount_reservation=? ,");
+		stringBuffer.append("reservation_code=? ");
 		return stringBuffer.toString();
 	}
 
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
-		return "Id_Reservation";
+		return "reservation_code";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((checkIn == null) ? 0 : checkIn.hashCode());
+		result = prime * result + ((checkOut == null) ? 0 : checkOut.hashCode());
+		result = prime * result + room_code;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reservation other = (Reservation) obj;
+		if (checkIn == null) {
+			if (other.checkIn != null)
+				return false;
+		} else if (!checkIn.equals(other.checkIn))
+			return false;
+		if (checkOut == null) {
+			if (other.checkOut != null)
+				return false;
+		} else if (!checkOut.equals(other.checkOut))
+			return false;
+		if (room_code != other.room_code)
+			return false;
+		return true;
+	}
+
+
+	
+	
 	
 }

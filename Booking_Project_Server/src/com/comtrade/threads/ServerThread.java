@@ -10,9 +10,10 @@ import java.time.LocalTime;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
+import com.comtrade.cache.Cache;
 import com.comtrade.constants.Server_Information;
 import com.comtrade.constants.TransferClass_Message;
-import com.comtrade.controlerPL.ControlerPLServer;
+import com.comtrade.controlerPL.ControlerBLServer;
 
 public class ServerThread extends Thread {
 	private JTextArea textArea;
@@ -23,22 +24,34 @@ public class ServerThread extends Thread {
 	}
 
 	public void run() {
-		strartServer();
+		try {
+			strartServer();
+		} catch (Exception e) {
+			System.exit(0);
+		}
 	}
 
-	private void strartServer() {
+	private void strartServer() throws Exception {
 		try {
+			
 			ServerSocket serverSocket=new ServerSocket(Server_Information.PORT.getValue());
-			ControlerPLServer.getInstance().entrerMessageOnTextArea("[ "+LocalDate.now()+" "+LocalTime.now()+" ] : Server is connect ");
+			ControlerBLServer.getInstance().entrerMessageOnTextArea("[ "+LocalDate.now()+" "+LocalTime.now()+" ] : Server is connect \n");
+			
 			while(true) {
+				
 				Socket socket=serverSocket.accept();
-				ClientThread clientThread=new ClientThread();
+				ClientThreadRequest clientThread=new ClientThreadRequest();
 				clientThread.setSocket(socket);
 				clientThread.start();
+				DatabaseThread database=new DatabaseThread();
+				database.start();
+				
 			}
 		} catch (IOException e) {
+			
 			JOptionPane.showMessageDialog(null,TransferClass_Message.SERVER_ALLREADY_STARTED.getValue());
 			e.printStackTrace();
+			
 		}
 		
 	}

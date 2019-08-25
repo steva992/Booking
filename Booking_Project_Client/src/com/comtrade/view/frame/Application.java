@@ -9,10 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.controlerKI.ControlerClient;
+import com.comtrade.controlerClient.ControlerUser;
 import com.comtrade.panel.common.Login;
 import com.comtrade.panel.common.SignUp;
-
+import com.comtrade.threads.ClientThreadResponse;
 
 import java.awt.CardLayout;
 import javax.swing.JLayeredPane;
@@ -48,7 +48,8 @@ public class Application extends JFrame {
 		layeredPane.setBounds(100, 100,800,600);
 		layeredPane.setLayout(new CardLayout(0, 0));
 		layeredPane.add(login);
-		ControlerClient.getInstance().setServerForm(this);
+		ClientThreadResponse client=new ClientThreadResponse();
+		client.start();
 	}
 
 	public static void setPanelOnLayeredPane(JPanel panel) {

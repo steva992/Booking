@@ -10,11 +10,11 @@ import com.comtrade.genericClasses.GenericList;
 
 public class Room implements Serializable,GeneralDomain{
 	private int id;
-	private int id_property;
+	private int property_code;
 	private String type;
 	private double price_per_night;
 	private int number_of_bed;
-	private long room_code;
+	private int room_code;
 	
 	public Room() {
 		
@@ -24,17 +24,63 @@ public class Room implements Serializable,GeneralDomain{
 
 	
 	
-	public long getRoom_code() {
-		return room_code;
+	
+	
+
+
+
+
+	public int getId() {
+		return id;
 	}
 
 
 
 
 
-	public void setRoom_code(long room_code) {
-		this.room_code = room_code;
+
+
+
+
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
+
+
+
+
+
+
+
+
+
+
+	public int getProperty_code() {
+		return property_code;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public void setProperty_code(int property_code) {
+		this.property_code = property_code;
+	}
+
+
+
+
+
+
 
 
 
@@ -44,43 +90,114 @@ public class Room implements Serializable,GeneralDomain{
 		return type;
 	}
 
+
+
+
+
+
+
+
+
+
+
 	public void setType(String type) {
 		this.type = type;
 	}
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
-	public int getId_property() {
-		return id_property;
-	}
 
-	public void setId_property(int id_property) {
-		this.id_property = id_property;
-	}
+
+
+
+
+
+
 
 	public double getPrice_per_night() {
 		return price_per_night;
 	}
 
+
+
+
+
+
+
+
+
+
+
 	public void setPrice_per_night(double price_per_night) {
 		this.price_per_night = price_per_night;
 	}
+
+
+
+
+
+
+
+
+
+
 
 	public int getNumber_of_bed() {
 		return number_of_bed;
 	}
 
+
+
+
+
+
+
+
+
+
+
 	public void setNumber_of_bed(int number_of_bed) {
 		this.number_of_bed = number_of_bed;
 	}
 
-	
+
+
+
+
+
+
+
+
+
+
+	public int getRoom_code() {
+		return room_code;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public void setRoom_code(int room_code) {
+		this.room_code = room_code;
+	}
+
+
+
+
+
+
+
+
+
+
+
 	@Override
 	public String returnNameOfTable() {
 		// TODO Auto-generated method stub
@@ -90,7 +207,7 @@ public class Room implements Serializable,GeneralDomain{
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(Price_per_night,Number_Of_Bed,Type,room_code,Id_Property)";
+		return "(Price_per_night,Number_Of_Bed,Type,property_code,room_code)";
 	}
 
 	@Override
@@ -104,15 +221,16 @@ public class Room implements Serializable,GeneralDomain{
 		preparedStatement.setDouble(1,price_per_night);
 		preparedStatement.setInt(2,number_of_bed);
 		preparedStatement.setString(3,type);
-		preparedStatement.setLong(4,room_code);
-		preparedStatement.setInt(5,id_property);
+		preparedStatement.setLong(4,property_code);
+		preparedStatement.setInt(5,room_code);
+		
 		return preparedStatement;
 	}
 
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "Id_Property";
+		return "property_code";
 	}
 
 	@Override
@@ -121,11 +239,11 @@ public class Room implements Serializable,GeneralDomain{
 		try {
 			if(resultSet.next()) {
 				room.setId(resultSet.getInt("Id_Room"));
-				room.setId_property(resultSet.getInt("Id_Property"));
+				room.setProperty_code(resultSet.getInt("property_code"));
 				room.setPrice_per_night(resultSet.getDouble("Price_per_night"));
 				room.setNumber_of_bed(resultSet.getInt("Number_Of_Bed"));
 				room.setType(resultSet.getString("Type"));
-				room.setRoom_code(resultSet.getLong("room_code"));
+				room.setRoom_code(resultSet.getInt("room_code"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -137,7 +255,7 @@ public class Room implements Serializable,GeneralDomain{
 	@Override
 	public PreparedStatement setPSforID(PreparedStatement preparedStatement) {
 		try {
-			preparedStatement.setInt(1,id_property);
+			preparedStatement.setInt(1,room_code);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -152,11 +270,11 @@ public class Room implements Serializable,GeneralDomain{
 			while(resultSet.next()) {
 				Room room=new Room();
 				room.setId(resultSet.getInt("Id_Room"));
-				room.setId_property(resultSet.getInt("Id_Property"));
+				room.setProperty_code(resultSet.getInt("property_code"));
 				room.setPrice_per_night(resultSet.getDouble("Price_per_night"));
 				room.setNumber_of_bed(resultSet.getInt("Number_Of_Bed"));
 				room.setType(resultSet.getString("Type"));
-				room.setRoom_code(resultSet.getLong("room_code"));
+				room.setRoom_code(resultSet.getInt("room_code"));
 				listRoom.add(room);
 			}
 		} catch (SQLException e) {
@@ -172,8 +290,7 @@ public class Room implements Serializable,GeneralDomain{
 		stringBuffer.append("Price_per_night=? ,");
 		stringBuffer.append("Number_Of_Bed=? ,");
 		stringBuffer.append("Type=? ,");
-		stringBuffer.append("room_code=? ,");
-		stringBuffer.append("Id_Property=? ");
+		stringBuffer.append("property_code=? ");
 		return stringBuffer.toString();
 		
 	}
@@ -183,9 +300,51 @@ public class Room implements Serializable,GeneralDomain{
 
 
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
-		return "Id_Room";
+		return "room_code";
+	}
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + room_code;
+		return result;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Room other = (Room) obj;
+		if (room_code != other.room_code)
+			return false;
+		return true;
 	}
 
 	

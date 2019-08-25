@@ -1,0 +1,80 @@
+-------------------------------------------
+Username : jeca84
+Status : user
+Operation : REGISTRATION USER
+Object : jeca84
+Date : 2019-08-25
+Time : 00:04:51.261
+--------------------------------------------
+
+
+-------------------------------------------
+Username : jeca84
+Status : user
+Operation : LOGIN USER
+Object : jeca84
+Date : 2019-08-25
+Time : 00:04:55.297
+--------------------------------------------
+
+
+-------------------------------------------
+Username : jeca84
+Status : user
+Operation : CHANGE PICTURE URL
+Object : /Users/jeca84/ProfilePicture.jpg
+Date : 2019-08-25
+Time : 00:08:14.129
+--------------------------------------------
+
+
+-------------------------------------------
+Username : jeca84
+Status : user
+Operation : USER REGISTRATED PAYMENT CARD
+Object : 8787
+Date : 2019-08-25
+Time : 00:08:52.993
+--------------------------------------------
+
+
+-------------------------------------------
+Username : jeca84
+Status : user
+Operation : LOGIN USER
+Object : jeca84
+Date : 2019-08-25
+Time : 00:12:31.477
+--------------------------------------------
+
+
+-------------------------------------------
+Username : jeca84
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-08-26 2019-09-04
+Date : 2019-08-25
+Time : 00:15:04.866
+--------------------------------------------
+
+
+-------------------------------------------
+Username : jeca84
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-09-10 2019-09-15
+Date : 2019-08-25
+Time : 00:17:16.016
+--------------------------------------------
+
+
+-------------------------------------------
+Username : jeca84
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-11-19 2019-11-29
+Date : 2019-08-25
+Time : 00:23:06.856
+--------------------------------------------
+
+

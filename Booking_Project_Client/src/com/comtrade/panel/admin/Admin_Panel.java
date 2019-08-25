@@ -2,19 +2,30 @@ package com.comtrade.panel.admin;
 
 import javax.swing.JPanel;
 
+
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
+import com.comtrade.constants.CountryesTxt;
 import com.comtrade.constants.Discount_Contstants;
 import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.URL;
+import com.comtrade.controlerClient.ControlerCode;
+import com.comtrade.controlerClient.ControlerComboBox;
+import com.comtrade.controlerClient.ControlerDiscount;
+import com.comtrade.controlerClient.ControlerMessage;
+import com.comtrade.controlerClient.ControlerProperty;
+import com.comtrade.controlerClient.ControlerRating;
+import com.comtrade.controlerClient.ControlerReservation;
+import com.comtrade.controlerClient.ControlerRoom;
+import com.comtrade.controlerClient.ControlerUI;
+import com.comtrade.controlerClient.ControlerUser;
 import com.comtrade.constants.Regular_Expression;
+import com.comtrade.constants.Reservation_Constant;
 import com.comtrade.constants.Room_Constants;
-import com.comtrade.constants.Threads_Constant;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.constants.Type_OF_Operation_TXT;
+import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
-import com.comtrade.controlerKI.ControlerComboBox;
-import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.cyrcleList.CyrclularList;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.discount.Discount;
@@ -30,18 +41,30 @@ import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
 import com.comtrade.doman.room.Room;
 import com.comtrade.doman.room.Room_Info;
+import com.comtrade.genericClasses.Generic;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.genericClasses.GenericMap;
-import com.comtrade.panel.common.ChatPanel;
+import com.comtrade.message.Message;
 import com.comtrade.panel.common.Login;
 import com.comtrade.panel.common.Property_Created;
 import com.comtrade.panel.user.User_Panel;
+import com.comtrade.rating.Client_Rating;
 import com.comtrade.render.ComboBoxClass;
 import com.comtrade.render.RenderCB;
+import com.comtrade.reservation.Reservation;
 import com.comtrade.threads.TimeThread;
 import com.comtrade.transfer.TransferClass;
 import com.comtrade.view.frame.Application;
 import com.comtrade.view.frame.RoomType;
+import com.comtrade.view.frame.UserInfo;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream; 
+import javax.sound.sampled.AudioSystem; 
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException; 
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -50,16 +73,23 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.ResourceBundle.Control;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 
+import javax.sound.sampled.AudioInputStream;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -76,6 +106,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -84,6 +116,7 @@ import java.awt.Dimension;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -97,6 +130,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.Component;
+import java.awt.Container;
+
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JCalendar;
 import javax.swing.JList;
@@ -107,59 +142,81 @@ import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
+import javax.swing.border.EtchedBorder;
+import javax.swing.JCheckBox;
+import javax.swing.JTextArea;
+import sun.audio.*;
+import java.io.*;
 
 public class Admin_Panel extends JPanel {
 
 	private static User user;
-	private int row;
+	private User_Info user_info;
+	private User userReservation;
+	private User_Info userInfoReservation;
+	private Date CurrentDate=Date.valueOf(LocalDate.now());
 	private static String url;
-	private int idRooms,Number_of_bed;
+	private int Number_of_bed;
+	private int counter=0;
+	private int row;
+	private int discount_code;
+	private volatile int Code;
 	private String Type;
 	private double Price_per_night;
-	private User_Info user_info;
 	private GeoLocation geoLocation;
 	private Adress adress;
 	private Property property;
-	private GenericList<Property_Picutre_Album>listAlbum=new GenericList<Property_Picutre_Album>();
-	private TransferClass transferClass=new TransferClass();
-	private CyrclularList cyrcleList=new CyrclularList();
-	private JLabel lblmainHotelPicture,lblAftermain,lblBeforeMain,lblPicture;
 	private JComboBox cbTypeOfRoom;
-	private JTextField tfPricePerNight;
-	private JTextField tfNumberOfBed;
-	private String WhichProperty;
-	private GenericMap<String,GenericList<GeneralDomain>>map;
-	private JTextField tfName;
-	private JTextField tfSurname;
-	private JTextField tfEmail;
-	private JTextField tfMobileNumber;
-	private JTextField tfCountry;
-	private JTextField tfCity;
-	private JTextField tfStreet;
-	private JTextField tfNumber;
-	private JTextField tfLongitude;
-	private JTextField tfLatitude;
-	private int counter=0;
-	private JTextField tfAmount;
-	private JTable tableRooms;
-	private JTable tableDiscount;
-	private DefaultTableModel dtmRoom=new DefaultTableModel();
-	private DefaultTableModel dtmDiscount=new DefaultTableModel();
+	private volatile JLayeredPane layeredPane;
+	private volatile JTextArea textArea;
+	private JButton btnRating;
+	
+	
+	private JLabel lblmainHotelPicture,lblAftermain,lblBeforeMain,lblPicture;
+	
+	private String idDiscount,date_from,date_to,amount,WhichProperty;
+	
+	private volatile JPanel PanelRoom,PanelDiscount,PanelReservation,PanelRating,ChatPanel;
+	
+	private volatile JRadioButton rbRoom,rbDiscount,rbReservation,rdbtnRating,rdbtnChat;
+	
+	private JTextField tfName,tfSurname,tfEmail,tfMobileNumber,tfCountry,tfCity,tfStreet,tfNumber,tfLongitude,tfLatitude,tfNumberOfBed,tfPricePerNight,tfAmount,tfProfit,tfmessage;
+
+	private JTable tableRooms,tableDiscount,tableReservation;
+	
 	private JDateChooser calendarFrom,CalendarTo;
-	private GenericList<GeneralDomain>listRoom=new GenericList<GeneralDomain>();
-	private GenericList<GeneralDomain>listDiscount=new GenericList<GeneralDomain>();
-	private String idDiscount,date_from,date_to,amount;
-	private DefaultListModel dm=new DefaultListModel();
-	private JList<Object> listProperties;
-	private ButtonGroup bg=new ButtonGroup();
-	private JLayeredPane layeredPane;
-	private JPanel PanelRoom,PanelDiscount,PanelReservation;
-	private JRadioButton rbRoom,rbDiscount,rbReservation;
+	
+	private volatile JList<Object> listProperties,list,listChat; 
+	
 	private long startTime,endTime;
 	
 	
+	private volatile GenericMap<String,GenericList<GeneralDomain>>map;
+	private volatile Map<String,StringBuffer>chatMap=new HashMap<>();
+	private volatile GenericList<Property_Picutre_Album>listAlbum=new GenericList<Property_Picutre_Album>();
+	private volatile GenericList<GeneralDomain>listRoom=new GenericList<GeneralDomain>();
+	private volatile GenericList<GeneralDomain>listDiscount=new GenericList<GeneralDomain>();
+	private volatile GenericList<GeneralDomain>listReservation;
+	private volatile GenericList<GeneralDomain>listRating=new GenericList<GeneralDomain>();
+
+	private volatile DefaultListModel dm=new DefaultListModel();
+	private volatile DefaultListModel dm1=new DefaultListModel();
+	private volatile DefaultListModel dm2=new DefaultListModel();
+	private volatile DefaultComboBoxModel dmChat=new DefaultComboBoxModel<ComboBoxClass>();
+	
+	private DefaultTableModel dtmRoom=new DefaultTableModel();
+	private DefaultTableModel dtmDiscount=new DefaultTableModel();
+	private DefaultTableModel dtmReservation=new DefaultTableModel();
+	
+	private TransferClass transferClass=new TransferClass();
+	private CyrclularList cyrcleList=new CyrclularList();
+	
+	private ButtonGroup bg=new ButtonGroup();
 	
 	
+	
+
+
 	public static String getUrl() {
 		return url;
 	}
@@ -173,17 +230,20 @@ public class Admin_Panel extends JPanel {
 
 
 	public Admin_Panel(User user) throws ClassNotFoundException, IOException, URISyntaxException {
+		this.user=user;
 		startTime=System.currentTimeMillis();
-		this.user=user;
 		user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.LOGIN_USER.getValue(),user.getUsername());
-		transferClass=ControlerKI.getInstance().BackUserInfo_ForUser(user);
-		this.user_info=(User_Info) transferClass.getServer_Object_Response();
-		transferClass=ControlerKI.getInstance().AllAboutProperty(user);
-		map=(GenericMap<String, GenericList<GeneralDomain>>) transferClass.getServer_Object_Response();
-		
-		
-		setBounds(1200,720,1200,720);
-		this.user=user;
+		ControlerUI.getInstance().sendToServer(Type_Of_Operation.BACK_ALL_FOR_USER_PANEL,Type_Of_Data.PROPERTY, user);
+		try {
+			Thread.sleep(30);
+		} catch (InterruptedException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		map=ControlerProperty.getInstance().getMap();
+		ControlerProperty.getInstance().setNumber(0);
+		this.user_info=(User_Info) map.get(user.getUsername()).get(1);
+		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		setLayout(null);
 
 		
@@ -214,9 +274,15 @@ public class Admin_Panel extends JPanel {
 		btnNewButton.setFont(new Font("Castellar", Font.BOLD, 10));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				User_Panel.addNewPicture(user_info, user, lblPicture,btnNewButton);
+				User_Panel.addNewPicture(user_info,user, lblPicture,btnNewButton);
 				try {
-					ControlerKI.getInstance().changePictureURLUser(user_info);
+					GenericList<GeneralDomain>list=new  GenericList<GeneralDomain>();
+					list.add(user);
+					list.add(user_info);
+					ControlerUI.getInstance().sendToServer(Type_Of_Operation.CHANGE_PICTURE_URL_USER, Type_Of_Data.USER, list);
+					String message=ControlerUser.getInstance().getMessage();
+					ControlerUser.getInstance().setNumber(0);
+					JOptionPane.showMessageDialog(null, message);
 					user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.CHANGE_PICTURE_URL_USER.getValue(),user_info.getPictureURL());
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -262,7 +328,6 @@ public class Admin_Panel extends JPanel {
 		});
 		button.setBounds(1061, 206, 78, 23);
 		add(button);
-		
 		JButton btnNewButton_2 = new JButton("UPLOAD ");
 		btnNewButton_2.setBackground(Color.WHITE);
 		btnNewButton_2.setForeground(Color.RED);
@@ -271,8 +336,12 @@ public class Admin_Panel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				addNewPicture(cyrcleList.current(),property,lblmainHotelPicture,btnNewButton_2);
 				try {
-					ControlerKI.getInstance().changPictureURLHotel(cyrcleList.current());
+					GenericList< GeneralDomain>list=new GenericList<GeneralDomain>();
+					list.add(property);
+					list.add(cyrcleList.current());
+					ControlerUI.getInstance().sendToServer(Type_Of_Operation.CHANGE_PICTURE_URL_HOTEL, Type_Of_Data.PROPERTY, list);
 					user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.CHANGE_PICTURE_URL_HOTEL.getValue(),cyrcleList.current().getPicutre_URL());
+					ControlerProperty.getInstance().setNumber(0);
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -295,6 +364,7 @@ public class Admin_Panel extends JPanel {
 		btnUpdateMyInfo.setFont(new Font("Castellar", Font.BOLD, 10));
 		btnUpdateMyInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 				String name=tfName.getText();
 				String surname=tfSurname.getText();
 				String email=tfEmail.getText();
@@ -307,16 +377,21 @@ public class Admin_Panel extends JPanel {
 					if(testField) {
 						try {
 							User_Info user_info=new User_Info();
-							user_info.setId_User(user.getId());
+							user_info.setUser_Username(user.getUsername());
 							user_info.setName(name);
 							user_info.setSurname(surname);
 							user_info.setGender(gender);
 							user_info.setEmail(email);
 							user_info.setPictureURL(pictureUrl);
 							user_info.setMobileNumber(mobileNumber);
-							TransferClass transferClass=ControlerKI.getInstance().updateUser(user_info);
-							String message=transferClass.getMessage();
-							JOptionPane.showMessageDialog(null,message);
+							list.add(user);
+							list.add(user_info);
+							ControlerUI.getInstance().sendToServer(Type_Of_Operation.UPDATE_USER, Type_Of_Data.USER, list);
+							String message=ControlerUser.getInstance().getMessage();
+							ControlerUser.getInstance().setNumber(0);
+							if(message != null) {
+								JOptionPane.showMessageDialog(null,message);
+							}
 							user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.UPDATE_USER.getValue(),user.getUsername());
 						} catch (ClassNotFoundException e1) {
 							// TODO Auto-generated catch block
@@ -347,7 +422,7 @@ public class Admin_Panel extends JPanel {
 		btnNewButton_3.setFont(new Font("Castellar", Font.BOLD, 9));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JPanel propertyJPanel=new Property_Created(user, user_info);
+				JPanel propertyJPanel=new Property_Created(user, user_info,"admin");
 				Application.setPanelOnLayeredPane(propertyJPanel);
 				backAllForThisProperty();
 			}
@@ -375,31 +450,36 @@ public class Admin_Panel extends JPanel {
 					if(testField) {
 						GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 						Adress adress1=new Adress();
-						adress1.setId_property(property.getId());
+						adress1.setProperty_code(property.getProperty_code());
+						adress1.setAdress_code(adress.getAdress_code());
 						adress1.setCountry(country);
 						adress1.setCity(city);
 						adress1.setStreet(street);
 						adress1.setHouseNumber(Integer.parseInt(number));
 						GeoLocation geoLocation=new GeoLocation();
-						geoLocation.setId_adress(adress.getId_adress());
+						geoLocation.setAdress_code(adress.getAdress_code());
 						geoLocation.setLatitude(Double.parseDouble(latitude));
 						geoLocation.setLongitude(Double.parseDouble(longitude));
+						list.add(property);
 						list.add(adress1);
 						list.add(geoLocation);
 						try {
-							TransferClass trnasfClass=ControlerKI.getInstance().updateProperty(list);
-							String message=trnasfClass.getMessage();
-							JOptionPane.showMessageDialog(null,message);
-							((Adress) map.get(WhichProperty).get(1)).setCity(city);
-							((Adress) map.get(WhichProperty).get(1)).setStreet(street);
-							((Adress) map.get(WhichProperty).get(1)).setCountry(country);
-							((Adress) map.get(WhichProperty).get(1)).setHouseNumber(Integer.parseInt(number));
-							((GeoLocation) map.get(WhichProperty).get(2)).setLatitude(Double.parseDouble(latitude));
-							((GeoLocation) map.get(WhichProperty).get(2)).setLongitude(Double.parseDouble(longitude));
-							fillCountryComboBox();
-							refreshGlobalVariables();
-							refreshPropertyCountryPicture();
-							user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.UPDATE_PROPERTY.getValue(),property.getName());
+							ControlerUI.getInstance().sendToServer(Type_Of_Operation.UPDATE_PROPERTY, Type_Of_Data.PROPERTY, list);
+							 String message=ControlerProperty.getInstance().getMessage();
+							 ControlerProperty.getInstance().setNumber(0);
+							 if(message != null) {
+								 JOptionPane.showMessageDialog(null,message);
+									((Adress) map.get(WhichProperty).get(1)).setCity(city);
+									((Adress) map.get(WhichProperty).get(1)).setStreet(street);
+									((Adress) map.get(WhichProperty).get(1)).setCountry(country);
+									((Adress) map.get(WhichProperty).get(1)).setHouseNumber(Integer.parseInt(number));
+									((GeoLocation) map.get(WhichProperty).get(2)).setLatitude(Double.parseDouble(latitude));
+									((GeoLocation) map.get(WhichProperty).get(2)).setLongitude(Double.parseDouble(longitude));
+									fillCountryComboBox();
+									refreshGlobalVariables();
+									refreshPropertyCountryPicture();
+									user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.UPDATE_PROPERTY.getValue(),property.getName());
+							 }
 						} catch (ClassNotFoundException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -415,36 +495,6 @@ public class Admin_Panel extends JPanel {
 				}
 			}
 		});
-		
-		JButton btnDeletePicture = new JButton("DELETE ");
-		btnDeletePicture.setBackground(Color.WHITE);
-		btnDeletePicture.setForeground(Color.RED);
-		btnDeletePicture.setFont(new Font("Castellar", Font.BOLD, 10));
-		btnDeletePicture.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(!cyrcleList.current().getPicutre_URL().equals(URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg")) {
-						deletePictureForServer(AbsolutePath.absolutePath()+cyrcleList.current().getPicutre_URL());
-						cyrcleList.current().setPicutre_URL(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg");
-						String url=cyrcleList.current().getPicutre_URL();
-						CommonMethod.setNewPicutreOnLabel(url, lblmainHotelPicture);
-						cyrcleList.current().setPicutre_URL(URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg");
-						try {
-							ControlerKI.getInstance().changPictureURLHotel(cyrcleList.current());
-							user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.DELETE_PICTURE_PROPERTY.getValue(),cyrcleList.current().getPicutre_URL());
-						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				
-			}
-		});
-		btnDeletePicture.setBounds(890, 245, 161, 30);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_DELETE.getValue(), btnDeletePicture);
-		add(btnDeletePicture);
 		btnNewButton_6.setBounds(10, 672, 139, 30);
 		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPDATE.getValue(), btnNewButton_6);
 		add(btnNewButton_6);
@@ -508,6 +558,13 @@ public class Admin_Panel extends JPanel {
 				long duration=endTime-startTime;
 				try {
 					user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.USER_LOGOUT.getValue(),String.valueOf(duration));
+					try {
+						ControlerUI.getInstance().sendToServer(Type_Of_Operation.REMOVE_ONLINE_USER,Type_Of_Data.USER,user);
+						ControlerUser.getInstance().setNumber(0);
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -560,8 +617,13 @@ public class Admin_Panel extends JPanel {
 					user_info.setPictureURL(URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
 					CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg",lblPicture);
 					try {
-						ControlerKI.getInstance().changePictureURLUser(user_info);
+						GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+						list.add(user);
+						list.add(user_info);
+						ControlerUI.getInstance().sendToServer(Type_Of_Operation.CHANGE_PICTURE_URL_USER,Type_Of_Data.USER, list);
+						ControlerUser.getInstance().setNumber(0);
 						user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.DELETE_PICTURE.getValue(),url);
+						
 					} catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -579,18 +641,6 @@ public class Admin_Panel extends JPanel {
 		btnDelete.setBounds(168, 132, 186, 40);
 		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_DELETE.getValue(), btnDelete);
 		add(btnDelete);
-		
-		JButton btnNewButton_10 = new JButton("DELETE");
-		btnNewButton_10.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_10.setBackground(Color.WHITE);
-		btnNewButton_10.setForeground(Color.RED);
-		btnNewButton_10.setFont(new Font("Castellar", Font.BOLD, 14));
-		btnNewButton_10.setBounds(539, 219, 191, 40);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_DELETE.getValue(), btnNewButton_10);
-		add(btnNewButton_10);
 		
 		JLabel lblStreet = new JLabel("Street");
 		lblStreet.setFont(new Font("Castellar", Font.BOLD, 14));
@@ -612,6 +662,44 @@ public class Admin_Panel extends JPanel {
 		lblNumber.setBounds(10, 572, 151, 23);
 		add(lblNumber);
 		
+		rdbtnRating = new JRadioButton("RATING");
+		rdbtnRating.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				User_Panel.setPanelOnLayeredPane(layeredPane,PanelRating);
+				
+			}
+		});
+		
+		rdbtnChat = new JRadioButton("");
+		rdbtnChat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				User_Panel.setPanelOnLayeredPane(layeredPane,ChatPanel);
+				
+			}
+		});
+		rdbtnChat.setForeground(Color.RED);
+		rdbtnChat.setFont(new Font("Castellar", Font.BOLD, 12));
+		rdbtnChat.setBackground(Color.YELLOW);
+		rdbtnChat.setBounds(1129, 269, 61, 50);
+		CommonMethod.setNewPicutreOnRadioButton(AbsolutePath.absolutePath()+URL.MESSAGE.getValue(),rdbtnChat);
+		add(rdbtnChat);
+		bg.add(rdbtnChat);
+		rdbtnChat.setVisible(false);
+		rdbtnRating.setForeground(Color.RED);
+		rdbtnRating.setFont(new Font("Castellar", Font.BOLD, 12));
+		rdbtnRating.setBackground(Color.WHITE);
+		rdbtnRating.setBounds(776, 296, 139, 23);
+		add(rdbtnRating);
+		bg.add(rdbtnRating);
+		
+		btnRating = new JButton("New button");
+		btnRating.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnRating.setForeground(Color.WHITE);
+		btnRating.setBounds(539, 225, 191, 50);
+		add(btnRating);
+		
 		tfNumber = new JTextField();
 		tfNumber.setEnabled(false);
 		tfNumber.setText((String) null);
@@ -625,6 +713,34 @@ public class Admin_Panel extends JPanel {
 		Latitude.setForeground(Color.BLACK);
 		Latitude.setBounds(10, 605, 151, 23);
 		add(Latitude);
+		
+		JButton btnDeactivatedAccount = new JButton("DEACTIVATE");
+		btnDeactivatedAccount.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					user.setStatus("deactivated");
+					ControlerUI.getInstance().sendToServer(Type_Of_Operation.DEACTIVATE_USER, Type_Of_Data.USER,user);
+					String message=ControlerUser.getInstance().getMessage();
+					ControlerUser.getInstance().setNumber(0);
+					JPanel login=new Login();
+					Application.setPanelOnLayeredPane(login);
+					JOptionPane.showMessageDialog(null, message);
+					user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.DEACTIVATE_USER.getValue(),user.getUsername());
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnDeactivatedAccount.setForeground(Color.RED);
+		btnDeactivatedAccount.setFont(new Font("Castellar", Font.BOLD, 9));
+		btnDeactivatedAccount.setBackground(Color.WHITE);
+		btnDeactivatedAccount.setBounds(168, 376, 186, 40);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.DEACTIVATE_USER.getValue(), btnDeactivatedAccount);
+		add(btnDeactivatedAccount);
 		
 		JLabel Longitude = new JLabel("Longitude");
 		Longitude.setFont(new Font("Castellar", Font.BOLD, 14));
@@ -651,10 +767,9 @@ public class Admin_Panel extends JPanel {
 		rbDiscount = new JRadioButton("Discount");
 		rbDiscount.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				layeredPane.removeAll();
-				layeredPane.add(PanelDiscount);
-				layeredPane.repaint();
-				layeredPane.revalidate();
+				
+				User_Panel.setPanelOnLayeredPane(layeredPane,PanelDiscount);
+				
 			}
 		});
 		rbDiscount.setBackground(Color.WHITE);
@@ -667,10 +782,9 @@ public class Admin_Panel extends JPanel {
 		rbRoom = new JRadioButton("Room");
 		rbRoom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				layeredPane.removeAll();
-				layeredPane.add(PanelRoom);
-				layeredPane.repaint();
-				layeredPane.revalidate();
+
+				User_Panel.setPanelOnLayeredPane(layeredPane,PanelRoom);
+				 
 			}
 		});
 		rbRoom.setSelected(true);
@@ -685,10 +799,9 @@ public class Admin_Panel extends JPanel {
 		rbReservation = new JRadioButton("Reservation");
 		rbReservation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				layeredPane.removeAll();
-				layeredPane.add(PanelReservation);
-				layeredPane.repaint();
-				layeredPane.revalidate();
+				
+				User_Panel.setPanelOnLayeredPane(layeredPane,PanelReservation);
+				
 			}
 		});
 		
@@ -713,7 +826,7 @@ public class Admin_Panel extends JPanel {
 		add(lblTime);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(539, 38, 191, 181);
+		scrollPane_2.setBounds(539, 38, 191, 191);
 		add(scrollPane_2);
 		
 		listProperties = new JList<Object>();
@@ -750,6 +863,61 @@ public class Admin_Panel extends JPanel {
 		JButton btnNewButton_8 = new JButton("DELETE");
 		btnNewButton_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Type=tableRooms.getModel().getValueAt(row,0).toString();
+				Price_per_night=Double.parseDouble(tableRooms.getModel().getValueAt(row,1).toString());
+				Number_of_bed=Integer.parseInt(tableRooms.getModel().getValueAt(row,2).toString());
+				Code=Integer.parseInt(tableRooms.getModel().getValueAt(row,3).toString());
+				tfPricePerNight.setText(String.valueOf(Price_per_night));
+				tfNumberOfBed.setText(String.valueOf(Number_of_bed));
+				boolean reservedRomm=reservedRoom(Code);
+				Room_Info room_info=new Room_Info();
+				if(reservedRomm) {
+					for(int i=1;i<listRoom.size();i=i+2) {
+						room_info=(Room_Info) listRoom.get(i);
+						if(room_info.getRoom_code()==Code) {
+							break;
+						}
+					}
+					Room room=new Room();
+					room.setRoom_code(Code);
+					room.setProperty_code(property.getProperty_code());
+					room.setNumber_of_bed(Number_of_bed);
+					room.setPrice_per_night(Price_per_night);
+					room.setType(Type);
+					GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+					list.add(property);
+					list.add(room);
+					list.add(room_info);
+					try {
+						ControlerUI.getInstance().sendToServer(Type_Of_Operation.DELETE_ROOM, Type_Of_Data.ROOM, list);
+						String message=ControlerRoom.getInstance().getMessage();
+						ControlerRoom.getInstance().setNumber(0);
+						if(message != null) {
+							JOptionPane.showMessageDialog(null,message);
+						}
+						user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.DELETE_ROOM.getValue(),user.getUsername());
+						for(int i=0;i<listRoom.size();i=i+2) {
+							Room room1=(Room) listRoom.get(i);
+							Room_Info room_Info1=(Room_Info) listRoom.get(i+1);
+							if(room.getRoom_code()==room1.getRoom_code()) {
+								listRoom.delete(room1);
+								listRoom.delete(room_Info1);
+								map.get(property.getName()).delete(room1);
+								map.get(property.getName()).delete(room_Info1);
+							}
+						}
+						EnterRoomInTable(listRoom);
+						clearTFRooms();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}else {
+					JOptionPane.showMessageDialog(null,TransferClass_Message.DONT_DELETE_ROOM.getValue());
+				}
 			}
 		});
 		btnNewButton_8.setBackground(Color.WHITE);
@@ -779,18 +947,19 @@ public class Admin_Panel extends JPanel {
 		btnNewButton_5.setForeground(Color.RED);
 		btnNewButton_5.setFont(new Font("Castellar", Font.BOLD, 10));
 		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			 public void actionPerformed(ActionEvent e) {
 				Room room=new Room();
-				room.setId(idRooms);
+				room.setRoom_code(Code);
 				String type=cbTypeOfRoom.getSelectedItem().toString();
 				int number_of_bed=Integer.parseInt(tfNumberOfBed.getText());
 				double price_per_night=Double.parseDouble(tfPricePerNight.getText());
 				room.setNumber_of_bed(number_of_bed);
 				room.setPrice_per_night(price_per_night);
 				room.setType(type);
-				room.setId_property(property.getId());
+				room.setProperty_code(property.getProperty_code());
 				GenericList<GeneralDomain>listRooms=new GenericList<GeneralDomain>();
 				Room_Info room_Info=new Room_Info();
+				
 				if(type.equals(Room_Constants.ORDINARY_ROOM.getValue())) {
 					
 					Room_Info_Decorator room_info_decorator=new OrdinaryRoomDecorator(room_Info);
@@ -848,38 +1017,56 @@ public class Admin_Panel extends JPanel {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String type=cbTypeOfRoom.getSelectedItem().toString();
-				double pricePerNight=Double.parseDouble(tfPricePerNight.getText());
-				int numberOfBed=Integer.parseInt(tfNumberOfBed.getText());
-				Room room=new Room();
-				room.setId_property(property.getId());
-				room.setNumber_of_bed(numberOfBed);
-				room.setPrice_per_night(pricePerNight);
-				long number=Math.round(Math.random()*100000);
-				room.setRoom_code(number);
-				Room_Info room_Info=new Room_Info();
-				GenericList<GeneralDomain>listRooms=new GenericList<GeneralDomain>();
-				if(type.equals(Room_Constants.ORDINARY_ROOM.getValue())) {
+				if(tfPricePerNight.getText().length() > 0 && tfNumberOfBed.getText().length() > 0) {
+					if(tfPricePerNight.getText().matches(Regular_Expression.ONLY_NUMBER_VALUES.getValue()) && tfNumberOfBed.getText().matches(Regular_Expression.ONLY_NUMBER_VALUES.getValue())) {
+						double pricePerNight=Double.parseDouble(tfPricePerNight.getText());
+						int numberOfBed=Integer.parseInt(tfNumberOfBed.getText());
+								Room room=new Room();
+								room.setProperty_code(property.getProperty_code());
+								room.setNumber_of_bed(numberOfBed);
+								room.setPrice_per_night(pricePerNight);
+								try {
+									room.setRoom_code(setCode());
+								} catch (ClassNotFoundException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								Room_Info room_Info=new Room_Info();
+								GenericList<GeneralDomain>listRooms=new GenericList<GeneralDomain>();
+								if(type.equals(Room_Constants.ORDINARY_ROOM.getValue())) {
+									
+									room.setType(Room_Constants.ORDINARY_ROOM.getValue());
+									Room_Info_Decorator room_info_decorator=new OrdinaryRoomDecorator(room_Info);
+									room_Info=room_info_decorator.addnewPropertiesForRoom();
+									EnterRoomAndRoomInfo(listRooms,room,room_Info);
+									
+								}else if(type.equals(Room_Constants.LUXURY_ROOM.getValue())) {
+									
+									room.setType(Room_Constants.LUXURY_ROOM.getValue());
+									Room_Info_Decorator room_info_decorator=new LuxuryRoomDecorator(room_Info);
+									room_Info=room_info_decorator.addnewPropertiesForRoom();
+									EnterRoomAndRoomInfo(listRooms,room,room_Info);
+									
+								}else if(type.equals(Room_Constants.APARTMENT.getValue())) {
+									
+									room.setType(Room_Constants.APARTMENT.getValue());
+									Room_Info_Decorator room_info_decorator=new ApartmentDecorator(room_Info);
+									room_Info=room_info_decorator.addnewPropertiesForRoom();
+									EnterRoomAndRoomInfo(listRooms,room,room_Info);
+									
+								}
+						}else {
+							JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
+						}
+							
+					}else {
+						JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
+					}
 					
-					room.setType(Room_Constants.ORDINARY_ROOM.getValue());
-					Room_Info_Decorator room_info_decorator=new OrdinaryRoomDecorator(room_Info);
-					room_Info=room_info_decorator.addnewPropertiesForRoom();
-					EnterRoomAndRoomInfo(listRooms,room,room_Info);
-					
-				}else if(type.equals(Room_Constants.LUXURY_ROOM.getValue())) {
-					
-					room.setType(Room_Constants.LUXURY_ROOM.getValue());
-					Room_Info_Decorator room_info_decorator=new LuxuryRoomDecorator(room_Info);
-					room_Info=room_info_decorator.addnewPropertiesForRoom();
-					EnterRoomAndRoomInfo(listRooms,room,room_Info);
-					
-				}else if(type.equals(Room_Constants.APARTMENT.getValue())) {
-					
-					room.setType(Room_Constants.APARTMENT.getValue());
-					Room_Info_Decorator room_info_decorator=new ApartmentDecorator(room_Info);
-					room_Info=room_info_decorator.addnewPropertiesForRoom();
-					EnterRoomAndRoomInfo(listRooms,room,room_Info);
-					
-				}
+				
 			}
 		});
 		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_NEW_PROPERTY.getValue(),btnNewButton_4);
@@ -946,10 +1133,10 @@ public class Admin_Panel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				row=tableRooms.getSelectedRow();
-				idRooms=Integer.parseInt(tableRooms.getModel().getValueAt(row,0).toString());
-				Type=tableRooms.getModel().getValueAt(row,1).toString();
-				Price_per_night=Double.parseDouble(tableRooms.getModel().getValueAt(row,2).toString());
-				Number_of_bed=Integer.parseInt(tableRooms.getModel().getValueAt(row,3).toString());
+				Type=tableRooms.getModel().getValueAt(row,0).toString();
+				Price_per_night=Double.parseDouble(tableRooms.getModel().getValueAt(row,1).toString());
+				Number_of_bed=Integer.parseInt(tableRooms.getModel().getValueAt(row,2).toString());
+				Code=Integer.parseInt(tableRooms.getModel().getValueAt(row,3).toString());
 				tfPricePerNight.setText(String.valueOf(Price_per_night));
 				tfNumberOfBed.setText(String.valueOf(Number_of_bed));
 			}
@@ -998,31 +1185,57 @@ public class Admin_Panel extends JPanel {
 		btnEnterDiscount.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SimpleDateFormat sdf=new  SimpleDateFormat("yyyy-MM-dd");
-				Date from_date=Date.valueOf(sdf.format(calendarFrom.getDate()));
-				Date to_date=Date.valueOf(sdf.format(CalendarTo.getDate()));
-				Double amount=Double.parseDouble(tfAmount.getText());
-				int idProperty=property.getId();
-				if(to_date.compareTo(from_date) > 0) {
-					Discount discount=new Discount();
-					discount.setId_property(idProperty);
-					discount.setFrom_Date(from_date);
-					discount.setTo_Date(to_date);
-					discount.setAmount_of_dosicount(amount);
-					try {
-						TransferClass transferClass=ControlerKI.getInstance().enterDiscount(discount);
-						String message=transferClass.getMessage();
-						JOptionPane.showMessageDialog(null,message);
-						clearTFDiscount();
-						Discount discount2=(Discount) transferClass.getServer_Object_Response();
-						listDiscount.add(discount2);
-						EnterDiscountOnTable(listDiscount);
-						user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_DISCOUNT.getValue(),String.valueOf(discount.getFrom_Date())+String.valueOf(discount.getTo_Date()));
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+				if(calendarFrom.getDate() != null && CalendarTo.getDate() != null) {
+					if(tfAmount.getText().matches(Regular_Expression.ONLY_NUMBER_VALUES.getValue())) {
+						Date from_date=Date.valueOf(sdf.format(calendarFrom.getDate()));
+						Date to_date=Date.valueOf(sdf.format(CalendarTo.getDate()));
+						Double amount=Double.parseDouble(tfAmount.getText());
+						int code=property.getProperty_code();
+						if(to_date.compareTo(from_date) > 0) {
+							Discount discount=new Discount();
+							try {
+								discount.setDiscount_code(setCode());
+							} catch (ClassNotFoundException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							discount.setProperty_code(property.getProperty_code());
+							discount.setFrom_Date(from_date);
+							discount.setTo_Date(to_date);
+							discount.setAmount_of_dosicount(amount);
+							try {
+								GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+								list.add(property);
+								list.add(discount);
+								ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_DISCOUNT, Type_Of_Data.DISCOUNT, list);
+								Discount discount2=(Discount) ControlerDiscount.getInstance().getDiscount1();
+								String message=ControlerDiscount.getInstance().getMessage();
+								ControlerDiscount.getInstance().setNumber(0);
+								if(message != null) {
+									JOptionPane.showMessageDialog(null,message);
+								}
+								clearTFDiscount();
+								map.get(property.getName()).add(discount2);
+								listDiscount.add(discount2);
+								EnterDiscountOnTable(listDiscount);
+								user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_DISCOUNT.getValue(),String.valueOf(discount.getFrom_Date())+String.valueOf(discount.getTo_Date()));
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}else {
+							JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_DATE.getValue());
+						}
+					}else {
+						JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
 					}
+					
+					
 				}else {
-					JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_DATE.getValue());
+					JOptionPane.showMessageDialog(null,TransferClass_Message.SET_DATEFROM_DATETO.getValue());
 				}
 				
 			}
@@ -1038,19 +1251,26 @@ public class Admin_Panel extends JPanel {
 		btnDeleteDiscount.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Discount discount=new Discount();
-				discount.setId(Integer.parseInt(idDiscount));
+				discount.setDiscount_code(discount_code);
 				discount.setAmount_of_dosicount(Double.parseDouble(amount));
 				discount.setFrom_Date(Date.valueOf(date_from));
 				discount.setTo_Date(Date.valueOf(date_to));
 				try {
-					TransferClass transferClass=ControlerKI.getInstance().deleteDiscount(discount);
-					String message=transferClass.getMessage();
-					JOptionPane.showMessageDialog(null,message);
+					GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+					list.add(property);
+					list.add(discount);
+					ControlerUI.getInstance().sendToServer(Type_Of_Operation.DELETE_DISCOUNT, Type_Of_Data.DISCOUNT,list);
+					String message=ControlerDiscount.getInstance().getMessage();
+					ControlerDiscount.getInstance().setNumber(0);
+					if(message != null) {
+						JOptionPane.showMessageDialog(null,message);
+					}
 					for(int i=0;i<listDiscount.size();i++) {
 						if(listDiscount.get(i) instanceof Discount) {
 							Discount discount1=(Discount) listDiscount.get(i);
-							if(discount1.getId()==discount.getId()) {
+							if(discount1.getDiscount_code()==discount_code) {
 								listDiscount.delete(i);
+								map.get(property.getName()).delete(discount1);
 							}
 							EnterDiscountOnTable(listDiscount);
 							clearTFDiscount();
@@ -1100,16 +1320,179 @@ public class Admin_Panel extends JPanel {
 		PanelReservation = new JPanel();
 		PanelReservation.setBackground(new Color(0,0,0,0));
 		layeredPane.add(PanelReservation, "name_423989168900109");
+		PanelReservation.setLayout(null);
+		
+		JScrollPane scrollPane_3 = new JScrollPane(tableReservation);
+		scrollPane_3.setBounds(10, 29, 753, 254);
+		PanelReservation.add(scrollPane_3);
+		
+		tableReservation = new JTable(dtmReservation);
+		tableReservation.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		tableReservation.setBackground(Color.BLUE);
+		tableReservation.setForeground(Color.WHITE);
+		scrollPane_3.setViewportView(tableReservation);
+		Object[] column= {
+				Reservation_Constant.ACTIVE.getValue(),
+				Reservation_Constant.USER.getValue(),	
+				Reservation_Constant.CHECK_IN.getValue(),
+				Reservation_Constant.CHECK_OUT.getValue(),
+				Reservation_Constant.NUMBER_ADULTS.getValue(),
+				Reservation_Constant.NUMBER_CHILDREN.getValue(),
+				Reservation_Constant.NUMBER_NIGHTS.getValue(),
+				Reservation_Constant.AMOUNT.getValue(),
+				Reservation_Constant.ROOM_CODE.getValue()
+			      		 };
+        dtmReservation.addColumn(column[0]); 
+        dtmReservation.addColumn(column[1]);  
+        dtmReservation.addColumn(column[2]);  
+        dtmReservation.addColumn(column[3]);  
+        dtmReservation.addColumn(column[4]);
+        dtmReservation.addColumn(column[5]);
+        dtmReservation.addColumn(column[6]);
+        dtmReservation.addColumn(column[7]);
+        dtmReservation.addColumn(column[8]);
+		tableReservation.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				boolean isThisID=false;
+				int row=tableReservation.getSelectedRow();
+				String username=tableReservation.getModel().getValueAt(row,1).toString();
+				User_Info user_info=new User_Info();
+				for(int i=1;i<listReservation.size();i=i+3) {
+					User user=(User) listReservation.get(i);
+					user_info=(User_Info) listReservation.get(i+1);
+					if(username.equals(user.getUsername())) {
+						isThisID=true;
+						break;
+					}
+				}
+				if(isThisID) {
+					UserInfo frame=new UserInfo(user_info);
+					frame.setVisible(true);
+				}
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		
+		JLabel lblNewLabel_4 = new JLabel("INCOME OF THIS PROPERTY :");
+		lblNewLabel_4.setFont(new Font("Sitka Text", Font.BOLD, 11));
+		lblNewLabel_4.setBackground(Color.RED);
+		lblNewLabel_4.setForeground(Color.BLACK);
+		lblNewLabel_4.setBounds(196, 312, 195, 45);
+		PanelReservation.add(lblNewLabel_4);
+		
+		tfProfit = new JTextField();
+		tfProfit.setForeground(Color.RED);
+		tfProfit.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tfProfit.setHorizontalAlignment(SwingConstants.CENTER);
+		tfProfit.setBounds(405, 316, 148, 32);
+		PanelReservation.add(tfProfit);
+		tfProfit.setColumns(10);
+		
+		PanelRating = new JPanel();
+		layeredPane.add(PanelRating, "name_32596903632730");
+		PanelRating.setBackground(new Color(0,0,0,0));
+		PanelRating.setLayout(null);
+		
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(117, 11, 479, 332);
+		PanelRating.add(scrollPane_4);
+		
+		list = new JList();
+		list.setFont(new Font("Tahoma", Font.BOLD, 20));
+		scrollPane_4.setViewportView(list);
+		
+		ChatPanel = new JPanel();
+		layeredPane.add(ChatPanel, "name_126561918059752");
+		ChatPanel.setBackground(new Color(0,0,0,0));
+		ChatPanel.setLayout(null);
+		
+		JScrollPane scrollPane_5 = new JScrollPane();
+		scrollPane_5.setBounds(10, 31, 191, 310);
+		ChatPanel.add(scrollPane_5);
+		
+		listChat = new JList();
+		listChat.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				textArea.setText(null);
+				String value=((ComboBoxClass)listChat.getSelectedValue()).getCall();
+				textArea.append(chatMap.get(value).toString());
+			}
+		});
+		scrollPane_5.setViewportView(listChat);
+		
+		JScrollPane scrollPane_6 = new JScrollPane();
+		scrollPane_6.setBounds(246, 101, 517, 238);
+		ChatPanel.add(scrollPane_6);
+		
+		textArea = new JTextArea();
+		scrollPane_6.setViewportView(textArea);
+		
+		tfmessage = new JTextField();
+		tfmessage.setBounds(246, 56, 257, 34);
+		ChatPanel.add(tfmessage);
+		tfmessage.setColumns(10);
+		
+		JButton btnNewButton_7 = new JButton("SEND");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String message=tfmessage.getText();
+				GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+				String value=((ComboBoxClass)listChat.getSelectedValue()).getCall();
+				Message message1=new Message();
+				User user1=(User) map.get(value).get(0);
+				message1.setUser(user1);
+				message1.setMessage(message);
+				list.add(message1);
+				list.add(user);
+				try {
+					ControlerUI.getInstance().sendToServer(Type_Of_Operation.SENDMESSAGE,Type_Of_Data.MESSAGE,list);
+					ControlerMessage.getInstance().setNumber(0);
+					chatMap.get(user1.getUsername()).append("\n");
+					chatMap.get(user1.getUsername()).append(user.getUsername()+" : "+message+"\n");
+					textArea.append("\n");
+					textArea.append(user.getUsername()+" : "+message+"\n");
+					tfmessage.setText("");
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnNewButton_7.setBounds(553, 45, 89, 45);
+		ChatPanel.add(btnNewButton_7);
 		
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setBounds(0, 0, 1250, 720);
 		add(lblBackground);
-		lblBackground.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
-			}
-		});
 		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_BACKGROUND.getValue(), lblBackground);
 		tableDiscount.addMouseListener(new MouseListener() {
 			
@@ -1139,24 +1522,126 @@ public class Admin_Panel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int rowDiscount=tableDiscount.getSelectedRow();
-				idDiscount=tableDiscount.getModel().getValueAt(rowDiscount,0).toString();
-				date_from=tableDiscount.getModel().getValueAt(rowDiscount, 1).toString();
-				date_to=tableDiscount.getModel().getValueAt(rowDiscount, 2).toString();
-				amount=tableDiscount.getModel().getValueAt(rowDiscount, 3).toString();
+				date_from=tableDiscount.getModel().getValueAt(rowDiscount, 0).toString();
+				date_to=tableDiscount.getModel().getValueAt(rowDiscount, 1).toString();
+				amount=tableDiscount.getModel().getValueAt(rowDiscount, 2).toString();
+				discount_code=Integer.parseInt(tableDiscount.getModel().getValueAt(rowDiscount, 3).toString());
 				tfAmount.setText(amount);
 				calendarFrom.setDate(Date.valueOf(date_from));
 				CalendarTo.setDate(Date.valueOf(date_to));
 				
 			}
 		});
-		createColumnForDTM();
-		fillcombobox();
+		
+		createColumnForDTM(); 
+		fillcombobox(); 
 		fillCountryComboBox();
-		backAllForThisProperty();
-		time.start();
+		backAllForThisProperty(); 
+		time.start(); 
+		sortAllTables(); 
+		setAdminPanelForControlers();
+		 
+	}
+
+
+
+
+
+	
+
+
+
+	protected void appendTextOnArea(String value) {
+		StringBuffer sb=new StringBuffer();
+		sb=chatMap.get(value);
+		textArea.append(sb.toString());
+	}
+
+
+
+	public static int setCode() throws ClassNotFoundException, IOException {
+		int number=Integer.parseInt(String.valueOf(Math.round(Math.random()*100000)));
+		ControlerUI.getInstance().sendToServer(Type_Of_Operation.ADD,Type_Of_Data.CODE,number);
+		int objectCode=ControlerCode.getInstance().getCode();
+		ControlerCode.getInstance().setNumber(0);
+		while(objectCode == 1) {
+			number=Integer.parseInt(String.valueOf(Math.round(Math.random()*100000)));
+			ControlerUI.getInstance().sendToServer(Type_Of_Operation.ADD,Type_Of_Data.CODE,number);
+			objectCode=ControlerCode.getInstance().getCode();
+			ControlerCode.getInstance().setNumber(0);
+		}
+		return number;
+	}
+
+
+
+	private void setAdminPanelForControlers() {
+		ControlerReservation.getInstance().setAdminPanel(this);
+		ControlerRating.getInstance().setAdminPanel(this);
+		ControlerMessage.getInstance().setAdminPanel(this);
+		ControlerUser.getInstance().setAdminPanel(this);
+		
+	}
+
+
+
+	private void fillRatingList() {
+		dm1.clear();
+		Client_Rating client=new Client_Rating();
+		User user=new User();
+		User_Info user_Info=new User_Info();
+		Reservation reservation=new Reservation();
+		DefaultComboBoxModel dm1=new DefaultComboBoxModel<ComboBoxClass>();
+		for(int i=0;i<listRating.size();i++) {
+			client=(Client_Rating) listRating.get(i);
+			for(int j=1;j<listReservation.size();j=j+3) {
+				user=(User) listReservation.get(j);
+				if(client.getUser_Username().equals(user.getUsername())) {
+					user_Info=(User_Info) listReservation.get(j+1);
+				}
+			}
+				ImageIcon imageIcon=new ImageIcon(AbsolutePath.absolutePath()+user_Info.getPictureURL());
+				Image image=imageIcon.getImage().getScaledInstance(100,100,Image.SCALE_SMOOTH);
+				dm1.addElement(new ComboBoxClass("       ( "+user_Info.getName()+" ) RATING OF THIS CLIENT IS : "+String.valueOf(client.getClient_rating()),new ImageIcon(image)));
+			}
+			dm1.addElement(new ComboBoxClass(null,null));
+			list.setCellRenderer(new RenderCB());
+			list.setModel(dm1);
+			list.setSelectedIndex(0);
+		}
+		
+
+
+
+	private void sortAllTables() {
+		sort(dtmReservation,tableReservation);
+		sort(dtmDiscount,tableDiscount);
+		sort(dtmRoom,tableRooms);
+		
+	}
+
+
+
+	public void sort(DefaultTableModel dtm,JTable jtable) {
+		dtm=(DefaultTableModel) jtable.getModel();
+		TableRowSorter<DefaultTableModel>sorter =new TableRowSorter<DefaultTableModel>(dtm);
+		jtable.setRowSorter(sorter);
 	}
 	
-	
+
+
+
+	protected boolean reservedRoom(int roomCode) {
+		for(int i=0;i<listReservation.size();i=i+3) {
+			Reservation reservation =(Reservation) listReservation.get(i);
+			if(reservation.getRoom_code()==roomCode) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+
 
 	protected void deletePictureForServer(String picutre_URL) {
 		File file=new File(picutre_URL);
@@ -1179,19 +1664,23 @@ public class Admin_Panel extends JPanel {
 
 
 	protected void updateRooms(GenericList<GeneralDomain> listRooms1, Room room, Room_Info room_Info) {
-		room_Info.setId_room(room.getId());
+		room_Info.setRoom_code(room.getRoom_code());
+		listRooms1.add(property);
 		listRooms1.add(room);
 		listRooms1.add(room_Info);
 		try {
-			TransferClass transferClass=ControlerKI.getInstance().updateRoom(listRooms1);
-			String poruka=transferClass.getMessage();
-			JOptionPane.showMessageDialog(null,poruka);
+			ControlerUI.getInstance().sendToServer(Type_Of_Operation.UPDATE_ROOM, Type_Of_Data.ROOM, listRooms1);
+			String message=ControlerRoom.getInstance().getMessage();
+			ControlerRoom.getInstance().setNumber(0);
+			if(message != null) {
+				JOptionPane.showMessageDialog(null,message);
+			}
 			clearTFRooms();
 			for(int i=0;i<listRoom.size();i++) {
 				if(listRoom.get(i) instanceof Room) {
 					Room room1=(Room) listRoom.get(i);
 					Room_Info room_info=(Room_Info) listRoom.get(i+1);
-					if(room1.getId()==room.getId()) {
+					if(room1.getRoom_code()==room.getRoom_code()) {
 						listRoom.set(i,room);
 						listRoom.set(i+1,room_Info);
 					}
@@ -1332,7 +1821,7 @@ public class Admin_Panel extends JPanel {
 
 
 
-	private void fillCountryComboBox() {
+	private void fillCountryComboBox() {		
 		dm.clear();
 		GenericList<GeneralDomain>list1=new GenericList<GeneralDomain>();
 		Property property=new Property();
@@ -1340,13 +1829,17 @@ public class Admin_Panel extends JPanel {
 		String name;
 		DefaultComboBoxModel dm=new DefaultComboBoxModel<ComboBoxClass>();
 		for(Map.Entry<String,GenericList<GeneralDomain>> entry : map.entrySet()) {
-			list1=entry.getValue();
-			property=(Property) list1.get(0);
-			adress1=(Adress) list1.get(1);
-			String country=adress1.getCountry();
-			name=property.getName().toString();
-			String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+country+".jpg";
-					dm.addElement(new ComboBoxClass(property.getName()+" ("+property.getType_Of_Property()+")",new ImageIcon(url)));
+			if(entry.getValue().get(0) instanceof Property && ((Property) entry.getValue().get(0)).getUser_Username().equals(user.getUsername())) {
+				list1=null;
+				list1=new GenericList<GeneralDomain>();;
+				list1=entry.getValue();
+				property=(Property) list1.get(0);
+				adress1=(Adress) list1.get(1);
+				String country=adress1.getCountry();
+				name=property.getName().toString();
+				String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+country+".jpg";
+						dm.addElement(new ComboBoxClass(property.getName()+" ("+property.getType_Of_Property()+")",new ImageIcon(url)));
+			 	}
 			}
 			dm.addElement(new ComboBoxClass(null,null));
 			listProperties.setCellRenderer(new RenderCB());
@@ -1383,25 +1876,62 @@ public class Admin_Panel extends JPanel {
 		 refreshUserInfoField();
 		 refreshHotelInfoField();
 		 refreshRoomAndDiscount();
+		 fillRatingList();
 		 EnterRoomInTable(listRoom);
 		 EnterDiscountOnTable(listDiscount);
+		 EnterReservationOnTable(listReservation);
 	}
 
 
 
 
+
+
 	private void refreshRoomAndDiscount() {
+		double sum=0;
+		int counter = 0;
+		int counterRating=0;
 		listRoom=null;
 		listRoom=new GenericList<GeneralDomain>();
 		listDiscount=null;
 		listDiscount=new GenericList<GeneralDomain>();
+		listReservation=null;
+		listReservation=new GenericList<GeneralDomain>();
+		listRating=null;
+		listRating=new GenericList<GeneralDomain>();
 		int number=map.get(WhichProperty).size();
-		for(int i=8;i<number;i++) {
+		for(int i=0;i<number;i++) {
 			if(map.get(WhichProperty).get(i) instanceof Room || map.get(WhichProperty).get(i) instanceof Room_Info) {
 				listRoom.add(map.get(WhichProperty).get(i));
-			}else {
+			}else if(map.get(WhichProperty).get(i) instanceof Discount){
 				listDiscount.add(map.get(WhichProperty).get(i));
+			}else if(map.get(WhichProperty).get(i) instanceof Reservation ) {
+				Reservation reservation=(Reservation) map.get(WhichProperty).get(i);
+				listReservation.add(reservation);
+				listReservation.add(map.get(reservation.getUser_Username()).get(0));
+				listReservation.add(map.get(reservation.getUser_Username()).get(1));
+			}else if(map.get(WhichProperty).get(i) instanceof Client_Rating && counterRating==0) {
+				Client_Rating client=(Client_Rating) map.get(WhichProperty).get(i);
+				listRating.add(client);
+				counter++;
+				sum+=client.getClient_rating();
+				
 			}
+		}
+		counterRating++;
+		if(sum/counter > 0) {
+			btnRating.setText("CLIENT RATING IS : "+String.format("%.2f",sum/counter));
+		}else {
+			btnRating.setText("RATING IS 0");
+		}
+		if(sum/counter < 3.50) {
+			btnRating.setBackground(Color.RED);
+			btnRating.setForeground(Color.WHITE);
+		}else if(sum/counter >= 3.50 && sum/counter < 4.50) {
+			btnRating.setBackground(Color.YELLOW);
+			btnRating.setForeground(Color.BLACK);
+		}else {
+			btnRating.setBackground(Color.GREEN);
 		}
 		
 	}
@@ -1475,7 +2005,7 @@ public class Admin_Panel extends JPanel {
 		dtmDiscount.setRowCount(0);
 		for(int i=0;i<listDiscount2.size();i++) {
 			discount=(Discount) listDiscount2.get(i);
-			Object[]row= {discount.getId(),discount.getFrom_Date(),discount.getTo_Date(),discount.getAmount_of_dosicount()};
+			Object[]row= {discount.getFrom_Date(),discount.getTo_Date(),discount.getAmount_of_dosicount(),discount.getDiscount_code()};
 			dtmDiscount.addRow(row);
 		}
 	}
@@ -1488,33 +2018,64 @@ public class Admin_Panel extends JPanel {
 		for(int i=0;i<listRoom2.size();i=i+2) {
 			room=(Room) listRoom2.get(i);
 			if(room.getType().equals(cbTypeOfRoom.getSelectedItem().toString())) {
-				Object[]row= {room.getId(),room.getType(),room.getPrice_per_night(),room.getNumber_of_bed(),room.getRoom_code()};
+				Object[]row= {room.getType(),room.getPrice_per_night(),room.getNumber_of_bed(),room.getRoom_code()};
 				dtmRoom.addRow(row);
 			}
 		}
 		
 	}
+	
+	private void EnterReservationOnTable(GenericList<GeneralDomain> listReservation2) {
+		double amount=0;
+		int number=1;
+		Reservation reservation=new Reservation();
+		User user=new User();
+		dtmReservation.setRowCount(0);
+		for(int i=0;i<listReservation2.size();i=i+3) {
+					reservation=(Reservation) listReservation2.get(i);
+					user=(User) listReservation2.get(i+1);
+					Room room=new Room();
+					for(int j=0;j<listRoom.size();j=j+2) {
+						room=(Room) listRoom.get(j);
+						if(reservation.getRoom_code()==room.getRoom_code()) {
+							break;
+						}
+					}
+					if(reservation.getCheckOut().compareTo(CurrentDate) > 0) {
+						Object[]row= {"ACTIVE",user.getUsername(),reservation.getCheckIn(),reservation.getCheckOut(),reservation.getNumberAdults(),reservation.getNumberChildren(),reservation.getNumberNights(),reservation.getAmount(),room.getRoom_code()};
+						dtmReservation.addRow(row);
+					}else {
+						Object[]row= {"INACTIVE",user.getUsername(),reservation.getCheckIn(),reservation.getCheckOut(),reservation.getNumberAdults(),reservation.getNumberChildren(),reservation.getNumberNights(),reservation.getAmount(),room.getRoom_code()};
+						dtmReservation.addRow(row);
+					}
+					amount+=reservation.getAmount();
+			}
+		tfProfit.setText(String.format("%.3f",amount)+" $");
+	}
 
 
 
 	protected void EnterRoomAndRoomInfo(GenericList<GeneralDomain> list, Room room, Room_Info room_Info) {
+		room_Info.setRoom_code(room.getRoom_code());
+		list.add(property);
 		list.add(room);
 		list.add(room_Info);
 		try {
-			TransferClass transferClass=ControlerKI.getInstance().enterRoomAndRoomInfo(list);
-			GenericList<GeneralDomain>listRooms=new GenericList<GeneralDomain>();
-			listRooms=(GenericList<GeneralDomain>) transferClass.getServer_Object_Response();
-			String message=transferClass.getMessage();
+			ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_ROOM,Type_Of_Data.ROOM, list);
+			String message=ControlerRoom.getInstance().getMessage();
+			
+			ControlerRoom.getInstance().setNumber(0);
 			Room enteredRoom=new Room();
-			enteredRoom=(Room) listRooms.get(2);
-			JOptionPane.showMessageDialog(null,message);
-			if(message.equals(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue())) {
-				map.get(WhichProperty).add(enteredRoom);
-				map.get(WhichProperty).add(room_Info);
-			}
 			clearTFRooms();
-			backAllForThisProperty();
 			user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_ROOM.getValue(),room.getType());
+			listRoom.add(room);
+			listRoom.add(room_Info);
+			map.get(property.getName()).add(room);
+			map.get(property.getName()).add(room_Info);
+			if(message != null) {
+				JOptionPane.showMessageDialog(null,message);
+			}
+			EnterRoomInTable(listRoom);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1536,7 +2097,6 @@ public class Admin_Panel extends JPanel {
 
 	private void createColumnForDTM() {
 		Object[]columnsRooms= {
-				Room_Constants.ID_ROOM.getValue(),
 				Room_Constants.ROOM_TYPE.getValue(),
 				Room_Constants.PRICE_PER_NIGHT.getValue(),
 				Room_Constants.NUMBER_OF_BEED.getValue(),
@@ -1547,13 +2107,12 @@ public class Admin_Panel extends JPanel {
 		dtmRoom.addColumn(columnsRooms[1]);
 		dtmRoom.addColumn(columnsRooms[2]);
 		dtmRoom.addColumn(columnsRooms[3]);
-		dtmRoom.addColumn(columnsRooms[4]);
 		
 		Object[]columnsDiscount= {
-				Discount_Contstants.ID_DISCOUNT.getValue(),
 				Discount_Contstants.FROM_DATE.getValue(),
 				Discount_Contstants.TO_DATE.getValue(),
-				Discount_Contstants.AMOUNT_OF_DISCOUNT.getValue()
+				Discount_Contstants.AMOUNT_OF_DISCOUNT.getValue(),
+				Discount_Contstants.DISCOUNT_CODE.getValue()
 		};
 		
 		dtmDiscount.addColumn(columnsDiscount[0]);
@@ -1570,19 +2129,20 @@ public class Admin_Panel extends JPanel {
 		fileChooser.setFileFilter(new FileNameExtensionFilter("png","jpg"));
 		fileChooser.showOpenDialog(btnNewButton_2);
 		String newPictureURL=fileChooser.getSelectedFile().getAbsolutePath();
-		if(newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equals("jpg") ||
+		if(newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equalsIgnoreCase("jpg") ||
 		 newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equals("png")	) {
-			createPictureForServer(newPictureURL,property,property_picutre_album);
+			createPictureForServer(newPictureURL,property,property_picutre_album,user);
 			CommonMethod.setNewPicutreOnLabel(newPictureURL, label);
 			property_picutre_album.setPicutre_URL(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+URL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"("+property.getType_Of_Property()+")/"+property_picutre_album.getNumber()+".jpg");
 		}
 	}
 	
 	
-	public static void createPictureForServer(String newPictureURL,Property property, Property_Picutre_Album property_picutre_album){
+	public static void createPictureForServer(String newPictureURL,Property property, Property_Picutre_Album property_picutre_album, User user2){
 		try {
 			FileInputStream in=new FileInputStream(newPictureURL);
-			FileOutputStream out=new FileOutputStream(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+URL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"("+property.getType_Of_Property()+")/"+property_picutre_album.getNumber()+".jpg");
+			String out1=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user2.getUsername()+URL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"("+property.getType_Of_Property()+")/"+property_picutre_album.getNumber()+".jpg";
+			FileOutputStream out=new FileOutputStream(out1);
 			BufferedInputStream bin=new BufferedInputStream(in);
 			BufferedOutputStream bou=new BufferedOutputStream(out);
 			int b=0;
@@ -1600,6 +2160,105 @@ public class Admin_Panel extends JPanel {
 			e.printStackTrace();
 		}
 		
+		
+	}
+
+
+
+	public void addRating(String name, Client_Rating rating) {
+		map.get(name).add(rating);
+		fillRatingList();
+		backAllForThisProperty();
+
+	}
+
+
+
+	public void addReservation(String name, Reservation reservation, User user2, User_Info user_info2) {
+		map.get(name).add(reservation);
+		GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+		list.add(user2);
+		list.add(user_info2);
+		map.put(user2.getUsername(),list);
+		listReservation.add(reservation);
+		listReservation.add(user2);
+		listReservation.add(user_info2);
+		EnterReservationOnTable(listReservation);
+	}
+
+
+
+	public void deleteReservation(String name, Reservation reservation, User user2, User_Info user_info2) {
+		map.get(name).delete(reservation);
+		backAllForThisProperty();
+	}
+
+
+
+	public void appendMessageOnTextArea(String message, User user2) {
+		if(!chatMap.containsKey(user2.getUsername())) {
+			chatMap.put(user2.getUsername(),new StringBuffer());
+			chatMap.get(user2.getUsername()).append("\n");
+			chatMap.get(user2.getUsername()).append(user2.getUsername()+" : "+message+"\n");
+			fillJList(user2);
+		}else {
+			chatMap.get(user2.getUsername()).append("\n");
+			chatMap.get(user2.getUsername()).append(user2.getUsername()+" : "+message+"\n");
+		}
+		
+		String value=((ComboBoxClass)listChat.getSelectedValue()).getCall();
+		if(value.equals(user2.getUsername())) {
+			textArea.append("\n");
+			textArea.append(user2.getUsername()+" : "+message+"\n");
+		}
+	}
+
+
+
+	private void fillJList(User user2) {
+			rdbtnChat.setVisible(true);
+			String user;
+			dmChat.addElement(new ComboBoxClass(user2.getUsername(),new ImageIcon(AbsolutePath.absolutePath()+URL.ONLINE_USER.getValue())));
+			listChat.setCellRenderer(new RenderCB());
+			listChat.setModel(dmChat);
+			if(dmChat.getSize() != 0) {
+				listChat.setSelectedIndex(0);
+			}
+			
+		
+	}
+
+
+
+
+
+	public void removeFromList(User user2) {
+			dm2.clear();
+			dmChat.removeAllElements();
+			chatMap.remove(user2.getUsername());
+			for(Map.Entry<String,StringBuffer> entry : chatMap.entrySet() ) {
+				dmChat.addElement(new ComboBoxClass(entry.getKey(),new ImageIcon(AbsolutePath.absolutePath()+URL.ONLINE_USER.getValue())));
+			}
+			
+			listChat.setCellRenderer(new RenderCB());
+			if(dmChat.getSize() != 0) {
+				listChat.setSelectedIndex(0);
+			}else {
+				rdbtnChat.setVisible(false);
+				rbRoom.setSelected(true);
+				layeredPane.removeAll();
+				layeredPane.add(PanelRoom);
+				layeredPane.repaint();
+				layeredPane.revalidate();
+			}
+			textArea.setText("");
+	}
+
+
+
+	public void addUser(GenericList<GeneralDomain> list2) {
+		User user=(User) list2.get(0);
+		map.put(user.getUsername(),list2);
 		
 	}
 }

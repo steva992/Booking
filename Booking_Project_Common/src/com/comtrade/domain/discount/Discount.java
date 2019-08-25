@@ -14,20 +14,39 @@ public class Discount implements Serializable,GeneralDomain{
 	private Date From_Date;
 	private Date To_Date;
 	private double amount_of_discount;
-	private int id_property;
+	private int property_code;
+	private int discount_code;
 	
 	public Discount() {
 		
 	}
 	
-	public Discount(int id, Date from_Date, Date to_Date, double amount_of_dosicount, int id_property) {
-		super();
-		this.id = id;
-		From_Date = from_Date;
-		To_Date = to_Date;
-		this.amount_of_discount = amount_of_dosicount;
-		this.id_property = id_property;
+	
+	
+	public double getAmount_of_discount() {
+		return amount_of_discount;
 	}
+
+
+
+	public void setAmount_of_discount(double amount_of_discount) {
+		this.amount_of_discount = amount_of_discount;
+	}
+
+
+
+	public int getDiscount_code() {
+		return discount_code;
+	}
+
+
+
+	public void setDiscount_code(int discount_code) {
+		this.discount_code = discount_code;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -52,11 +71,11 @@ public class Discount implements Serializable,GeneralDomain{
 	public void setAmount_of_dosicount(double amount_of_dosicount) {
 		this.amount_of_discount = amount_of_dosicount;
 	}
-	public int getId_property() {
-		return id_property;
+	public int getProperty_code() {
+		return property_code;
 	}
-	public void setId_property(int id_property) {
-		this.id_property = id_property;
+	public void setProperty_code(int id_property) {
+		this.property_code = id_property;
 	}
 
 	@Override
@@ -68,13 +87,13 @@ public class Discount implements Serializable,GeneralDomain{
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(From_Date,To_Date,Amount_Of_Discount,id_property)";
+		return "(From_Date,To_Date,Amount_Of_Discount,property_code,discount_code)";
 	}
 
 	@Override
 	public String returnQuestionnaires() {
 		// TODO Auto-generated method stub
-		return " values(?,?,?,?)";
+		return " values(?,?,?,?,?)";
 	}
 
 	@Override
@@ -82,14 +101,15 @@ public class Discount implements Serializable,GeneralDomain{
 		preparedStatement.setDate(1,From_Date);
 		preparedStatement.setDate(2,To_Date);
 		preparedStatement.setDouble(3,amount_of_discount);
-		preparedStatement.setInt(4,id_property);
+		preparedStatement.setInt(4,property_code);
+		preparedStatement.setInt(5,discount_code);
 		return preparedStatement;
 	}
 
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "id_property";
+		return "property_code";
 	}
 
 	@Override
@@ -100,7 +120,8 @@ public class Discount implements Serializable,GeneralDomain{
 			discount.setFrom_Date(resultSet.getDate("From_Date"));
 			discount.setTo_Date(resultSet.getDate("To_Date"));
 			discount.setAmount_of_dosicount(resultSet.getDouble("Amount_Of_Discount"));
-			discount.setId_property(id_property);
+			discount.setProperty_code(property_code);
+			discount.setDiscount_code(resultSet.getInt("discount_code"));
 		}
 		return discount;
 	}
@@ -114,7 +135,8 @@ public class Discount implements Serializable,GeneralDomain{
 			discount.setFrom_Date(resultSet.getDate("From_Date"));
 			discount.setTo_Date(resultSet.getDate("To_Date"));
 			discount.setAmount_of_dosicount(resultSet.getDouble("Amount_Of_Discount"));
-			discount.setId_property(resultSet.getInt("id_property"));
+			discount.setProperty_code(resultSet.getInt("property_code"));
+			discount.setDiscount_code(resultSet.getInt("discount_code"));
 			listDiscount.add(discount);
 		}
 		return listDiscount;
@@ -132,13 +154,42 @@ public class Discount implements Serializable,GeneralDomain{
 		stringBuffer.append("From_Date=? ,");
 		stringBuffer.append("To_Date=? ,");
 		stringBuffer.append("Amount_Of_Discount=? ");
+		stringBuffer.append("property_code=? ");
 		return stringBuffer.toString();
 	}
 
+	
+
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
-		return "Id_Discount";
+		return "discount_code";
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + discount_code;
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Discount other = (Discount) obj;
+		if (discount_code != other.discount_code)
+			return false;
+		return true;
 	}
 	
 	

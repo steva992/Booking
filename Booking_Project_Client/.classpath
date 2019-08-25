@@ -3,6 +3,12 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Booking_Project_Common"/>
-	<classpathentry kind="lib" path="C:/Users/stevd/OneDrive/Desktop/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/stevd/OneDrive/Desktop/Projekat podaci/Jar/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/stevd/OneDrive/Desktop/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/stevd/OneDrive/Desktop/google-api-client-1.30.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/stevd/OneDrive/Desktop/jflac-codec-1.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/stevd/OneDrive/Desktop/commons-io-1.3.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/stevd/OneDrive/Desktop/jfreechart-1.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/stevd/OneDrive/Desktop/jcommon-1.0.24.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

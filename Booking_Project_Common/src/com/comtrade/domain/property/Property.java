@@ -14,54 +14,90 @@ public class Property implements GeneralDomain,Serializable{
 	private String name;
 	private int rating;
 	private String type_Of_Property;
-	private int id_User;
+	private String User_Username;
+	private int property_code;
 	
 	
-	
-	public Property(int id, String name, int rating, String type_Of_Property, int id_User) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.rating = rating;
-		this.type_Of_Property = type_Of_Property;
-		this.id_User = id_User;
-	}
 
 	public Property() {
 		
 	}
 	
+	
+	
+	public int getProperty_code() {
+		return property_code;
+	}
+
+
+
+	public void setProperty_code(int property_code) {
+		this.property_code = property_code;
+	}
+
+	
+
+	
 	public int getId() {
 		return id;
 	}
+
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
+
 	public String getName() {
 		return name;
 	}
+
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+
 	public int getRating() {
 		return rating;
 	}
+
+
+
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	
+
+
+
 	public String getType_Of_Property() {
 		return type_Of_Property;
 	}
+
+
+
 	public void setType_Of_Property(String type_Of_Property) {
 		this.type_Of_Property = type_Of_Property;
 	}
-	public int getId_User() {
-		return id_User;
+
+
+
+	public String getUser_Username() {
+		return User_Username;
 	}
-	public void setId_User(int id_User) {
-		this.id_User = id_User;
+
+
+
+	public void setUser_Username(String user_Username) {
+		User_Username = user_Username;
 	}
+
+
+
 	@Override
 	public String returnNameOfTable() {
 		// TODO Auto-generated method stub
@@ -70,25 +106,26 @@ public class Property implements GeneralDomain,Serializable{
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(Name,Rating,Type_Of_Property,id_User)";
+		return "(Name,Rating,Type_Of_Property,User_Username,property_code)";
 	}
 	@Override
 	public String returnQuestionnaires() {
 		// TODO Auto-generated method stub
-		return " values(?,?,?,?)";
+		return " values(?,?,?,?,?)";
 	}
 	@Override
 	public PreparedStatement setPS(PreparedStatement preparedStatement) throws SQLException {
 		preparedStatement.setString(1,name);
 		preparedStatement.setDouble(2,rating);
 		preparedStatement.setString(3,type_Of_Property);
-		preparedStatement.setInt(4,id_User);
+		preparedStatement.setString(4,User_Username);
+		preparedStatement.setInt(5,property_code);
 		return preparedStatement;
 	}
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "id_User";
+		return "User_Username";
 	}
 	@Override
 	public GeneralDomain setResultSetForOne(ResultSet resultSet) {
@@ -99,7 +136,8 @@ public class Property implements GeneralDomain,Serializable{
 				property.setName(resultSet.getString("Name"));
 				property.setRating(resultSet.getInt("Rating"));
 				property.setType_Of_Property(resultSet.getString("Type_Of_Property"));
-				property.setId_User(resultSet.getInt("id_User"));
+				property.setUser_Username(resultSet.getString("User_Username"));
+				property.setProperty_code(resultSet.getInt("property_code"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -110,7 +148,7 @@ public class Property implements GeneralDomain,Serializable{
 	@Override
 	public PreparedStatement setPSforID(PreparedStatement preparedStatement) {
 		try {
-			preparedStatement.setInt(1,id);
+			preparedStatement.setInt(1,property_code);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,7 +165,8 @@ public class Property implements GeneralDomain,Serializable{
 				property.setName(resultSet.getString("Name"));
 				property.setRating(resultSet.getInt("Rating"));
 				property.setType_Of_Property(resultSet.getString("Type_Of_Property"));
-				property.setId_User(resultSet.getInt("id_User"));
+				property.setUser_Username(resultSet.getString("User_Username"));
+				property.setProperty_code(resultSet.getInt("property_code"));
 				listProperty.add(property);
 			}
 		} catch (SQLException e) {
@@ -142,9 +181,35 @@ public class Property implements GeneralDomain,Serializable{
 		return null;
 	}
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
-		return "Id_Property";
+		return "property_code";
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + property_code;
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Property other = (Property) obj;
+		if (property_code != other.property_code)
+			return false;
+		return true;
 	}
 	
 	

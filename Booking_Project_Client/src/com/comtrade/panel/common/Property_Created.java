@@ -1,6 +1,13 @@
 package com.comtrade.panel.common;
 
 import javax.swing.JPanel;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -14,12 +21,16 @@ import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.URL;
+import com.comtrade.controlerClient.ControlerCode;
+import com.comtrade.controlerClient.ControlerComboBox;
+import com.comtrade.controlerClient.ControlerProperty;
+import com.comtrade.controlerClient.ControlerUI;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.constants.Type_OF_Operation_TXT;
+import com.comtrade.constants.Type_Of_Data;
+import com.comtrade.constants.Type_Of_Operation;
 import com.comtrade.constants.Type_Of_Property;
-import com.comtrade.controlerKI.ControlerComboBox;
-import com.comtrade.controlerKI.ControlerKI;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.property.Adress;
 import com.comtrade.domain.property.GeoLocation;
@@ -33,6 +44,8 @@ import com.comtrade.transfer.TransferClass;
 import com.comtrade.view.frame.Application;
 
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -42,6 +55,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.TreeMap;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
@@ -65,11 +79,13 @@ public class Property_Created extends JPanel {
 	private List<List<String>> list = new ArrayList<>();
 	private JLabel label_2,label_11,label_3,label_4,label_5;
 	private int rating=0;
+	private String back;
 
 	/**
 	 * Create the panel.
 	 */
-	public Property_Created(User user,User_Info user_info) {
+	public Property_Created(User user,User_Info user_info,String back) {
+		this.back=back;
 		list=ControlerComboBox.getInstance().fillList();
 		setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		this.user=user;
@@ -159,79 +175,148 @@ public class Property_Created extends JPanel {
 				String Longitude=tfLongitude.getText();
 				boolean testField=fieldValidityProperty(name,Adress_Number,Adress_Street,Latitude,Longitude);
 				boolean AllFieldCompleted=FieldComplete(name,Adress_Number,Adress_Street,Latitude,Longitude);
-				if(testField) {
-					if(AllFieldCompleted) {
-						Property property=new Property();
-						Property_Picutre_Album property_picture_album=new Property_Picutre_Album();
-						property.setName(name);
-						property.setRating(rating);
-						property.setType_Of_Property(type_Of_Property);
-						Adress adress=new Adress();
-						adress.setStreet(Adress_Street);
-						adress.setCity(City);
-						adress.setHouseNumber(Integer.parseInt(Adress_Number));
-						adress.setCountry(Country);
-						GeoLocation geoLocation=new GeoLocation();
-						geoLocation.setLatitude(Double.parseDouble(Latitude));
-						geoLocation.setLongitude(Double.parseDouble(Longitude));
-						property_picture_album.setPicutre_URL(URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg");
-						GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
-						list.add(user);
-						list.add(user_info);
-						list.add(property);
-						list.add(adress);
-						list.add(geoLocation);
-						list.add(property_picture_album);
-						try {
-							TransferClass transferClass=ControlerKI.getInstance().enterProperty(list);
-							String poruka=transferClass.getMessage();
-							if(poruka.equals(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue())) {
-								JOptionPane.showMessageDialog(null,TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
-								String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+URL.PROFILE_PICTURE_HOTELS.getValue();
-								File userFile=new File(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
-								File userPropertyFile=new File(url);
-								if(!userFile.exists() && !userPropertyFile.exists()) {
-									userFile.mkdir();
-									userPropertyFile.mkdir();
-								}
-								File propertyFile=new File(url+"/"+name+"("+property.getType_Of_Property()+")");
-								if(!propertyFile.exists()) {
-									propertyFile.mkdir();
-									
-								}
-								if(user.getId() !=0) {
-									JPanel admin=null;
-									try {
-										admin = new Admin_Panel(user);user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_NEW.getValue(), property.getName());
-									} catch (URISyntaxException e1) {
-										// TODO Auto-generated catch block
-										e1.printStackTrace();
-									}
-									Application.setPanelOnLayeredPane(admin);
-									
-								}else {
-									JPanel login=new Login();
-									Application.setPanelOnLayeredPane(login);
-									user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER_AND_PROPERTY.getValue(), property.getName());
-								}
-								
-							}else if(poruka.equals(TransferClass_Message.EXCIST_PROPERTY.getValue())){
-								JOptionPane.showMessageDialog(null,TransferClass_Message.EXCIST_PROPERTY.getValue());
+				if(rating != 0) {
+					if(testField) {
+						if(AllFieldCompleted) {
+							JFileChooser fileChooser=new JFileChooser();
+							Property property=new Property();
+							property.setUser_Username(user.getUsername());
+							property.setName(name);
+							property.setRating(rating);
+							property.setType_Of_Property(type_Of_Property); 
+							Adress adress=new Adress();
+							adress.setStreet(Adress_Street);
+							adress.setCity(City);
+							adress.setHouseNumber(Integer.parseInt(Adress_Number));
+							adress.setCountry(Country);
+							try {
+								property.setProperty_code(Admin_Panel.setCode());
+								adress.setAdress_code(Admin_Panel.setCode());
+								adress.setProperty_code(property.getProperty_code());
+							} catch (ClassNotFoundException e3) {
+								// TODO Auto-generated catch block
+								e3.printStackTrace();
+							} catch (IOException e3) {
+								// TODO Auto-generated catch block
+								e3.printStackTrace();
 							}
-			
-						} catch (ClassNotFoundException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
+							GeoLocation geoLocation=new GeoLocation();
+							geoLocation.setLatitude(Double.parseDouble(Latitude));
+							geoLocation.setLongitude(Double.parseDouble(Longitude));
+							geoLocation.setAdress_code(adress.getAdress_code());
+							GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+							list.add(user);
+							list.add(user_info);
+							list.add(property);
+							list.add(adress);
+							list.add(geoLocation);
+							for(int i=0;i<5;i++) {
+								Property_Picutre_Album property_picture_album=new Property_Picutre_Album();
+								property_picture_album.setNumber(i+1);
+								property_picture_album.setProperty_code(property.getProperty_code());
+								property_picture_album.setPicutre_URL(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+URL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"("+property.getType_Of_Property()+")/"+property_picture_album.getNumber()+".jpg");
+								list.add(property_picture_album);
+							}
+									String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+URL.PROFILE_PICTURE_HOTELS.getValue();
+									File userFile=new File(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
+									File userPropertyFile=new File(url);
+									if(!userFile.exists() && !userPropertyFile.exists()) {
+										userFile.mkdir();
+										userPropertyFile.mkdir();
+									}
+									File propertyFile=new File(url+"/"+name+"("+property.getType_Of_Property()+")");
+									if(!propertyFile.exists()) {
+										propertyFile.mkdir();
+										
+									}
+									JOptionPane.showMessageDialog(null,"CHOOSE 5 PICTURE FOR YOUR PROPERTY : ");
+									Property_Picutre_Album property_picture_album=new Property_Picutre_Album();
+									for(int i=5;i<10;i++) {
+										property_picture_album=(Property_Picutre_Album) list.get(i);
+										fileChooser.showOpenDialog(btnSignUpYou);
+										String path=fileChooser.getSelectedFile().getAbsolutePath();
+										Admin_Panel.createPictureForServer(path,property,property_picture_album,user);
+									}
+									if(back.equals("admin")) {
+												try {
+													list.delete(user);
+													list.delete(user_info);
+													ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_PROPERTY,Type_Of_Data.PROPERTY, list);
+													String message=ControlerProperty.getInstance().getMessage();
+													ControlerProperty.getInstance().setNumber(0);
+													if(message.equals(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue())) {
+														user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER_AND_PROPERTY.getValue(), property.getName());
+														JOptionPane.showMessageDialog(null,message);
+														JPanel admin= new Admin_Panel(user);
+														Application.setPanelOnLayeredPane(admin);
+														user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_NEW.getValue(), property.getName());
+													}else if(message.equals(TransferClass_Message.EXCIST_PROPERTY.getValue())){
+														userFile.delete();
+														userPropertyFile.delete();
+														propertyFile.delete();
+														JOptionPane.showMessageDialog(null,message);
+													}
+												} catch (ClassNotFoundException e1) {
+													// TODO Auto-generated catch block
+													e1.printStackTrace();
+												} catch (IOException e1) {
+													// TODO Auto-generated catch block
+													e1.printStackTrace();
+												} catch (URISyntaxException e1) {
+													// TODO Auto-generated catch block
+													e1.printStackTrace();
+												}
+										
+										
+									}else if(back.equals("login")){
+										int number=sendVerificationEmail(user_info.getEmail());
+										String verificatiopn="We are sent verification code on your email adress!\nPlease Enter your verification code :";
+										if(JOptionPane.showInputDialog(null,verificatiopn) != null) {
+											
+											int answer=Integer.parseInt(JOptionPane.showInputDialog(null,verificatiopn));
+											while(answer !=number) {
+												JOptionPane.showMessageDialog(null,"INCORECT NUMBER,PLEASE CHECK YOUR EMAIL AGAIN");
+												answer=Integer.parseInt(JOptionPane.showInputDialog(null, "We are sent verification code on your email adress!\nPlease Enter your verification code :"));
+											}
+											try {
+												ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_PROPERTY,Type_Of_Data.PROPERTY, list);
+												String message=ControlerProperty.getInstance().getMessage();
+												ControlerProperty.getInstance().setNumber(0);
+												if(message.equals(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue())) {
+													JPanel login=new Login();
+													Application.setPanelOnLayeredPane(login);
+													user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER_AND_PROPERTY.getValue(), property.getName());
+													JOptionPane.showMessageDialog(null,message);
+												}else if(message.equals(TransferClass_Message.EXCIST_PROPERTY.getValue())){
+													userFile.delete();
+													userPropertyFile.delete();
+													propertyFile.delete();
+													JOptionPane.showMessageDialog(null,message);
+													
+												}
+											} catch (ClassNotFoundException e2) {
+												// TODO Auto-generated catch block
+												e2.printStackTrace();
+											} catch (IOException e2) {
+												// TODO Auto-generated catch block
+												e2.printStackTrace();
+											}
+										
+										}	
+										
+									}
+								
+							
+						}else {
+							JOptionPane.showMessageDialog(null,TransferClass_Message.ALL_FIELDS_FILL.getValue());
 						}
 					}else {
-						JOptionPane.showMessageDialog(null,TransferClass_Message.ALL_FIELDS_FILL.getValue());
+						JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
 					}
 				}else {
-					JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
+					JOptionPane.showMessageDialog(null,TransferClass_Message.RATING_NULL.getValue());
 				}
+				
 			}
 		});
 		btnSignUpYou.setBounds(21, 647, 287, 42);
@@ -444,6 +529,44 @@ public class Property_Created extends JPanel {
 		addItemToCity();
 	}
 	
+	
+
+
+
+	protected int sendVerificationEmail(String email) {
+		double number=Math.random()*10000000;
+		String number1=String.valueOf(Math.round(number));
+		Properties prop = new Properties();
+        
+        prop.put("mail.smtp.auth","true");
+        prop.put("mail.smtp.starttls.enable","true");
+        prop.put("mail.smtp.host", AbsolutePath.SERVER);
+        prop.put("mail.smtp.port","587");
+        
+        
+        Session session = Session.getInstance(prop,new Authenticator() {
+        	
+        	@Override
+        	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+        		return new javax.mail.PasswordAuthentication(AbsolutePath.username,AbsolutePath.password);
+        	}
+		});
+
+        Message message = new MimeMessage(session);
+        try {
+            message.setFrom(new InternetAddress(AbsolutePath.username));
+            message.setRecipient( Message.RecipientType.TO,new InternetAddress(email));
+            message.setSubject("BOOKING VERIFICATION");
+            message.setText("Your verification code is "+ number1 +"\nTHANKS FOR RESERVATION!");
+			Transport.send(message);
+			System.out.println("Poruka je polsata");
+		} catch (MessagingException e) {
+			System.out.println("Poruka nije polsata");
+			e.printStackTrace();
+		}
+		return Integer.valueOf(number1);
+	}
+
 	protected void setAllToEmpty() {
 		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_11);
 		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), label_2);

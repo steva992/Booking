@@ -10,7 +10,7 @@ import com.comtrade.genericClasses.GenericList;
 
 public class User_Info implements Serializable,GeneralDomain{
 	private int id_User_Info;
-	private int id_User;
+	private String User_Username;
 	private String name;
 	private String surname;
 	private String gender;
@@ -26,70 +26,203 @@ public class User_Info implements Serializable,GeneralDomain{
 	
 	
 
+	
 
 
 
-
+	
 	public int getId_User_Info() {
 		return id_User_Info;
 	}
-	public void setId_User_Info(int id_User_Additional_Features) {
-		this.id_User_Info = id_User_Additional_Features;
+
+
+
+
+
+
+
+
+
+	public void setId_User_Info(int id_User_Info) {
+		this.id_User_Info = id_User_Info;
 	}
-	public int getId_User() {
-		return id_User;
+
+
+
+
+
+
+
+
+
+	public String getUser_Username() {
+		return User_Username;
 	}
-	public void setId_User(int id_User) {
-		this.id_User = id_User;
+
+
+
+
+
+
+
+
+
+	public void setUser_Username(String user_Username) {
+		User_Username = user_Username;
 	}
+
+
+
+
+
+
+
+
+
 	public String getName() {
 		return name;
 	}
+
+
+
+
+
+
+
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+
+
+
+
+
+
+
 	public String getSurname() {
 		return surname;
 	}
+
+
+
+
+
+
+
+
+
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+
+
+
+
+
+
+
+
+
 	public String getGender() {
 		return gender;
 	}
+
+
+
+
+
+
+
+
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
+
+
+
+
+
+
+
+
 	public String getEmail() {
 		return email;
 	}
+
+
+
+
+
+
+
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+
+
+
+
+
+
+
 	public String getPictureURL() {
 		return pictureURL;
 	}
+
+
+
+
+
+
+
+
+
 	public void setPictureURL(String pictureURL) {
 		this.pictureURL = pictureURL;
 	}
+
+
+
+
+
+
+
+
+
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
+
+
+
+
+
+
+
+
+
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	public User_Info(int id_User_Info, int id_User, String name, String surname,
-			String gender, String email, String pictureURL, String mobileNumber) {
-		super();
-		this.id_User_Info = id_User_Info;
-		this.id_User = id_User;
-		this.name = name;
-		this.surname = surname;
-		this.gender = gender;
-		this.email = email;
-		this.pictureURL = pictureURL;
-		this.mobileNumber = mobileNumber;
-	}
+
+
+
+
+
+
+
+
+
 	@Override
 	public String returnNameOfTable() {
 		// TODO Auto-generated method stub
@@ -98,7 +231,7 @@ public class User_Info implements Serializable,GeneralDomain{
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(Name,Surname,Gender,Email,Picture_URL,Mobile_Number,id_User)";
+		return "(Name,Surname,Gender,Email,Picture_URL,Mobile_Number,User_Username)";
 	}
 	@Override
 	public String returnQuestionnaires() {
@@ -113,7 +246,7 @@ public class User_Info implements Serializable,GeneralDomain{
 		preparedStatement.setString(4,email);
 		preparedStatement.setString(5,pictureURL);
 		preparedStatement.setString(6,mobileNumber);
-		preparedStatement.setInt(7,id_User);
+		preparedStatement.setString(7,User_Username);
 		return preparedStatement;
 	}
 
@@ -126,7 +259,7 @@ public class User_Info implements Serializable,GeneralDomain{
 		try {
 			if(resultSet.next()) {
 				user.setId_User_Info(resultSet.getInt("id_User_Info"));
-				user.setId_User(resultSet.getInt("id_User"));
+				user.setUser_Username(resultSet.getString("User_Username"));
 				user.setName(resultSet.getString("Name"));
 				user.setSurname(resultSet.getString("Surname"));
 				user.setGender(resultSet.getString("Gender"));
@@ -145,7 +278,7 @@ public class User_Info implements Serializable,GeneralDomain{
 	@Override
 	public PreparedStatement setPSforID(PreparedStatement preparedStatement) {
 		try {
-			preparedStatement.setInt(1,id_User);
+			preparedStatement.setString(1,User_Username);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -157,7 +290,7 @@ public class User_Info implements Serializable,GeneralDomain{
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "id_User";
+		return "User_Username";
 	}
 
 
@@ -188,9 +321,50 @@ public class User_Info implements Serializable,GeneralDomain{
 
 
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+
+
+
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((User_Username == null) ? 0 : User_Username.hashCode());
+		return result;
+	}
+
+
+
+
+
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User_Info other = (User_Info) obj;
+		if (User_Username == null) {
+			if (other.User_Username != null)
+				return false;
+		} else if (!User_Username.equals(other.User_Username))
+			return false;
+		return true;
 	}
 
 

@@ -1,7 +1,9 @@
 package com.comtrade.constants;
 
 public enum Server_Information {
-	IP_ADRESA("127.0.0.1"),PORT(9000);
+	
+	IP_ADRESA("127.0.0.1"),
+	PORT(9000);
 	
 	private String text;
 	private int value;

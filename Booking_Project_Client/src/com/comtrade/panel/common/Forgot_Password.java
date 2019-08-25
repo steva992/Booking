@@ -12,10 +12,13 @@ import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.URL;
+import com.comtrade.controlerClient.ControlerUI;
+import com.comtrade.controlerClient.ControlerUser;
 import com.comtrade.constants.Regular_Expression;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.constants.Type_OF_Operation_TXT;
-import com.comtrade.controlerKI.ControlerKI;
+import com.comtrade.constants.Type_Of_Data;
+import com.comtrade.constants.Type_Of_Operation;
 import com.comtrade.domain.user.User;
 import com.comtrade.genericClasses.GenericList;
 import com.comtrade.transfer.TransferClass;
@@ -28,6 +31,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -36,14 +40,13 @@ import java.awt.SystemColor;
 import javax.swing.border.EtchedBorder;
 
 public class Forgot_Password extends JPanel {
+	
 	private JTextField tfUsername;
 	private JPasswordField pfOldPassword;
 	private JPasswordField pfNewPassword;
 	private JPanel login=new Login();
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public Forgot_Password() {
 		setLayout(null);
 		
@@ -110,23 +113,25 @@ public class Forgot_Password extends JPanel {
 							GenericList<User>listUser=new GenericList<User>();
 							listUser.add(user);
 							listUser.add(user1);
-							try {
-								TransferClass transferClass=ControlerKI.getInstance().changePassword(listUser);
-								user=(User) transferClass.getServer_Object_Response();
-								if(user.getId()==0) {
-									JOptionPane.showMessageDialog(null,TransferClass_Message.WRONG_USERNAME_OR_PASSWORD.getValue());
-								}else {
-									JOptionPane.showMessageDialog(null,TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
-									Application.setPanelOnLayeredPane(login);
-									user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.CHANGE_PASSWORD.getValue(),user.getUsername());
+								try {
+									ControlerUI.getInstance().sendToServer(Type_Of_Operation.CHANGE_PASSWORD_USER, Type_Of_Data.USER, listUser);
+									String message=ControlerUser.getInstance().getMessage();
+									ControlerUser.getInstance().setNumber(0);
+									if(!message.equals(TransferClass_Message.WRONG_USERNAME_OR_PASSWORD.getValue())){
+											JOptionPane.showMessageDialog(null,message);
+											Application.setPanelOnLayeredPane(login);
+											user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.CHANGE_PASSWORD.getValue(),user.getUsername());
+									}else {
+											JOptionPane.showMessageDialog(null,message);
+									}
+								} catch (ClassNotFoundException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
 								}
-							} catch (ClassNotFoundException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							
 						}else {
 							JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
 						}

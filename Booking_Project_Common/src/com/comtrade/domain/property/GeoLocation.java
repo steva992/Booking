@@ -12,13 +12,14 @@ public class GeoLocation implements Serializable, GeneralDomain {
 	private int id;
 	private double Latitude;
 	private double Longitude;
-	private int id_adress;
+	private int adress_code;
 	
 	
 
 	
 	
 
+	
 	public int getId() {
 		return id;
 	}
@@ -43,12 +44,12 @@ public class GeoLocation implements Serializable, GeneralDomain {
 		Longitude = longitude;
 	}
 
-	public int getId_adress() {
-		return id_adress;
+	public int getAdress_code() {
+		return adress_code;
 	}
 
-	public void setId_adress(int id_adress) {
-		this.id_adress = id_adress;
+	public void setAdress_code(int adress_code) {
+		this.adress_code = adress_code;
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class GeoLocation implements Serializable, GeneralDomain {
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(Latitude,Longitude,id_adress)";
+		return "(Latitude,Longitude,adress_code)";
 	}
 
 	@Override
@@ -73,14 +74,14 @@ public class GeoLocation implements Serializable, GeneralDomain {
 	public PreparedStatement setPS(PreparedStatement preparedStatement) throws SQLException {
 		preparedStatement.setDouble(1,Latitude);
 		preparedStatement.setDouble(2,Longitude);
-		preparedStatement.setInt(3,id_adress);
+		preparedStatement.setInt(3,adress_code);
 		return preparedStatement;
 	}
 
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "id_adress";
+		return "adress_code";
 	}
 
 	@Override
@@ -91,7 +92,7 @@ public class GeoLocation implements Serializable, GeneralDomain {
 				geoLocation.setId(resultSet.getInt("id_geoLocation"));
 				geoLocation.setLatitude(resultSet.getDouble("Latitude"));
 				geoLocation.setLongitude(resultSet.getDouble("Longitude"));
-				geoLocation.setId_adress(resultSet.getInt("id_adress"));
+				geoLocation.setAdress_code(resultSet.getInt("adress_code"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -101,9 +102,9 @@ public class GeoLocation implements Serializable, GeneralDomain {
 	}
 
 	@Override
-	public PreparedStatement setPSforID(PreparedStatement preparedStatement) {
-		
-		return null;
+	public PreparedStatement setPSforID(PreparedStatement preparedStatement) throws SQLException {
+		preparedStatement.setInt(1,adress_code);
+		return preparedStatement;
 	}
 
 	@Override
@@ -121,9 +122,31 @@ public class GeoLocation implements Serializable, GeneralDomain {
 	}
 
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + adress_code;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		GeoLocation other = (GeoLocation) obj;
+		if (adress_code != other.adress_code)
+			return false;
+		return true;
 	}
 
 	

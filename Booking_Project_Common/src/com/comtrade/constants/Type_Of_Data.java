@@ -6,6 +6,9 @@ public enum Type_Of_Data {
 	PROPERTY,
 	ROOM, 
 	DISCOUNT,
-	RESERVATON, 
+	RESERVATION, 
+	RATING, 
+	CODE, 
+	MESSAGE, 
 	
 }

@@ -10,7 +10,7 @@ import com.comtrade.genericClasses.GenericList;
 
 public class Room_Info implements GeneralDomain, Serializable, IRoom_Info {
 	private int id_room_info;
-	private int id_room;
+	private int room_code;
 	private boolean tv;
 	private boolean wi_fi;
 	private boolean mini_bar;
@@ -43,12 +43,12 @@ public class Room_Info implements GeneralDomain, Serializable, IRoom_Info {
 		this.id_room_info = id_room_info;
 	}
 
-	public int getId_room() {
-		return id_room;
+	public int getRoom_code() {
+		return room_code;
 	}
 
-	public void setId_room(int id_room) {
-		this.id_room = id_room;
+	public void setRoom_code(int id_room) {
+		this.room_code = id_room;
 	}
 
 	public boolean isTv() {
@@ -138,7 +138,7 @@ public class Room_Info implements GeneralDomain, Serializable, IRoom_Info {
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(Balkon,Jacuzzi,Mini_Bar,Air_conditioning,Wi_Fi,Kitchen,Livingroom,TV,smoking,underFloorHeating,id_Room)";
+		return "(Balkon,Jacuzzi,Mini_Bar,Air_conditioning,Wi_Fi,Kitchen,Livingroom,TV,smoking,underFloorHeating,room_code)";
 	}
 
 	@Override
@@ -159,14 +159,14 @@ public class Room_Info implements GeneralDomain, Serializable, IRoom_Info {
 		preparedStatement.setBoolean(8,tv);
 		preparedStatement.setBoolean(9,smoking);
 		preparedStatement.setBoolean(10,underFloorHeating);
-		preparedStatement.setInt(11,id_room);
+		preparedStatement.setInt(11,room_code);
 		return preparedStatement;
 	}
 
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "id_Room";
+		return "room_code";
 	}
 
 	@Override
@@ -175,7 +175,7 @@ public class Room_Info implements GeneralDomain, Serializable, IRoom_Info {
 		try {
 			if(resultSet.next()) {
 				room_info.setId_room_info(resultSet.getInt("Id_Room_Info"));
-				room_info.setId_room(resultSet.getInt("id_Room"));
+				room_info.setRoom_code(resultSet.getInt("room_code"));
 				room_info.setBalkon(resultSet.getBoolean("Balkon"));
 				room_info.setJacuzzi(resultSet.getBoolean("Jacuzzi"));
 				room_info.setMini_bar(resultSet.getBoolean("Mini_Bar"));
@@ -197,7 +197,7 @@ public class Room_Info implements GeneralDomain, Serializable, IRoom_Info {
 	@Override
 	public PreparedStatement setPSforID(PreparedStatement preparedStatement) {
 		try {
-			preparedStatement.setInt(1,id_room);
+			preparedStatement.setInt(1,room_code);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -212,7 +212,7 @@ public class Room_Info implements GeneralDomain, Serializable, IRoom_Info {
 			while(resultSet.next()) {
 				Room_Info room_info=new Room_Info();
 				room_info.setId_room_info(resultSet.getInt("Id_Room_Info"));
-				room_info.setId_room(resultSet.getInt("id_Room"));
+				room_info.setRoom_code(resultSet.getInt("room_code"));
 				room_info.setBalkon(resultSet.getBoolean("Balkon"));
 				room_info.setJacuzzi(resultSet.getBoolean("Jacuzzi"));
 				room_info.setMini_bar(resultSet.getBoolean("Mini_Bar"));
@@ -249,9 +249,31 @@ public class Room_Info implements GeneralDomain, Serializable, IRoom_Info {
 	}
 
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
-		return null;
+		return "room_info";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + room_code;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Room_Info other = (Room_Info) obj;
+		if (room_code != other.room_code)
+			return false;
+		return true;
 	}
 
 	

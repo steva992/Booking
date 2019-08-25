@@ -31,6 +31,7 @@ public enum URL {
 	PICTURE_PROPERTY_CREATED("/Wallpaper/PropertyCreated.jpg"),
 	PICTURE_PROPERTY_EMPTY_STAR("/Wallpaper/EmptyStar.jpg"),
 	PICTURE_PROPERTY_FULL_STAR("/Wallpaper/FullStar.jpg"),
+	PICTURE_CANCEL_RESERVATION("/Wallpaper/CancelReservation.png"),
 	
 	PICTURE_ADMIN_BACKGROUND("/Wallpaper/HotelIN.jpg"),
 	PICTURE_ADMIN_UPDATE("/Wallpaper/UpdateProperty.jpg"),
@@ -58,7 +59,14 @@ public enum URL {
 	PICTURE_USER_CARD_DINA("/Wallpaper/DINA.png"),
 	PICTURE_USER_CARD_MASTER("/Wallpaper/MASTER.png"),
 	PICTURE_USER_RESERVATION("/Wallpaper/Reservation.png"),
-	PICTURE_USER_BACKGROUND("/Wallpaper/UserPanel.jpg");
+	PICTURE_USER_BACKGROUND("/Wallpaper/UserPanel.jpg"), 
+	PICTURE_RATING("/Wallpaper/Rating.png"), 
+	ONLINE_USER("/Wallpaper/OnlineUser.jpg"), 
+	
+	USER_CARD_PICTURE("/Wallpaper/AcountCard.png"),
+	DEACTIVATE_USER("/Wallpaper/Deactivate.png"),
+	MESSAGE("/Wallpaper/Message.png"),
+	SUPER_ADMIN_WALLPAPER("/Wallpaper/SuperAdmin.jpg");
 	
 	
 	private String value;

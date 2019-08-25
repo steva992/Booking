@@ -5,6 +5,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class ComboBoxClass {
+	
 	private Icon image;
 	private String call;
 	

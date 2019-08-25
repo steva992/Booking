@@ -83,7 +83,7 @@ public class User implements GeneralDomain,Serializable {
 	@Override
 	public String returnNameOfColumns() {
 		// TODO Auto-generated method stub
-		return "(Password,Username,Status)";
+		return "(Password,Status,Username)";
 	}
 
 	@Override
@@ -95,15 +95,15 @@ public class User implements GeneralDomain,Serializable {
 	@Override
 	public PreparedStatement setPS(PreparedStatement preparedStatement) throws SQLException {
 		preparedStatement.setString(1,password);
-		preparedStatement.setString(2,username);
-		preparedStatement.setString(3,status);
+		preparedStatement.setString(2,status);
+		preparedStatement.setString(3,username);
 			return preparedStatement;
 	}
 
 	@Override
 	public String printIDOfParrentTable() {
 		// TODO Auto-generated method stub
-		return "id_User";
+		return "Username";
 	}
 
 
@@ -128,7 +128,7 @@ public class User implements GeneralDomain,Serializable {
 	@Override
 	public PreparedStatement setPSforID(PreparedStatement preparedStatement) {
 		try {
-			preparedStatement.setInt(1,id);
+			preparedStatement.setString(1,username);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -158,14 +158,16 @@ public class User implements GeneralDomain,Serializable {
 
 	@Override
 	public String setColumnForUpdate() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuffer stringBuffer=new StringBuffer();
+		stringBuffer.append("Password=? ,");
+		stringBuffer.append("Status=? ");
+		return stringBuffer.toString();
 	}
 
 	@Override
-	public String printIDOfTable() {
+	public String printUniqueValueOfTable() {
 		// TODO Auto-generated method stub
-		return "Id_User";
+		return "User_username";
 	}
 
 	
@@ -227,6 +229,40 @@ public class User implements GeneralDomain,Serializable {
 		return sb.toString(); 
 		
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+
+	public void updatePictureURL(GenericList<GeneralDomain> list) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
 	
 
 }

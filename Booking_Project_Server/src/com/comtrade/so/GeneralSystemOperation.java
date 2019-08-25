@@ -18,7 +18,7 @@ public abstract class GeneralSystemOperation<E extends Generic>{
 			throw sql;
 		}catch(Exception e) {
 			rollBackTransaction();
-			e.printStackTrace();
+			throw e;
 		}finally {
 			closeConnection();
 		}
