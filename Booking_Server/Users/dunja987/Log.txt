@@ -1,0 +1,940 @@
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : HotelIN
+Date : 2019-08-24
+Time : 21:04:53.306
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 21:21:05.689
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 21:21:40.014
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : Zora
+Date : 2019-08-24
+Time : 21:22:47.723
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 21:22:48.858
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : Zora
+Date : 2019-08-24
+Time : 21:22:49.293
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : Baltimor
+Date : 2019-08-24
+Time : 21:24:22.526
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 21:24:23.707
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : Baltimor
+Date : 2019-08-24
+Time : 21:24:24.123
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : Kovilovo
+Date : 2019-08-24
+Time : 21:25:41.070
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 21:25:42.023
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : Kovilovo
+Date : 2019-08-24
+Time : 21:25:42.429
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : Motel
+Date : 2019-08-24
+Time : 21:26:51.336
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 21:26:52.441
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : Motel
+Date : 2019-08-24
+Time : 21:26:52.843
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-16 MiliSecond-985 )
+Date : 2019-08-24
+Time : 21:27:09.426
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 21:27:13.122
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-979 )
+Date : 2019-08-24
+Time : 21:27:16.101
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 22:02:38.999
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/dunja987/ProfilePicture.jpg
+Date : 2019-08-24
+Time : 22:03:28.035
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/dunja987/ProfilePicture.jpg
+Date : 2019-08-24
+Time : 22:04:03.919
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/dunja987/ProfilePicture.jpg
+Date : 2019-08-24
+Time : 22:04:12.837
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/dunja987/ProfilePicture.jpg
+Date : 2019-08-24
+Time : 22:05:43.229
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 22:09:11.048
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 23:05:45.806
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:06:15.435
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:06:24.066
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:06:29.673
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:06:37.856
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:06:44.394
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:06:54.880
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:07:00.914
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:07:12.828
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:07:26.968
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:07:37.701
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:07:47.041
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:07:52.788
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:07:58.736
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:08:09.077
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:08:14.755
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:08:20.236
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:08:28.053
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-09-102019-09-20
+Date : 2019-08-24
+Time : 23:08:56.778
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-10-012019-10-22
+Date : 2019-08-24
+Time : 23:09:25.260
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:09:35.223
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:09:40.191
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:09:45.199
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:09:50.587
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:09:55.406
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:10:00.045
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:10:07.228
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:10:58.742
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:11:08.566
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:11:12.807
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:11:17.638
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:11:22.755
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:11:38.383
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:11:44.226
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-12-232019-12-31
+Date : 2019-08-24
+Time : 23:12:00.381
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:12:19.864
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:12:30.181
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:12:34.903
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 23:14:14.741
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-24
+Time : 23:14:34.274
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-25
+Time : 00:32:02.131
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-25
+Time : 00:42:13.220
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-25
+Time : 00:42:30.135
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-10-152019-10-18
+Date : 2019-08-25
+Time : 00:43:46.801
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-25
+Time : 00:49:41.961
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-12-092019-12-24
+Date : 2019-08-25
+Time : 00:49:57.159
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-2 Seconds-19 MiliSecond-460 )
+Date : 2019-08-25
+Time : 00:52:01.420
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-25
+Time : 00:52:08.441
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-51 MiliSecond-724 )
+Date : 2019-08-25
+Time : 00:53:00.165
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-25
+Time : 01:24:32.284
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-08-272019-08-30
+Date : 2019-08-25
+Time : 01:24:48.648
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-5 Seconds-38 MiliSecond-621 )
+Date : 2019-08-25
+Time : 01:30:10.903
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-25
+Time : 01:49:19.324
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-25
+Time : 22:19:51.340
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : deactivated
+Operation : USER DEACTIVATED HIS ACCOUNT
+Object : dunja987
+Date : 2019-08-25
+Time : 22:20:17.250
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-26
+Time : 00:34:13.289
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-26
+Time : 00:35:46.901
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-5 Seconds-6 MiliSecond-139 )
+Date : 2019-08-26
+Time : 00:40:53.038
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-26
+Time : 00:41:06.270
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-6 MiliSecond-694 )
+Date : 2019-08-26
+Time : 00:41:12.964
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-26
+Time : 00:47:03.911
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-26
+Time : 12:01:30.337
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-26
+Time : 12:17:04.697
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-482 )
+Date : 2019-08-26
+Time : 12:17:08.178
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-26
+Time : 12:17:15.807
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-26
+Time : 12:24:56.532
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Luxury
+Date : 2019-08-26
+Time : 12:26:40.215
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/dunja987/Property/Zora(Motel)/1.jpg
+Date : 2019-08-26
+Time : 12:27:16.969
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-15 Seconds-8 MiliSecond-888 )
+Date : 2019-08-26
+Time : 12:40:05.418
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-26
+Time : 12:59:33.193
+--------------------------------------------
+
+

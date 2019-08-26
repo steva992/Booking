@@ -1,0 +1,240 @@
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : REGISTRATION USER
+Object : fica007
+Date : 2019-08-25
+Time : 01:19:15.728
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-25
+Time : 01:19:22.785
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : CHANGE PICTURE URL
+Object : /Users/fica007/ProfilePicture.jpg
+Date : 2019-08-25
+Time : 01:21:59.464
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : USER REGISTRATED PAYMENT CARD
+Object : 4345
+Date : 2019-08-25
+Time : 01:22:16.950
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-11-18 2019-11-22
+Date : 2019-08-25
+Time : 01:23:07.268
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:20:58.778
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:43:51.438
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-3 Seconds-11 MiliSecond-321 )
+Date : 2019-08-26
+Time : 12:47:02.757
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:47:35.525
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:48:34.583
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:49:28.320
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:50:53.122
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:51:59.676
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-08-29 2019-08-31
+Date : 2019-08-26
+Time : 12:52:26.371
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:53:21.436
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:54:17.257
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 12:59:45.406
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-2 Seconds-0 MiliSecond-605 )
+Date : 2019-08-26
+Time : 13:01:46.009
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 13:09:36.793
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-22 MiliSecond-577 )
+Date : 2019-08-26
+Time : 13:09:59.368
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 13:10:38.946
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-32 MiliSecond-596 )
+Date : 2019-08-26
+Time : 13:11:11.542
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-26
+Time : 13:11:40.237
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-1 Seconds-17 MiliSecond-551 )
+Date : 2019-08-26
+Time : 13:12:57.788
+--------------------------------------------
+
+

@@ -1,0 +1,570 @@
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : Slavija
+Date : 2019-08-24
+Time : 21:09:17.737
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 21:10:02.953
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-1 Seconds-1 MiliSecond-503 )
+Date : 2019-08-24
+Time : 21:11:04.456
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 21:19:19.641
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 21:20:39.415
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 21:36:44.593
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : Grand
+Date : 2019-08-24
+Time : 21:39:16.943
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 21:39:17.865
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : Grand
+Date : 2019-08-24
+Time : 21:39:18.296
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : Krasici
+Date : 2019-08-24
+Time : 21:40:39.384
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 21:40:40.586
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : Krasici
+Date : 2019-08-24
+Time : 21:40:41.017
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : null
+Operation : CHANGE PASSWORD
+Object : sneza61
+Date : 2019-08-24
+Time : 21:56:54.312
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 21:57:47.819
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/sneza61/ProfilePicture.jpg
+Date : 2019-08-24
+Time : 21:57:58.467
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-11 MiliSecond-669 )
+Date : 2019-08-24
+Time : 21:57:59.486
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 21:58:06.110
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-419 )
+Date : 2019-08-24
+Time : 21:58:08.530
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 23:42:55.668
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:43:08.064
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:43:28.107
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:43:35.522
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:43:41.054
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:43:48.045
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:43:53.058
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:43:59.476
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:44:08.928
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 23:47:15.430
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 23:47:37.193
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:47:47.735
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:47:52.846
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:47:59.558
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:48:14.751
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:48:20.704
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:48:26.825
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:48:34.383
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:48:39.541
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-11-032019-11-22
+Date : 2019-08-24
+Time : 23:48:56.287
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:49:16.640
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:49:25.397
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-24
+Time : 23:49:31.553
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:49:38.878
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:49:44.462
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:49:51.440
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-24
+Time : 23:50:56.155
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:51:05.691
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:51:10.445
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:51:16.261
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-24
+Time : 23:51:22.831
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:51:30.357
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:51:36.361
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-24
+Time : 23:51:43.003
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-09-162019-09-20
+Date : 2019-08-24
+Time : 23:52:01.748
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-2 Seconds-43 MiliSecond-816 )
+Date : 2019-08-24
+Time : 23:53:39.969
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-26
+Time : 00:45:47.645
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-26
+Time : 12:08:54.829
+--------------------------------------------
+
+
+-------------------------------------------
+Username : sneza61
+Status : admin
+Operation : LOGIN USER
+Object : sneza61
+Date : 2019-08-26
+Time : 12:12:49.690
+--------------------------------------------
+
+

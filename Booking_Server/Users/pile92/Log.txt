@@ -1,0 +1,470 @@
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : REGISTRATION USER
+Object : pile92
+Date : 2019-08-25
+Time : 00:02:53.015
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 00:05:37.948
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : CHANGE PICTURE URL
+Object : /Users/pile92/ProfilePicture.jpg
+Date : 2019-08-25
+Time : 00:07:04.074
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : USER REGISTRATED PAYMENT CARD
+Object : 4958
+Date : 2019-08-25
+Time : 00:08:38.438
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 00:12:04.777
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-10-01 2019-10-12
+Date : 2019-08-25
+Time : 00:16:25.984
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-12-23 2019-12-31
+Date : 2019-08-25
+Time : 00:24:02.904
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 01:08:57.899
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-11-19 2019-11-28
+Date : 2019-08-25
+Time : 01:10:03.314
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-08-28 2019-08-30
+Date : 2019-08-25
+Time : 01:10:46.655
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 01:27:01.130
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-10-09 2019-10-18
+Date : 2019-08-25
+Time : 01:27:56.546
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 01:32:13.183
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 01:34:21.744
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 01:35:51.351
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-12-17 2019-12-24
+Date : 2019-08-25
+Time : 01:37:11.567
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-08-29 2019-08-31
+Date : 2019-08-25
+Time : 01:37:41.674
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-2 Seconds-19 MiliSecond-374 )
+Date : 2019-08-25
+Time : 01:38:10.722
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 01:43:14.545
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 01:47:17.056
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 01:52:29.921
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 01:54:46.968
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : deactivated
+Operation : USER DEACTIVATED HIS ACCOUNT
+Object : pile92
+Date : 2019-08-25
+Time : 01:55:07.569
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 22:08:01.755
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 22:12:41.838
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 22:20:37.942
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 22:21:23.628
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-25
+Time : 23:33:14.709
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-13 MiliSecond-2 )
+Date : 2019-08-25
+Time : 23:33:27.710
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 00:39:46.153
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 00:42:31.261
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : USER RATE HIS RESERVATION
+Object : 35923
+Date : 2019-08-26
+Time : 00:42:43.798
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 00:44:56.577
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : USER RATE HIS RESERVATION
+Object : 48317
+Date : 2019-08-26
+Time : 00:45:22.338
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-5 Seconds-6 MiliSecond-188 )
+Date : 2019-08-26
+Time : 00:50:02.763
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 11:58:52.760
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-26 MiliSecond-545 )
+Date : 2019-08-26
+Time : 11:59:19.303
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 12:00:59.766
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 12:13:02.920
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 12:17:43.212
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 12:25:52.610
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : UPDATE USER
+Object : pile92
+Date : 2019-08-26
+Time : 12:32:20.490
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : CANCEL RESERVATION
+Object : 2019-12-17 2019-12-24
+Date : 2019-08-26
+Time : 12:32:46.524
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-08-27 2019-08-29
+Date : 2019-08-26
+Time : 12:33:30.903
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 13:12:03.304
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-51 MiliSecond-207 )
+Date : 2019-08-26
+Time : 13:12:54.509
+--------------------------------------------
+
+
+-------------------------------------------
+Username : pile92
+Status : user
+Operation : LOGIN USER
+Object : pile92
+Date : 2019-08-26
+Time : 13:15:17.239
+--------------------------------------------
+
+
