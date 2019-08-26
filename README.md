@@ -1,4 +1,4 @@
-# Booking-Application
+# Booking - Application - 'CODE BY COMTRADE' FINAL PROJECT 
 
 Desktop Application written in Java based on booking.com website
 
