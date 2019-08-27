@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import com.comtrade.constants.AbsolutePath;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.constants.Type_OF_Operation_TXT;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.genericClasses.GenericList;
@@ -179,7 +179,7 @@ public class User implements GeneralDomain,Serializable {
 		}else {
 			object1="Object";
 		}
-		String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.username+"/Log.txt";
+		String url=AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.username+"/Log.txt";
 		Path path;
 		File file;
 		FileWriter fileW=null;

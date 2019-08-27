@@ -11,11 +11,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.sql.Date;
 import java.text.DecimalFormat;
@@ -47,7 +49,7 @@ import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.CountryesTxt;
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.controlerClient.ControlerDiscount;
 import com.comtrade.controlerClient.ControlerMessage;
 import com.comtrade.controlerClient.ControlerProperty;
@@ -199,6 +201,7 @@ public class User_Panel extends JPanel {
 	private ButtonGroup bg1=new ButtonGroup();
 	private ButtonGroup bg2=new ButtonGroup();
 	private ButtonGroup bg=new ButtonGroup();
+	private JLabel lblLocation;
 	
 	
 	
@@ -255,21 +258,21 @@ public class User_Panel extends JPanel {
 		btnUpload.setForeground(Color.RED);
 		btnUpload.setFont(new Font("Castellar", Font.BOLD, 11));
 		btnUpload.setBounds(20, 140, 143, 33);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPLOAD.getValue(), btnUpload);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_UPLOAD.getValue(), btnUpload);
 		add(btnUpload);
 		
 		JButton btnDelete = new JButton("DELETE");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(!url.equals(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg")) {
+				if(!url.equals(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg")) {
 					try {
 						deletePictureForServer(AbsolutePath.absolutePath()+url);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					user_info.setPictureURL(URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
-					CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg",lblPicture);
+					user_info.setPictureURL(URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
+					CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg",lblPicture);
 					try {
 						GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 						list.add(user);
@@ -293,14 +296,14 @@ public class User_Panel extends JPanel {
 						e.printStackTrace();
 					}
 				}
-				User_Panel.setUrl(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
+				User_Panel.setUrl(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
 			}
 		});
 		btnDelete.setBackground(Color.WHITE);
 		btnDelete.setForeground(Color.RED);
 		btnDelete.setFont(new Font("Castellar", Font.BOLD, 11));
 		btnDelete.setBounds(20, 184, 143, 32);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_DELETE.getValue(), btnDelete);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_DELETE.getValue(), btnDelete);
 		add(btnDelete);
 		
 		JLabel lblDate = new JLabel("New label");
@@ -334,7 +337,7 @@ public class User_Panel extends JPanel {
 		
 		JLabel lblTime = new JLabel("New label");
 		lblTime.setBounds(172, 11, 71, 63);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_WATCH.getValue(),lblTime);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_WATCH.getValue(),lblTime);
 		add(lblTime);
 		
 		JLabel label_4 = new JLabel("Country");
@@ -377,7 +380,7 @@ public class User_Panel extends JPanel {
 		});
 		label_8.setForeground(Color.WHITE);
 		label_8.setBounds(250, 63, 131, 39);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_LOG_OUT.getValue(), label_8);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_LOG_OUT.getValue(), label_8);
 		add(label_8);
 		
 		rbMyReservation = new JRadioButton("MY RESERVATION");
@@ -399,7 +402,7 @@ public class User_Panel extends JPanel {
 			}
 		});
 		rbPictures.setSelected(true);
-		rbPictures.setBounds(796, 11, 96, 23);
+		rbPictures.setBounds(799, 7, 96, 20);
 		add(rbPictures);
 		bg2.add(rbPictures);
 		rbLocation = new JRadioButton("LOCATION");
@@ -410,7 +413,7 @@ public class User_Panel extends JPanel {
 				
 			}
 		});
-		rbLocation.setBounds(654, 11, 96, 23);
+		rbLocation.setBounds(657, 7, 96, 20);
 		add(rbLocation);
 		bg2.add(rbLocation);
 		rbMyReservation.setBounds(374, 355, 150, 23);
@@ -563,7 +566,7 @@ public class User_Panel extends JPanel {
 			}
 		});
 		btnNewButton_2.setFont(new Font("Castellar", Font.BOLD, 9));
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_USER_RESERVATION.getValue(), btnNewButton_2);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_USER_RESERVATION.getValue(), btnNewButton_2);
 		
 		chckOut = new JDateChooser();
 		chckOut.setBounds(394, 225, 157, 24);
@@ -780,7 +783,7 @@ public class User_Panel extends JPanel {
 		btnCancelReservation.setBackground(Color.WHITE);
 		btnCancelReservation.setForeground(Color.RED);
 		btnCancelReservation.setBounds(180, 286, 231, 51);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_CANCEL_RESERVATION.getValue(), btnCancelReservation);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_CANCEL_RESERVATION.getValue(), btnCancelReservation);
 		MyReservation.add(btnCancelReservation);
 		
 		ChatPanel = new JPanel();
@@ -914,9 +917,11 @@ public class User_Panel extends JPanel {
 		bg.add(rbCardInfo);
 		
 		layeredPane_Location = new JLayeredPane();
+		
 		layeredPane_Location.setBounds(477, 33, 724, 189);
 		add(layeredPane_Location);
 		layeredPane_Location.setLayout(new CardLayout(0, 0));
+		layeredPane_Location.setBorder(BorderFactory.createEtchedBorder());
 		
 		PanelPictures = new JPanel();
 		layeredPane_Location.add(PanelPictures, "name_75352240838726");
@@ -924,7 +929,7 @@ public class User_Panel extends JPanel {
 		PanelPictures.setBackground(new Color(0,0,0,0));
 		
 		lblBeforeMain = new JLabel("");
-		lblBeforeMain.setBounds(10, 63, 91, 88);
+		lblBeforeMain.setBounds(10, 43, 91, 88);
 		PanelPictures.add(lblBeforeMain);
 		
 		lbl1 = new JLabel("New label");
@@ -940,11 +945,11 @@ public class User_Panel extends JPanel {
 		PanelPictures.add(lbl5);
 		
 		lblAftermain = new JLabel("");
-		lblAftermain.setBounds(263, 63, 91, 88);
+		lblAftermain.setBounds(266, 43, 91, 88);
 		PanelPictures.add(lblAftermain);
 		
 		lblmainHotelPicture = new JLabel("");
-		lblmainHotelPicture.setBounds(105, 17, 148, 170);
+		lblmainHotelPicture.setBounds(105, 17, 152, 150);
 		PanelPictures.add(lblmainHotelPicture);
 		
 		lbl4 = new JLabel("New label");
@@ -956,7 +961,7 @@ public class User_Panel extends JPanel {
 		PanelPictures.add(lbl3);
 		
 		JButton button_1 = new JButton("<<<");
-		button_1.setBounds(10, 154, 91, 33);
+		button_1.setBounds(10, 134, 91, 33);
 		PanelPictures.add(button_1);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -971,7 +976,7 @@ public class User_Panel extends JPanel {
 		button_1.setBackground(Color.WHITE);
 		
 		JButton button_4 = new JButton(">>>");
-		button_4.setBounds(260, 154, 94, 33);
+		button_4.setBounds(263, 134, 94, 33);
 		PanelPictures.add(button_4);
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -989,6 +994,10 @@ public class User_Panel extends JPanel {
 		layeredPane_Location.add(PanelLocation, "name_75352271453973");
 		PanelLocation.setLayout(null);
 		PanelLocation.setBackground(new Color(0,0,0,0));
+		
+		lblLocation = new JLabel("New label");
+		lblLocation.setBounds(0, 0, 724, 189);
+		PanelLocation.add(lblLocation);
 		
 		JLabel label_6 = new JLabel("Street");
 		label_6.setForeground(Color.BLACK);
@@ -1106,7 +1115,7 @@ public class User_Panel extends JPanel {
 		});
 		button.setForeground(Color.RED);
 		button.setFont(new Font("Castellar", Font.BOLD, 9));
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPDATE.getValue(), button);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_UPDATE.getValue(), button);
 		button.setBackground(Color.WHITE);
 		
 		JLabel label = new JLabel("Name");
@@ -1156,7 +1165,7 @@ public class User_Panel extends JPanel {
 			}
 		});
 		btnDeactivate.setBounds(139, 364, 143, 32);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.DEACTIVATE_USER.getValue(), btnDeactivate);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.DEACTIVATE_USER.getValue(), btnDeactivate);
 		PanelMyinfo.add(btnDeactivate);
 		btnDeactivate.setForeground(Color.RED);
 		btnDeactivate.setFont(new Font("Castellar", Font.BOLD, 8));
@@ -1252,7 +1261,7 @@ public class User_Panel extends JPanel {
 		btnAddNewCard.setFont(new Font("Castellar", Font.BOLD, 11));
 		btnAddNewCard.setBackground(Color.WHITE);
 		btnAddNewCard.setBounds(40, 361, 200, 36);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_CARD.getValue(), btnAddNewCard);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_CARD.getValue(), btnAddNewCard);
 		PanelCardInfo.add(btnAddNewCard);
 		
 		CreateCard = new JPanel();
@@ -1365,13 +1374,13 @@ public class User_Panel extends JPanel {
 			}
 		});
 		btnNewButton_1.setBounds(92, 356, 113, 41);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_CARD.getValue(), btnNewButton_1);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_CARD.getValue(), btnNewButton_1);
 		CreateCard.add(btnNewButton_1);
 		
 		JLabel lblBackGround = new JLabel("");
 		lblBackGround.setFont(new Font("Castellar", Font.BOLD, 9));
 		lblBackGround.setBounds(0, 0, 1270, 771);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_USER_BACKGROUND.getValue(), lblBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_USER_BACKGROUND.getValue(), lblBackGround);
 		add(lblBackGround);
 		
 		
@@ -1605,7 +1614,7 @@ public class User_Panel extends JPanel {
 		btnAddNewCard.setVisible(false);
 		tfExpirationDate.setText(String.valueOf(payment.getExpiration_date()));
 		tfCardNumber.setText(String.valueOf(payment.getNumber()));
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_USER_CARD.getValue()+"/"+payment.getType()+".png", lblCardPicture);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_USER_CARD.getValue()+"/"+payment.getType()+".png", lblCardPicture);
 	}
 
 
@@ -1639,9 +1648,9 @@ public class User_Panel extends JPanel {
 
 
 	private void fillCBType() {
-		cbType.addItem(new ComboBoxClass("DINA",new ImageIcon(AbsolutePath.absolutePath()+URL.PICTURE_USER_CARD_DINA.getValue())));
-		cbType.addItem(new ComboBoxClass("VISA",new ImageIcon(AbsolutePath.absolutePath()+URL.PICTURE_USER_CARD_VISA.getValue())));
-		cbType.addItem(new ComboBoxClass("MASTER",new ImageIcon(AbsolutePath.absolutePath()+URL.PICTURE_USER_CARD_MASTER.getValue())));
+		cbType.addItem(new ComboBoxClass("DINA",new ImageIcon(AbsolutePath.absolutePath()+URLS.PICTURE_USER_CARD_DINA.getValue())));
+		cbType.addItem(new ComboBoxClass("VISA",new ImageIcon(AbsolutePath.absolutePath()+URLS.PICTURE_USER_CARD_VISA.getValue())));
+		cbType.addItem(new ComboBoxClass("MASTER",new ImageIcon(AbsolutePath.absolutePath()+URLS.PICTURE_USER_CARD_MASTER.getValue())));
 		cbType.setRenderer(new RenderCB());
 		
 	}
@@ -1755,36 +1764,36 @@ public class User_Panel extends JPanel {
 
 
 	private void setRatingToNull() {
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl1);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl2);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl3);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl4);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl5);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl1);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl2);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl3);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl4);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl5);
 		
 	}
 
 
 	private void setRating() {
 		if(property.getRating()==1) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
 		}else if(property.getRating()==2) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
 		}else if(property.getRating()==3) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
 		}else if( property.getRating()==4) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl4);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl4);
 		}else if(property.getRating()==5) {
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl4);
-			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl5);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl1);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl2);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl3);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl4);
+			CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(),lbl5);
 		}
 		
 	}
@@ -1798,7 +1807,7 @@ public class User_Panel extends JPanel {
 		for(int i=0;i<listProperties.size()-1;i=i+2) {
 			property1=(Property) listProperties.get(i);
 			adress1=(Adress) listProperties.get(i+1);
-			String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+adress1.getCountry()+".jpg";
+			String url=AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+adress1.getCountry()+".jpg";
 			int number=0;
 			listDiscount=null;
 			listDiscount=new GenericList<GeneralDomain>();
@@ -1930,7 +1939,7 @@ public class User_Panel extends JPanel {
 		 this.listAlbum.add((Property_Picutre_Album) list.get(6));
 		 this.listAlbum.add((Property_Picutre_Album) list.get(7));
 		 for(int i=0;i<5;i++) {
-			 String url=URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg";
+			 String url=URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+property.getClass().getSimpleName()+".jpg";
 			 if(!listAlbum.get(i).getPicutre_URL().equals(url)) {
 				 cyrcleList.append(listAlbum.get(i));
 			 }
@@ -1943,7 +1952,7 @@ public class User_Panel extends JPanel {
 				 setDataOnTF(paymentGlobal);
 			 }
 		 }
-		 setUrl(URL.PROFILE_PICTURE_USERS.getValue()+"/"+userGlobal.getUsername()+"/"+"ProfilePicture.jpg");
+		 setUrl(URLS.PROFILE_PICTURE_USERS.getValue()+"/"+userGlobal.getUsername()+"/"+"ProfilePicture.jpg");
 		 chatUser=(User) map.get(property.getUser_Username()).get(0);
 		 chatUser_info=(User_Info) map.get(property.getUser_Username()).get(1);
 		 CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+chatUser_info.getPictureURL(), lblChatPicture);
@@ -1964,6 +1973,7 @@ public class User_Panel extends JPanel {
 			 }
 			btnNewButton_3.setVisible(true);
 			backForAll=true;
+			addMapsOnPanel(PanelLocation,lblLocation);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1974,12 +1984,48 @@ public class User_Panel extends JPanel {
 		
 	}
 
+	private void addMapsOnPanel(JPanel panelLocation2, JLabel lblLocation2) {
+		
+		 try {
+			 
+	            String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center="
+	            		+geoLocation.getLatitude()+","+geoLocation.getLongitude()
+	            		+ "&zoom=17&size=724x189&maptype=roadmap&markers=color:red%7Clabel:S%7C"
+	            		+ geoLocation.getLatitude()+","+geoLocation.getLongitude()
+	            		+ "&key=AIzaSyDawgzcko2JEyuIFt4_hOGRWxCSUn0qq2Y";
+	            
+	            String destinationFile = "image.jpg";
+	            String str = destinationFile;
+	            URL url = new URL(imageUrl);
+	            InputStream is = url.openStream();
+	            OutputStream os = new FileOutputStream(destinationFile);
+
+	            byte[] b = new byte[2048];
+	            int length;
+
+	            while ((length = is.read(b)) != -1) {
+	                os.write(b, 0, length);
+	            }
+
+	            is.close();
+	            os.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            System.exit(1);
+	        }
+
+	        lblLocation2.setIcon(new ImageIcon((new ImageIcon("image.jpg")).getImage().getScaledInstance(724,189,
+	                java.awt.Image.SCALE_SMOOTH)));
+		
+	}
+
+
 	private void putPictureOnLabel() {
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl1);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl2);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl3);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl4);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl5);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl1);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl2);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl3);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl4);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(), lbl5);
 		
 	}
 
@@ -2062,11 +2108,11 @@ public class User_Panel extends JPanel {
 		 newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equals("png")	) {
 			createPictureForServer(newPictureURL,user);
 			CommonMethod.setNewPicutreOnLabel(newPictureURL, label);
-			user_info.setPictureURL(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+			user_info.setPictureURL(URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 			if(user.getStatus().equals("admin")) {
-				Admin_Panel.setUrl(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+				Admin_Panel.setUrl(URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 			}else {
-				setUrl(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+				setUrl(URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 			}
 			
 		}
@@ -2076,7 +2122,7 @@ public class User_Panel extends JPanel {
 	public static void createPictureForServer(String newPictureURL,User user){
 		try {
 			FileInputStream in=new FileInputStream(newPictureURL);
-			FileOutputStream out=new FileOutputStream(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+			FileOutputStream out=new FileOutputStream(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 			BufferedInputStream bin=new BufferedInputStream(in);
 			BufferedOutputStream bou=new BufferedOutputStream(out);
 			int b=0;

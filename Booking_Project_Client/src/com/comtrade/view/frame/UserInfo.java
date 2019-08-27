@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.domain.user.User_Info;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -92,7 +92,7 @@ public class UserInfo extends JFrame {
 		lblBackGround = new JLabel("");
 		lblBackGround.setForeground(Color.WHITE);
 		lblBackGround.setBounds(0, 0, 556, 382);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.USER_CARD_PICTURE.getValue(), lblBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.USER_CARD_PICTURE.getValue(), lblBackGround);
 		contentPane.add(lblBackGround);
 		setDataOnLabel();
 		

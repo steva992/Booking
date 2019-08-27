@@ -12,7 +12,7 @@ import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Discount_Contstants;
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.controlerClient.ControlerComboBox;
 import com.comtrade.controlerClient.ControlerUI;
 import com.comtrade.controlerClient.ControlerUser;
@@ -270,7 +270,7 @@ public class SignUp extends JPanel {
 			}
 		});
 		btnStepTwo.setBounds(262, 649, 195, 41);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_SIGN_UP_BUTTON_STEP_TWO.getValue(),btnStepTwo);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_SIGN_UP_BUTTON_STEP_TWO.getValue(),btnStepTwo);
 		add(btnStepTwo);
 		
 		JButton btnSignUpPanel = new JButton("Sign Up");
@@ -288,7 +288,7 @@ public class SignUp extends JPanel {
 							ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_USER,Type_Of_Data.USER,list);
 							String message=ControlerUser.getInstance().getMessage();
 							ControlerUser.getInstance().setNumber(0);
-							File userFile=new File(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
+							File userFile=new File(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
 							if(!userFile.exists()) {
 								userFile.mkdir();
 							}
@@ -318,7 +318,7 @@ public class SignUp extends JPanel {
 			}
 		});
 		btnSignUpPanel.setBounds(41, 649, 211, 41);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_SIGN_UP_BUTTON.getValue(),btnSignUpPanel);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_SIGN_UP_BUTTON.getValue(),btnSignUpPanel);
 		add(btnSignUpPanel);
 		
 		cbProperty = new JCheckBox("You have Property");
@@ -351,7 +351,7 @@ public class SignUp extends JPanel {
 			}
 		});
 		btnNewButton.setBounds(946, 51, 266, 41);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_BACK_TO.getValue(), btnNewButton);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_BACK_TO.getValue(), btnNewButton);
 		add(btnNewButton);
 		
 		cbCountries = new JComboBox();
@@ -363,7 +363,7 @@ public class SignUp extends JPanel {
 		lblBackGround.setFont(new Font("Castellar", Font.BOLD, 12));
 		lblBackGround.setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		add(lblBackGround);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_SIGN_UP_BACKGROUND.getValue(), lblBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_SIGN_UP_BACKGROUND.getValue(), lblBackGround);
 		fillContryComboBox();
 	}
 	
@@ -404,7 +404,7 @@ public class SignUp extends JPanel {
 	private void fillContryComboBox() {
 			List<List<String>>list=ControlerComboBox.getInstance().fillContryComboBox();
 			  for(int i=0;i<list.size();i++) {
-				  String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+list.get(i).get(0)+".jpg";
+				  String url=AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+list.get(i).get(0)+".jpg";
 				  cbCountries.addItem(new ComboBoxClass(list.get(i).get(1),new ImageIcon(url)));
 			  }
 			  cbCountries.setRenderer(new RenderCB());
@@ -425,7 +425,7 @@ public class SignUp extends JPanel {
 		}else if(rbWoman.isSelected()) {
 			gender=rbWoman.getText();
 		}
-		String picture=URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+gender+".jpg";
+		String picture=URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+gender+".jpg";
 		boolean testField=fieldValidityUser(username,name,surname,email,mobileNumber);
 		boolean AllFieldCompleted=FieldComplete(username,password,confirmPassword,name,surname,email,mobileNumber,gender);
 		if(testField) {

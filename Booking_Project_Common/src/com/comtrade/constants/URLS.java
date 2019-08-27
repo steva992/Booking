@@ -2,7 +2,7 @@ package com.comtrade.constants;
 
 import java.io.File;
 
-public enum URL {
+public enum URLS {
 	
 	
 	PROFILE_PICTURE_DEFAULT("/Default"),
@@ -71,7 +71,7 @@ public enum URL {
 	
 	private String value;
 
-	private URL(String value) {
+	private URLS(String value) {
 		this.value = value;
 	}
 

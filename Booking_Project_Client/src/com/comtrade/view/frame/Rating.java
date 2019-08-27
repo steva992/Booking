@@ -15,7 +15,7 @@ import com.comtrade.constants.CountryesTxt;
 import com.comtrade.constants.Reservation_Constant;
 import com.comtrade.constants.Room_Constants;
 import com.comtrade.constants.TransferClass_Message;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.domain.property.Property;
 import com.comtrade.doman.room.Room;
 import com.comtrade.reservation.Reservation;
@@ -82,7 +82,7 @@ public class Rating extends JDialog {
 		lblPicture.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPicture.setBounds(10, 0, 414, 304);
 		contentPanel.add(lblPicture);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_RATING.getValue(), lblPicture);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_RATING.getValue(), lblPicture);
 		
 		textArea = new JTextArea();
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 13));
@@ -113,7 +113,7 @@ public class Rating extends JDialog {
 			lbl1.addMouseMotionListener(new MouseMotionAdapter() {
 				@Override
 				public void mouseMoved(MouseEvent arg0) {
-					CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
+					CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
 				}
 			});
 			lbl1.addMouseListener(new MouseAdapter() {
@@ -131,8 +131,8 @@ public class Rating extends JDialog {
 		lbl2.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent arg0) {
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl2);
 			}
 		});
 		lbl2.addMouseListener(new MouseAdapter() {
@@ -149,9 +149,9 @@ public class Rating extends JDialog {
 		lbl3.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent arg0) {
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl2);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl3);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl3);
 			}
 		});
 		lbl3.addMouseListener(new MouseAdapter() {
@@ -168,10 +168,10 @@ public class Rating extends JDialog {
 		lbl4.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent arg0) {
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl2);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl3);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl4);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl3);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl4);
 			}
 		});
 		lbl4.addMouseListener(new MouseAdapter() {
@@ -188,11 +188,11 @@ public class Rating extends JDialog {
 		lbl5.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent arg0) {
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl2);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl3);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl4);
-				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl5);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl1);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl2);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl3);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl4);
+				CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_FULL_STAR.getValue(), lbl5);
 			}
 		});
 		lbl5.addMouseListener(new MouseAdapter() {
@@ -226,10 +226,10 @@ public class Rating extends JDialog {
 
 
 	private void setPictureOnLabel() {
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl1);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl2);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl3);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl4);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl5);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl1);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl2);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl3);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl4);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_PROPERTY_EMPTY_STAR.getValue(),lbl5);
 	}
 }

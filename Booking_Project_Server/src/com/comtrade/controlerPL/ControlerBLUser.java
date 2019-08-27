@@ -13,7 +13,7 @@ import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.constants.Type_OF_Operation_TXT;
 import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.user.PaymentUserCard;
 import com.comtrade.domain.user.User;
@@ -206,7 +206,7 @@ public class ControlerBLUser {
 			transferClass.setType_Of_Data(Type_Of_Data.USER);
 			
 			
-			if(user_info.getPictureURL().equals(URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg")) {
+			if(user_info.getPictureURL().equals(URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg")) {
 				transferClass.setMessage(TransferClass_Message.SUCCESSFUL_DELETE.getValue());
 			}else {
 				transferClass.setMessage(TransferClass_Message.SUCCESSFUL_CHANGE.getValue());

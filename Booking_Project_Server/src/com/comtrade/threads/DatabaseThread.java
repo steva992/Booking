@@ -13,7 +13,7 @@ public class DatabaseThread extends Thread {
 			
 			while(true) {
 				
-				Thread.sleep(300000);
+				Thread.sleep(10000);
 				GenericList<TypeForDatabase>list=Cache.getInstance().getListForDatabase();
 				if(list.size() != 0) {
 					GeneralSystemOperation<GenericList<TypeForDatabase>>generalSO=new EnterToDatabase();

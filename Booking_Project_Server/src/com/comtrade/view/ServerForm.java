@@ -11,7 +11,7 @@ import com.comtrade.cache.Cache;
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.controlerPL.ControlerBLServer;
 import com.comtrade.controlerPL.Controler_Thread;
 import com.comtrade.domain.GeneralDomain;
@@ -113,7 +113,7 @@ public class ServerForm extends JFrame {
 			}
 		});
 		lblNewLabel_1.setBounds(292, 333, 184, 131);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_FOR_SERVER.getValue()+"/Server.png", lblNewLabel_1);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_FOR_SERVER.getValue()+"/Server.png", lblNewLabel_1);
 		contentPane.add(lblNewLabel_1);
 		
 		lblDate = new JLabel("Date");
@@ -133,7 +133,7 @@ public class ServerForm extends JFrame {
 		lblBackGround = new JLabel("New label");
 		//lblBackGround.setIcon(new ImageIcon(ServerForm.class.getResource("/default1/Woman.jpg")));
 		lblBackGround.setBounds(0,0,784,759);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_FOR_SERVER.getValue()+"/Server.jpg",lblBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_FOR_SERVER.getValue()+"/Server.jpg",lblBackGround);
 		contentPane.add(lblBackGround);
 		ControlerBLServer.getInstance().setServerForm(this);
 		backDataToMap();

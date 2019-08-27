@@ -8,7 +8,7 @@ import javax.swing.SwingConstants;
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.domain.user.User;
 import com.comtrade.proxy.IProxy;
 import com.comtrade.proxy.ProxyLogin;
@@ -116,7 +116,7 @@ public class Login extends JPanel {
 		});
 		btnLogin.setForeground(new Color(220, 20, 60));
 		btnLogin.setBounds(310, 352, 197, 41);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_FOR_LOGIN_BUTTON_LOGIN.getValue(), btnLogin);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_FOR_LOGIN_BUTTON_LOGIN.getValue(), btnLogin);
 		add(btnLogin);
 		JButton btnSignup = new JButton("SIGN UP");
 		btnSignup.setHorizontalAlignment(SwingConstants.LEFT);
@@ -131,7 +131,7 @@ public class Login extends JPanel {
 			}
 		});
 		btnSignup.setBounds(310, 417, 197, 36);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_FOR_LOGIN_BUTTON_SIGN_UP.getValue(), btnSignup);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_FOR_LOGIN_BUTTON_SIGN_UP.getValue(), btnSignup);
 		add(btnSignup);
 		
 		
@@ -139,7 +139,7 @@ public class Login extends JPanel {
 		lblWallpaper.setFont(new Font("Castellar", Font.BOLD, 12));
 		lblWallpaper.setBounds(Panel_Dimension.X.getValue(),Panel_Dimension.Y.getValue(),Panel_Dimension.WIDTH.getValue(),Panel_Dimension.HEIGHT.getValue());
 		add(lblWallpaper);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_FOR_LOGIN_BACKGROUND.getValue(),lblWallpaper);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_FOR_LOGIN_BACKGROUND.getValue(),lblWallpaper);
 		
 	}
 }

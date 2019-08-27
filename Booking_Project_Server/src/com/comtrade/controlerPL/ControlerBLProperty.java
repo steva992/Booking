@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.sound.sampled.Control;
 
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.cache.Cache;
 import com.comtrade.constants.TransferClass_Message;
 import com.comtrade.constants.Type_Of_Data;
@@ -26,7 +26,6 @@ import com.comtrade.so.GeneralSystemOperation;
 import com.comtrade.so.property.ChangePictureURLSO;
 import com.comtrade.so.property.EnterPropertySO;
 import com.comtrade.so.property.GetMapSO;
-import com.comtrade.so.property.UpdatePropertySO;
 import com.comtrade.threads.ClientThreadRequest;
 import com.comtrade.transfer.TransferClass;
 
@@ -61,11 +60,7 @@ public class ControlerBLProperty{
 			case CHANGE_PICTURE_URL_HOTEL:
 				list=(GenericList<GeneralDomain>) transferClass.getClient_Object_Request();
 				ChangePictureURL(list,clientThread);
-				break;	
-			case UPDATE_PROPERTY:
-				list=(GenericList<GeneralDomain>) transferClass.getClient_Object_Request();
-				updateProperty(list,clientThread);
-				break;	
+				break;		
 			case BACK_ALL_FOR_USER_PANEL:
 				user=(User) transferClass.getClient_Object_Request();
 				AllForUserPanel(user,clientThread);
@@ -96,24 +91,6 @@ public class ControlerBLProperty{
 		}
 	}
 
-	private void updateProperty(GenericList<GeneralDomain> list, ClientThreadRequest clientThread) {
-		TransferClass transferClass=new TransferClass();
-		try {
-			
-			GeneralSystemOperation<GenericList<GeneralDomain>>generalSO=new UpdatePropertySO();
-			generalSO.runSO(list);
-			
-			transferClass.setServer_Object_Response(list);
-			transferClass.setType_Of_operation(Type_Of_Operation.UPDATE);
-			transferClass.setMessage(TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
-			transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
-			clientThread.send(transferClass);
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	private void ChangePictureURL(GenericList<GeneralDomain> list, ClientThreadRequest clientThread) {
 		try {

@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.CountryesTxt;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.transfer.TransferClass;
 
 public class ControlerComboBox {

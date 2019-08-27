@@ -938,3 +938,43 @@ Time : 12:59:33.193
 --------------------------------------------
 
 
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-27
+Time : 23:07:40.635
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-514 )
+Date : 2019-08-27
+Time : 23:07:44.146
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-27
+Time : 23:07:48.955
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-798 )
+Date : 2019-08-27
+Time : 23:07:52.752
+--------------------------------------------
+
+

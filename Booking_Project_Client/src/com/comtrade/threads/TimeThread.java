@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 
 import com.comtrade.commonmethod.CommonMethod;
 import com.comtrade.constants.AbsolutePath;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 
 	public class TimeThread extends Thread{
 		private JLabel label;

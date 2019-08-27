@@ -8,7 +8,7 @@ import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.CountryesTxt;
 import com.comtrade.constants.Discount_Contstants;
 import com.comtrade.constants.Panel_Dimension;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.controlerClient.ControlerCode;
 import com.comtrade.controlerClient.ControlerComboBox;
 import com.comtrade.controlerClient.ControlerDiscount;
@@ -180,7 +180,7 @@ public class Admin_Panel extends JPanel {
 	
 	private JRadioButton rbRoom,rbDiscount,rbReservation,rdbtnRating,rdbtnChat;
 	
-	private JTextField tfName,tfSurname,tfEmail,tfMobileNumber,tfCountry,tfCity,tfStreet,tfNumber,tfLongitude,tfLatitude,tfNumberOfBed,tfPricePerNight,tfAmount,tfProfit,tfmessage;
+	private JTextField tfName,tfSurname,tfEmail,tfMobileNumber,tfCountry,tfCity,tfStreet,tfNumber,tfNumberOfBed,tfPricePerNight,tfAmount,tfProfit,tfmessage;
 
 	private JTable tableRooms,tableDiscount,tableReservation;
 	
@@ -294,7 +294,7 @@ public class Admin_Panel extends JPanel {
 			}
 		});
 		btnNewButton.setBounds(10, 132, 139, 40);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPLOAD.getValue(), btnNewButton);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_UPLOAD.getValue(), btnNewButton);
 		add(btnNewButton);
 		
 		
@@ -352,7 +352,7 @@ public class Admin_Panel extends JPanel {
 			}
 		});
 		btnNewButton_2.setBounds(890, 201, 161, 40);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPLOAD.getValue(), btnNewButton_2);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_UPLOAD.getValue(), btnNewButton_2);
 		add(btnNewButton_2);
 		
 		
@@ -411,7 +411,7 @@ public class Admin_Panel extends JPanel {
 			}
 		});
 		btnUpdateMyInfo.setBounds(10, 376, 139, 40);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPDATE.getValue(), btnUpdateMyInfo);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_UPDATE.getValue(), btnUpdateMyInfo);
 		add(btnUpdateMyInfo);
 		
 		
@@ -428,76 +428,8 @@ public class Admin_Panel extends JPanel {
 			}
 		});
 		btnNewButton_3.setBounds(168, 673, 186, 29);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_NEW_PROPERTY.getValue(),btnNewButton_3);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_NEW_PROPERTY.getValue(),btnNewButton_3);
 		add(btnNewButton_3);
-		
-		JButton btnNewButton_6 = new JButton("UPDATE");
-		btnNewButton_6.setHorizontalAlignment(SwingConstants.LEFT);
-		btnNewButton_6.setBackground(Color.WHITE);
-		btnNewButton_6.setForeground(Color.RED);
-		btnNewButton_6.setFont(new Font("Castellar", Font.BOLD, 10));
-		btnNewButton_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String country=tfCountry.getText();
-				String city=tfCity.getText();
-				String street=tfStreet.getText();
-				String number=tfNumber.getText();
-				String latitude=tfLatitude.getText();
-				String longitude=tfLongitude.getText();
-				boolean allField=allFieldCompleteProperty(country,city,street,number,latitude,longitude);
-				boolean testField=testAllFieldProperty(country,city,street,number,latitude,longitude);
-				if(allField) {
-					if(testField) {
-						GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
-						Adress adress1=new Adress();
-						adress1.setProperty_code(property.getProperty_code());
-						adress1.setAdress_code(adress.getAdress_code());
-						adress1.setCountry(country);
-						adress1.setCity(city);
-						adress1.setStreet(street);
-						adress1.setHouseNumber(Integer.parseInt(number));
-						GeoLocation geoLocation=new GeoLocation();
-						geoLocation.setAdress_code(adress.getAdress_code());
-						geoLocation.setLatitude(Double.parseDouble(latitude));
-						geoLocation.setLongitude(Double.parseDouble(longitude));
-						list.add(property);
-						list.add(adress1);
-						list.add(geoLocation);
-						try {
-							ControlerUI.getInstance().sendToServer(Type_Of_Operation.UPDATE_PROPERTY, Type_Of_Data.PROPERTY, list);
-							 String message=ControlerProperty.getInstance().getMessage();
-							 ControlerProperty.getInstance().setNumber(0);
-							 if(message != null) {
-								 JOptionPane.showMessageDialog(null,message);
-									((Adress) map.get(WhichProperty).get(1)).setCity(city);
-									((Adress) map.get(WhichProperty).get(1)).setStreet(street);
-									((Adress) map.get(WhichProperty).get(1)).setCountry(country);
-									((Adress) map.get(WhichProperty).get(1)).setHouseNumber(Integer.parseInt(number));
-									((GeoLocation) map.get(WhichProperty).get(2)).setLatitude(Double.parseDouble(latitude));
-									((GeoLocation) map.get(WhichProperty).get(2)).setLongitude(Double.parseDouble(longitude));
-									fillCountryComboBox();
-									refreshGlobalVariables();
-									refreshPropertyCountryPicture();
-									user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.UPDATE_PROPERTY.getValue(),property.getName());
-							 }
-						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}else {
-						JOptionPane.showMessageDialog(null,TransferClass_Message.INCORECT_ENTER_DATA.getValue());
-					}
-				}else {
-					JOptionPane.showMessageDialog(null,TransferClass_Message.ALL_FIELDS_FILL.getValue());
-				}
-			}
-		});
-		btnNewButton_6.setBounds(10, 672, 139, 30);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPDATE.getValue(), btnNewButton_6);
-		add(btnNewButton_6);
 		
 		JLabel lblNewLabel_1 = new JLabel("Name");
 		lblNewLabel_1.setFont(new Font("Castellar", Font.BOLD, 14));
@@ -572,7 +504,7 @@ public class Admin_Panel extends JPanel {
 			}
 		});
 		lblLogOut.setBounds(292, 64, 186, 40);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_LOG_OUT.getValue(), lblLogOut);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_LOG_OUT.getValue(), lblLogOut);
 		add(lblLogOut);
 		
 		JLabel lblMobileNumber = new JLabel("Mobile Number");
@@ -584,38 +516,40 @@ public class Admin_Panel extends JPanel {
 		JLabel lblCountry_1 = new JLabel("Country");
 		lblCountry_1.setFont(new Font("Castellar", Font.BOLD, 14));
 		lblCountry_1.setForeground(Color.BLACK);
-		lblCountry_1.setBounds(10, 454, 151, 23);
+		lblCountry_1.setBounds(10, 454, 151, 34);
 		add(lblCountry_1);
 		
 		tfCountry = new JTextField();
+		tfCountry.setEditable(false);
 		tfCountry.setEnabled(false);
 		tfCountry.setText((String) null);
 		tfCountry.setColumns(10);
-		tfCountry.setBounds(168, 454, 186, 20);
+		tfCountry.setBounds(168, 454, 186, 34);
 		add(tfCountry);
 		addMouseListener(tfCountry);
 		
 		JLabel lblCity = new JLabel("City");
 		lblCity.setFont(new Font("Castellar", Font.BOLD, 14));
 		lblCity.setForeground(Color.BLACK);
-		lblCity.setBounds(10, 495, 151, 23);
+		lblCity.setBounds(10, 505, 151, 34);
 		add(lblCity);
 		
 		tfCity = new JTextField();
+		tfCity.setEditable(false);
 		tfCity.setEnabled(false);
 		tfCity.setText((String) null);
 		tfCity.setColumns(10);
-		tfCity.setBounds(168, 496, 186, 20);
+		tfCity.setBounds(168, 506, 186, 33);
 		add(tfCity);
 		addMouseListener(tfCity);
 		
 		JButton btnDelete = new JButton("DELETE");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(!url.equals(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg")) {
+				if(!url.equals(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg")) {
 					deletePictureForServer(AbsolutePath.absolutePath()+url);
-					user_info.setPictureURL(URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
-					CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg",lblPicture);
+					user_info.setPictureURL(URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
+					CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg",lblPicture);
 					try {
 						GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 						list.add(user);
@@ -632,34 +566,35 @@ public class Admin_Panel extends JPanel {
 						e.printStackTrace();
 					}
 				}
-				Admin_Panel.setUrl(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
+				Admin_Panel.setUrl(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_DEFAULT.getValue()+"/"+user_info.getGender()+".jpg");
 			}
 		});
 		btnDelete.setForeground(Color.RED);
 		btnDelete.setFont(new Font("Castellar", Font.BOLD, 10));
 		btnDelete.setBackground(Color.WHITE);
 		btnDelete.setBounds(168, 132, 186, 40);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_DELETE.getValue(), btnDelete);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_DELETE.getValue(), btnDelete);
 		add(btnDelete);
 		
 		JLabel lblStreet = new JLabel("Street");
 		lblStreet.setFont(new Font("Castellar", Font.BOLD, 14));
 		lblStreet.setForeground(Color.BLACK);
-		lblStreet.setBounds(10, 529, 151, 23);
+		lblStreet.setBounds(10, 550, 151, 40);
 		add(lblStreet);
 		
 		tfStreet = new JTextField();
+		tfStreet.setEditable(false);
 		tfStreet.setEnabled(false);
 		tfStreet.setText((String) null);
 		tfStreet.setColumns(10);
-		tfStreet.setBounds(168, 529, 186, 20);
+		tfStreet.setBounds(168, 550, 186, 40);
 		add(tfStreet);
 		addMouseListener(tfStreet);
 		
 		JLabel lblNumber = new JLabel("Number");
 		lblNumber.setFont(new Font("Castellar", Font.BOLD, 14));
 		lblNumber.setForeground(Color.BLACK);
-		lblNumber.setBounds(10, 572, 151, 23);
+		lblNumber.setBounds(10, 611, 151, 37);
 		add(lblNumber);
 		
 		rdbtnRating = new JRadioButton("RATING");
@@ -683,7 +618,7 @@ public class Admin_Panel extends JPanel {
 		rdbtnChat.setFont(new Font("Castellar", Font.BOLD, 12));
 		rdbtnChat.setBackground(Color.YELLOW);
 		rdbtnChat.setBounds(1129, 269, 61, 50);
-		CommonMethod.setNewPicutreOnRadioButton(AbsolutePath.absolutePath()+URL.MESSAGE.getValue(),rdbtnChat);
+		CommonMethod.setNewPicutreOnRadioButton(AbsolutePath.absolutePath()+URLS.MESSAGE.getValue(),rdbtnChat);
 		add(rdbtnChat);
 		bg.add(rdbtnChat);
 		rdbtnChat.setVisible(false);
@@ -701,18 +636,13 @@ public class Admin_Panel extends JPanel {
 		add(btnRating);
 		
 		tfNumber = new JTextField();
+		tfNumber.setEditable(false);
 		tfNumber.setEnabled(false);
 		tfNumber.setText((String) null);
 		tfNumber.setColumns(10);
-		tfNumber.setBounds(168, 573, 186, 20);
+		tfNumber.setBounds(168, 612, 186, 36);
 		add(tfNumber);
 		addMouseListener(tfNumber);
-		
-		JLabel Latitude = new JLabel("Latitude");
-		Latitude.setFont(new Font("Castellar", Font.BOLD, 14));
-		Latitude.setForeground(Color.BLACK);
-		Latitude.setBounds(10, 605, 151, 23);
-		add(Latitude);
 		
 		JButton btnDeactivatedAccount = new JButton("DEACTIVATE");
 		btnDeactivatedAccount.addActionListener(new ActionListener() {
@@ -739,30 +669,8 @@ public class Admin_Panel extends JPanel {
 		btnDeactivatedAccount.setFont(new Font("Castellar", Font.BOLD, 9));
 		btnDeactivatedAccount.setBackground(Color.WHITE);
 		btnDeactivatedAccount.setBounds(168, 376, 186, 40);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.DEACTIVATE_USER.getValue(), btnDeactivatedAccount);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.DEACTIVATE_USER.getValue(), btnDeactivatedAccount);
 		add(btnDeactivatedAccount);
-		
-		JLabel Longitude = new JLabel("Longitude");
-		Longitude.setFont(new Font("Castellar", Font.BOLD, 14));
-		Longitude.setForeground(Color.BLACK);
-		Longitude.setBounds(10, 639, 151, 23);
-		add(Longitude);
-		
-		tfLongitude = new JTextField();
-		tfLongitude.setText((String) null);
-		tfLongitude.setEnabled(false);
-		tfLongitude.setColumns(10);
-		tfLongitude.setBounds(168, 640, 186, 20);
-		add(tfLongitude);
-		addMouseListener(tfLongitude);
-		
-		tfLatitude = new JTextField();
-		tfLatitude.setText((String) null);
-		tfLatitude.setEnabled(false);
-		tfLatitude.setColumns(10);
-		tfLatitude.setBounds(168, 609, 186, 20);
-		add(tfLatitude);
-		addMouseListener(tfLatitude);
 		
 		rbDiscount = new JRadioButton("Discount");
 		rbDiscount.addActionListener(new ActionListener() {
@@ -822,7 +730,7 @@ public class Admin_Panel extends JPanel {
 		
 		JLabel lblTime = new JLabel("New label");
 		lblTime.setBounds(176, 18, 106, 59);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_WATCH.getValue(), lblTime);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_WATCH.getValue(), lblTime);
 		add(lblTime);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -924,7 +832,7 @@ public class Admin_Panel extends JPanel {
 		btnNewButton_8.setForeground(Color.RED);
 		btnNewButton_8.setFont(new Font("Castellar", Font.BOLD, 12));
 		btnNewButton_8.setBounds(80, 309, 126, 40);
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_DELETE.getValue(), btnNewButton_8);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_DELETE.getValue(), btnNewButton_8);
 		PanelRoom.add(btnNewButton_8);
 		
 		cbTypeOfRoom = new JComboBox();
@@ -982,7 +890,7 @@ public class Admin_Panel extends JPanel {
 				
 			}
 		});
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_UPDATE.getValue(), btnNewButton_5);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_UPDATE.getValue(), btnNewButton_5);
 		
 		tfPricePerNight = new JTextField();
 		tfPricePerNight.setBounds(80, 109, 126, 33);
@@ -1069,7 +977,7 @@ public class Admin_Panel extends JPanel {
 				
 			}
 		});
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_NEW_PROPERTY.getValue(),btnNewButton_4);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_NEW_PROPERTY.getValue(),btnNewButton_4);
 		
 		JButton btnNewButton_9 = new JButton("??");
 		btnNewButton_9.setBounds(608, 21, 60, 33);
@@ -1102,7 +1010,7 @@ public class Admin_Panel extends JPanel {
 		JLabel lblPanelRoomBackGround = new JLabel("");
 		lblPanelRoomBackGround.setBounds(0, 0, 820, 372);
 		//lblPanelRoomBackGround.setIcon(new ImageIcon((AbsolutePath.absolutePath()+PicturesURL.PICTURE_ADMIN_BACKGROUND.getValue())));
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_WORLD.getValue(), lblPanelRoomBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_WORLD.getValue(), lblPanelRoomBackGround);
 		PanelRoom.add(lblPanelRoomBackGround);
 		tableRooms.addMouseListener(new MouseListener() {
 			
@@ -1241,7 +1149,7 @@ public class Admin_Panel extends JPanel {
 			}
 		});
 		btnEnterDiscount.setFont(new Font("Castellar", Font.BOLD, 10));
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_NEW_PROPERTY.getValue(),btnEnterDiscount);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_NEW_PROPERTY.getValue(),btnEnterDiscount);
 		
 		JButton btnDeleteDiscount = new JButton("Delete ");
 		btnDeleteDiscount.setBounds(633, 27, 130, 40);
@@ -1288,7 +1196,7 @@ public class Admin_Panel extends JPanel {
 			}
 		});
 		btnDeleteDiscount.setFont(new Font("Castellar", Font.BOLD, 10));
-		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_DELETE.getValue(), btnDeleteDiscount);
+		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_DELETE.getValue(), btnDeleteDiscount);
 		
 		JScrollPane scrollPane_1 = new JScrollPane(tableDiscount);
 		scrollPane_1.setBounds(311, 78, 452, 277);
@@ -1314,7 +1222,7 @@ public class Admin_Panel extends JPanel {
 		
 		JLabel lblPanelBackGround = new JLabel("");
 		lblPanelBackGround.setBounds(0, 0, 820, 375);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_WORLD.getValue(), lblPanelBackGround);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_WORLD.getValue(), lblPanelBackGround);
 		PanelDiscount.add(lblPanelBackGround);
 		
 		PanelReservation = new JPanel();
@@ -1493,7 +1401,7 @@ public class Admin_Panel extends JPanel {
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setBounds(0, 0, 1250, 720);
 		add(lblBackground);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_BACKGROUND.getValue(), lblBackground);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_BACKGROUND.getValue(), lblBackground);
 		tableDiscount.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -1533,13 +1441,11 @@ public class Admin_Panel extends JPanel {
 			}
 		});
 		
-		createColumnForDTM(); 
-		fillcombobox(); 
-		fillCountryComboBox();
-		backAllForThisProperty(); 
-		time.start(); 
-		sortAllTables(); 
-		setAdminPanelForControlers();
+		/*
+		 * createColumnForDTM(); fillcombobox(); fillCountryComboBox();
+		 * backAllForThisProperty(); time.start(); sortAllTables();
+		 * setAdminPanelForControlers();
+		 */
 		 
 	}
 
@@ -1718,58 +1624,6 @@ public class Admin_Panel extends JPanel {
 
 
 
-	protected boolean allFieldCompleteProperty(String country, String city, String street, String number, String latitude, String longitude) {
-		backBorderToGrayProperty();
-		boolean country1=Pattern.matches(Regular_Expression.ADRESS.getValue(),country);
-		boolean city1=Pattern.matches(Regular_Expression.ADRESS.getValue(),city);
-		boolean street1=Pattern.matches(Regular_Expression.ADRESS.getValue(),street);
-		boolean number1=Pattern.matches(Regular_Expression.ONLY_NUMBER_VALUES.getValue(),number);
-		boolean latitude1=Pattern.matches(Regular_Expression.LATITUDE_LONGITUDE.getValue(),latitude);
-		boolean longitude1=Pattern.matches(Regular_Expression.LATITUDE_LONGITUDE.getValue(),longitude);
-		if(country1 && city1 && street1 && number1 && latitude1 && longitude1) {
-			return true;
-		}
-		
-		if(country1==false) {
-			tfCountry.setBorder(BorderFactory.createLineBorder(Color.RED,4));
-		}
-		
-		if(city1==false) {
-			tfCity.setBorder(BorderFactory.createLineBorder(Color.RED,4));
-		}
-		
-		
-		if(street1==false) {
-			tfStreet.setBorder(BorderFactory.createLineBorder(Color.RED,4));
-		}
-		
-		if(number1==false) {
-			tfNumber.setBorder(BorderFactory.createLineBorder(Color.RED,4));
-		}
-		
-		if(latitude1==false) {
-			tfLatitude.setBorder(BorderFactory.createLineBorder(Color.RED,4));
-		}
-		
-		if(longitude1==false) {
-			tfLongitude.setBorder(BorderFactory.createLineBorder(Color.RED,4));
-		}
-		return false;
-	}
-
-
-
-	private void backBorderToGrayProperty() {
-		tfCountry.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
-		tfCity.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
-		tfStreet.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
-		tfNumber.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
-		tfLatitude.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
-		tfLongitude.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
-	}
-
-
-
 	protected boolean testAllField(String name, String surname, String email, String mobileNumber) {
 		backBorderToGray();
 		boolean name1=Pattern.matches(Regular_Expression.ONLY_TEXT_VALUES.getValue(),name);
@@ -1837,7 +1691,7 @@ public class Admin_Panel extends JPanel {
 				adress1=(Adress) list1.get(1);
 				String country=adress1.getCountry();
 				name=property.getName().toString();
-				String url=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+country+".jpg";
+				String url=AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+country+".jpg";
 						dm.addElement(new ComboBoxClass(property.getName()+" ("+property.getType_Of_Property()+")",new ImageIcon(url)));
 			 	}
 			}
@@ -1958,7 +1812,7 @@ public class Admin_Panel extends JPanel {
 		 }
 		 listAlbum=null;
 		 listAlbum=new GenericList<Property_Picutre_Album>();
-		 setUrl(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
+		 setUrl(URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+"/"+"ProfilePicture.jpg");
 		
 	}
 
@@ -1968,10 +1822,7 @@ public class Admin_Panel extends JPanel {
 		tfCountry.setText(adress.getCountry());
 		tfCity.setText(adress.getCity());
 		tfStreet.setText(adress.getStreet());
-		tfNumber.setText(String.valueOf(adress.getHouseNumber()));
-		tfLatitude.setText(String.valueOf(geoLocation.getLatitude()));
-		tfLongitude.setText(String.valueOf(geoLocation.getLongitude()));
-		
+		tfNumber.setText(String.valueOf(adress.getHouseNumber()));	
 	}
 
 
@@ -2133,7 +1984,7 @@ public class Admin_Panel extends JPanel {
 		 newPictureURL.substring(newPictureURL.length()-3,newPictureURL.length()).equals("png")	) {
 			createPictureForServer(newPictureURL,property,property_picutre_album,user);
 			CommonMethod.setNewPicutreOnLabel(newPictureURL, label);
-			property_picutre_album.setPicutre_URL(URL.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+URL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"("+property.getType_Of_Property()+")/"+property_picutre_album.getNumber()+".jpg");
+			property_picutre_album.setPicutre_URL(URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername()+URLS.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"("+property.getType_Of_Property()+")/"+property_picutre_album.getNumber()+".jpg");
 		}
 	}
 	
@@ -2141,7 +1992,7 @@ public class Admin_Panel extends JPanel {
 	public static void createPictureForServer(String newPictureURL,Property property, Property_Picutre_Album property_picutre_album, User user2){
 		try {
 			FileInputStream in=new FileInputStream(newPictureURL);
-			String out1=AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USERS.getValue()+"/"+user2.getUsername()+URL.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"("+property.getType_Of_Property()+")/"+property_picutre_album.getNumber()+".jpg";
+			String out1=AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user2.getUsername()+URLS.PROFILE_PICTURE_HOTELS.getValue()+"/"+property.getName()+"("+property.getType_Of_Property()+")/"+property_picutre_album.getNumber()+".jpg";
 			FileOutputStream out=new FileOutputStream(out1);
 			BufferedInputStream bin=new BufferedInputStream(in);
 			BufferedOutputStream bou=new BufferedOutputStream(out);
@@ -2218,7 +2069,7 @@ public class Admin_Panel extends JPanel {
 	private void fillJList(User user2) {
 			rdbtnChat.setVisible(true);
 			String user;
-			dmChat.addElement(new ComboBoxClass(user2.getUsername(),new ImageIcon(AbsolutePath.absolutePath()+URL.ONLINE_USER.getValue())));
+			dmChat.addElement(new ComboBoxClass(user2.getUsername(),new ImageIcon(AbsolutePath.absolutePath()+URLS.ONLINE_USER.getValue())));
 			listChat.setCellRenderer(new RenderCB());
 			listChat.setModel(dmChat);
 			if(dmChat.getSize() != 0) {
@@ -2237,7 +2088,7 @@ public class Admin_Panel extends JPanel {
 			dmChat.removeAllElements();
 			chatMap.remove(user2.getUsername());
 			for(Map.Entry<String,StringBuffer> entry : chatMap.entrySet() ) {
-				dmChat.addElement(new ComboBoxClass(entry.getKey(),new ImageIcon(AbsolutePath.absolutePath()+URL.ONLINE_USER.getValue())));
+				dmChat.addElement(new ComboBoxClass(entry.getKey(),new ImageIcon(AbsolutePath.absolutePath()+URLS.ONLINE_USER.getValue())));
 			}
 			
 			listChat.setCellRenderer(new RenderCB());

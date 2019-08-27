@@ -7,7 +7,7 @@ import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.Panel_Dimension;
 import com.comtrade.constants.Type_Of_Data;
 import com.comtrade.constants.Type_Of_Operation;
-import com.comtrade.constants.URL;
+import com.comtrade.constants.URLS;
 import com.comtrade.controlerClient.ControlerProperty;
 import com.comtrade.controlerClient.ControlerReservation;
 import com.comtrade.controlerClient.ControlerUI;
@@ -301,7 +301,7 @@ public class Super_Admin_Panel extends JPanel {
 			}
 		});
 		lblLogOut.setBounds(577, 651, 233, 42);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.PICTURE_ADMIN_LOG_OUT.getValue(), lblLogOut);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.PICTURE_ADMIN_LOG_OUT.getValue(), lblLogOut);
 		add(lblLogOut);
 		
 		JLabel lblAdminsProperties = new JLabel("ADMINS PROPERTIES");
@@ -375,7 +375,7 @@ public class Super_Admin_Panel extends JPanel {
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setBounds(0, 0, 1250, 750);
-		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URL.SUPER_ADMIN_WALLPAPER.getValue(), lblNewLabel_2);
+		CommonMethod.setNewPicutreOnLabel(AbsolutePath.absolutePath()+URLS.SUPER_ADMIN_WALLPAPER.getValue(), lblNewLabel_2);
 		add(lblNewLabel_2);
 		
 		enterProfitOfAllProperties();
@@ -490,7 +490,7 @@ public class Super_Admin_Panel extends JPanel {
 			image1=image.getImage();
 			newImg=image1.getScaledInstance(100,100,Image.SCALE_SMOOTH);
 		}else if(generalDomain instanceof Adress){
-			image= new ImageIcon(AbsolutePath.absolutePath()+URL.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+((Adress) generalDomain).getCountry()+".jpg");
+			image= new ImageIcon(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USER_COUNTRYES.getValue()+"/"+((Adress) generalDomain).getCountry()+".jpg");
 			image.getImage().flush();
 			image1=image.getImage();
 			newImg=image1.getScaledInstance(50,50,Image.SCALE_SMOOTH);
