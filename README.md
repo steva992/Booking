@@ -9,18 +9,17 @@ Desktop Application written in Java based on booking.com website
   *Areas which covered in this project* :
    ---
    
-  *OOP Principles
+  - OOP Principles
   
-  *Swing
+  - Swing
 
-  *Design Patterns
+  - Design Patterns
 
-  *Algorithms and Data Structures
+  - Algorithms and Data Structures
 
-  *Concurrency Programming
+  - Concurrency Programming
 
-  *MYSQL Database
+  - MYSQL Database
 
-  *Software Design Principles
-  
+  - Software Design Principles
   
