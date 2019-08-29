@@ -978,3 +978,1353 @@ Time : 23:07:52.752
 --------------------------------------------
 
 
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:26:31.146
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:27:29.506
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Ordinary
+Date : 2019-08-28
+Time : 21:28:23.170
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : UPDATE USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:29:52.837
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Ordinary
+Date : 2019-08-28
+Time : 21:30:16.010
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:40:49.102
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Ordinary
+Date : 2019-08-28
+Time : 21:40:59.758
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-3 Seconds-23 MiliSecond-395 )
+Date : 2019-08-28
+Time : 21:44:12.495
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:44:21.525
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Ordinary
+Date : 2019-08-28
+Time : 21:44:27.676
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:46:28.592
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:49:08.402
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Ordinary
+Date : 2019-08-28
+Time : 21:49:28.768
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:50:56.637
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-455 )
+Date : 2019-08-28
+Time : 21:51:00.091
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:51:04.945
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-16 MiliSecond-376 )
+Date : 2019-08-28
+Time : 21:51:21.321
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:53:05.196
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-765 )
+Date : 2019-08-28
+Time : 21:53:07.959
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:53:13.651
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-550 )
+Date : 2019-08-28
+Time : 21:53:16.201
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:54:38.623
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-199 )
+Date : 2019-08-28
+Time : 21:54:44.053
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:54:50.540
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-12 MiliSecond-763 )
+Date : 2019-08-28
+Time : 21:55:03.303
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:55:21.799
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:56:46.742
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-781 )
+Date : 2019-08-28
+Time : 21:56:50.521
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:56:56.849
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:58:52.031
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-446 )
+Date : 2019-08-28
+Time : 21:58:54.475
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:58:58.623
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-130 )
+Date : 2019-08-28
+Time : 21:59:00.753
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 21:59:46.298
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-18 MiliSecond-432 )
+Date : 2019-08-28
+Time : 22:00:04.727
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:00:21.411
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:03:24.501
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-7 MiliSecond-758 )
+Date : 2019-08-28
+Time : 22:03:32.258
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:03:40.405
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:06:59.747
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-125 )
+Date : 2019-08-28
+Time : 22:07:02.870
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:07:07.643
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-288 )
+Date : 2019-08-28
+Time : 22:07:09.930
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:09:42.013
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-9 MiliSecond-552 )
+Date : 2019-08-28
+Time : 22:09:51.563
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:10:19.414
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:12:59.478
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-886 )
+Date : 2019-08-28
+Time : 22:13:03.363
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:13:09.654
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:15:58.984
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-792 )
+Date : 2019-08-28
+Time : 22:16:02.775
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:16:07.472
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:17:17.509
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-605 )
+Date : 2019-08-28
+Time : 22:17:21.111
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:17:26.011
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-56 MiliSecond-67 )
+Date : 2019-08-28
+Time : 22:18:22.078
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:19:22.079
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-4 MiliSecond-848 )
+Date : 2019-08-28
+Time : 22:19:26.926
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:19:32.273
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-310 )
+Date : 2019-08-28
+Time : 22:19:34.583
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:21:23.096
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-4 MiliSecond-104 )
+Date : 2019-08-28
+Time : 22:21:27.197
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:21:37.439
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-21 )
+Date : 2019-08-28
+Time : 22:21:40.459
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:22:30.115
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-783 )
+Date : 2019-08-28
+Time : 22:22:33.897
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:22:39.808
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:34:15.247
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-4 MiliSecond-86 )
+Date : 2019-08-28
+Time : 22:34:19.331
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:34:24.458
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-695 )
+Date : 2019-08-28
+Time : 22:34:27.153
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:35:42.384
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-4 MiliSecond-78 )
+Date : 2019-08-28
+Time : 22:35:46.461
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:35:53.007
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-6 MiliSecond-917 )
+Date : 2019-08-28
+Time : 22:35:59.923
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:39:17.825
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:40:09.320
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:48:48.460
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-156 )
+Date : 2019-08-28
+Time : 22:48:50.614
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:48:56.671
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-20 MiliSecond-767 )
+Date : 2019-08-28
+Time : 22:49:17.438
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:50:54.672
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-13 MiliSecond-344 )
+Date : 2019-08-28
+Time : 22:51:08.013
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:51:27.015
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-11 MiliSecond-25 )
+Date : 2019-08-28
+Time : 22:51:38.041
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:51:48.041
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 22:59:18.896
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-28 MiliSecond-958 )
+Date : 2019-08-28
+Time : 22:59:47.853
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:00:40.555
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-28 MiliSecond-737 )
+Date : 2019-08-28
+Time : 23:01:09.289
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:12:14.979
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-881 )
+Date : 2019-08-28
+Time : 23:12:17.854
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:12:23.082
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-533 )
+Date : 2019-08-28
+Time : 23:12:25.616
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:14:12.472
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:16:55.895
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-398 )
+Date : 2019-08-28
+Time : 23:16:58.290
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:17:02.994
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-8 MiliSecond-468 )
+Date : 2019-08-28
+Time : 23:17:11.463
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:18:24.622
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:19:10.130
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-4 MiliSecond-139 )
+Date : 2019-08-28
+Time : 23:19:14.268
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:19:21.250
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:21:38.305
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-1 Seconds-14 MiliSecond-856 )
+Date : 2019-08-28
+Time : 23:22:53.159
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:25:09.083
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-15 MiliSecond-921 )
+Date : 2019-08-28
+Time : 23:25:25.002
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:26:52.423
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-15 MiliSecond-642 )
+Date : 2019-08-28
+Time : 23:27:08.065
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:27:21.067
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-9 MiliSecond-158 )
+Date : 2019-08-28
+Time : 23:27:30.224
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:27:51.882
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-20 MiliSecond-144 )
+Date : 2019-08-28
+Time : 23:28:12.027
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:30:08.443
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-17 MiliSecond-172 )
+Date : 2019-08-28
+Time : 23:30:25.613
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:34:57.343
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:35:44.296
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-9 MiliSecond-170 )
+Date : 2019-08-28
+Time : 23:35:53.464
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:37:54.085
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-42 MiliSecond-181 )
+Date : 2019-08-28
+Time : 23:38:36.264
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:45:48.025
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-36 MiliSecond-565 )
+Date : 2019-08-28
+Time : 23:46:24.588
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:48:27.526
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-41 MiliSecond-243 )
+Date : 2019-08-28
+Time : 23:49:08.767
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:50:46.878
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-58 MiliSecond-591 )
+Date : 2019-08-28
+Time : 23:51:45.467
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:53:04.456
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-11 MiliSecond-808 )
+Date : 2019-08-28
+Time : 23:53:16.264
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:54:50.584
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-6 MiliSecond-741 )
+Date : 2019-08-28
+Time : 23:54:57.323
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:56:02.016
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-675 )
+Date : 2019-08-28
+Time : 23:56:04.689
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-28
+Time : 23:58:27.858
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-29
+Time : 00:03:38.261
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-2 MiliSecond-735 )
+Date : 2019-08-29
+Time : 00:03:40.994
+--------------------------------------------
+
+

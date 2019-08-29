@@ -135,15 +135,15 @@ import javax.swing.JTextArea;
 public class User_Panel extends JPanel {
 
 	private boolean backForAll=true;
-	private User userGlobal;
-	private User_Info user_info;
-	private User chatUser;
-	private User_Info chatUser_info;
-	private Property property;
-	private Adress adress;
-	private GeoLocation geoLocation;
-	private PaymentUserCard paymentGlobal;
-	private String whichProperty;
+	private volatile User userGlobal;
+	private volatile User_Info user_info;
+	private volatile User chatUser;
+	private volatile User_Info chatUser_info;
+	private volatile Property property;
+	private volatile Adress adress;
+	private volatile GeoLocation geoLocation;
+	private volatile PaymentUserCard paymentGlobal;
+	private volatile String whichProperty;
 	private JComboBox cbTypeOfRoom;
 	private JComboBox<ComboBoxClass> cbType;
 	private static String url;
@@ -178,11 +178,11 @@ public class User_Panel extends JPanel {
 	
 	private JLayeredPane layeredPane_1,layeredPane,layeredPane_Location;
 	
-	private JLabel lbl1,lbl2,lbl3,lbl4,lbl5,lblAftermain,lblBeforeMain,lblmainHotelPicture,lblPicture,lblCardPicture,lblChatPicture,lblUsernameChat, label_8;;
+	private JLabel lbl1,lbl2,lbl3,lbl4,lbl5,lblAftermain,lblBeforeMain,lblmainHotelPicture,lblPicture,lblCardPicture,lblChatPicture,lblUsernameChat, label_8;
 	
-	private JTextField tfSurname,tfMobileNumber,tfEmail,tfName,tfCountry,tfCity,tfStreet,tfNumber,tfCardNumber, tfExpirationDate,tfCardNumberRegistration, tfMessage;;
+	private JTextField tfSurname,tfMobileNumber,tfEmail,tfName,tfCountry,tfCity,tfStreet,tfNumber,tfCardNumber, tfExpirationDate,tfCardNumberRegistration, tfMessage;
 	
-	private JPanel PanelMyinfo,PanelCardInfo,Offer,MyReservation,PanelPictures,PanelLocation,CreateCard,ChatPanel;;
+	private JPanel PanelMyinfo,PanelCardInfo,Offer,MyReservation,PanelPictures,PanelLocation,CreateCard,ChatPanel;
 	
 	private JRadioButton rbUserInfo,rbCardInfo,rbMyReservation,rbOffer;
 	
@@ -1960,6 +1960,12 @@ public class User_Panel extends JPanel {
 		 try {
 			 if(backForAll) {
 				 ControlerUI.getInstance().sendToServer(Type_Of_Operation.CHECK_USER_ONLINE, Type_Of_Data.USER,map.get(property.getUser_Username()).get(0));
+				 try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 					int number=ControlerUser.getInstance().getUserOnlineNumber();
 					ControlerUser.getInstance().setNumber(0);
 					if(number==1) {
@@ -2272,13 +2278,15 @@ public class User_Panel extends JPanel {
 
 	public void removeOnlineUser(String message, User user2) {
 		chatMap.remove(user2.getUsername());
-		rbChat.setVisible(false);
-		btnNewButton_3.setVisible(false);
-		rbOffer.setSelected(true);
-		layeredPane_1.removeAll();
-		layeredPane_1.add(Offer);
-		layeredPane_1.repaint();
-		layeredPane_1.revalidate();
+		if(property.getUser_Username().equals(user2.getUsername())) {
+			rbChat.setVisible(false);
+			btnNewButton_3.setVisible(false);
+			rbOffer.setSelected(true);
+			layeredPane_1.removeAll();
+			layeredPane_1.add(Offer);
+			layeredPane_1.repaint();
+			layeredPane_1.revalidate();
+		}
 	}
 
 

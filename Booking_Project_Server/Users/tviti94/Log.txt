@@ -1238,3 +1238,153 @@ Time : 00:07:09.840
 --------------------------------------------
 
 
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-28
+Time : 21:55:11.932
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-4 MiliSecond-734 )
+Date : 2019-08-28
+Time : 21:55:16.665
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-28
+Time : 22:19:59.959
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-12 MiliSecond-307 )
+Date : 2019-08-28
+Time : 22:20:12.266
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-28
+Time : 22:20:16.403
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-3 MiliSecond-121 )
+Date : 2019-08-28
+Time : 22:20:19.524
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-28
+Time : 23:56:10.396
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-29
+Time : 00:03:46.978
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-29
+Time : 00:21:18.453
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/tviti94/ProfilePicture.jpg
+Date : 2019-08-29
+Time : 00:21:27.205
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-12 MiliSecond-679 )
+Date : 2019-08-29
+Time : 00:21:31.131
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-29
+Time : 00:21:37.481
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/tviti94/ProfilePicture.jpg
+Date : 2019-08-29
+Time : 00:22:09.459
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/tviti94/ProfilePicture.jpg
+Date : 2019-08-29
+Time : 00:22:36.954
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Ordinary
+Date : 2019-08-29
+Time : 00:23:10.848
+--------------------------------------------
+
+

@@ -348,3 +348,23 @@ Time : 13:13:00.780
 --------------------------------------------
 
 
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-29
+Time : 00:05:00.523
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-8 Seconds-56 MiliSecond-459 )
+Date : 2019-08-29
+Time : 00:13:56.979
+--------------------------------------------
+
+

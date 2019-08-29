@@ -3,7 +3,7 @@ package com.comtrade.so.user;
 import java.sql.SQLException;
 
 import com.comtrade.cache.Cache;
-import com.comtrade.controlerPL.Controler_Thread;
+import com.comtrade.controlerBL.Controler_Thread;
 import com.comtrade.domain.user.User;
 import com.comtrade.so.GeneralSystemOperation;
 

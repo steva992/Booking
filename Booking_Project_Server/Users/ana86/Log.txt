@@ -1,0 +1,60 @@
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : REGISTRATION USER
+Object : ana86
+Date : 2019-08-29
+Time : 00:08:14.255
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : LOGIN USER
+Object : ana86
+Date : 2019-08-29
+Time : 00:08:20.523
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : CHANGE PICTURE URL
+Object : /Users/ana86/ProfilePicture.jpg
+Date : 2019-08-29
+Time : 00:08:50.612
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : CHANGE PICTURE URL
+Object : /Users/ana86/ProfilePicture.jpg
+Date : 2019-08-29
+Time : 00:09:30.881
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : USER REGISTRATED PAYMENT CARD
+Object : 4858
+Date : 2019-08-29
+Time : 00:09:44.413
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-5 Seconds-37 MiliSecond-133 )
+Date : 2019-08-29
+Time : 00:13:57.656
+--------------------------------------------
+
+

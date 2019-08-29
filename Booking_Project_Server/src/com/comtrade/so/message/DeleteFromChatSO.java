@@ -3,7 +3,7 @@ package com.comtrade.so.message;
 import java.sql.SQLException;
 
 import com.comtrade.constants.Type_Of_Operation;
-import com.comtrade.controlerPL.Controler_Thread;
+import com.comtrade.controlerBL.Controler_Thread;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.user.User;
 import com.comtrade.genericClasses.GenericList;

@@ -21,8 +21,8 @@ public class ControlerUser {
 	private volatile User_Info user_info;
 	private volatile String message;
 	private volatile int userOnlineNumber;
-	private User_Panel userPanel;
-	private Admin_Panel adminPanel;
+	private  User_Panel userPanel;
+	private  Admin_Panel adminPanel;
 	private volatile int number=0;
 	
 
@@ -167,7 +167,7 @@ public class ControlerUser {
 		case REMOVE_ONLINE_USER:
 			
 			list=(GenericList<GeneralDomain>) transferClass.getServer_Object_Response();
-			User user=(User) list.get(0);
+			user=(User) list.get(0);
 			if(userPanel != null) {
 				userPanel.removeOnlineUser(message,user);
 			}

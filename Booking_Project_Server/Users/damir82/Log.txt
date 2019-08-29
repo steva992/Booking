@@ -1,0 +1,40 @@
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : LOGIN USER
+Object : damir82
+Date : 2019-08-29
+Time : 00:14:54.684
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/damir82/ProfilePicture.jpg
+Date : 2019-08-29
+Time : 00:16:02.060
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : LOGIN USER
+Object : damir82
+Date : 2019-08-29
+Time : 00:20:11.055
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/damir82/ProfilePicture.jpg
+Date : 2019-08-29
+Time : 00:20:23.248
+--------------------------------------------
+
+

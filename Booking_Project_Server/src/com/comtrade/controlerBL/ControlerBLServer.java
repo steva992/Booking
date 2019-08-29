@@ -1,4 +1,4 @@
-package com.comtrade.controlerPL;
+package com.comtrade.controlerBL;
 
 import com.comtrade.view.ServerForm;
 

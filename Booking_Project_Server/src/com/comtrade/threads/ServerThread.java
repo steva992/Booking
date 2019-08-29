@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import com.comtrade.cache.Cache;
 import com.comtrade.constants.Server_Information;
 import com.comtrade.constants.TransferClass_Message;
-import com.comtrade.controlerPL.ControlerBLServer;
+import com.comtrade.controlerBL.ControlerBLServer;
 
 public class ServerThread extends Thread {
 	private JTextArea textArea;

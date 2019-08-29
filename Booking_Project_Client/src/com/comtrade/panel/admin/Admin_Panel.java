@@ -1441,11 +1441,11 @@ public class Admin_Panel extends JPanel {
 			}
 		});
 		
-		/*
-		 * createColumnForDTM(); fillcombobox(); fillCountryComboBox();
-		 * backAllForThisProperty(); time.start(); sortAllTables();
-		 * setAdminPanelForControlers();
-		 */
+		
+		 createColumnForDTM(); fillcombobox(); fillCountryComboBox();
+		 backAllForThisProperty(); time.start(); sortAllTables();
+		 setAdminPanelForControlers();
+		 
 		 
 	}
 
@@ -1570,6 +1570,8 @@ public class Admin_Panel extends JPanel {
 
 
 	protected void updateRooms(GenericList<GeneralDomain> listRooms1, Room room, Room_Info room_Info) {
+		GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
+		list=map.get(property.getName());
 		room_Info.setRoom_code(room.getRoom_code());
 		listRooms1.add(property);
 		listRooms1.add(room);
@@ -1589,6 +1591,12 @@ public class Admin_Panel extends JPanel {
 					if(room1.getRoom_code()==room.getRoom_code()) {
 						listRoom.set(i,room);
 						listRoom.set(i+1,room_Info);
+						for(int j=0;j<list.size();j++) {
+							if(list.get(j)  instanceof Room && room1.getRoom_code() == ((Room) list.get(j)).getRoom_code()) {
+								map.get(property.getName()).set(j,room);
+								map.get(property.getName()).set(j+1,room_info);
+							}
+						}
 					}
 				}
 			}
@@ -1685,7 +1693,7 @@ public class Admin_Panel extends JPanel {
 		for(Map.Entry<String,GenericList<GeneralDomain>> entry : map.entrySet()) {
 			if(entry.getValue().get(0) instanceof Property && ((Property) entry.getValue().get(0)).getUser_Username().equals(user.getUsername())) {
 				list1=null;
-				list1=new GenericList<GeneralDomain>();;
+				list1=new GenericList<GeneralDomain>();
 				list1=entry.getValue();
 				property=(Property) list1.get(0);
 				adress1=(Adress) list1.get(1);

@@ -34,8 +34,8 @@ import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 
 public class Login extends JPanel {
-	private JTextField tfUsernameLogin;
-	private JPasswordField pfPasswordLogin;
+	private  JTextField tfUsernameLogin;
+	private  JPasswordField pfPasswordLogin;
 
 	
 	public Login() {

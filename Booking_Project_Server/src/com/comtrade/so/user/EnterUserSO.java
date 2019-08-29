@@ -13,8 +13,16 @@ public class EnterUserSO extends GeneralSystemOperation<GenericList<GeneralDomai
 
 	@Override
 	protected void runConcreteSO(GenericList<GeneralDomain> object) throws SQLException, Exception {
-		User user=(User) object.get(0);
-		Cache.getInstance().addListInMap(user.getUsername(),object);
+		GenericList<GeneralDomain>list=object;
+		User user=(User) list.get(0);
+		User userExcist=new User();
+		boolean excist=Cache.getInstance().checkUserInMap(user);
+		if(excist) {
+			userExcist.setStatus("excist");
+			list.add(userExcist);
+		}else {
+			Cache.getInstance().addListInMap(user.getUsername(),object);
+		}
 	}
 
 }

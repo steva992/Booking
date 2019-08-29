@@ -3,7 +3,7 @@ package com.comtrade.cache;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.comtrade.controlerPL.ControlerBLDiscount;
+import com.comtrade.controlerBL.ControlerBLDiscount;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.TypeForDatabase;
 import com.comtrade.domain.property.Property;
@@ -17,7 +17,7 @@ import com.comtrade.threads.ClientThreadRequest;
 public class Cache {
 	
 	private volatile GenericList<TypeForDatabase>listForDatabase;
-	private volatile GenericMap<String, GenericList<GeneralDomain>>map;
+	private  GenericMap<String, GenericList<GeneralDomain>>map;
 	private volatile GenericList<GeneralDomain>list;
 	private static volatile Cache instance;
 	
@@ -59,12 +59,17 @@ public class Cache {
 	}
 
 	public synchronized void addListInMap(String type,GenericList<GeneralDomain> generalDomain) {
+		synchronized (Cache.class) {
 			map.put(type, generalDomain);
+		}
+			
 			for(int i=0;i<generalDomain.size();i++) {
 				TypeForDatabase tfd=new TypeForDatabase();
 				tfd.setType(1);
 				tfd.setGeneralDomain(generalDomain.get(i));
-				listForDatabase.add(tfd);
+				synchronized (Cache.class) {
+					listForDatabase.add(tfd);
+				}
 			}
 	}
 	

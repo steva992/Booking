@@ -1,4 +1,4 @@
-package com.comtrade.controlerPL;
+package com.comtrade.controlerBL;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -129,6 +129,7 @@ public class ControlerBLUser {
 			
 			GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 			list.add(user);
+			Controler_Thread.getInstance().removeThread(clientThread);
 			Controler_Thread.getInstance().sendMESSAGE(Type_Of_Data.USER,clientThread,TransferClass_Message.USER_IS_OFFLINE,list);
 			
 			ControlerBLServer.getInstance().entrerMessageOnTextArea("\n"+"[ "+LocalDate.now()+" "+LocalTime.now()+" ] : "+ user.getUsername()+ " left server\n");
@@ -288,14 +289,20 @@ public class ControlerBLUser {
 			GeneralSystemOperation<GenericList<GeneralDomain>>generalSO=new EnterUserSO();
 			generalSO.runSO(list);
 			
-			transferClass.setServer_Object_Response(list);
-			transferClass.setMessage(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
-			transferClass.setType_Of_Data(Type_Of_Data.USER);
-			transferClass.setType_Of_operation(Type_Of_Operation.ADD);
-			
-			List<ClientThreadRequest>list1=Controler_Thread.getInstance().getListAllThread();
-			for(int i=0;i<list1.size();i++) {
-				list1.get(i).send(transferClass);
+			if(list.size()> 1) {
+				User user=(User) list.get(2);
+				transferClass.setMessage(TransferClass_Message.EXCIST_USERNAME.getValue());
+				clientThread.send(transferClass);
+			}else {
+				transferClass.setServer_Object_Response(list);
+				transferClass.setMessage(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
+				transferClass.setType_Of_Data(Type_Of_Data.USER);
+				transferClass.setType_Of_operation(Type_Of_Operation.ADD);
+				
+				List<ClientThreadRequest>list1=Controler_Thread.getInstance().getListAllThread();
+				for(int i=0;i<list1.size();i++) {
+					list1.get(i).send(transferClass);
+				}
 			}	
 		} catch (Exception e) {
 			
@@ -318,6 +325,7 @@ public class ControlerBLUser {
 				
 				Controler_Thread.getInstance().addNewThread(clientThread);
 				Controler_Thread.getInstance().addInMapActiveThread(user1.getUsername(), clientThread);
+				
 				transferClass.setType_Of_operation(Type_Of_Operation.LOGIN_USER);
 				transferClass.setMessage(TransferClass_Message.SUCCESSFUL_LOGIN.getValue());
 				transferClass.setType_Of_Data(Type_Of_Data.USER);

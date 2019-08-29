@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 import com.comtrade.constants.AbsolutePath;
 import com.comtrade.constants.CountryesTxt;
-import com.comtrade.controlerPL.ControlerBLCode;
+import com.comtrade.controlerBL.ControlerBLCode;
 
 public class Codes {
 	

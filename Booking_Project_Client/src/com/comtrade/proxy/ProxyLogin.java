@@ -30,10 +30,15 @@ public class ProxyLogin implements IProxy {
 	public void login(User user) throws ClassNotFoundException, IOException, URISyntaxException {
 		
 		ControlerUI.getInstance().sendToServer(Type_Of_Operation.LOGIN_USER,Type_Of_Data.USER, user);
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		user=ControlerUser.getInstance().getUser();
 		String message=ControlerUser.getInstance().getMessage();
 		ControlerUser.getInstance().setNumber(0);
-		
 		if(user != null) {
 			
 			if(user.getStatus().equals("admin")) {
@@ -50,8 +55,8 @@ public class ProxyLogin implements IProxy {
 				
 			}else if(user.getStatus().equals("user")) {
 				
-				JPanel superAdminPanel=new User_Panel(user);
-				Application.setPanelOnLayeredPane(superAdminPanel);
+				JPanel userPanel=new User_Panel(user);
+				Application.setPanelOnLayeredPane(userPanel);
 				JOptionPane.showMessageDialog(null,message);
 				
 			}else if(user.getStatus().equals("deactivated")) {

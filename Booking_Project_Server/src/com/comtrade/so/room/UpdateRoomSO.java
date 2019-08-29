@@ -2,6 +2,7 @@ package com.comtrade.so.room;
 
 import java.sql.SQLException;
 
+import com.comtrade.cache.Cache;
 import com.comtrade.domain.GeneralDomain;
 import com.comtrade.domain.property.Property;
 import com.comtrade.doman.room.Room;
@@ -17,7 +18,8 @@ public class UpdateRoomSO extends GeneralSystemOperation<GenericList<GeneralDoma
 		Property property=(Property) object.get(0);
 		Room room=(Room) object.get(1);
 		Room_Info room_info=(Room_Info) object.get(2);
-
+		Cache.getInstance().updateInMap(property.getName(),room);
+		Cache.getInstance().updateInMap(property.getName(),room_info);
 	}
 
 }

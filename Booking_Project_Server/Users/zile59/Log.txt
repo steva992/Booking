@@ -488,3 +488,73 @@ Time : 13:15:35.075
 --------------------------------------------
 
 
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : LOGIN USER
+Object : zile59
+Date : 2019-08-28
+Time : 23:29:02.411
+--------------------------------------------
+
+
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : LOGIN USER
+Object : zile59
+Date : 2019-08-28
+Time : 23:38:06.380
+--------------------------------------------
+
+
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : LOGIN USER
+Object : zile59
+Date : 2019-08-28
+Time : 23:45:59.498
+--------------------------------------------
+
+
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : LOGIN USER
+Object : zile59
+Date : 2019-08-28
+Time : 23:48:39.937
+--------------------------------------------
+
+
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-32 MiliSecond-23 )
+Date : 2019-08-28
+Time : 23:49:11.959
+--------------------------------------------
+
+
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : LOGIN USER
+Object : zile59
+Date : 2019-08-28
+Time : 23:51:00.833
+--------------------------------------------
+
+
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-29 MiliSecond-325 )
+Date : 2019-08-28
+Time : 23:51:30.157
+--------------------------------------------
+
+
