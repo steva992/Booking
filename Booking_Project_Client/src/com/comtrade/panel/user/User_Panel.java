@@ -285,7 +285,7 @@ public class User_Panel extends JPanel {
 						
 						((User_Info) map.get(user.getUsername()).get(1)).setPictureURL(URL);
 						if(message != null) {
-							JOptionPane.showMessageDialog(null,ControlerUser.getInstance().getMessage());
+							JOptionPane.showMessageDialog(null,message);
 						}
 						user.enterDataOnTXTFle(user,Type_OF_Operation_TXT.DELETE_PICTURE.getValue(),url);
 					} catch (ClassNotFoundException e) {
@@ -531,7 +531,6 @@ public class User_Panel extends JPanel {
 												JOptionPane.showMessageDialog(null,message);
 											}
 											user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_RESERVATION.getValue(),String.valueOf(reservation.getCheckIn()+" "+reservation.getCheckOut()));
-											map.get(property.getName()).add(reservation);
 											setAllClear();
 										} catch (IOException e) {
 											// TODO Auto-generated catch block
@@ -573,12 +572,14 @@ public class User_Panel extends JPanel {
 		Offer.add(chckOut);
 		chckOut.setDateFormatString("yyyy,MM dd");
 		chckOut.setMinSelectableDate(Date.valueOf(LocalDate.now()));
+		chckOut.setMaxSelectableDate(Date.valueOf("2040-01-01"));
 		
 		checkIn = new JDateChooser();
 		checkIn.setBounds(394, 157, 157, 23);
 		Offer.add(checkIn);
 		checkIn.setDateFormatString("yyyy,MM dd");
 		checkIn.setMinSelectableDate(Date.valueOf(LocalDate.now()));
+		checkIn.setMaxSelectableDate(Date.valueOf("2040-01-01"));
 		
 		JLabel lblCheckIn = new JLabel("CHECK IN");
 		lblCheckIn.setBounds(394, 127, 148, 23);
@@ -2234,16 +2235,16 @@ public class User_Panel extends JPanel {
 
 	public void addReservation(String name, Reservation reservation) {
 		map.get(name).add(reservation);
-		listReservation.add(reservation);
-		EnterReservationInTable(listReservation);
+		backForAll=false;
+		backAllForThisProperty();
 		
 	}
 
 
 	public void deleteReservation(String name, Reservation reservation) {
 		map.get(name).delete(reservation);
-		listReservation.delete(reservation);
-		EnterReservationInTable(listReservation);
+		backForAll=false;
+		backAllForThisProperty();
 	}
 
 

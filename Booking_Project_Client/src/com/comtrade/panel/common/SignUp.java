@@ -284,26 +284,47 @@ public class SignUp extends JPanel {
 						try {
 							User user=(User) list.get(0);
 							User_Info user_inf=(User_Info) list.get(1);
-							int number=sendVerificationEmail(user_inf.getEmail());
-							ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_USER,Type_Of_Data.USER,list);
+							ControlerUI.getInstance().sendToServer(Type_Of_Operation.CHECK_USER,Type_Of_Data.USER,list);
 							String message=ControlerUser.getInstance().getMessage();
 							ControlerUser.getInstance().setNumber(0);
-							File userFile=new File(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
-							if(!userFile.exists()) {
-								userFile.mkdir();
-							}
-							String messageEmail="We are sent verification code on your email adress!\nPlease Enter your verification code :";
-							if(!(JOptionPane.showInputDialog(null, messageEmail) == null)) {
-								
-								int answer=Integer.parseInt(JOptionPane.showInputDialog(null, messageEmail));
-								while(answer !=number) {
-									JOptionPane.showMessageDialog(null,"INCORECT NUMBER,PLEASE CHECK YOUR EMAIL AGAIN");
-									answer=Integer.parseInt(JOptionPane.showInputDialog(null, messageEmail));
+							if(message != null) {
+								if(!message.equals(TransferClass_Message.EXCIST_USERNAME.getValue())) {
+									int number=sendVerificationEmail(user_inf.getEmail());
+									File userFile=new File(AbsolutePath.absolutePath()+URLS.PROFILE_PICTURE_USERS.getValue()+"/"+user.getUsername());
+									if(!userFile.exists()) {
+										userFile.mkdir();
+									}
+									int continueApplication=0;
+										String messageEmail="We are sent verification code on your email adress!\nPlease Enter your verification code :";
+										String answer=JOptionPane.showInputDialog(null, messageEmail);
+										if(answer != null) {
+											int answerINT=Integer.parseInt(answer);
+											while(answerINT !=number) {
+												JOptionPane.showMessageDialog(null,"INCORECT NUMBER,PLEASE CHECK YOUR EMAIL AGAIN");
+												answer=JOptionPane.showInputDialog(null, messageEmail);
+												if(answer != null) {
+													answerINT=Integer.parseInt(JOptionPane.showInputDialog(null, messageEmail));
+												}else {
+													continueApplication=1;
+													return;
+												}
+											}
+											if(continueApplication == 0) {
+												ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_USER,Type_Of_Data.USER,list);
+												message=ControlerUser.getInstance().getMessage();
+												ControlerUser.getInstance().setNumber(0);
+												JOptionPane.showMessageDialog(null,message);
+												JPanel login=new Login();
+												Application.setPanelOnLayeredPane(login);
+												user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER.getValue(),user.getUsername());
+											}
+									}else {
+										return;
+									}
+								}else {
+									JOptionPane.showMessageDialog(null, message);
 								}
-									JOptionPane.showMessageDialog(null,message);
-									JPanel login=new Login();
-									Application.setPanelOnLayeredPane(login);
-									user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER.getValue(),user.getUsername());
+							
 								
 						}
 							

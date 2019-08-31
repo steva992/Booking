@@ -29,7 +29,7 @@ public class ClientThreadResponse extends Thread{
 					processServerRequest(transferClass);
 				}catch(Exception e) {
 					System.out.println("nema konekcije");
-					System.exit(0);
+					e.printStackTrace();
 					break;
 				}
 			}

@@ -132,13 +132,18 @@ public class ControlerProperty {
 		TransferClass transferClass2=new TransferClass();
 		GenericList<GeneralDomain>list=new GenericList<GeneralDomain>();
 		GenericMap<String, GenericList<GeneralDomain>>mapServer=new GenericMap<String, GenericList<GeneralDomain>>();
+		Property propertyAnswer=new Property();
 		switch (transferClass.getType_Of_operation()) {
 		
 		case ADD:
 			message=transferClass.getMessage();
 			list=(GenericList<GeneralDomain>) transferClass.getServer_Object_Response();
-			Property property=(Property) list.get(0);
-			map.put(property.getName(),list);
+			if(list.get(0) instanceof User) {
+				propertyAnswer=(Property) list.get(2);
+			}else {
+				propertyAnswer=(Property) list.get(0);
+			}
+			map.put(propertyAnswer.getName(),list);
 			if(userPanel != null) {
 				userPanel.backAllForProperty(map);
 			}

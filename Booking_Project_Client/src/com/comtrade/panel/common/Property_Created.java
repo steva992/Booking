@@ -103,6 +103,9 @@ public class Property_Created extends JPanel {
 		});
 		btfBackToLog.setFont(new Font("Castellar", Font.BOLD, 14));
 		btfBackToLog.setBounds(21, 21, 287, 42);
+		if(back.equals("admin")) {
+			btfBackToLog.setVisible(false);
+		}
 		CommonMethod.setNewPicutreOnButton(AbsolutePath.absolutePath()+URLS.PICTURE_BACK_TO.getValue(),btfBackToLog);
 		add(btfBackToLog);
 		
@@ -229,33 +232,42 @@ public class Property_Created extends JPanel {
 										propertyFile.mkdir();
 										
 									}
-									JOptionPane.showMessageDialog(null,"CHOOSE 5 PICTURE FOR YOUR PROPERTY : ");
-									Property_Picutre_Album property_picture_album=new Property_Picutre_Album();
-									for(int i=5;i<10;i++) {
-										property_picture_album=(Property_Picutre_Album) list.get(i);
-										fileChooser.showOpenDialog(btnSignUpYou);
-										String path=fileChooser.getSelectedFile().getAbsolutePath();
-										Admin_Panel.createPictureForServer(path,property,property_picture_album,user);
+									String message = null;
+									boolean wrong;
+									try {
+										ControlerUI.getInstance().sendToServer(Type_Of_Operation.CHECK_PROPERTY,Type_Of_Data.PROPERTY, list);
+										message=ControlerProperty.getInstance().getMessage();
+										ControlerProperty.getInstance().setNumber(0);
+									} catch (ClassNotFoundException e3) {
+										// TODO Auto-generated catch block
+										e3.printStackTrace();
+									} catch (IOException e3) {
+										// TODO Auto-generated catch block
+										e3.printStackTrace();
 									}
 									if(back.equals("admin")) {
 												try {
 													list.delete(user);
 													list.delete(user_info);
-													ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_PROPERTY,Type_Of_Data.PROPERTY, list);
-													String message=ControlerProperty.getInstance().getMessage();
-													ControlerProperty.getInstance().setNumber(0);
 													if(message.equals(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue())) {
-														user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER_AND_PROPERTY.getValue(), property.getName());
-														JOptionPane.showMessageDialog(null,message);
-														JPanel admin= new Admin_Panel(user);
-														Application.setPanelOnLayeredPane(admin);
-														user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_NEW.getValue(), property.getName());
+														wrong=chose5Picture(fileChooser,btnSignUpYou,property,list);
+														if(!wrong) {
+															ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_PROPERTY,Type_Of_Data.PROPERTY, list);
+															message=ControlerProperty.getInstance().getMessage();
+															ControlerProperty.getInstance().setNumber(0);
+															user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER_AND_PROPERTY.getValue(), property.getName());
+															JOptionPane.showMessageDialog(null,message);
+															JPanel admin= new Admin_Panel(user);
+															Application.setPanelOnLayeredPane(admin);
+															user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_NEW.getValue(), property.getName());
+														}
 													}else if(message.equals(TransferClass_Message.EXCIST_PROPERTY.getValue())){
 														userFile.delete();
 														userPropertyFile.delete();
 														propertyFile.delete();
 														JOptionPane.showMessageDialog(null,message);
 													}
+													btfBackToLog.setVisible(true);
 												} catch (ClassNotFoundException e1) {
 													// TODO Auto-generated catch block
 													e1.printStackTrace();
@@ -269,24 +281,40 @@ public class Property_Created extends JPanel {
 										
 										
 									}else if(back.equals("login")){
-										int number=sendVerificationEmail(user_info.getEmail());
-										String verificatiopn="We are sent verification code on your email adress!\nPlease Enter your verification code :";
-										if(JOptionPane.showInputDialog(null,verificatiopn) != null) {
-											
-											int answer=Integer.parseInt(JOptionPane.showInputDialog(null,verificatiopn));
-											while(answer !=number) {
-												JOptionPane.showMessageDialog(null,"INCORECT NUMBER,PLEASE CHECK YOUR EMAIL AGAIN");
-												answer=Integer.parseInt(JOptionPane.showInputDialog(null, "We are sent verification code on your email adress!\nPlease Enter your verification code :"));
-											}
+										int continueApplication=0;
 											try {
-												ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_PROPERTY,Type_Of_Data.PROPERTY, list);
-												String message=ControlerProperty.getInstance().getMessage();
-												ControlerProperty.getInstance().setNumber(0);
 												if(message.equals(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue())) {
-													JPanel login=new Login();
-													Application.setPanelOnLayeredPane(login);
-													user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER_AND_PROPERTY.getValue(), property.getName());
-													JOptionPane.showMessageDialog(null,message);
+													wrong=chose5Picture(fileChooser, btnSignUpYou, property,list);
+													if(!wrong) {
+														ControlerUI.getInstance().sendToServer(Type_Of_Operation.REGISTRATION_PROPERTY,Type_Of_Data.PROPERTY, list);
+														message=ControlerProperty.getInstance().getMessage();
+														ControlerProperty.getInstance().setNumber(0);
+														int number=sendVerificationEmail(user_info.getEmail());
+														String verification="We are sent verification code on your email adress!\nPlease Enter your verification code :";
+														String answer=JOptionPane.showInputDialog(null,verification);
+														if(answer != null) {
+															int answerINT=Integer.parseInt(answer);
+															while(answerINT !=number) {
+																JOptionPane.showMessageDialog(null,"INCORECT NUMBER,PLEASE CHECK YOUR EMAIL AGAIN");
+																answer=JOptionPane.showInputDialog(null,verification);
+																if( answer != null ) {
+																	answerINT=Integer.parseInt(answer);
+																}else {
+																	continueApplication=1;
+																	return;
+																}
+															}
+															if(continueApplication == 0) {
+																JPanel login=new Login();
+																Application.setPanelOnLayeredPane(login);
+																user.enterDataOnTXTFle(user, Type_OF_Operation_TXT.REGISTRATION_USER_AND_PROPERTY.getValue(), property.getName());
+																JOptionPane.showMessageDialog(null,message);
+															}
+														}else {
+															return;
+														}
+													}
+													
 												}else if(message.equals(TransferClass_Message.EXCIST_PROPERTY.getValue())){
 													userFile.delete();
 													userPropertyFile.delete();
@@ -301,8 +329,7 @@ public class Property_Created extends JPanel {
 												// TODO Auto-generated catch block
 												e2.printStackTrace();
 											}
-										
-										}	
+											
 										
 									}
 								
@@ -530,6 +557,31 @@ public class Property_Created extends JPanel {
 	}
 	
 	
+
+
+
+	protected boolean chose5Picture(JFileChooser fileChooser, JButton btnSignUpYou, Property property, GenericList<GeneralDomain> list2) {
+		boolean wrongPicture=false;
+		JOptionPane.showMessageDialog(null,"CHOOSE 5 PICTURE FOR YOUR PROPERTY : ");
+		Property_Picutre_Album property_picture_album=new Property_Picutre_Album();
+		for(int i=0;i<list2.size();i++) {
+			if(list2.get(i) instanceof Property_Picutre_Album) {
+				fileChooser.setSelectedFile(null);
+				property_picture_album=(Property_Picutre_Album) list2.get(i);
+				fileChooser.showOpenDialog(btnSignUpYou);
+				if(fileChooser.getSelectedFile() == null) {
+					wrongPicture=true;
+					break;
+				}else {
+					String path=fileChooser.getSelectedFile().getAbsolutePath();
+					Admin_Panel.createPictureForServer(path,property,property_picture_album,user);
+				}
+			}
+		}
+		return wrongPicture;
+	}
+
+
 
 
 
