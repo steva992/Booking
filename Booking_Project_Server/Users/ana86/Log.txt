@@ -58,3 +58,23 @@ Time : 00:13:57.656
 --------------------------------------------
 
 
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : LOGIN USER
+Object : ana86
+Date : 2019-08-30
+Time : 22:52:35.423
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-11 Seconds-6 MiliSecond-159 )
+Date : 2019-08-30
+Time : 23:03:41.580
+--------------------------------------------
+
+

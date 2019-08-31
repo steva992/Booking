@@ -368,3 +368,243 @@ Time : 00:13:56.979
 --------------------------------------------
 
 
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 13:12:44.711
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : UPDATE USER
+Object : marko92
+Date : 2019-08-30
+Time : 13:15:28.962
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : CANCEL RESERVATION
+Object : 2019-11-19 2019-11-27
+Date : 2019-08-30
+Time : 13:16:23.208
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : CANCEL RESERVATION
+Object : 2019-11-19 2019-11-29
+Date : 2019-08-30
+Time : 13:20:46.301
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-09-16 2019-09-25
+Date : 2019-08-30
+Time : 13:21:13.072
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-11 Seconds-9 MiliSecond-924 )
+Date : 2019-08-30
+Time : 13:23:54.629
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 13:25:55.405
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 21:22:59.004
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 21:50:15.002
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 22:31:46.849
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 22:38:02.658
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : USER DELETE PROFILE PICTURE
+Object : marko92
+Date : 2019-08-30
+Time : 22:38:06.893
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 22:43:42.862
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : CHANGE PICTURE URL
+Object : /Users/marko92/ProfilePicture.jpg
+Date : 2019-08-30
+Time : 22:44:02.024
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : USER DELETE PROFILE PICTURE
+Object : marko92
+Date : 2019-08-30
+Time : 22:44:02.713
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : USER DELETE PROFILE PICTURE
+Object : /Users/marko92/ProfilePicture.jpg
+Date : 2019-08-30
+Time : 22:44:03.462
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : CHANGE PICTURE URL
+Object : /Users/marko92/ProfilePicture.jpg
+Date : 2019-08-30
+Time : 22:44:13.100
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-0 Seconds-34 MiliSecond-503 )
+Date : 2019-08-30
+Time : 22:44:17.363
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 22:47:36.208
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-4 Seconds-2 MiliSecond-245 )
+Date : 2019-08-30
+Time : 22:51:38.451
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 23:11:30.939
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 23:13:15.266
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : LOGIN USER
+Object : marko92
+Date : 2019-08-30
+Time : 23:15:56.661
+--------------------------------------------
+
+
+-------------------------------------------
+Username : marko92
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2019-12-31 2020-01-15
+Date : 2019-08-30
+Time : 23:16:32.497
+--------------------------------------------
+
+

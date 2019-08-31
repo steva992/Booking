@@ -50,7 +50,6 @@ public class ServerThread extends Thread {
 		} catch (IOException e) {
 			
 			JOptionPane.showMessageDialog(null,TransferClass_Message.SERVER_ALLREADY_STARTED.getValue());
-			e.printStackTrace();
 			
 		}
 		

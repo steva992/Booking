@@ -46,6 +46,10 @@ public class Controler_Thread {
 	public synchronized void add(ClientThreadRequest client) {
 		listAllThread.add(client);
 	}
+	
+	public synchronized void remove(ClientThreadRequest client) {
+		listAllThread.remove(client);
+	}
 
 	private Controler_Thread() {
 		listActiveThread=new ArrayList<>();

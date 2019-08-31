@@ -2328,3 +2328,463 @@ Time : 00:03:40.994
 --------------------------------------------
 
 
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-29
+Time : 13:30:54.060
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 12:02:04.661
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 12:12:54.697
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 12:20:17.851
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 12:28:44.689
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 13:11:58.634
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2019-08-27 -- 2019-08-30
+Date : 2019-08-30
+Time : 13:17:15.920
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2019-12-23 -- 2019-12-31
+Date : 2019-08-30
+Time : 13:17:25.743
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-30
+Time : 13:17:56.008
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-10 Seconds-7 MiliSecond-329 )
+Date : 2019-08-30
+Time : 13:22:05.961
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 13:22:17.571
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : deactivated
+Operation : USER DEACTIVATED HIS ACCOUNT
+Object : dunja987
+Date : 2019-08-30
+Time : 13:25:21.582
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:29:21.508
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : sddssd
+Date : 2019-08-30
+Time : 21:29:51.625
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:29:53.262
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : sddssd
+Date : 2019-08-30
+Time : 21:29:53.745
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:30:19.504
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:31:46.325
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : dsddas
+Date : 2019-08-30
+Time : 21:32:16.359
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:32:18.692
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : dsddas
+Date : 2019-08-30
+Time : 21:32:19.168
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:35:13.751
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : dfffdsf
+Date : 2019-08-30
+Time : 21:35:40.007
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:35:42.350
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : dfffdsf
+Date : 2019-08-30
+Time : 21:35:42.823
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:36:45.509
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION USER AND PROPERTY
+Object : sdds
+Date : 2019-08-30
+Time : 21:37:32.731
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:37:36.117
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : REGISTRATION NEW PROPERTY
+Object : sdds
+Date : 2019-08-30
+Time : 21:37:36.579
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:38:18.722
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:38:45.794
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:40:21.016
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:43:43.086
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 21:49:54.476
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 22:30:15.027
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 22:36:21.377
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE PROFILE PICTURE
+Object : /Users/dunja987/ProfilePicture.jpg
+Date : 2019-08-30
+Time : 22:36:24.714
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/dunja987/ProfilePicture.jpg
+Date : 2019-08-30
+Time : 22:36:42.705
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/dunja987/ProfilePicture.jpg
+Date : 2019-08-30
+Time : 22:37:01.234
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/dunja987/ProfilePicture.jpg
+Date : 2019-08-30
+Time : 22:37:18.844
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/dunja987/ProfilePicture.jpg
+Date : 2019-08-30
+Time : 22:37:28.935
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-30
+Time : 22:45:36.767
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : UPDATE USER
+Object : dunja987
+Date : 2019-08-30
+Time : 22:48:08.960
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/dunja987/Property/HotelIN(Hotel)/1.jpg
+Date : 2019-08-30
+Time : 22:48:20.811
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-30
+Time : 22:49:11.154
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2019-10-01 -- 2019-10-22
+Date : 2019-08-30
+Time : 22:49:32.704
+--------------------------------------------
+
+

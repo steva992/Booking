@@ -272,7 +272,7 @@ public class ControlerBLUser {
 				transferClass.setServer_Object_Response(user);
 				clientThread.send(transferClass);
 			}else {
-				transferClass.setMessage(TransferClass_Message.SUCCESSFUL_FIRST_STEP.getValue());
+				transferClass.setMessage(TransferClass_Message.SUCCESSFULL_CHECK.getValue());
 				transferClass.setType_Of_Data(Type_Of_Data.USER);
 				transferClass.setType_Of_operation(Type_Of_Operation.LOGIN_USER);
 				transferClass.setServer_Object_Response(user);
@@ -289,20 +289,14 @@ public class ControlerBLUser {
 			GeneralSystemOperation<GenericList<GeneralDomain>>generalSO=new EnterUserSO();
 			generalSO.runSO(list);
 			
-			if(list.size()> 1) {
-				User user=(User) list.get(2);
-				transferClass.setMessage(TransferClass_Message.EXCIST_USERNAME.getValue());
-				clientThread.send(transferClass);
-			}else {
-				transferClass.setServer_Object_Response(list);
-				transferClass.setMessage(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
-				transferClass.setType_Of_Data(Type_Of_Data.USER);
-				transferClass.setType_Of_operation(Type_Of_Operation.ADD);
-				
-				List<ClientThreadRequest>list1=Controler_Thread.getInstance().getListAllThread();
-				for(int i=0;i<list1.size();i++) {
-					list1.get(i).send(transferClass);
-				}
+			transferClass.setServer_Object_Response(list);
+			transferClass.setMessage(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
+			transferClass.setType_Of_Data(Type_Of_Data.USER);
+			transferClass.setType_Of_operation(Type_Of_Operation.ADD);
+			
+			List<ClientThreadRequest>list1=Controler_Thread.getInstance().getListAllThread();
+			for(int i=0;i<list1.size();i++) {
+				list1.get(i).send(transferClass);
 			}	
 		} catch (Exception e) {
 			

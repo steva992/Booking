@@ -1388,3 +1388,43 @@ Time : 00:23:10.848
 --------------------------------------------
 
 
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-30
+Time : 13:16:10.965
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-30
+Time : 21:50:53.990
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : LOGIN USER
+Object : tviti94
+Date : 2019-08-30
+Time : 22:45:52.424
+--------------------------------------------
+
+
+-------------------------------------------
+Username : tviti94
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-17 Seconds-35 MiliSecond-567 )
+Date : 2019-08-30
+Time : 23:03:27.942
+--------------------------------------------
+
+

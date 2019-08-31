@@ -38,3 +38,93 @@ Time : 00:20:23.248
 --------------------------------------------
 
 
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : LOGIN USER
+Object : damir82
+Date : 2019-08-30
+Time : 23:17:34.634
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-30
+Time : 23:17:51.536
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-08-30
+Time : 23:17:58.140
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-30
+Time : 23:18:16.124
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-30
+Time : 23:18:21.204
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Luxury
+Date : 2019-08-30
+Time : 23:18:27.176
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-30
+Time : 23:18:33.884
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Apartment
+Date : 2019-08-30
+Time : 23:18:40.328
+--------------------------------------------
+
+
+-------------------------------------------
+Username : damir82
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-1 Seconds-19 MiliSecond-873 )
+Date : 2019-08-30
+Time : 23:18:54.482
+--------------------------------------------
+
+

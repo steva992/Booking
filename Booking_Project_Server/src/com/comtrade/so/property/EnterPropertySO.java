@@ -16,18 +16,17 @@ public class EnterPropertySO extends GeneralSystemOperation<GenericList<GeneralD
 	@Override
 	protected void runConcreteSO(GenericList<GeneralDomain> object) throws SQLException, Exception {
 		
-		GenericList<GeneralDomain>list=object;
-		User user=new User();
-		User_Info user_info=new User_Info();
-		Property property=new Property();
+			GenericList<GeneralDomain>list=object;
+			User user=new User();
+			User_Info user_info=new User_Info();
+			Property property=new Property();
 		
 				
-		if(object.get(0) instanceof User) {
-			user=(User) list.get(0);
-			user_info=(User_Info) list.get(1);
-			property=(Property) list.get(2);
-			boolean excist=Cache.getInstance().checkPropertyInMap(property);
-			if(!excist) {
+			if(object.get(0) instanceof User) {
+				
+				user=(User) list.get(0);
+				user_info=(User_Info) list.get(1);
+				property=(Property) list.get(2);
 				GenericList<GeneralDomain>listUser=new GenericList<GeneralDomain>();
 				listUser.add(user);
 				listUser.add(user_info);
@@ -37,20 +36,12 @@ public class EnterPropertySO extends GeneralSystemOperation<GenericList<GeneralD
 				Cache.getInstance().addListInMap(property.getName(),list);
 				list.add(user);
 				list.add(user_info);
+				
 			}else {
-				list.add(new PaymentUserCard());
-			}
-			
-		}else {
-			 property=(Property) list.get(0);
-			 boolean excist=Cache.getInstance().checkPropertyInMap(property);
-			 if(!excist) {
+				 property=(Property) list.get(0);
 				 Cache.getInstance().addListInMap(property.getName(),list);
-			 }else {
-				 list.add(new PaymentUserCard());
-			 }
 			 
-		}
+			}
 	}
 
 }

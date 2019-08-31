@@ -1,0 +1,10 @@
+-------------------------------------------
+Username : jovan93
+Status : user
+Operation : REGISTRATION USER
+Object : jovan93
+Date : 2019-08-30
+Time : 23:31:39.581
+--------------------------------------------
+
+

@@ -48,6 +48,8 @@ public class ClientThreadRequest extends Thread {
 						TransferClass transferClass=(TransferClass) objectIS.readObject();
 						processClientsRequest(transferClass);
 					} catch (Exception e) {
+							Controler_Thread.getInstance().removeThread(this);
+							Controler_Thread.getInstance().remove(this);
 							e.printStackTrace();
 							break;
 					}

@@ -24,6 +24,7 @@ import com.comtrade.genericClasses.GenericList;
 import com.comtrade.genericClasses.GenericMap;
 import com.comtrade.so.GeneralSystemOperation;
 import com.comtrade.so.property.ChangePictureURLSO;
+import com.comtrade.so.property.CheckPropertySO;
 import com.comtrade.so.property.EnterPropertySO;
 import com.comtrade.so.property.GetMapSO;
 import com.comtrade.threads.ClientThreadRequest;
@@ -65,12 +66,44 @@ public class ControlerBLProperty{
 				user=(User) transferClass.getClient_Object_Request();
 				AllForUserPanel(user,clientThread);
 				break;	
+			case CHECK_PROPERTY:
+				list=(GenericList<GeneralDomain>) transferClass.getClient_Object_Request();
+				checkProperty(list,clientThread);
+				break;	
 				default:
 					break;
 		}
 		
 	}
 	
+
+	private void checkProperty(GenericList<GeneralDomain> list, ClientThreadRequest clientThread) {
+		TransferClass transferClass=new TransferClass();
+		try {
+			GenericList<GeneralDomain>list1=list;
+			GeneralSystemOperation<GenericList<GeneralDomain>>generalSO=new CheckPropertySO();
+			generalSO.runSO(list1);
+			
+			if(list1.get(list1.size()-1) instanceof PaymentUserCard) {
+				transferClass.setMessage(TransferClass_Message.EXCIST_PROPERTY.getValue());
+			    transferClass.setType_Of_operation(Type_Of_Operation.JUST_MESSAGE);
+			    transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
+				clientThread.send(transferClass);
+		}else {
+				transferClass.setServer_Object_Response(list);
+				transferClass.setMessage(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
+				transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
+				transferClass.setType_Of_operation(Type_Of_Operation.ADD);
+			
+				clientThread.send(transferClass);
+		
+		}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	private void AllForUserPanel(User user, ClientThreadRequest clientThread) throws Exception {
 		TransferClass transferClass=new TransferClass();
@@ -114,23 +147,16 @@ public class ControlerBLProperty{
 			
 			generalSO.runSO(list1);
 		
-			if(list1.get(list1.size()-1) instanceof PaymentUserCard) {
-					transferClass.setMessage(TransferClass_Message.EXCIST_PROPERTY.getValue());
-				    transferClass.setType_Of_operation(Type_Of_Operation.JUST_MESSAGE);
-				    transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
-					clientThread.send(transferClass);
-			}else {
-					transferClass.setServer_Object_Response(list);
-					transferClass.setMessage(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
-					transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
-					transferClass.setType_Of_operation(Type_Of_Operation.ADD);
+			transferClass.setServer_Object_Response(list);
+			transferClass.setMessage(TransferClass_Message.SUCCESSFUL_REGISTRATION.getValue());
+			transferClass.setType_Of_Data(Type_Of_Data.PROPERTY);
+			transferClass.setType_Of_operation(Type_Of_Operation.ADD);
 				
-				List<ClientThreadRequest>list2=Controler_Thread.getInstance().getListAllThread();
-				for(int i=0;i<list1.size();i++) {
-					list2.get(i).send(transferClass);
-			    }
-			
-			}	
+			List<ClientThreadRequest>list2=Controler_Thread.getInstance().getListAllThread();
+			for(int i=0;i<list2.size();i++) {
+				list2.get(i).send(transferClass);
+			}
+				
 		
 		} catch (Exception e) {
 			e.printStackTrace();
