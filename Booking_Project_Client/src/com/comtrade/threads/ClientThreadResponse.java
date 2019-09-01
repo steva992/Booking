@@ -2,6 +2,8 @@ package com.comtrade.threads;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import com.comtrade.communication.Communication;
 import com.comtrade.controlerClient.ControlerCode;
 import com.comtrade.controlerClient.ControlerDiscount;
@@ -30,6 +32,8 @@ public class ClientThreadResponse extends Thread{
 				}catch(Exception e) {
 					System.out.println("nema konekcije");
 					e.printStackTrace();
+					JOptionPane.showMessageDialog(null,"CONNECTION WITH SERVER IS BROKEN!!!");
+					System.exit(0);
 					break;
 				}
 			}

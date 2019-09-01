@@ -17,7 +17,7 @@ public class ChangePasswordSO extends GeneralSystemOperation<GenericList<General
 		boolean correct=Cache.getInstance().checkUserPassword(user);
 		if(correct) {
 			Cache.getInstance().updateUserPassword(user1);
-			user1.setStatus("true");
+			user1.setStatus(user.getStatus());
 		}
 	}
 

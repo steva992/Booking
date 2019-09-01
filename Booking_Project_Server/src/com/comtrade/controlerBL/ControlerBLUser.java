@@ -230,7 +230,7 @@ public class ControlerBLUser {
 			GeneralSystemOperation<GenericList<GeneralDomain>>generalSO=new ChangePasswordSO();
 			generalSO.runSO(list);
 			
-			if(((User) list.get(1)).getStatus().equals("true")) {
+			if(((User) list.get(1)).getStatus().equals("admin") || ((User) list.get(1)).getStatus().equals("user")) {
 				
 				transferClass.setMessage(TransferClass_Message.SUCCESSFUL_CHANGE.getValue());
 				transferClass.setType_Of_Data(Type_Of_Data.USER);

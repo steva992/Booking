@@ -1507,7 +1507,7 @@ public class Admin_Panel extends JPanel {
 				}
 			}
 				ImageIcon imageIcon=new ImageIcon(AbsolutePath.absolutePath()+user_Info.getPictureURL());
-				Image image=imageIcon.getImage().getScaledInstance(100,100,Image.SCALE_SMOOTH);
+				Image image=imageIcon.getImage().getScaledInstance(50,50,Image.SCALE_SMOOTH);
 				dm1.addElement(new ComboBoxClass("       ( "+user_Info.getName()+" ) RATING OF THIS CLIENT IS : "+String.valueOf(client.getClient_rating()),new ImageIcon(image)));
 			}
 			dm1.addElement(new ComboBoxClass(null,null));
@@ -2039,10 +2039,7 @@ public class Admin_Panel extends JPanel {
 		list.add(user2);
 		list.add(user_info2);
 		map.put(user2.getUsername(),list);
-		listReservation.add(reservation);
-		listReservation.add(user2);
-		listReservation.add(user_info2);
-		EnterReservationOnTable(listReservation);
+		backAllForThisProperty();
 	}
 
 

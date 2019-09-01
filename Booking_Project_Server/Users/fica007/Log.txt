@@ -318,3 +318,73 @@ Time : 22:57:41.120
 --------------------------------------------
 
 
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-08-31
+Time : 23:55:01.502
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2020-08-01 2020-08-11
+Date : 2019-08-31
+Time : 23:56:03.446
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2021-08-01 2021-08-09
+Date : 2019-09-01
+Time : 00:00:48.950
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : deactivated
+Operation : USER DEACTIVATED HIS ACCOUNT
+Object : fica007
+Date : 2019-09-01
+Time : 00:01:59.120
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-09-01
+Time : 00:26:43.900
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : LOGIN USER
+Object : fica007
+Date : 2019-09-01
+Time : 00:39:01.651
+--------------------------------------------
+
+
+-------------------------------------------
+Username : fica007
+Status : user
+Operation : USER RATE HIS RESERVATION
+Object : 57269
+Date : 2019-09-01
+Time : 00:39:42.609
+--------------------------------------------
+
+

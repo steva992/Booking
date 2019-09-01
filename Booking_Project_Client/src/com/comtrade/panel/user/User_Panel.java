@@ -73,6 +73,10 @@ import com.comtrade.domain.property.Adress;
 import com.comtrade.domain.property.GeoLocation;
 import com.comtrade.domain.property.Property;
 import com.comtrade.domain.property.Property_Picutre_Album;
+import com.comtrade.domain.room.decorator.ApartmentDecorator;
+import com.comtrade.domain.room.decorator.LuxuryRoomDecorator;
+import com.comtrade.domain.room.decorator.OrdinaryRoomDecorator;
+import com.comtrade.domain.room.decorator.Room_Info_Decorator;
 import com.comtrade.domain.user.PaymentUserCard;
 import com.comtrade.domain.user.User;
 import com.comtrade.domain.user.User_Info;
@@ -92,6 +96,7 @@ import com.comtrade.threads.TimeThread;
 import com.comtrade.transfer.TransferClass;
 import com.comtrade.view.frame.Application;
 import com.comtrade.view.frame.Rating;
+import com.comtrade.view.frame.RoomType;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -478,6 +483,7 @@ public class User_Panel extends JPanel {
 		btnNewButton_2.setForeground(Color.RED);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				setPanelOnLayeredPane(layeredPane,PanelCardInfo);
 				SimpleDateFormat sdf=new  SimpleDateFormat("yyyy-MM-dd");
 				int idUser=user.getId();
 				int code=room_code;
@@ -676,6 +682,34 @@ public class User_Panel extends JPanel {
 		cbTypeOfRoom = new JComboBox();
 		cbTypeOfRoom.setBounds(11, 11, 173, 30);
 		Offer.add(cbTypeOfRoom);
+		
+		JButton btnNewButton_4 = new JButton("??");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Room_Info room_info =new Room_Info();
+				Room_Info_Decorator room = null;
+				if(cbTypeOfRoom.getSelectedItem().toString().equals(Room_Constants.ORDINARY_ROOM.getValue())) {
+					
+					room=new OrdinaryRoomDecorator(room_info);
+					
+				}else if(cbTypeOfRoom.getSelectedItem().toString().equals(Room_Constants.APARTMENT.getValue())) {
+
+					room=new ApartmentDecorator(room_info);
+					
+				}else if(cbTypeOfRoom.getSelectedItem().toString().equals(Room_Constants.LUXURY_ROOM.getValue())) {
+					
+					room=new LuxuryRoomDecorator(room_info);
+					
+				}
+				RoomType room_typType=new RoomType(user,room);
+				room_typType.setVisible(true);
+			}
+		});
+		btnNewButton_4.setForeground(Color.WHITE);
+		btnNewButton_4.setBackground(Color.RED);
+		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton_4.setBounds(207, 12, 62, 28);
+		Offer.add(btnNewButton_4);
 		cbTypeOfRoom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EnterRoomInTable(listRoom);

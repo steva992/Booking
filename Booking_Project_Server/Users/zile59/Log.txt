@@ -598,3 +598,33 @@ Time : 22:53:25.967
 --------------------------------------------
 
 
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : LOGIN USER
+Object : zile59
+Date : 2019-08-31
+Time : 23:54:45.900
+--------------------------------------------
+
+
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : USER DELETE PROFILE PICTURE
+Object : /Users/zile59/ProfilePicture.jpg
+Date : 2019-09-01
+Time : 00:04:14.573
+--------------------------------------------
+
+
+-------------------------------------------
+Username : zile59
+Status : admin
+Operation : CHANGE PICTURE URL
+Object : /Users/zile59/ProfilePicture.jpg
+Date : 2019-09-01
+Time : 00:04:32.801
+--------------------------------------------
+
+

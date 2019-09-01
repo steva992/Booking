@@ -78,3 +78,53 @@ Time : 23:03:41.580
 --------------------------------------------
 
 
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : LOGIN USER
+Object : ana86
+Date : 2019-08-31
+Time : 23:55:22.117
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : REGISTRATION RESERVATION
+Object : 2020-08-01 2020-08-11
+Date : 2019-08-31
+Time : 23:59:58.086
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-10 Seconds-47 MiliSecond-39 )
+Date : 2019-09-01
+Time : 00:06:09.154
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : LOGIN USER
+Object : ana86
+Date : 2019-09-01
+Time : 00:27:43.280
+--------------------------------------------
+
+
+-------------------------------------------
+Username : ana86
+Status : user
+Operation : UPDATE USER
+Object : ana86
+Date : 2019-09-01
+Time : 00:29:54.263
+--------------------------------------------
+
+

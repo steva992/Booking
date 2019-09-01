@@ -2788,3 +2788,263 @@ Time : 22:49:32.704
 --------------------------------------------
 
 
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-08-31
+Time : 23:54:32.892
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED ROOM
+Object : Ordinary
+Date : 2019-09-01
+Time : 00:01:15.698
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Ordinary
+Date : 2019-09-01
+Time : 00:07:19.349
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER UPDATED ROOM
+Object : Luxury
+Date : 2019-09-01
+Time : 00:07:40.339
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-14 Seconds-33 MiliSecond-735 )
+Date : 2019-09-01
+Time : 00:09:06.621
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-09-01
+Time : 00:09:19.903
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2020-09-012020-11-30
+Date : 2019-09-01
+Time : 00:11:35.555
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2020-09-01 -- 2020-11-30
+Date : 2019-09-01
+Time : 00:15:22.341
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-09-022019-09-30
+Date : 2019-09-01
+Time : 00:15:36.630
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2019-10-022019-10-30
+Date : 2019-09-01
+Time : 00:15:51.714
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-09-01
+Time : 00:23:56.218
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-09-01
+Time : 00:24:28.922
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-09-01
+Time : 00:25:25.091
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : CHANGE PICTURE URL FOR HOTEL
+Object : /Users/dunja987/Property/Zora(Motel)/1.jpg
+Date : 2019-09-01
+Time : 00:30:09.169
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2019-08-27 -- 2019-08-30
+Date : 2019-09-01
+Time : 00:31:17.062
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER REGISTRATED DISCOUNT
+Object : 2020-12-012020-12-23
+Date : 2019-09-01
+Time : 00:31:50.698
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-09-01
+Time : 00:39:27.986
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2020-12-01 -- 2020-12-23
+Date : 2019-09-01
+Time : 00:43:22.749
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2019-12-23 -- 2019-12-31
+Date : 2019-09-01
+Time : 00:43:30.006
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2019-08-27 -- 2019-08-30
+Date : 2019-09-01
+Time : 00:43:36.384
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : null
+Operation : CHANGE PASSWORD
+Object : dunja987
+Date : 2019-09-01
+Time : 00:55:25.676
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-09-01
+Time : 01:03:46.884
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2020-12-01 -- 2020-12-23
+Date : 2019-09-01
+Time : 01:09:27.587
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER DELETE DISCOUNT
+Object : 2019-08-27 -- 2019-08-30
+Date : 2019-09-01
+Time : 01:09:39.519
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : LOGIN USER
+Object : dunja987
+Date : 2019-09-01
+Time : 21:56:09.265
+--------------------------------------------
+
+
+-------------------------------------------
+Username : dunja987
+Status : admin
+Operation : USER LOGOUT
+Duration on site : (Days-0 Hours-0 Minutes-1 Seconds-32 MiliSecond-101 )
+Date : 2019-09-01
+Time : 21:57:41.360
+--------------------------------------------
+
+

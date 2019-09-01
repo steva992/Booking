@@ -144,11 +144,14 @@ public class Cache {
 
 	public  boolean checkUserPassword(User user) {
 		String password;
+		String status;
 		synchronized (Cache.class) {
 			password=((User) map.get(user.getUsername()).get(0)).getPassword();	
+			status=((User) map.get(user.getUsername()).get(0)).getStatus();
+			
 		}
 		String password2=user.getPassword();
-		
+		user.setStatus(status);
 		if(password.equals(password2)) {
 			return true;
 		}
